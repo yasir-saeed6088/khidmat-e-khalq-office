@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>KHIDMAT-E-KHALQ OFFICE</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Aadhaar Services | KHIDMAT-E-KHALQ OFFICE</title>
 
 <style>
 
@@ -16,16 +17,15 @@ font-family:Arial,sans-serif;
 }
 
 body{
-background:#eef3f8;
+background:#f5f7fb;
 color:#222;
 }
 
 header{
-background:linear-gradient(135deg,#0d47a1,#1565c0);
-color:white;
+background:linear-gradient(135deg,#0052cc,#0077ff);
+color:#fff;
+padding:35px;
 text-align:center;
-padding:40px 20px;
-box-shadow:0 4px 20px rgba(0,0,0,.2);
 }
 
 header h1{
@@ -35,83 +35,169 @@ margin-bottom:10px;
 
 header p{
 font-size:18px;
-opacity:.9;
 }
 
 .container{
-max-width:1100px;
+max-width:1200px;
 margin:auto;
-padding:30px 20px;
-}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-gap:25px;
-}
-
-.card{
-background:white;
-border-radius:15px;
 padding:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.08);
-transition:.3s;
-border-top:6px solid #1565c0;
 }
 
-.card:hover{
-transform:translateY(-8px);
-box-shadow:0 18px 35px rgba(0,0,0,.18);
+.service{
+background:#fff;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.1);
+margin-bottom:20px;
+overflow:hidden;
 }
 
-.card h2{
-color:#0d47a1;
-margin-bottom:15px;
+.service-title{
+background:#0052cc;
+color:#fff;
+padding:18px;
+font-size:22px;
+cursor:pointer;
 }
 
-.card p{
-line-height:1.7;
-color:#555;
+.service-content{
+display:none;
+padding:20px;
 }
 
-.btn{
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+}
+
+table th{
+background:#0052cc;
+color:#fff;
+padding:12px;
+}
+
+table td{
+border:1px solid #ddd;
+padding:10px;
+}
+
+.apply{
 display:inline-block;
 margin-top:20px;
 padding:12px 25px;
-background:#1565c0;
+background:#28a745;
 color:white;
 text-decoration:none;
 border-radius:8px;
-font-weight:bold;
-transition:.3s;
-}
-
-.btn:hover{
-background:#0d47a1;
+font-size:18px;
 }
 
 footer{
-margin-top:50px;
-background:#0d47a1;
+background:#0052cc;
 color:white;
-padding:25px;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+html{
+scroll-behavior:smooth;
+}
+
+.service{
+transition:.35s;
+border-left:6px solid #0052cc;
+}
+
+.service:hover{
+transform:translateY(-6px);
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.service-title{
+transition:.3s;
+}
+
+.service-title:hover{
+background:#003d99;
+}
+
+.apply{
+transition:.3s;
+}
+
+.apply:hover{
+background:#1f8f3a;
+transform:scale(1.05);
+}
+
+input,
+textarea,
+select{
+width:100%;
+padding:12px;
+margin:8px 0 18px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+outline:none;
+transition:.3s;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+border-color:#0052cc;
+box-shadow:0 0 8px rgba(0,82,204,.25);
+}
+
+table{
+border-radius:10px;
+overflow:hidden;
+}
+
+footer{
+background:linear-gradient(135deg,#0052cc,#0077ff);
+}
+
+@media(max-width:768px){
+
+header h1{
+font-size:28px;
+}
+
+.service-title{
+font-size:18px;
+}
+
+.apply{
+width:100%;
 text-align:center;
 }
 
-.whatsapp{
-position:fixed;
-right:20px;
-bottom:20px;
-background:#25D366;
-color:white;
-padding:15px 18px;
-border-radius:50px;
-text-decoration:none;
-font-weight:bold;
-box-shadow:0 5px 20px rgba(0,0,0,.25);
+}
+</style>
+
+<script>
+
+function openService(id){
+
+var x=document.getElementById(id);
+
+if(x.style.display=="block"){
+
+x.style.display="none";
+
 }
 
-</style>
+else{
+
+x.style.display="block";
+
+}
+
+}
+
+</script>
 
 </head>
 
@@ -121,71 +207,596 @@ box-shadow:0 5px 20px rgba(0,0,0,.25);
 
 <h1>KHIDMAT-E-KHALQ OFFICE</h1>
 
-<p>CSC & ONLINE SERVICES</p>
+<p>Aadhaar Online Services</p>
 
 </header>
+<div style="background:white;padding:20px;box-shadow:0 2px 10px rgba(0,0,0,.1);">
 
+<h2 style="color:#0052cc;text-align:center;">
+Aadhaar Services Portal
+</h2>
+
+<p style="text-align:center;margin-top:10px;">
+Fast • Secure • Professional
+</p>
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search Aadhaar Service..."
+onkeyup="searchService()"
+style="
+width:100%;
+padding:14px;
+margin-top:20px;
+border:2px solid #0052cc;
+border-radius:10px;
+font-size:17px;
+">
+
+<br><br>
+
+<div style="text-align:center;font-size:18px;">
+
+<b>Total Services :</b>
+
+<span id="totalServices"></span>
+
+</div>
+
+</div>
+
+<script>
+
+function searchService(){
+
+let input=document.getElementById("searchBox").value.toUpperCase();
+
+let services=document.getElementsByClassName("service");
+
+for(let i=0;i<services.length;i++){
+
+let title=services[i].getElementsByClassName("service-title")[0];
+
+if(title.innerHTML.toUpperCase().indexOf(input)>-1){
+
+services[i].style.display="block";
+
+}
+
+else{
+
+services[i].style.display="none";
+
+}
+
+}
+
+}
+
+document.getElementById("totalServices").innerHTML=
+
+document.getElementsByClassName("service").length;
+
+</script>
 <div class="container">
 
-<div class="grid">
+<div class="service">
 
-<div class="card">
+<div class="service-title"
+onclick="openService('mobile')">
 
-<h2>🪪 Aadhaar Services</h2>
+Mobile Number Update
 
-<p>
+</div>
 
-Address Update<br>
-Mobile Number Update<br>
-PVC Aadhaar Card
+<div class="service-content"
+id="mobile">
 
-</p>
+<h2>Mobile Number Update</h2>
 
-<a href="#" class="btn">
+<table>
 
-Open Services
+<tr>
+
+<th>Information</th>
+
+<th>Details</th>
+
+</tr>
+
+<tr>
+
+<td>Service</td>
+
+<td>Update Aadhaar Mobile Number</td>
+
+</tr>
+
+<tr>
+
+<td>Service Charge</td>
+
+<td>₹100</td>
+
+</tr>
+
+<tr>
+
+<td>Processing Time</td>
+
+<td>10-15 Minutes</td>
+
+</tr>
+
+<tr>
+
+<td>Required</td>
+
+<td>Applicant Presence Required</td>
+
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20update%20my%20Aadhaar%20Mobile%20Number">
+
+Apply Now
 
 </a>
 
 </div>
 
-<div class="card">
+</div>
+<div class="service">
 
-<h2>💳 PAN Card Services</h2>
+<div class="service-title"
+onclick="openService('addressself')">
 
-<p>
+Address Update (Self Documents)
 
-New PAN Apply<br>
-Name Correction<br>
-Date of Birth Correction<br>
-PAN-Aadhaar Linking
+</div>
 
-</p>
+<div class="service-content"
+id="addressself">
 
-<a href="#" class="btn">
+<h2>Address Update (Self Documents)</h2>
 
-Open Services
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Address Update using Self Documents</td>
+</tr>
+
+<tr>
+<td>Required Documents</td>
+<td>Aadhaar Card, Valid Address Proof, Declaration Form</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>10-20 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20update%20my%20Aadhaar%20Address%20using%20Self%20Documents.">
+
+Apply Now
 
 </a>
 
 </div>
 
-<div class="card">
+</div>
 
-<h2>🗳️ Voter ID Services</h2>
+<div class="service">
 
-<p>
+<div class="service-title"
+onclick="openService('hof')">
 
-New Registration<br>
-Name Correction<br>
-Date of Birth Correction<br>
-Photo Update
+Address Update (Head of Family)
 
-</p>
+</div>
 
-<a href="#" class="btn">
+<div class="service-content"
+id="hof">
 
-Open Services
+<h2>Address Update (Head of Family)</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Address Update using Head of Family</td>
+</tr>
+
+<tr>
+<td>Required Documents</td>
+<td>Applicant Aadhaar & Head of Family Aadhaar</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>10-20 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20update%20my%20Aadhaar%20Address%20through%20Head%20of%20Family.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('pvc')">
+
+PVC Aadhaar Card Order
+
+</div>
+
+<div class="service-content"
+id="pvc">
+
+<h2>PVC Aadhaar Card Order</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Order New PVC Aadhaar Card</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>5-10 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20order%20my%20PVC%20Aadhaar%20Card.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('eadhaar')">
+
+e-Aadhaar Download
+
+</div>
+
+<div class="service-content"
+id="eadhaar">
+
+<h2>e-Aadhaar Download</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Download e-Aadhaar PDF</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹30</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>2-5 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20download%20my%20e-Aadhaar.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('masked')">
+
+Masked Aadhaar Download
+
+</div>
+
+<div class="service-content"
+id="masked">
+
+<h2>Masked Aadhaar Download</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Download Masked Aadhaar PDF</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹30</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>2-5 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20download%20my%20Masked%20Aadhaar.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+<div class="service">
+
+<div class="service-title"
+onclick="openService('documentupdate')">
+
+Aadhaar Document Update
+
+</div>
+
+<div class="service-content"
+id="documentupdate">
+
+<h2>Aadhaar Document Update</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Update Aadhaar Supporting Documents</td>
+</tr>
+
+<tr>
+<td>Required Documents</td>
+<td>Aadhaar Card + Valid Supporting Document</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹70</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>10-15 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20update%20my%20Aadhaar%20Documents.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('status')">
+
+Aadhaar Status Check
+
+</div>
+
+<div class="service-content"
+id="status">
+
+<h2>Aadhaar Status Check</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Check Aadhaar Application Status</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>Free</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>2 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20check%20my%20Aadhaar%20Status.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('verify')">
+
+Aadhaar Verification
+
+</div>
+
+<div class="service-content"
+id="verify">
+
+<h2>Aadhaar Verification</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Verify Aadhaar Details</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>Free</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>2 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20verify%20my%20Aadhaar.">
+
+Apply Now
+
+</a>
+
+</div>
+
+</div>
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('biometric')">
+
+Biometric Lock / Unlock
+
+</div>
+
+<div class="service-content"
+id="biometric">
+
+<h2>Biometric Lock / Unlock</h2>
+
+<table>
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Lock or Unlock Aadhaar Biometrics</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹20</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>2-5 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20want%20to%20Lock%20or%20Unlock%20my%20Aadhaar%20Biometrics.">
+
+Apply Now
 
 </a>
 
@@ -194,21 +805,242 @@ Open Services
 </div>
 
 </div>
-
-<a
-class="whatsapp"
-href="https://wa.me/916361634389"
-target="_blank">
-
-WhatsApp
-
-</a>
 
 <footer>
 
-© 2026 KHIDMAT-E-KHALQ OFFICE
+<h2>KHIDMAT-E-KHALQ OFFICE</h2>
+
+<p>Professional CSC & Online Services</p>
+
+<p>WhatsApp : +91 6361634389</p>
+
+<p>Email : hafizyasiransari4@gmail.com</p>
+
+<p>Thank you for visiting our website.</p>
 
 </footer>
+<!-- ===== Aadhaar Application Form ===== -->
 
+<div id="applyForm" style="display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.6);overflow:auto;z-index:9999;">
+
+<div style="background:#fff;width:90%;max-width:650px;margin:40px auto;padding:25px;border-radius:12px;">
+
+<h2 style="text-align:center;color:#0052cc;">Aadhaar Service Request</h2>
+
+<br>
+
+<label>Full Name</label>
+<input id="name" type="text" style="width:100%;padding:10px;margin:8px 0;">
+
+<label>Mobile Number</label>
+<input id="mobile" type="tel" style="width:100%;padding:10px;margin:8px 0;">
+
+<label>Aadhaar Number</label>
+<input id="aadhaar" type="text" style="width:100%;padding:10px;margin:8px 0;">
+
+<label>District</label>
+<input id="district" type="text" style="width:100%;padding:10px;margin:8px 0;">
+
+<label>State</label>
+<input id="state" type="text" style="width:100%;padding:10px;margin:8px 0;">
+
+<label>Remarks</label>
+<textarea id="remarks" style="width:100%;height:100px;padding:10px;margin:8px 0;"></textarea>
+
+<br><br>
+
+<button onclick="sendWhatsApp()" style="background:#28a745;color:white;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Submit
+</button>
+
+<button onclick="closeForm()" style="background:red;color:white;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Close
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+document.querySelectorAll(".apply").forEach(function(btn){
+
+btn.addEventListener("click",function(e){
+
+e.preventDefault();
+
+document.getElementById("applyForm").style.display="block";
+
+});
+
+});
+
+function closeForm(){
+
+document.getElementById("applyForm").style.display="none";
+
+}
+
+function sendWhatsApp(){
+
+var message="*New Aadhaar Service Request*%0A%0A";
+
+message+="Name : "+document.getElementById("name").value+"%0A";
+
+message+="Mobile : "+document.getElementById("mobile").value+"%0A";
+
+message+="Aadhaar : "+document.getElementById("aadhaar").value+"%0A";
+
+message+="District : "+document.getElementById("district").value+"%0A";
+
+message+="State : "+document.getElementById("state").value+"%0A";
+
+message+="Remarks : "+document.getElementById("remarks").value;
+
+window.open("https://wa.me/916361634389?text="+message,"_blank");
+
+}
+
+</script>
+  <script>
+
+function createUploadField(title,id){
+
+return `
+<label>${title}</label>
+
+<input
+type="file"
+id="${id}"
+accept=".jpg,.jpeg,.png,.pdf"
+style="
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
+">
+`;
+
+}
+
+document.getElementById("remarks").insertAdjacentHTML(
+
+"beforebegin",
+
+createUploadField("Upload Aadhaar Card","aadhaarFile")+
+
+createUploadField("Upload Supporting Document","supportFile")+
+
+createUploadField("Upload Photograph","photoFile")
+
+);
+
+  </script>
+  <script>
+
+let selectedService="";
+
+document.querySelectorAll(".service").forEach(function(card){
+
+let title=card.querySelector(".service-title");
+
+let btn=card.querySelector(".apply");
+
+if(btn){
+
+btn.onclick=function(e){
+
+e.preventDefault();
+
+selectedService=title.innerText;
+
+document.getElementById("applyForm").style.display="block";
+
+};
+
+}
+
+});
+
+function sendWhatsApp(){
+
+var name=document.getElementById("name").value;
+
+var mobile=document.getElementById("mobile").value;
+
+var aadhaar=document.getElementById("aadhaar").value;
+
+var district=document.getElementById("district").value;
+
+var state=document.getElementById("state").value;
+
+var remarks=document.getElementById("remarks").value;
+
+var msg="*NEW AADHAAR SERVICE REQUEST*%0A%0A";
+
+msg+="Service : "+selectedService+"%0A";
+
+msg+="Name : "+name+"%0A";
+
+msg+="Mobile : "+mobile+"%0A";
+
+msg+="Aadhaar : "+aadhaar+"%0A";
+
+msg+="District : "+district+"%0A";
+
+msg+="State : "+state+"%0A";
+
+msg+="Remarks : "+remarks;
+
+window.open("https://wa.me/916361634389?text="+msg,"_blank");
+
+}
+
+  </script>
+  <script>
+
+function sendWhatsApp(){
+
+var name=document.getElementById("name").value.trim();
+var mobile=document.getElementById("mobile").value.trim();
+var aadhaar=document.getElementById("aadhaar").value.trim();
+var district=document.getElementById("district").value.trim();
+var state=document.getElementById("state").value.trim();
+var remarks=document.getElementById("remarks").value.trim();
+
+if(name==""){
+alert("Please enter your Name");
+return;
+}
+
+if(mobile.length!=10){
+alert("Please enter a valid Mobile Number");
+return;
+}
+
+if(aadhaar.length!=12){
+alert("Please enter a valid 12-digit Aadhaar Number");
+return;
+}
+
+var msg="*NEW AADHAAR SERVICE REQUEST*%0A%0A";
+
+msg+="Service : "+selectedService+"%0A";
+msg+="Applicant : "+name+"%0A";
+msg+="Mobile : "+mobile+"%0A";
+msg+="Aadhaar : "+aadhaar+"%0A";
+msg+="District : "+district+"%0A";
+msg+="State : "+state+"%0A";
+msg+="Remarks : "+remarks;
+
+alert("Application Ready.\nYou will now be redirected to WhatsApp.");
+
+window.open("https://wa.me/916361634389?text="+msg,"_blank");
+
+}
+
+  </script>
 </body>
+
 </html>
