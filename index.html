@@ -1039,7 +1039,10 @@ document.getElementById("mobileForm").style.display="block";
   
 });  
   
-function sendWhatsApp(){  
+function sendWhatsApp(){ 
+
+var mobileError=document.getElementById("mobileError");
+var aadhaarError=document.getElementById("aadhaarError");
   
 var name=document.getElementById("name").value;  
 var mobile=document.getElementById("mobile").value;  
