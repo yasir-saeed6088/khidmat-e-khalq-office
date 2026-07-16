@@ -981,130 +981,106 @@ document.getElementById("mobileForm").style.display="none";
 
 }
 
-function sendWhatsApp(){
-
-var message="*Mobile Number Update Request*%0A%0A";
-
-message+="Name : "+document.getElementById("name").value+"%0A";
-
-message+="Aadhaar Linked Mobile : "+document.getElementById("mobile").value+"%0A";
-
-message+="Aadhaar Number : "+document.getElementById("aadhaar").value+"%0A";
-
-message+="Village / Town : "+document.getElementById("village").value+"%0A";
-
-message+="State : "+document.getElementById("state").value+"%0A";
-
-message+="Question / Message : "+document.getElementById("remarks").value;
-
-}
-
-</script>
-  <script>
-
-function createUploadField(title,id){
-
-return `
-<label>${title}</label>
-
-<input
-type="file"
-id="${id}"
-accept=".jpg,.jpeg,.png,.pdf"
-style="
-width:100%;
-padding:10px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:6px;
-">
-`;
-
-}
-
-document.getElementById("remarks").insertAdjacentHTML(
-
-"beforebegin",
-
-createUploadField("Upload Aadhaar Card","aadhaarFile")
-
-);
-
-  </script>
-  <script>
-
-let selectedService="";
-
-document.querySelectorAll(".service").forEach(function(card){
-
-let title=card.querySelector(".service-title");
-
-let btn=card.querySelector(".apply");
-
-if(btn){
-
-btn.onclick=function(e){
-
-e.preventDefault();
-
-selectedService=title.innerText;
-
-document.getElementById("mobileForm").style.display="block";
-
-};
-
-}
-
-});
-
-
-function sendWhatsApp(){
-
-alert("Function Working");
+<script>  
   
-var name=document.getElementById("name").value;
-var mobile=document.getElementById("mobile").value;
-var aadhaar=document.getElementById("aadhaar").value;
-var village=document.getElementById("village").value;
-var state=document.getElementById("state").value;
-var remarks=document.getElementById("remarks").value;
-
-var msg="*MOBILE NUMBER UPDATE REQUEST*%0A%0A";
-
-msg+="Service : "+selectedService+"%0A";
-msg+="Name : "+name+"%0A";
-msg+="Aadhaar Linked Mobile : "+mobile+"%0A";
-msg+="Aadhaar Number : "+aadhaar+"%0A";
-msg+="Village / Town : "+village+"%0A";
-msg+="State : "+state+"%0A";
-msg+="Question / Message : "+remarks;
-
-window.open("https://wa.me/916361634389?text="+msg,"_blank");
-
-}
-
-</script>
-<script>
-
-</script>
-
-</div>
-</div>
-
-<footer>
-
-<h2>KHIDMAT-E-KHALQ OFFICE</h2>
-
-<p>Professional CSC & Online Services</p>
-
-<p>WhatsApp : +91 6361634389</p>
-
-<p>Email : hafizyasiransari4@gmail.com</p>
-
-<p>Thank you for visiting our website.</p>
-
-</footer>
+function createUploadField(title,id){  
   
-</body>
-
-</html>
+return `  
+<label>${title}</label>  
+  
+<input  
+type="file"  
+id="${id}"  
+accept=".jpg,.jpeg,.png,.pdf"  
+style="  
+width:100%;  
+padding:10px;  
+margin:8px 0;  
+border:1px solid #ccc;  
+border-radius:6px;  
+">  
+`;  
+  
+}  
+  
+document.getElementById("remarks").insertAdjacentHTML(  
+  
+"beforebegin",  
+  
+createUploadField("Upload Aadhaar Card","aadhaarFile")  
+  
+);  
+  
+</script>  
+  
+<script>  
+  
+let selectedService="";  
+  
+document.querySelectorAll(".service").forEach(function(card){  
+  
+let title=card.querySelector(".service-title");  
+  
+let btn=card.querySelector(".apply");  
+  
+if(btn){  
+  
+btn.onclick=function(e){  
+  
+e.preventDefault();  
+  
+selectedService=title.innerText;  
+  
+document.getElementById("mobileForm").style.display="block";  
+  
+};  
+  
+}  
+  
+});  
+  
+function sendWhatsApp(){  
+  
+var name=document.getElementById("name").value;  
+var mobile=document.getElementById("mobile").value;  
+var aadhaar=document.getElementById("aadhaar").value;  
+var village=document.getElementById("village").value;  
+var state=document.getElementById("state").value;  
+var remarks=document.getElementById("remarks").value;  
+  
+var msg="*MOBILE NUMBER UPDATE REQUEST*%0A%0A";  
+  
+msg+="Service : "+selectedService+"%0A";  
+msg+="Name : "+name+"%0A";  
+msg+="Aadhaar Linked Mobile : "+mobile+"%0A";  
+msg+="Aadhaar Number : "+aadhaar+"%0A";  
+msg+="Village / Town : "+village+"%0A";  
+msg+="State : "+state+"%0A";  
+msg+="Question / Message : "+remarks;  
+  
+window.open("https://wa.me/916361634389?text="+msg,"_blank");  
+  
+}  
+  
+</script>  
+  
+</div>  
+</div>  
+  
+<footer>  
+  
+<h2>KHIDMAT-E-KHALQ OFFICE</h2>  
+  
+<p>Professional CSC & Online Services</p>  
+  
+<p>WhatsApp : +91 6361634389</p>  
+  
+<p>Email : hafizyasiransari4@gmail.com</p>  
+  
+<p>Thank you for visiting our website.</p>  
+  
+</footer>  
+  
+</body>  
+  
+</html> 
