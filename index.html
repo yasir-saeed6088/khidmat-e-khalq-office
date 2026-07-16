@@ -983,21 +983,19 @@ document.getElementById("mobileForm").style.display="none";
 
 function sendWhatsApp(){
 
-var message="*New Aadhaar Service Request*%0A%0A";
+var message="*Mobile Number Update Request*%0A%0A";
 
 message+="Name : "+document.getElementById("name").value+"%0A";
 
-message+="Mobile : "+document.getElementById("mobile").value+"%0A";
+message+="Aadhaar Linked Mobile : "+document.getElementById("mobile").value+"%0A";
 
-message+="Aadhaar : "+document.getElementById("aadhaar").value+"%0A";
+message+="Aadhaar Number : "+document.getElementById("aadhaar").value+"%0A";
 
-message+="District : "+document.getElementById("district").value+"%0A";
+message+="Village / Town : "+document.getElementById("village").value+"%0A";
 
 message+="State : "+document.getElementById("state").value+"%0A";
 
-message+="Remarks : "+document.getElementById("remarks").value;
-
-window.open("https://wa.me/916361634389?text="+message,"_blank");
+message+="Question / Message : "+document.getElementById("remarks").value;
 
 }
 
