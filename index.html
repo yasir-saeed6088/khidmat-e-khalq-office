@@ -983,37 +983,36 @@ document.getElementById("mobileForm").style.display="none";
 
 }
 
-<script>  
-  
-function createUploadField(title,id){  
-  
-return `  
-<label>${title}</label>  
-  
-<input  
-type="file"  
-id="${id}"  
-accept=".jpg,.jpeg,.png,.pdf"  
-style="  
-width:100%;  
-padding:10px;  
-margin:8px 0;  
-border:1px solid #ccc;  
-border-radius:6px;  
-">  
-`;  
-  
-}  
-  
+</script>
+
+<script>
+
+function createUploadField(title,id){
+
+return `
+<label>${title}</label>
+
+<input
+type="file"
+id="${id}"
+accept=".jpg,.jpeg,.png,.pdf"
+style="
+width:100%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:6px;
+">
+`;
+
+}
+
 document.getElementById("remarks").insertAdjacentHTML(
-
 "beforebegin",
-
 createUploadField("Upload Aadhaar Card (Optional)","aadhaarFile")
-
 );
-  
-</script>  
+
+</script>
   
 <script>  
   
