@@ -1070,39 +1070,28 @@ document.getElementById("applyForm").style.display = "block";
 function sendWhatsApp(){
 
 var name=document.getElementById("name").value;
-
 var mobile=document.getElementById("mobile").value;
-
 var aadhaar=document.getElementById("aadhaar").value;
-
-var district=document.getElementById("district").value;
-
+var village=document.getElementById("village").value;
 var state=document.getElementById("state").value;
-
 var remarks=document.getElementById("remarks").value;
 
-var msg="*NEW AADHAAR SERVICE REQUEST*%0A%0A";
+var msg="*MOBILE NUMBER UPDATE REQUEST*%0A%0A";
 
 msg+="Service : "+selectedService+"%0A";
-
 msg+="Name : "+name+"%0A";
-
-msg+="Mobile : "+mobile+"%0A";
-
-msg+="Aadhaar : "+aadhaar+"%0A";
-
-msg+="District : "+district+"%0A";
-
+msg+="Aadhaar Linked Mobile : "+mobile+"%0A";
+msg+="Aadhaar Number : "+aadhaar+"%0A";
+msg+="Village / Town : "+village+"%0A";
 msg+="State : "+state+"%0A";
-
-msg+="Remarks : "+remarks;
+msg+="Question / Message : "+remarks;
 
 window.open("https://wa.me/916361634389?text="+msg,"_blank");
 
 }
 
-  </script>
-  <script>
+</script>
+<script>
 
 function sendWhatsApp(){
 
