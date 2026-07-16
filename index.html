@@ -1053,6 +1053,22 @@ var village=document.getElementById("village").value;
 var state=document.getElementById("state").value;  
 var remarks=document.getElementById("remarks").value;  
   
+mobileError.innerHTML="";
+aadhaarError.innerHTML="";
+
+if(remarks.trim()==""){
+
+if(mobile.trim()==""){
+mobileError.innerHTML="Aadhaar Linked Mobile Number bharna zaroori hai";
+return;
+}
+
+if(aadhaar.trim()==""){
+aadhaarError.innerHTML="Aadhaar Number bharna zaroori hai";
+return;
+}
+
+}
 var msg="*MOBILE NUMBER UPDATE REQUEST*%0A%0A";  
   
 msg+="Service : "+selectedService+"%0A";  
