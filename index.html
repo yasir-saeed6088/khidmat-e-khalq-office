@@ -1057,7 +1057,6 @@ document.getElementById("mobileForm").style.display="block";
 
 });
 
- 
 
 function sendWhatsApp(){
 
@@ -1086,45 +1085,6 @@ window.open("https://wa.me/916361634389?text="+msg,"_blank");
 
 </script>
 <script>
-
-function sendWhatsApp(){
-
-var name=document.getElementById("name").value.trim();
-var mobile=document.getElementById("mobile").value.trim();
-var aadhaar=document.getElementById("aadhaar").value.trim();
-var district=document.getElementById("district").value.trim();
-var state=document.getElementById("state").value.trim();
-var remarks=document.getElementById("remarks").value.trim();
-
-if(remarks==""){
-
-if(mobile.length!=10){
-alert("Please enter a valid Aadhaar Linked Mobile Number");
-return;
-}
-
-if(aadhaar.length!=12){
-alert("Please enter a valid 12-digit Aadhaar Number");
-return;
-}
-
-}
-
-var msg="*NEW AADHAAR SERVICE REQUEST*%0A%0A";
-
-msg+="Service : "+selectedService+"%0A";
-msg+="Applicant : "+name+"%0A";
-msg+="Mobile : "+mobile+"%0A";
-msg+="Aadhaar : "+aadhaar+"%0A";
-msg+="District : "+district+"%0A";
-msg+="State : "+state+"%0A";
-msg+="Question / Message : "+remarks;
-
-alert("Application Ready.\nYou will now be redirected to WhatsApp.");
-
-window.open("https://wa.me/916361634389?text="+msg,"_blank");
-
-}
 
 </script>
 
