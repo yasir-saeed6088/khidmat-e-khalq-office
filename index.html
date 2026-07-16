@@ -1064,6 +1064,16 @@ document.getElementById("applyForm").style.display="block";
 
 });
 
+document.getElementById("mobileApply").onclick = function(e){
+
+e.preventDefault();
+
+selectedService = "Mobile Number Update";
+
+document.getElementById("applyForm").style.display = "block";
+
+};
+
 function sendWhatsApp(){
 
 var name=document.getElementById("name").value;
