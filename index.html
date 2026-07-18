@@ -1104,28 +1104,6 @@ createUploadField("Upload Aadhaar Card (Optional)","aadhaarFile")
   
 let selectedService="";  
   
-document.querySelectorAll(".service").forEach(function(card){  
-  
-let title=card.querySelector(".service-title");  
-  
-let btn=card.querySelector(".apply");  
-  
-if(btn){  
-  
-btn.onclick=function(e){  
-  
-e.preventDefault();  
-  
-selectedService=title.innerText;  
-  
-document.getElementById("mobileForm").style.display="block";  
-  
-};  
-  
-}  
-  
-});  
-
 document.getElementById("addressSelfApply").addEventListener("click",function(e){
 
 e.preventDefault();
