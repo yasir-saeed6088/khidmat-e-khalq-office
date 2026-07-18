@@ -1125,7 +1125,17 @@ document.getElementById("mobileForm").style.display="block";
 }  
   
 });  
-  
+
+document.getElementById("addressSelfApply").addEventListener("click",function(e){
+
+e.preventDefault();
+
+selectedService="Address Update (Self Documents)";
+
+document.getElementById("mobileForm").style.display="block";
+
+});
+
 function sendWhatsApp(){ 
 
 var mobileError=document.getElementById("mobileError");
