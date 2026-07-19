@@ -1403,6 +1403,24 @@ aadhaarError.innerHTML="Please enter your Aadhaar Number.";
 return;
 }
 
+if(selectedService=="Address Update (Head of Family)"){
+
+var msg="*ADDRESS UPDATE (HEAD OF FAMILY) REQUEST*%0A%0A";
+
+msg+="Name : "+hofName+"%0A%0A";
+
+msg+="Aadhaar Linked Mobile : "+hofMobile+"%0A%0A";
+
+msg+="Aadhaar Number : "+hofAadhaar+"%0A%0A";
+
+msg+="Question / Message : "+hofRemarks;
+
+window.open("https://wa.me/916361634389?text="+msg,"_blank");
+
+return;
+
+}
+
 if(selectedService=="Mobile Number Update"){
 
 var msg="*MOBILE NUMBER UPDATE REQUEST*%0A%0A";
