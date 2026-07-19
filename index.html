@@ -1282,6 +1282,14 @@ document.getElementById("hofForm").style.display="block";
 
 function sendWhatsApp(){ 
 
+if(selectedService=="Address Update (Self Documents)" || selectedService=="Address Update (Head of Family)"){
+
+document.getElementById("mobileForm").style.display="none";
+
+document.getElementById("addressSelfForm").style.display="block";
+  
+}
+
 var mobileError=document.getElementById("mobileError");
 var aadhaarError=document.getElementById("aadhaarError");
   
