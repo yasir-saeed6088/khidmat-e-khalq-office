@@ -1387,8 +1387,8 @@ mobileError.innerHTML="Please enter your Aadhaar Linked Mobile Number or Questio
 return;
 }
   
-if(aadhaar.trim()==""){
-aadhaarError.innerHTML="Please enter your Aadhaar Number.";
+if(aadhaar.trim()=="" && remarks.trim()==""){
+aadhaarError.innerHTML="Please enter your Aadhaar Number or Question / Message.";
 return;
 }
 
