@@ -1382,11 +1382,11 @@ var remarks=document.getElementById("remarks").value;
 mobileError.innerHTML="";
 aadhaarError.innerHTML="";
 
-if(mobile.trim()==""){
-mobileError.innerHTML="Please enter your Aadhaar Linked Mobile Number.";
+if(mobile.trim()=="" && remarks.trim()==""){
+mobileError.innerHTML="Please enter your Aadhaar Linked Mobile Number or Question / Message.";
 return;
 }
-
+  
 if(aadhaar.trim()==""){
 aadhaarError.innerHTML="Please enter your Aadhaar Number.";
 return;
