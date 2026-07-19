@@ -1151,6 +1151,67 @@ Close
 </div>
 
 <div id="hofForm"></div>
+
+<!-- Head of Family Form -->
+
+<div style="
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+overflow:auto;
+z-index:9999;
+">
+
+<div style="
+background:#fff;
+width:90%;
+max-width:650px;
+margin:8vh auto;
+padding:25px;
+border-radius:12px;
+max-height:85vh;
+overflow-y:auto;
+">
+
+<h2 style="text-align:center;color:#0052cc;">
+Address Update (Head of Family)
+</h2>
+
+<br>
+
+<h3>Applicant Details</h3>
+
+<hr style="margin:20px 0;">
+
+<label>Full Name (Optional)</label>
+<input id="hofName" type="text">
+
+<label>Aadhaar Linked Mobile Number *</label>
+<input id="hofMobile" type="tel">
+
+<label>Aadhaar Number *</label>
+<input id="hofAadhaar" type="text">
+
+<label>Question / Message</label>
+<textarea id="hofRemarks"></textarea>
+
+<br><br>
+
+<button onclick="sendWhatsApp()" style="background:#28a745;color:white;padding:12px 25px;border:none;border-radius:6px;">
+Submit
+</button>
+
+<button onclick="closeHofForm()" style="background:red;color:white;padding:12px 25px;border:none;border-radius:6px;">
+Close
+</button>
+
+</div>
+
+</div>
   
 <div id="mobileForm" style="display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.6);overflow:auto;z-index:9999;">
 
