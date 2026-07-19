@@ -1057,6 +1057,99 @@ Address Update (Self Documents)
 
 <br>
 
+<h3>Applicant Details</h3>
+
+<label>Full Name (Optional)</label>
+<input id="selfName" type="text">
+
+<label>Aadhaar Linked Mobile Number *</label>
+<input id="selfMobile" type="tel">
+
+<label>Aadhaar Number *</label>
+<input id="selfAadhaar" type="text">
+
+<hr style="margin:20px 0;">
+
+<h3>New Address Details</h3>
+
+<label>House / Building / Apartment</label>
+<input id="selfHouse" type="text">
+
+<label>Street / Road / Lane</label>
+<input id="selfStreet" type="text">
+
+<label>Area / Locality / Sector</label>
+<input id="selfArea" type="text">
+
+<label>Landmark</label>
+<input id="selfLandmark" type="text">
+
+<label>PIN Code</label>
+<input id="selfPincode" type="text">
+
+<label>State</label>
+<input id="selfState" type="text">
+
+<label>District</label>
+<input id="selfDistrict" type="text">
+
+<label>Village / Town / City</label>
+<input id="selfVillage" type="text">
+
+<label>Post Office</label>
+<input id="selfPostOffice" type="text">
+
+<hr style="margin:20px 0;">
+
+<h3>Address Proof Document</h3>
+
+<label>Select Supporting Document</label>
+
+<select id="selfDocumentType">
+<option value="">-- Select Supporting Document --</option>
+<option>Aadhaar Card (Current Address)</option>
+<option>Voter ID Card</option>
+<option>Ration Card</option>
+<option>Electricity Bill</option>
+<option>Water Bill</option>
+<option>Gas Connection Bill</option>
+<option>Bank Passbook</option>
+<option>Bank Statement</option>
+<option>Post Office Passbook</option>
+<option>Indian Passport</option>
+<option>Driving Licence</option>
+<option>Property Tax Receipt</option>
+<option>Registered Rent Agreement</option>
+<option>Sale Deed / Gift Deed</option>
+</select>
+
+<label>Upload Address Proof (Optional)</label>
+
+<input
+type="file"
+id="selfAddressProof"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<label>Question / Message</label>
+
+<textarea id="selfRemarks" style="height:100px;"></textarea>
+
+<br><br>
+
+<button type="button" onclick="sendSelfWhatsApp()" style="background:#28a745;color:#fff;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Submit
+</button>
+
+<button type="button" onclick="closeSelfForm()" style="background:red;color:#fff;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
 <div id="hofForm"></div>
   
 <div id="mobileForm" style="display:none;position:fixed;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.6);overflow:auto;z-index:9999;">
