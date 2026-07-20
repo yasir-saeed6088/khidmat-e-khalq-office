@@ -1389,6 +1389,8 @@ var selfRemarks=document.getElementById("selfRemarks").value;
 mobileError.innerHTML="";
 aadhaarError.innerHTML="";
 
+if(selectedService=="Mobile Number Update"){
+
 if(
 remarks.trim()=="" &&
 (mobile.trim()=="" || aadhaar.trim()=="")
@@ -1401,6 +1403,20 @@ aadhaarError.innerHTML="Please enter your Aadhaar Number.";
 }
 return;
 }
+
+}
+
+if(selectedService=="Address Update (Self Documents)"){
+
+if(
+selfRemarks.trim()=="" &&
+(selfMobile.trim()=="" || selfAadhaar.trim()=="")
+){
+alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
+return;
+}
+
+  }
 
 if(selectedService=="Address Update (Head of Family)"){
 
