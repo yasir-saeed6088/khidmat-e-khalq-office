@@ -1438,23 +1438,23 @@ return;
 
 }
   
-var msg="*"+selectedService.toUpperCase()+" REQUEST*%0A%0A";
+var msg="*ADDRESS UPDATE (SELF DOCUMENTS) REQUEST*%0A%0A";
 
 msg+="Supporting Document : "+selfDocumentType+"%0A%0A";
-  
-msg+="Name : "+name+"%0A%0A";
 
-msg+="Aadhaar Linked Mobile : "+mobile+"%0A%0A";
+msg+="Name : "+selfName+"%0A%0A";
 
-msg+="Aadhaar Number : "+aadhaar+"%0A%0A";
+msg+="Aadhaar Linked Mobile : "+selfMobile+"%0A%0A";
 
-msg+="Village / Town : "+village+"%0A%0A";
-  
-msg+="State : "+state+"%0A%0A";
-  
-msg+="Question / Message : "+remarks;
-  
-window.open("https://wa.me/916361634389?text="+msg,"_blank");  
+msg+="Aadhaar Number : "+selfAadhaar+"%0A%0A";
+
+msg+="Village / Town : "+selfVillage+"%0A%0A";
+
+msg+="State : "+selfState+"%0A%0A";
+
+msg+="Question / Message : "+selfRemarks+"%0A%0A";
+
+window.open("https://wa.me/916361634389?text="+msg,"_blank");
   
 }  
   
