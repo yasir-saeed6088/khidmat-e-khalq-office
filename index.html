@@ -1425,7 +1425,7 @@ alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a 
 return;
 }
 
-  }
+}
 
 if(selectedService=="Address Update (Head of Family)"){
 
@@ -1475,12 +1475,26 @@ msg+="Aadhaar Linked Mobile : "+selfMobile+"%0A%0A";
 
 msg+="Aadhaar Number : "+selfAadhaar+"%0A%0A";
 
+msg+="House / Building : "+selfHouse+"%0A%0A";
+
+msg+="Street / Road : "+selfStreet+"%0A%0A";
+
+msg+="Area / Locality : "+selfArea+"%0A%0A";
+
+msg+="Landmark : "+selfLandmark+"%0A%0A";
+
+msg+="PIN Code : "+selfPincode+"%0A%0A";
+
+msg+="District : "+selfDistrict+"%0A%0A";
+
 msg+="Village / Town : "+selfVillage+"%0A%0A";
 
 msg+="State : "+selfState+"%0A%0A";
 
-msg+="Question / Message : "+selfRemarks+"%0A%0A";
+msg+="Post Office : "+selfPostOffice+"%0A%0A";
 
+msg+="Question / Message : "+selfRemarks+"%0A%0A";
+  
 window.open("https://wa.me/916361634389?text="+msg,"_blank");
 
 return;
