@@ -1413,6 +1413,11 @@ aadhaarError.innerHTML="Please enter your Aadhaar Number.";
 return;
 }
 
+if(!/^[6-9]\d{9}$/.test(mobile.trim())){
+mobileError.innerHTML="Please enter a valid 10-digit Mobile Number.";
+return;
+}
+
 }
 
 if(selectedService=="Address Update (Self Documents)"){
