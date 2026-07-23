@@ -1430,6 +1430,11 @@ alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a 
 return;
 }
 
+if(!/^[6-9]\d{9}$/.test(selfMobile.trim())){
+alert("Please enter a valid 10-digit Aadhaar Linked Mobile Number.");
+return;
+}
+
 }
 
 if(selectedService=="Address Update (Head of Family)"){
