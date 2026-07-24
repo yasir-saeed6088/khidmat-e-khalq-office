@@ -1439,6 +1439,23 @@ return;
 
 if(selectedService=="Address Update (Head of Family)"){
 
+if(
+hofRemarks.trim()=="" &&
+(hofMobile.trim()=="" || hofAadhaar.trim()=="")
+){
+alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
+return;
+}
+
+if(!/^[6-9]\d{9}$/.test(hofMobile.trim())){
+alert("Please enter a valid 10-digit Aadhaar Linked Mobile Number.");
+return;
+}
+
+}
+
+if(selectedService=="Address Update (Head of Family)"){
+
 var msg="*ADDRESS UPDATE (HEAD OF FAMILY) REQUEST*%0A%0A";
 
 msg+="Name : "+hofName+"%0A%0A";
