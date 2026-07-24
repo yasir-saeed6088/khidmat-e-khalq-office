@@ -1440,6 +1440,11 @@ alert("Please enter a valid 10-digit Aadhaar Linked Mobile Number.");
 return;
 }
 
+if(!/^\d{12}$/.test(selfAadhaar.trim())){
+alert("Please enter a valid 12-digit Aadhaar Number.");
+return;
+}
+
 }
 
 if(selectedService=="Address Update (Head of Family)"){
@@ -1454,6 +1459,11 @@ return;
 
 if(!/^[6-9]\d{9}$/.test(hofMobile.trim())){
 alert("Please enter a valid 10-digit Aadhaar Linked Mobile Number.");
+return;
+}
+
+if(!/^\d{12}$/.test(hofAadhaar.trim())){
+alert("Please enter a valid 12-digit Aadhaar Number.");
 return;
 }
 
