@@ -1418,6 +1418,11 @@ mobileError.innerHTML="Please enter a valid 10-digit Mobile Number.";
 return;
 }
 
+if(!/^\d{12}$/.test(aadhaar.trim())){
+aadhaarError.innerHTML="Please enter a valid 12-digit Aadhaar Number.";
+return;
+}
+  
 }
 
 if(selectedService=="Address Update (Self Documents)"){
