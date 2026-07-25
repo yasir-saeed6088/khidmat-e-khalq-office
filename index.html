@@ -1450,6 +1450,23 @@ alert("Please enter a valid 6-digit PIN Code.");
 return;
 }
 
+if(
+selfRemarks.trim()=="" &&
+(
+selfHouse.trim()=="" ||
+selfStreet.trim()=="" ||
+selfArea.trim()=="" ||
+selfLandmark.trim()=="" ||
+selfDistrict.trim()=="" ||
+selfVillage.trim()=="" ||
+selfState.trim()=="" ||
+selfPostOffice.trim()==""
+)
+){
+alert("Please fill all required Address Details or write a Question / Message.");
+return;
+}
+
 }
 
 if(selectedService=="Address Update (Head of Family)"){
