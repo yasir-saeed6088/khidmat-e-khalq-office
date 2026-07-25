@@ -1445,6 +1445,11 @@ alert("Please enter a valid 12-digit Aadhaar Number.");
 return;
 }
 
+if(selfPincode.trim()!="" && !/^\d{6}$/.test(selfPincode.trim())){
+alert("Please enter a valid 6-digit PIN Code.");
+return;
+}
+
 }
 
 if(selectedService=="Address Update (Head of Family)"){
