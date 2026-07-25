@@ -1482,10 +1482,9 @@ return;
 
 if(selectedService=="Address Update (Head of Family)"){
 
-if(
-hofRemarks.trim()=="" &&
-(hofMobile.trim()=="" || hofAadhaar.trim()=="")
-){
+if(hofRemarks.trim()==""){
+
+if(hofMobile.trim()=="" || hofAadhaar.trim()==""){
 alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
 return;
 }
@@ -1498,6 +1497,8 @@ return;
 if(!/^\d{12}$/.test(hofAadhaar.trim())){
 alert("Please enter a valid 12-digit Aadhaar Number.");
 return;
+}
+
 }
 
 }
