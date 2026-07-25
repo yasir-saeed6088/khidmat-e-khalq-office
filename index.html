@@ -1412,10 +1412,9 @@ aadhaarError.innerHTML="";
 
 if(selectedService=="Mobile Number Update"){
 
-if(
-remarks.trim()=="" &&
-(mobile.trim()=="" || aadhaar.trim()=="")
-){
+if(remarks.trim()==""){
+
+if(mobile.trim()=="" || aadhaar.trim()==""){
 if(mobile.trim()==""){
 mobileError.innerHTML="Please enter your Aadhaar Linked Mobile Number.";
 }
@@ -1433,6 +1432,8 @@ return;
 if(!/^\d{12}$/.test(aadhaar.trim())){
 aadhaarError.innerHTML="Please enter a valid 12-digit Aadhaar Number.";
 return;
+}
+
 }
   
 }
