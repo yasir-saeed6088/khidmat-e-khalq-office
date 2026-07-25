@@ -1440,10 +1440,9 @@ return;
 
 if(selectedService=="Address Update (Self Documents)"){
 
-if(
-selfRemarks.trim()=="" &&
-(selfMobile.trim()=="" || selfAadhaar.trim()=="")
-){
+if(selfRemarks.trim()==""){
+
+if(selfMobile.trim()=="" || selfAadhaar.trim()==""){
 alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
 return;
 }
@@ -1464,8 +1463,6 @@ return;
 }
 
 if(
-selfRemarks.trim()=="" &&
-(
 selfHouse.trim()=="" ||
 selfStreet.trim()=="" ||
 selfArea.trim()=="" ||
@@ -1474,10 +1471,11 @@ selfDistrict.trim()=="" ||
 selfVillage.trim()=="" ||
 selfState.trim()=="" ||
 selfPostOffice.trim()==""
-)
 ){
 alert("Please fill all required Address Details or write a Question / Message.");
 return;
+}
+
 }
 
 }
