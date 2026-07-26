@@ -1508,10 +1508,17 @@ if(remarks.trim()==""){
 if(mobile.trim()=="" || aadhaar.trim()==""){
 if(mobile.trim()==""){
 mobileError.innerHTML="Please enter your Aadhaar Linked Mobile Number.";
+document.getElementById("mobileNumber").style.border="2px solid red";
+document.getElementById("mobileNumber").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("mobileNumber").focus();
 }
 if(aadhaar.trim()==""){
 aadhaarError.innerHTML="Please enter your Aadhaar Number.";
 }
+
 return;
 }
 
