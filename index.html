@@ -1443,6 +1443,29 @@ return;
 
 document.getElementById("selfAddressProofError").style.color="green";
 document.getElementById("selfAddressProofError").innerHTML="File uploaded successfully.";
+
+}
+
+
+function uploadAadhaarFile(){
+
+var file=document.getElementById("aadhaarFile").files[0];
+
+document.getElementById("aadhaarFileError").innerHTML="";
+
+if(!file){
+document.getElementById("aadhaarFileError").innerHTML="Please choose a file.";
+return;
+}
+
+if(file.size<50*1024){
+document.getElementById("aadhaarFileError").innerHTML="File size must be at least 50 KB.";
+return;
+}
+
+document.getElementById("aadhaarFileError").style.color="green";
+document.getElementById("aadhaarFileError").innerHTML="File uploaded successfully.";
+
 }
 
 function sendHofWhatsApp(){
