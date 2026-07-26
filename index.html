@@ -1503,7 +1503,15 @@ if(selectedService=="Address Update (Self Documents)"){
 if(selfRemarks.trim()==""){
 
 if(selfMobile.trim()=="" || selfAadhaar.trim()==""){
-alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
+
+if(selfMobile.trim()==""){
+document.getElementById("selfMobileError").innerHTML="Please enter your Aadhaar Linked Mobile Number.";
+}
+
+if(selfAadhaar.trim()==""){
+document.getElementById("selfAadhaarError").innerHTML="Please enter your Aadhaar Number.";
+}
+
 return;
 }
 
