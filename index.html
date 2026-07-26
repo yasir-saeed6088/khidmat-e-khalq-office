@@ -1671,7 +1671,27 @@ if(selectedService=="Address Update (Head of Family)"){
 if(hofRemarks.trim()==""){
 
 if(hofMobile.trim()=="" || hofAadhaar.trim()==""){
-alert("Please enter Aadhaar Linked Mobile Number and Aadhaar Number, or write a Question / Message.");
+
+if(hofMobile.trim()==""){
+document.getElementById("hofMobileError").innerHTML="Please enter your Aadhaar Linked Mobile Number.";
+document.getElementById("hofMobile").style.border="2px solid red";
+document.getElementById("hofMobile").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("hofMobile").focus();
+}
+
+if(hofAadhaar.trim()==""){
+document.getElementById("hofAadhaarError").innerHTML="Please enter your Aadhaar Number.";
+document.getElementById("hofAadhaar").style.border="2px solid red";
+document.getElementById("hofAadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("hofAadhaar").focus();
+}
+
 return;
 }
 
