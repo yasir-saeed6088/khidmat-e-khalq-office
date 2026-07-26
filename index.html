@@ -1545,17 +1545,91 @@ alert("Please enter a valid 6-digit PIN Code.");
 return;
 }
 
-if(
-selfHouse.trim()=="" ||
-selfStreet.trim()=="" ||
-selfArea.trim()=="" ||
-selfLandmark.trim()=="" ||
-selfDistrict.trim()=="" ||
-selfVillage.trim()=="" ||
-selfState.trim()=="" ||
-selfPostOffice.trim()==""
-){
-alert("Please fill all required Address Details or write a Question / Message.");
+if(selfHouse.trim()==""){
+document.getElementById("selfHouseError").innerHTML="Please enter your House / Building.";
+document.getElementById("selfHouse").style.border="2px solid red";
+document.getElementById("selfHouse").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfHouse").focus();
+return;
+}
+
+if(selfStreet.trim()==""){
+document.getElementById("selfStreetError").innerHTML="Please enter your Street / Road / Lane.";
+document.getElementById("selfStreet").style.border="2px solid red";
+document.getElementById("selfStreet").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfStreet").focus();
+return;
+}
+
+if(selfArea.trim()==""){
+document.getElementById("selfAreaError").innerHTML="Please enter your Area / Locality.";
+document.getElementById("selfArea").style.border="2px solid red";
+document.getElementById("selfArea").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfArea").focus();
+return;
+}
+
+if(selfLandmark.trim()==""){
+document.getElementById("selfLandmarkError").innerHTML="Please enter your Landmark.";
+document.getElementById("selfLandmark").style.border="2px solid red";
+document.getElementById("selfLandmark").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfLandmark").focus();
+return;
+}
+
+if(selfDistrict.trim()==""){
+document.getElementById("selfDistrictError").innerHTML="Please enter your District.";
+document.getElementById("selfDistrict").style.border="2px solid red";
+document.getElementById("selfDistrict").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfDistrict").focus();
+return;
+}
+
+if(selfVillage.trim()==""){
+document.getElementById("selfVillageError").innerHTML="Please enter your Village / Town.";
+document.getElementById("selfVillage").style.border="2px solid red";
+document.getElementById("selfVillage").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfVillage").focus();
+return;
+}
+
+if(selfState.trim()==""){
+document.getElementById("selfStateError").innerHTML="Please enter your State.";
+document.getElementById("selfState").style.border="2px solid red";
+document.getElementById("selfState").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfState").focus();
+return;
+}
+
+if(selfPostOffice.trim()==""){
+document.getElementById("selfPostOfficeError").innerHTML="Please enter your Post Office.";
+document.getElementById("selfPostOffice").style.border="2px solid red";
+document.getElementById("selfPostOffice").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfPostOffice").focus();
 return;
 }
 
