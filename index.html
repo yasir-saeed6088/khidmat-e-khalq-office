@@ -1517,6 +1517,12 @@ document.getElementById("mobileNumber").focus();
 }
 if(aadhaar.trim()==""){
 aadhaarError.innerHTML="Please enter your Aadhaar Number.";
+document.getElementById("aadhaar").style.border="2px solid red";
+document.getElementById("aadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("aadhaar").focus();
 }
 
 return;
@@ -1524,11 +1530,23 @@ return;
 
 if(!/^[6-9]\d{9}$/.test(mobile.trim())){
 mobileError.innerHTML="Please enter a valid 10-digit Mobile Number.";
+document.getElementById("mobileNumber").style.border="2px solid red";
+document.getElementById("mobileNumber").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("mobileNumber").focus();
 return;
 }
-
+  
 if(!/^\d{12}$/.test(aadhaar.trim())){
 aadhaarError.innerHTML="Please enter a valid 12-digit Aadhaar Number.";
+document.getElementById("aadhaar").style.border="2px solid red";
+document.getElementById("aadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("aadhaar").focus();
 return;
 }
 
