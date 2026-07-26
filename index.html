@@ -1696,12 +1696,24 @@ return;
 }
 
 if(!/^[6-9]\d{9}$/.test(hofMobile.trim())){
-alert("Please enter a valid 10-digit Aadhaar Linked Mobile Number.");
+document.getElementById("hofMobileError").innerHTML="Please enter a valid 10-digit Aadhaar Linked Mobile Number.";
+document.getElementById("hofMobile").style.border="2px solid red";
+document.getElementById("hofMobile").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("hofMobile").focus();
 return;
 }
 
 if(!/^\d{12}$/.test(hofAadhaar.trim())){
-alert("Please enter a valid 12-digit Aadhaar Number.");
+document.getElementById("hofAadhaarError").innerHTML="Please enter a valid 12-digit Aadhaar Number.";
+document.getElementById("hofAadhaar").style.border="2px solid red";
+document.getElementById("hofAadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("hofAadhaar").focus();
 return;
 }
 
