@@ -1571,12 +1571,24 @@ return;
 }
 
 if(!/^\d{12}$/.test(selfAadhaar.trim())){
-alert("Please enter a valid 12-digit Aadhaar Number.");
+document.getElementById("selfAadhaarError").innerHTML="Please enter a valid 12-digit Aadhaar Number.";
+document.getElementById("selfAadhaar").style.border="2px solid red";
+document.getElementById("selfAadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfAadhaar").focus();
 return;
 }
 
 if(!/^\d{6}$/.test(selfPincode.trim())){
-alert("Please enter a valid 6-digit PIN Code.");
+document.getElementById("selfPincodeError").innerHTML="Please enter a valid 6-digit PIN Code.";
+document.getElementById("selfPincode").style.border="2px solid red";
+document.getElementById("selfPincode").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+document.getElementById("selfPincode").focus();
 return;
 }
 
