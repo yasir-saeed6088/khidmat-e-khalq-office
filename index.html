@@ -1518,6 +1518,14 @@ document.getElementById("selfMobile").focus();
 
 if(selfAadhaar.trim()==""){
 document.getElementById("selfAadhaarError").innerHTML="Please enter your Aadhaar Number.";
+document.getElementById("selfAadhaar").style.border="2px solid red";
+
+document.getElementById("selfAadhaar").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+document.getElementById("selfAadhaar").focus();
 }
 
 return;
