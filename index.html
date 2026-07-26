@@ -1508,6 +1508,12 @@ if(selfMobile.trim()=="" || selfAadhaar.trim()==""){
 if(selfMobile.trim()==""){
 document.getElementById("selfMobileError").innerHTML="Please enter your Aadhaar Linked Mobile Number.";
 document.getElementById("selfMobile").style.border="2px solid red";
+document.getElementById("selfMobile").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+document.getElementById("selfMobile").focus();
 }
 
 if(selfAadhaar.trim()==""){
