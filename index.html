@@ -1416,6 +1416,26 @@ function sendSelfWhatsApp(){
 sendWhatsApp();
 }
 
+function uploadSelfAddressProof(){
+
+var file=document.getElementById("selfAddressProof").files[0];
+
+document.getElementById("selfAddressProofError").innerHTML="";
+
+if(!file){
+document.getElementById("selfAddressProofError").innerHTML="Please choose a file.";
+return;
+}
+
+if(file.size<50*1024){
+document.getElementById("selfAddressProofError").innerHTML="File size must be at least 50 KB.";
+return;
+}
+
+document.getElementById("selfAddressProofError").style.color="green";
+document.getElementById("selfAddressProofError").innerHTML="File uploaded successfully.";
+}
+
 function sendHofWhatsApp(){
 sendWhatsApp();
 }
