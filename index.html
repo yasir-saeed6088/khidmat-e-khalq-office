@@ -1377,43 +1377,6 @@ document.getElementById("hofForm").style.display="none";
 document.body.style.background="yellow";
 
 let selectedService="";  
-  
-document.getElementById("addressSelfApply").addEventListener("click",function(e){
-
-e.preventDefault();
-
-selectedService="Address Update (Self Documents)";
-
-document.getElementById("formTitle").innerText="Address Update (Self Documents)";
-
-document.getElementById("addressSelfForm").style.display="block";
-
-});
-
-document.getElementById("mobileApply").addEventListener("click",function(e){
-
-e.preventDefault();
-
-selectedService="Mobile Number Update";
-
-document.getElementById("formTitle").innerText="Mobile Number Update";
-
-document.getElementById("mobileForm").style.display="block";
-
-});
-  
-document.getElementById("hofApply").addEventListener("click",function(e){
-
-e.preventDefault();
-
-selectedService="Address Update (Head of Family)";
-
-document.getElementById("formTitle").innerText="Address Update (Head of Family)";
-
-document.getElementById("mobileForm").style.display="none";
-  
-document.getElementById("hofForm").style.display="block";
-});
 
 function sendMobileWhatsApp(){
 sendWhatsApp();
