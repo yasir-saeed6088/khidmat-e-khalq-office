@@ -715,33 +715,6 @@ window.open(
 }
 
 </script>
-  
-if(!/^\d{12}$/.test(aadhaar)){
-
-document.getElementById("aadhaarError").innerHTML=
-"Enter a valid 12-digit Aadhaar Number.";
-
-return;
-
-}
-
-var message=
-"Mobile Number Update%0A%0A"+
-"Full Name: "+name+"%0A"+
-"Mobile: "+mobile+"%0A"+
-"Aadhaar: "+aadhaar+"%0A"+
-"Village/Town: "+village+"%0A"+
-"State: "+state+"%0A"+
-"Question/Message: "+remarks;
-
-window.open(
-"https://wa.me/916361634389?text="+message,
-"_blank"
-);
-
-}
-
-</script>
 
 <footer>
 
