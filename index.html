@@ -468,10 +468,256 @@ margin-left:10px;
 </div>  
 
 <br>
-  
+
+<div class="service-content" id="aadhaarMain">
+
+<div class="service">
+
+<div class="service-title"
+onclick="openService('mobile')">
+Mobile Number Update
+</div>
+
+<div class="service-content"
+id="mobile">
+
+<h2>Mobile Number Update</h2>
+
+<table>
+
+<tr>
+
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Update Aadhaar Mobile Number</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>10–15 Minutes</td>
+</tr>
+
+</table>
+
+<a class="apply"
+id="mobileApply"
+href="javascript:void(0)"
+onclick="event.preventDefault();
+document.getElementById('mobileForm').style.display='block'">
+
+Apply Now
+
+</a>
+
 </div>
 
 </div>
+
+<div id="mobileForm" style="display:none;">
+
+<div style="
+position:fixed;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.6);
+overflow:auto;
+z-index:9999;
+">
+
+<div style="
+background:#fff;
+width:90%;
+max-width:650px;
+margin:8vh auto;
+padding:25px;
+border-radius:12px;
+max-height:85vh;
+overflow-y:auto;
+">
+
+<h2 style="text-align:center;color:#0052cc;">
+Mobile Number Update
+</h2>
+
+<br>
+
+<h3>Applicant Details</h3>
+
+<hr style="margin:20px 0;">
+
+<label>Full Name (Optional)</label>
+<input id="fullName" type="text">
+
+<label>
+Aadhaar Linked Mobile Number
+<span style="color:red">*</span>
+</label>
+
+<input id="mobileNumber" type="tel">
+<div id="mobileError"
+style="color:red;font-size:13px;"></div>
+
+<label>
+Aadhaar Number
+<span style="color:red">*</span>
+</label>
+
+<input id="aadhaarNumber" type="text">
+
+<div id="aadhaarError"
+style="color:red;font-size:13px;"></div>
+
+<label>Village / Town (Optional)</label>
+
+<input id="village" type="text">
+
+<label>State (Optional)</label>
+
+<input id="state" type="text">
+
+<label>Upload Aadhaar Card (Optional)</label>
+
+<input
+type="file"
+id="aadhaarFile"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<div id="fileError"
+style="color:red;font-size:13px;"></div>
+
+<button type="button"
+onclick="uploadAadhaarFile()"
+style="background:#0052cc;color:#fff;padding:10px 18px;border:none;border-radius:6px;cursor:pointer;margin-top:8px;">
+Upload File
+</button>
+
+<label>Question / Message (Optional)</label>
+
+<textarea
+id="remarks"
+placeholder="Write your Question or Message">
+</textarea>
+
+<br><br>
+
+<button
+type="button"
+onclick="sendWhatsApp()"
+style="background:#28a745;color:#fff;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Submit
+</button>
+
+<button
+type="button"
+onclick="closeForm()"
+style="background:red;color:#fff;padding:12px 25px;border:none;border-radius:6px;cursor:pointer;">
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function closeForm(){
+
+document.getElementById("mobileForm").style.display="none";
+
+}
+
+function uploadAadhaarFile(){
+
+var file=document.getElementById("aadhaarFile").files[0];
+
+document.getElementById("fileError").innerHTML="";
+
+if(!file){
+
+document.getElementById("fileError").innerHTML="Please choose a file.";
+
+return;
+
+}
+
+if(file.size<50*1024){
+
+document.getElementById("fileError").innerHTML="File size must be at least 50 KB.";
+
+return;
+
+}
+
+document.getElementById("fileError").innerHTML=
+"File uploaded successfully.";
+
+}
+
+function sendWhatsApp(){
+
+var name=document.getElementById("fullName").value;
+
+var mobile=document.getElementById("mobileNumber").value.trim();
+
+var aadhaar=document.getElementById("aadhaarNumber").value.trim();
+
+var village=document.getElementById("village").value;
+
+var state=document.getElementById("state").value;
+
+var remarks=document.getElementById("remarks").value;
+
+document.getElementById("mobileError").innerHTML="";
+document.getElementById("aadhaarError").innerHTML="";
+
+if(!/^[6-9]\d{9}$/.test(mobile)){
+
+document.getElementById("mobileError").innerHTML=
+"Enter a valid Mobile Number.";
+
+return;
+
+}
+
+if(!/^\d{12}$/.test(aadhaar)){
+
+document.getElementById("aadhaarError").innerHTML=
+"Enter a valid 12-digit Aadhaar Number.";
+
+return;
+
+}
+
+var message=
+"Mobile Number Update%0A%0A"+
+"Full Name: "+name+"%0A"+
+"Mobile: "+mobile+"%0A"+
+"Aadhaar: "+aadhaar+"%0A"+
+"Village/Town: "+village+"%0A"+
+"State: "+state+"%0A"+
+"Question/Message: "+remarks;
+
+window.open(
+"https://wa.me/916361634389?text="+message,
+"_blank"
+);
+
+}
+
+</script>
 
 <footer>
 
