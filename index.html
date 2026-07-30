@@ -681,34 +681,33 @@ var state=document.getElementById("state").value;
 
 var remarks=document.getElementById("remarks").value;
 
-if(
-name.trim()=="" &&
-mobile=="" &&
-aadhaar=="" &&
-village.trim()=="" &&
-state.trim()=="" &&
-remarks.trim()==""
-){
-alert("Please fill at least one field.");
-return;
-}
-  
 document.getElementById("mobileError").innerHTML="";
 document.getElementById("aadhaarError").innerHTML="";
 
 document.getElementById("mobileNumber").style.border="1px solid #ccc";
 document.getElementById("aadhaarNumber").style.border="1px solid #ccc";
 
-if(mobile!="" && !/^[6-9]\d{9}$/.test(mobile)){
+if(mobile=="" && aadhaar==""){
+
+if(remarks.trim()==""){
+alert("Please enter Mobile & Aadhaar or write your Question / Message.");
+return;
+}
+
+}else{
+
+if(!/^[6-9]\d{9}$/.test(mobile)){
 document.getElementById("mobileError").innerHTML="Enter a valid Mobile Number.";
 document.getElementById("mobileNumber").style.border="2px solid red";
 return;
 }
 
-if(aadhaar!="" && !/^\d{12}$/.test(aadhaar)){
+if(!/^\d{12}$/.test(aadhaar)){
 document.getElementById("aadhaarError").innerHTML="Enter a valid 12-digit Aadhaar Number.";
 document.getElementById("aadhaarNumber").style.border="2px solid red";
 return;
+}
+
 }
 
 var message=
