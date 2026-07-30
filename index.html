@@ -681,6 +681,18 @@ var state=document.getElementById("state").value;
 
 var remarks=document.getElementById("remarks").value;
 
+if(
+name.trim()=="" &&
+mobile=="" &&
+aadhaar=="" &&
+village.trim()=="" &&
+state.trim()=="" &&
+remarks.trim()==""
+){
+alert("Please fill at least one field.");
+return;
+}
+  
 document.getElementById("mobileError").innerHTML="";
 document.getElementById("aadhaarError").innerHTML="";
 
