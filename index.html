@@ -523,8 +523,7 @@ Apply Now
 
 </div>
 
-<div id="mobileForm" style="display:none;">
-
+<div id="mobileForm" style="display:none;" onclick="event.stopPropagation()">
 <div style="
 position:fixed;
 left:0;
@@ -634,10 +633,14 @@ Close
 
 <script>
 
+function openForm(){
+document.getElementById("mobileForm").style.display="block";
+document.body.style.overflow="hidden";
+}
+
 function closeForm(){
-
 document.getElementById("mobileForm").style.display="none";
-
+document.body.style.overflow="auto";
 }
 
 function uploadAadhaarFile(){
@@ -698,12 +701,14 @@ return;
 
 if(!/^[6-9]\d{9}$/.test(mobile)){
 document.getElementById("mobileError").innerHTML="Enter a valid Mobile Number.";
+document.getElementById("mobileNumber").scrollIntoView({behavior:"smooth",block:"center"});
 document.getElementById("mobileNumber").style.border="2px solid red";
 return;
 }
 
 if(!/^\d{12}$/.test(aadhaar)){
 document.getElementById("aadhaarError").innerHTML="Enter a valid 12-digit Aadhaar Number.";
+document.getElementById("aadhaarNumber").scrollIntoView({behavior:"smooth",block:"center"});
 document.getElementById("aadhaarNumber").style.border="2px solid red";
 return;
 }
