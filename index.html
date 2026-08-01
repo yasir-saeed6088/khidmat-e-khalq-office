@@ -1,17 +1,652 @@
- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aadhaar Services | KHIDMAT-E-KHALQ OFFICE</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+html{
+scroll-behavior:smooth;
+}
+body{
+background:#f5f7fb;
+color:#222;
+min-height:100dvh;
+display:flex;
+flex-direction:column;
+}
+header{
+background:linear-gradient(135deg,#0052cc,#0077ff);
+color:#fff;
+padding:35px 40px 25px;
+text-align:center;
+position:relative;
+min-height:130px;
+}
+header h1{
+font-size:38px;
+margin-top:20px;
+margin-bottom:10px;
+text-align:center;
+line-height:1.2;
+}
+header p{
+font-size:18px;
+text-align:center;
+}
+.header-logo-left{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:50%;
+background:transparent;
+position:absolute;
+top:5px;
+left:5px;
+}
+.header-logo-right{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:50%;
+background:transparent;
+position:absolute;
+top:5px;
+right:5px;
+}
+.portal-header{
+background:#fff;
+padding:20px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+.portal-header h2{
+color:#0052cc;
+text-align:center;
+}
+.portal-header p{
+text-align:center;
+margin-top:10px;
+}
+#searchBox{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:2px solid #0052cc;
+border-radius:10px;
+font-size:17px;
+outline:none;
+}
+#searchBox:focus{
+border-color:#003d99;
+box-shadow:0 0 8px rgba(0,82,204,.2);
+}
+.total-services{
+text-align:center;
+font-size:18px;
+margin-top:20px;
+}
+.container{
+max-width:1200px;
+width:100%;
+margin:auto;
+padding:25px;
+flex:1;
+}
+.service{
+background:#fff;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.1);
+margin-bottom:20px;
+overflow:hidden;
+border-left:6px solid #0052cc;
+transition:.35s;
+}
+.service:hover{
+transform:translateY(-4px);
+box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+.aadhaar-card{
+width:96%;
+max-width:400px;
+min-height:160px;
+margin:20px auto;
+}
+.service-title{
+background:#0052cc;
+color:#fff;
+padding:18px;
+font-size:22px;
+cursor:pointer;
+transition:.3s;
+}
+.service-title:hover{
+background:#003d99;
+}
+.aadhaar-title{
+background:linear-gradient(135deg,#ffffff,#eef6ff);
+border-top:4px solid #ff9933;
+color:#0052cc;
+border:1px solid #cfe0ff;
+border-radius:18px;
+padding:16px 20px;
+display:block;
+cursor:pointer;
+box-shadow:0 12px 30px rgba(0,82,204,.18);
+margin-bottom:20px;
+}
+.aadhaar-title-inner{
+display:flex;
+justify-content:space-between;
+align-items:center;
+width:100%;
+}
+.aadhaar-icon{
+width:52px;
+height:52px;
+border-radius:12px;
+background:#eef6ff;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:28px;
+flex-shrink:0;
+box-shadow:0 4px 10px rgba(0,82,204,.15);
+}
+.aadhaar-title-text{
+flex:1;
+margin-left:15px;
+}
+.aadhaar-title-text h2{
+margin:0;
+font-size:21px;
+font-weight:700;
+letter-spacing:.4px;
+color:#0052cc;
+}
+.aadhaar-title-text p{
+margin-top:6px;
+color:#666;
+font-size:14px;
+font-weight:600;
+}
+.aadhaar-arrow{
+font-size:30px;
+color:#0052cc;
+font-weight:bold;
+margin-left:10px;
+}
+.service-content{
+display:none;
+padding:20px;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:15px;
+border-radius:10px;
+overflow:hidden;
+}
+table th{
+background:#0052cc;
+color:#fff;
+padding:12px;
+}
+table td{
+border:1px solid #ddd;
+padding:10px;
+}
+.apply{
+display:block;
+width:220px;
+margin:20px auto;
+padding:12px 25px;
+background:#28a745;
+color:#fff;
+text-decoration:none;
+border-radius:8px;
+font-size:18px;
+text-align:center;
+transition:.3s;
+cursor:pointer;
+}
+.apply:hover{
+background:#1f8f3a;
+transform:scale(1.05);
+}
+#mobileForm{
+display:none;
+position:fixed;
+inset:0;
+width:100vw;
+height:100dvh;
+background:rgba(0,0,0,.65);
+z-index:99999;
+align-items:center;
+justify-content:center;
+padding:20px;
+box-sizing:border-box;
+overflow:hidden;
+}
+.mobile-modal-card{
+background:#fff;
+width:100%;
+max-width:650px;
+height:auto;
+max-height:90dvh;
+overflow-y:auto;
+overflow-x:hidden;
+padding:25px;
+border-radius:16px;
+box-sizing:border-box;
+box-shadow:0 15px 50px rgba(0,0,0,.30);
+position:relative;
+-webkit-overflow-scrolling:touch;
+}
+.mobile-modal-card h2{
+text-align:center;
+color:#0052cc;
+}
+.mobile-modal-card h3{
+margin-top:5px;
+}
+.mobile-modal-card hr{
+margin:20px 0;
+}
+.mobile-modal-card label{
+display:block;
+font-weight:600;
+margin-top:8px;
+}
+.mobile-modal-card input,
+.mobile-modal-card textarea,
+.mobile-modal-card select{
+width:100%;
+padding:12px;
+margin:8px 0 18px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+outline:none;
+transition:.3s;
+background:#fff;
+}
+.mobile-modal-card input:focus,
+.mobile-modal-card textarea:focus,
+.mobile-modal-card select:focus{
+border-color:#0052cc;
+box-shadow:0 0 8px rgba(0,82,204,.25);
+}
+.mobile-modal-card textarea{
+min-height:110px;
+resize:vertical;
+}
+.form-error{
+color:red;
+font-size:13px;
+min-height:18px;
+margin-top:-10px;
+margin-bottom:5px;
+}
+.upload-button{
+background:#0052cc;
+color:#fff;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+font-size:15px;
+}
+.upload-button:hover{
+background:#003d99;
+}
+.modal-buttons{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:12px;
+flex-wrap:wrap;
+margin-top:10px;
+}
+.submit-button{
+background:#28a745;
+color:#fff;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+.submit-button:hover{
+background:#1f8f3a;
+}
+.close-button{
+background:red;
+color:#fff;
+padding:12px 25px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
+.close-button:hover{
+background:#c00;
+}
+footer{
+background:linear-gradient(135deg,#0052cc,#0077ff);
+color:#fff;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
+footer h2{
+margin-bottom:8px;
+}
+footer p{
+margin:5px 0;
+}
+.floating-contact{
+position:fixed;
+right:18px;
+bottom:18px;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:12px;
+z-index:9999;
+}
+.help-bubble{
+background:#25D366;
+color:#fff;
+padding:8px 14px;
+border-radius:18px;
+font-size:13px;
+font-weight:bold;
+box-shadow:0 4px 12px rgba(0,0,0,.2);
+animation:float 2s infinite;
+}
+.float-btn{
+width:58px;
+height:58px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration:none;
+font-size:30px;
+color:#fff;
+box-shadow:0 5px 15px rgba(0,0,0,.25);
+transition:.3s;
+}
+.float-btn:hover{
+transform:scale(1.1);
+}
+.whatsapp{
+background:#25D366;
+}
+.instagram{
+background:#E1306C;
+}
+@keyframes float{
+0%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-5px);
+}
+100%{
+transform:translateY(0);
+}
+}
+@media(max-width:768px){
+header{
+padding:30px 15px 20px;
+}
+header h1{
+font-size:28px;
+}
+header p{
+font-size:16px;
+}
+.header-logo-left,
+.header-logo-right{
+width:70px;
+height:70px;
+}
+.header-logo-left{
+left:5px;
+}
+.header-logo-right{
+right:5px;
+}
+.container{
+padding:15px;
+}
+.service-title{
+font-size:18px;
+}
+.apply{
+width:100%;
+}
+#mobileForm{
+padding:12px;
+}
+.mobile-modal-card{
+max-width:100%;
+max-height:92dvh;
+padding:20px;
+border-radius:14px;
+}
+.aadhaar-title-text h2{
+font-size:18px;
+}
+.aadhaar-title-text p{
+font-size:13px;
+}
+.aadhaar-icon{
+width:48px;
+height:48px;
+font-size:25px;
+}
+.aadhaar-arrow{
+font-size:26px;
+}
+}
+@media(max-width:400px){
+.mobile-modal-card{
+padding:16px;
+}
+.mobile-modal-card input,
+.mobile-modal-card textarea{
+font-size:15px;
+}
+.modal-buttons{
+flex-direction:column;
+}
+.submit-button,
+.close-button{
+width:100%;
+}
+}
+body.modal-open{
+overflow:hidden;
+touch-action:none;
+}
+body.modal-open #mobileForm{
+touch-action:auto;
+}
+body.modal-open .mobile-modal-card{
+touch-action:auto;
+}
+</style>
+</head>
+<body>
+
+<header>
+<img src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png" alt="KHIDMAT-E-KHALQ OFFICE Logo" class="header-logo-right">
+<img src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png" alt="Yasir Saeed Logo" class="header-logo-left">
+<p style="margin:0;font-size:16px;font-weight:600;letter-spacing:1px;color:white;">
+YASIR SAEED
+</p>
+<h1>KHIDMAT-E-KHALQ OFFICE</h1>
+</header>
+
+<div class="portal-header">
+<h2>Aadhaar Services Portal</h2>
+<p>Fast • Secure • Professional</p>
+<input type="text" id="searchBox" placeholder="Search Aadhaar Service..." onkeyup="searchService()">
+<div class="total-services">
+<b>Total Services :</b>
+<span id="totalServices"></span>
+</div>
+</div>
+
+<div class="container">
+
+<div class="service aadhaar-card">
+
+<div class="aadhaar-title" onclick="openService('aadhaarMain')">
+
+<div class="aadhaar-title-inner">
+
+<div class="aadhaar-icon">
+🪪
+</div>
+
+<div class="aadhaar-title-text">
+<h2>🪪 Aadhaar Services</h2>
+<p>1 Service Available</p>
+</div>
+
+<div class="aadhaar-arrow">
+⌄
+</div>
+
+</div>
+</div>
+
+<div class="service-content" id="aadhaarMain">
+
+<div class="service" id="mobileService">
+
+<div class="service-title" onclick="openService('mobile')">
+Mobile Number Update
+</div>
+
+<div class="service-content" id="mobile">
+
+<h2>Mobile Number Update</h2>
+
+<table>
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+<tr>
+<td>Service</td>
+<td>Update Aadhaar Mobile Number</td>
+</tr>
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+<tr>
+<td>Processing Time</td>
+<td>10–15 Minutes</td>
+</tr>
+</table>
+
+<a class="apply" href="javascript:void(0)" onclick="event.preventDefault();openForm();">
+Apply Now
+</a>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="mobileForm" aria-hidden="true">
+
+<div class="mobile-modal-card" onclick="event.stopPropagation();">
+
+<h2>Mobile Number Update</h2>
+
+<br>
+
+<h3>Applicant Details</h3>
+
+<hr>
+
+<label>Full Name (Optional)</label>
+<input id="fullName" type="text" autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span style="color:red">*</span>
+</label>
+
+<input id="mobileNumber" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel">
+
+<div id="mobileError" class="form-error"></div>
+
+<label>
+Aadhaar Number
+<span style="color:red">*</span>
+</label>
+
+<input id="aadhaarNumber" type="text" inputmode="numeric" maxlength="12" autocomplete="off">
+
+<div id="aadhaarError" class="form-error"></div>
+
+<label>Village / Town (Optional)</label>
+<input id="village" type="text">
+
+<label>State (Optional)</label>
+<input id="state" type="text">
+
+<label>Upload Aadhaar Card (Optional)</label>
+
+<input type="file" id="aadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+
+<div id="fileError" class="form-error"></div>
+
+<button type="button" class="upload-button" onclick="uploadAadhaarFile()">
+Upload File
+</button>
+
+<label>Question / Message (Optional)</label>
+
+<textarea id="remarks" placeholder="Write your Question or Message"></textarea>
+
+<div class="modal-buttons">
+
+<button type="button" class="submit-button" onclick="sendWhatsApp()">
+Submit
+</button>
+
+<button type="button" class="close-button" onclick="closeForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
 
 <footer>
-
 <h2>KHIDMAT-E-KHALQ OFFICE</h2>
-
 <p>Professional CSC & Online Services</p>
-
 <p>WhatsApp : +91 6361634389</p>
-
 <p>Email : hafizyasiransari4@gmail.com</p>
-
 <p>Thank you for visiting our website.</p>
-
 </footer>
 
 <div class="floating-contact">
@@ -20,24 +655,175 @@
 Need Help?
 </div>
 
-<a
-class="float-btn whatsapp"
-href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20KHIDMAT-E-KHALQ%20OFFICE.%20Could%20you%20please%20guide%20me%3F"
-target="_blank"
-title="Chat on WhatsApp">
+<a class="float-btn whatsapp" href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20KHIDMAT-E-KHALQ%20OFFICE.%20Could%20you%20please%20guide%20me%3F" target="_blank" title="Chat on WhatsApp">
 <i class="fab fa-whatsapp"></i>
 </a>
 
-<a
-class="float-btn instagram"
-href="https://instagram.com/khidmatekhalq_csc_2026"
-target="_blank"
-title="Follow on Instagram">
+<a class="float-btn instagram" href="https://instagram.com/khidmatekhalq_csc_2026" target="_blank" title="Follow on Instagram">
 <i class="fab fa-instagram"></i>
 </a>
 
 </div>
 
-</body>
+<script>
 
+function openService(id){
+var element=document.getElementById(id);
+if(!element){
+return;
+}
+if(element.style.display==="block"){
+element.style.display="none";
+}else{
+element.style.display="block";
+}
+}
+
+function searchService(){
+var input=document.getElementById("searchBox").value.toUpperCase().trim();
+var services=document.getElementsByClassName("service");
+
+for(var i=0;i<services.length;i++){
+var title=services[i].getElementsByClassName("service-title")[0];
+
+if(!title){
+continue;
+}
+
+if(title.innerHTML.toUpperCase().indexOf(input)>-1){
+services[i].style.display="block";
+}else{
+services[i].style.display="none";
+}
+}
+}
+
+document.getElementById("totalServices").innerHTML=
+document.getElementsByClassName("service-title").length;
+
+function openForm(){
+var form=document.getElementById("mobileForm");
+
+if(!form){
+return;
+}
+
+form.style.display="flex";
+
+form.setAttribute("aria-hidden","false");
+
+document.body.classList.add("modal-open");
+}
+
+function closeForm(){
+var form=document.getElementById("mobileForm");
+
+if(!form){
+return;
+}
+
+form.style.display="none";
+
+form.setAttribute("aria-hidden","true");
+
+document.body.classList.remove("modal-open");
+}
+
+function uploadAadhaarFile(){
+
+var file=document.getElementById("aadhaarFile").files[0];
+var error=document.getElementById("fileError");
+
+error.innerHTML="";
+
+if(!file){
+error.innerHTML="Please choose a file.";
+return;
+}
+
+if(file.size<50*1024){
+error.innerHTML="File size must be at least 50 KB.";
+return;
+}
+
+error.innerHTML="File selected successfully.";
+}
+
+function sendWhatsApp(){
+
+var name=document.getElementById("fullName").value.trim();
+var mobile=document.getElementById("mobileNumber").value.trim();
+var aadhaar=document.getElementById("aadhaarNumber").value.trim();
+var village=document.getElementById("village").value.trim();
+var state=document.getElementById("state").value.trim();
+var remarks=document.getElementById("remarks").value.trim();
+
+document.getElementById("mobileError").innerHTML="";
+document.getElementById("aadhaarError").innerHTML="";
+
+document.getElementById("mobileNumber").style.border="1px solid #ccc";
+document.getElementById("aadhaarNumber").style.border="1px solid #ccc";
+
+if(mobile==="" && aadhaar===""){
+
+if(remarks===""){
+alert("Please enter Mobile & Aadhaar or write your Question / Message.");
+return;
+}
+
+}else{
+
+if(!/^[6-9]\d{9}$/.test(mobile)){
+
+document.getElementById("mobileError").innerHTML=
+"Enter a valid 10-digit Mobile Number.";
+
+document.getElementById("mobileNumber").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+document.getElementById("mobileNumber").style.border=
+"2px solid red";
+
+return;
+}
+
+if(!/^\d{12}$/.test(aadhaar)){
+
+document.getElementById("aadhaarError").innerHTML=
+"Enter a valid 12-digit Aadhaar Number.";
+
+document.getElementById("aadhaarNumber").scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+document.getElementById("aadhaarNumber").style.border=
+"2px solid red";
+
+return;
+}
+
+}
+
+var message=
+"Mobile Number Update%0A%0A"+
+"Full Name: "+name+"%0A%0A"+
+"Mobile: "+(mobile||"Not Provided")+"%0A%0A"+
+"Aadhaar: "+(aadhaar||"Not Provided")+"%0A%0A"+
+"Village/Town: "+village+"%0A%0A"+
+"State: "+state+"%0A%0A"+
+"Question/Message: "+remarks;
+
+window.open(
+"https://wa.me/916361634389?text="+message,
+"_blank"
+);
+
+}
+
+</script>
+
+</body>
 </html>
