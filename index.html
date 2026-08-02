@@ -2147,14 +2147,20 @@ return /^[0-9]{12}$/.test(value);
    MOBILE VALIDATION
 ================================================== */
 
-function isValidMobile(value){   
-return /^[6-9][0-9]{9}$/.test(value);  
+function isValidMobile(value){
+
+return /^[6-9][0-9]{9}$/.test(value);
+
 }
+
 
 function validateMobileNumber(){
 
 const mobile =
 document.getElementById("mobileNumber").value.trim();
+
+const message =
+document.getElementById("remarks").value.trim();
 
 const error =
 document.getElementById("mobileSubmitError");
@@ -2162,9 +2168,22 @@ document.getElementById("mobileSubmitError");
 const input =
 document.getElementById("mobileNumber");
 
+
 input.classList.remove("input-error");
 
 error.textContent = "";
+
+
+/* MESSAGE ONLY */
+
+if(mobile === "" && message !== ""){
+
+return true;
+
+}
+
+
+/* MOBILE EMPTY */
 
 if(mobile === ""){
 
@@ -2179,6 +2198,9 @@ return false;
 
 }
 
+
+/* MOBILE INVALID */
+
 if(!isValidMobile(mobile)){
 
 input.classList.add("input-error");
@@ -2192,10 +2214,13 @@ return false;
 
 }
 
+
+/* MOBILE VALID */
+
 return true;
 
 }
-
+   
 /* ==================================================
    PIN VALIDATION
 ================================================== */
