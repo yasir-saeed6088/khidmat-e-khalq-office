@@ -1685,9 +1685,7 @@ Close
 </button>
 
 </div>
-
 </div>
-
 </div>
 
 <!-- ==================================================
@@ -1783,7 +1781,6 @@ Head of Family Details
 
 <hr>
 
-
 <!-- HOF NAME -->
 
 <label>
@@ -1801,7 +1798,6 @@ id="hofNameError"
 class="form-error"
 >
 </div>
-
 
 <!-- HOF AADHAAR -->
 
@@ -1824,7 +1820,6 @@ class="form-error"
 >
 </div>
 
-
 <!-- HOF LINKED MOBILE -->
 
 <label>
@@ -1845,7 +1840,6 @@ id="hofMobileError"
 class="form-error"
 >
 </div>
-
 
 <!-- RELATIONSHIP -->
 
@@ -1907,7 +1901,6 @@ class="form-error"
 >
 </div>
 
-
 <!-- OTHER RELATIONSHIP -->
 
 <div
@@ -1931,9 +1924,7 @@ id="hofOtherRelationshipError"
 class="form-error"
 >
 </div>
-
 </div>
-
 
 <!-- QUESTION / MESSAGE -->
 
@@ -1945,7 +1936,6 @@ Question / Message (Optional)
 id="hofRemarks"
 placeholder="Write your Question or Message"
 ></textarea>
-
 
 <!-- BUTTONS -->
 
@@ -1968,9 +1958,7 @@ Close
 </button>
 
 </div>
-
 </div>
-
 </div>
 
 <!-- ==================================================
@@ -2003,7 +1991,6 @@ element.style.display = "block";
 
 }
 
-
 /* ==================================================
    MODAL OPEN
 ================================================== */
@@ -2017,13 +2004,10 @@ return;
 }
 
 modal.style.display = "flex";
-
 modal.setAttribute("aria-hidden","false");
-
 document.body.classList.add("modal-open");
 
 }
-
 
 /* ==================================================
    MODAL CLOSE
@@ -2038,13 +2022,10 @@ return;
 }
 
 modal.style.display = "none";
-
 modal.setAttribute("aria-hidden","true");
-
 document.body.classList.remove("modal-open");
 
 }
-
 
 /* ==================================================
    CLOSE MODAL BY CLICKING BACKDROP
@@ -2063,7 +2044,6 @@ closeModal(modal.id);
 });
 
 });
-
 
 /* ==================================================
    ESC KEY CLOSE MODAL
@@ -2087,7 +2067,6 @@ closeModal(modal.id);
 
 });
 
-
 /* ==================================================
    ERROR HELPER
 ================================================== */
@@ -2095,7 +2074,6 @@ closeModal(modal.id);
 function showError(inputId,errorId,message){
 
 const input = document.getElementById(inputId);
-
 const error = document.getElementById(errorId);
 
 if(input){
@@ -2112,7 +2090,6 @@ error.textContent = message;
 
 }
 
-
 /* ==================================================
    CLEAR ERROR
 ================================================== */
@@ -2120,7 +2097,6 @@ error.textContent = message;
 function clearError(inputId,errorId){
 
 const input = document.getElementById(inputId);
-
 const error = document.getElementById(errorId);
 
 if(input){
@@ -2136,7 +2112,6 @@ error.textContent = "";
 }
 
 }
-
 
 /* ==================================================
    SCROLL TO ERROR
@@ -2231,7 +2206,6 @@ return /^[0-9]{6}$/.test(value);
    
 }
 
-
 /* ==================================================
    CLEAR ALL SELF ADDRESS ERRORS
 ================================================== */
@@ -2239,33 +2213,20 @@ return /^[0-9]{6}$/.test(value);
 function clearSelfAddressErrors(){
 
 clearError("selfAadhaar","selfAadhaarError");
-
 clearError("selfMobile","selfMobileError");
-
 clearError("selfHouse","selfHouseError");
-
 clearError("selfRoad","selfRoadError");
-
 clearError("selfArea","selfAreaError");
-
 clearError("selfLandmark","selfLandmarkError");
-
 clearError("selfCity","selfCityError");
-
 clearError("selfPostOffice","selfPostOfficeError");
-
 clearError("selfDistrict","selfDistrictError");
-
 clearError("selfState","selfStateError");
-
 clearError("selfPin","selfPinError");
-
 clearError("selfProof","selfProofError");
-
 clearError("selfOtherDocument","selfOtherDocumentError");
-
 clearError("selfProofFile","selfProofFileError");
-
+   
 }
 
 
@@ -2312,7 +2273,6 @@ clearError(
 
 }
 
-
 /* ==================================================
    SELF DOCUMENTS — OTHER LOGIC
 ================================================== */
@@ -2357,7 +2317,6 @@ clearError(
 
 }
 
-
 /* ==================================================
    HOF — OTHER RELATIONSHIP LOGIC
 ================================================== */
@@ -2374,7 +2333,6 @@ const otherInput =
 document.getElementById("hofOtherRelationship");
 
 const value = relationship.value;
-
 
 /* OTHER SELECTED */
 
@@ -2401,7 +2359,6 @@ clearError(
 );
 
 }
-
 
 /* ==================================================
    ALLOW ONLY NUMBERS — AADHAAR / MOBILE / PIN
