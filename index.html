@@ -1,20 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Aadhaar Services | KHIDMAT-E-KHALQ OFFICE</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 <style>
+
+/* =========================
+   BASIC RESET
+========================= */
+
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:Arial,sans-serif;
 }
+
 html{
 scroll-behavior:smooth;
 }
+
 body{
 background:#f5f7fb;
 color:#222;
@@ -22,6 +37,17 @@ min-height:100dvh;
 display:flex;
 flex-direction:column;
 }
+
+body.modal-open{
+overflow:hidden;
+touch-action:none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
 header{
 background:linear-gradient(135deg,#0052cc,#0077ff);
 color:#fff;
@@ -30,6 +56,7 @@ text-align:center;
 position:relative;
 min-height:130px;
 }
+
 header h1{
 font-size:38px;
 margin-top:20px;
@@ -37,20 +64,13 @@ margin-bottom:10px;
 text-align:center;
 line-height:1.2;
 }
+
 header p{
 font-size:18px;
 text-align:center;
 }
-.header-logo-left{
-width:90px;
-height:90px;
-object-fit:cover;
-border-radius:50%;
-background:transparent;
-position:absolute;
-top:5px;
-left:5px;
-}
+
+.header-logo-left,
 .header-logo-right{
 width:90px;
 height:90px;
@@ -59,21 +79,37 @@ border-radius:50%;
 background:transparent;
 position:absolute;
 top:5px;
+}
+
+.header-logo-left{
+left:5px;
+}
+
+.header-logo-right{
 right:5px;
 }
+
+
+/* =========================
+   PORTAL HEADER
+========================= */
+
 .portal-header{
 background:#fff;
 padding:20px;
 box-shadow:0 2px 10px rgba(0,0,0,.1);
 }
+
 .portal-header h2{
 color:#0052cc;
 text-align:center;
 }
+
 .portal-header p{
 text-align:center;
 margin-top:10px;
 }
+
 #searchBox{
 width:100%;
 padding:14px;
@@ -83,15 +119,23 @@ border-radius:10px;
 font-size:17px;
 outline:none;
 }
+
 #searchBox:focus{
 border-color:#003d99;
 box-shadow:0 0 8px rgba(0,82,204,.2);
 }
+
 .total-services{
 text-align:center;
 font-size:18px;
 margin-top:20px;
 }
+
+
+/* =========================
+   MAIN CONTAINER
+========================= */
+
 .container{
 max-width:1200px;
 width:100%;
@@ -99,6 +143,12 @@ margin:auto;
 padding:25px;
 flex:1;
 }
+
+
+/* =========================
+   SERVICE CARD
+========================= */
+
 .service{
 background:#fff;
 border-radius:12px;
@@ -108,27 +158,27 @@ overflow:hidden;
 border-left:6px solid #0052cc;
 transition:.35s;
 }
+
 .service:hover{
-transform:translateY(-4px);
-box-shadow:0 15px 35px rgba(0,0,0,.15);
+box-shadow:0 10px 25px rgba(0,0,0,.12);
 }
+
+
+/* =========================
+   AADHAAR MAIN CARD
+========================= */
+
 .aadhaar-card{
 width:96%;
-max-width:400px;
-min-height:160px;
+max-width:500px;
 margin:20px auto;
 }
-.service-title{
-background:#0052cc;
-color:#fff;
-padding:18px;
-font-size:22px;
-cursor:pointer;
-transition:.3s;
-}
-.service-title:hover{
-background:#003d99;
-}
+
+
+/* =========================
+   AADHAAR TITLE
+========================= */
+
 .aadhaar-title{
 background:linear-gradient(135deg,#ffffff,#eef6ff);
 border-top:4px solid #ff9933;
@@ -139,14 +189,15 @@ padding:16px 20px;
 display:block;
 cursor:pointer;
 box-shadow:0 12px 30px rgba(0,82,204,.18);
-margin-bottom:20px;
 }
+
 .aadhaar-title-inner{
 display:flex;
 justify-content:space-between;
 align-items:center;
 width:100%;
 }
+
 .aadhaar-icon{
 width:52px;
 height:52px;
@@ -159,49 +210,119 @@ font-size:28px;
 flex-shrink:0;
 box-shadow:0 4px 10px rgba(0,82,204,.15);
 }
+
 .aadhaar-title-text{
 flex:1;
 margin-left:15px;
 }
+
 .aadhaar-title-text h2{
 margin:0;
 font-size:21px;
 font-weight:700;
-letter-spacing:.4px;
 color:#0052cc;
 }
+
 .aadhaar-title-text p{
 margin-top:6px;
 color:#666;
 font-size:14px;
 font-weight:600;
 }
+
 .aadhaar-arrow{
 font-size:30px;
 color:#0052cc;
 font-weight:bold;
 margin-left:10px;
 }
+
+
+/* =========================
+   SERVICE CONTENT
+========================= */
+
 .service-content{
 display:none;
 padding:20px;
 }
-table{
+
+
+/* =========================
+   SERVICE TITLE
+========================= */
+
+.service-title{
+background:#0052cc;
+color:#fff;
+padding:18px;
+font-size:21px;
+cursor:pointer;
+transition:.3s;
+border-radius:8px;
+margin-bottom:10px;
+}
+
+.service-title:hover{
+background:#003d99;
+}
+
+
+/* =========================
+   ADDRESS SUB SERVICES
+========================= */
+
+.address-option{
+background:#fff;
+border:1px solid #dbe5f5;
+border-left:5px solid #0052cc;
+border-radius:12px;
+padding:18px;
+margin:15px 0;
+box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.address-option h3{
+color:#0052cc;
+margin-bottom:8px;
+}
+
+.address-option p{
+color:#666;
+margin-bottom:15px;
+}
+
+
+/* =========================
+   INFORMATION TABLE
+========================= */
+
+.info-table{
 width:100%;
 border-collapse:collapse;
-margin-top:15px;
+margin:15px 0 20px;
 border-radius:10px;
 overflow:hidden;
 }
-table th{
+
+.info-table th{
 background:#0052cc;
 color:#fff;
 padding:12px;
+text-align:left;
 }
-table td{
+
+.info-table td{
 border:1px solid #ddd;
-padding:10px;
+padding:11px;
+background:#fff;
 }
+
+
+/* =========================
+   APPLY BUTTON
+========================= */
+
 .apply{
 display:block;
 width:220px;
@@ -213,14 +334,22 @@ text-decoration:none;
 border-radius:8px;
 font-size:18px;
 text-align:center;
-transition:.3s;
 cursor:pointer;
+border:none;
+transition:.3s;
 }
+
 .apply:hover{
 background:#1f8f3a;
-transform:scale(1.05);
+transform:scale(1.03);
 }
-#mobileForm{
+
+
+/* =========================
+   MODAL BACKDROP
+========================= */
+
+.modal{
 display:none;
 position:fixed;
 inset:0;
@@ -230,70 +359,119 @@ background:rgba(0,0,0,.65);
 z-index:99999;
 align-items:center;
 justify-content:center;
-padding:20px;
-box-sizing:border-box;
+padding:15px;
 overflow:hidden;
 }
-.mobile-modal-card{
+
+
+/* =========================
+   MODAL CARD
+========================= */
+
+.modal-card{
 background:#fff;
 width:100%;
 max-width:650px;
-height:auto;
-max-height:90dvh;
+max-height:92dvh;
 overflow-y:auto;
 overflow-x:hidden;
 padding:25px;
 border-radius:16px;
-box-sizing:border-box;
 box-shadow:0 15px 50px rgba(0,0,0,.30);
 position:relative;
 -webkit-overflow-scrolling:touch;
 }
-.mobile-modal-card h2{
+
+.modal-card h2{
 text-align:center;
 color:#0052cc;
+margin-bottom:5px;
 }
-.mobile-modal-card h3{
-margin-top:5px;
+
+.modal-card h3{
+margin-top:8px;
+color:#222;
 }
-.mobile-modal-card hr{
-margin:20px 0;
+
+.modal-card hr{
+margin:18px 0;
+border:none;
+border-top:1px solid #ddd;
 }
-.mobile-modal-card label{
+
+
+/* =========================
+   FORM LABELS
+========================= */
+
+.modal-card label{
 display:block;
 font-weight:600;
-margin-top:8px;
+margin-top:10px;
 }
-.mobile-modal-card input,
-.mobile-modal-card textarea,
-.mobile-modal-card select{
+
+.required-star{
+color:red;
+font-weight:bold;
+}
+
+
+/* =========================
+   FORM INPUTS
+========================= */
+
+.modal-card input,
+.modal-card textarea,
+.modal-card select{
 width:100%;
 padding:12px;
-margin:8px 0 18px;
+margin:8px 0 5px;
 border:1px solid #ccc;
 border-radius:8px;
 font-size:16px;
 outline:none;
-transition:.3s;
 background:#fff;
+transition:.3s;
 }
-.mobile-modal-card input:focus,
-.mobile-modal-card textarea:focus,
-.mobile-modal-card select:focus{
+
+.modal-card input:focus,
+.modal-card textarea:focus,
+.modal-card select:focus{
 border-color:#0052cc;
-box-shadow:0 0 8px rgba(0,82,204,.25);
+box-shadow:0 0 8px rgba(0,82,204,.20);
 }
-.mobile-modal-card textarea{
-min-height:110px;
+
+.modal-card textarea{
+min-height:100px;
 resize:vertical;
 }
+
+
+/* =========================
+   ERROR
+========================= */
+
 .form-error{
 color:red;
 font-size:13px;
 min-height:18px;
-margin-top:-10px;
-margin-bottom:5px;
+margin:2px 0 8px;
 }
+
+.input-error{
+border:2px solid red !important;
+box-shadow:0 0 6px rgba(255,0,0,.15) !important;
+}
+
+
+/* =========================
+   FILE AREA
+========================= */
+
+.file-upload-box{
+margin-top:5px;
+}
+
 .upload-button{
 background:#0052cc;
 color:#fff;
@@ -304,41 +482,62 @@ cursor:pointer;
 margin-top:8px;
 font-size:15px;
 }
+
 .upload-button:hover{
 background:#003d99;
 }
+
+.file-success{
+color:green;
+font-size:13px;
+margin-top:5px;
+}
+
+
+/* =========================
+   BUTTON AREA
+========================= */
+
 .modal-buttons{
 display:flex;
 justify-content:center;
 align-items:center;
 gap:12px;
 flex-wrap:wrap;
-margin-top:10px;
+margin-top:15px;
 }
-.submit-button{
-background:#28a745;
-color:#fff;
+
+.submit-button,
+.close-button{
 padding:12px 25px;
 border:none;
 border-radius:6px;
 cursor:pointer;
 font-size:16px;
+color:#fff;
 }
+
+.submit-button{
+background:#28a745;
+}
+
 .submit-button:hover{
 background:#1f8f3a;
 }
+
 .close-button{
 background:red;
-color:#fff;
-padding:12px 25px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-font-size:16px;
 }
+
 .close-button:hover{
 background:#c00;
 }
+
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
 background:linear-gradient(135deg,#0052cc,#0077ff);
 color:#fff;
@@ -346,12 +545,20 @@ padding:20px;
 text-align:center;
 margin-top:40px;
 }
+
 footer h2{
 margin-bottom:8px;
 }
+
 footer p{
 margin:5px 0;
 }
+
+
+/* =========================
+   FLOATING CONTACT
+========================= */
+
 .floating-contact{
 position:fixed;
 right:18px;
@@ -362,6 +569,7 @@ align-items:flex-end;
 gap:12px;
 z-index:9999;
 }
+
 .help-bubble{
 background:#25D366;
 color:#fff;
@@ -372,6 +580,7 @@ font-weight:bold;
 box-shadow:0 4px 12px rgba(0,0,0,.2);
 animation:float 2s infinite;
 }
+
 .float-btn{
 width:58px;
 height:58px;
@@ -385,134 +594,239 @@ color:#fff;
 box-shadow:0 5px 15px rgba(0,0,0,.25);
 transition:.3s;
 }
+
 .float-btn:hover{
 transform:scale(1.1);
 }
+
 .whatsapp{
 background:#25D366;
 }
+
 .instagram{
 background:#E1306C;
 }
+
+
+/* =========================
+   ANIMATION
+========================= */
+
 @keyframes float{
+
 0%{
 transform:translateY(0);
 }
+
 50%{
 transform:translateY(-5px);
 }
+
 100%{
 transform:translateY(0);
 }
+
 }
+
+
+/* =========================
+   MOBILE
+========================= */
+
 @media(max-width:768px){
+
 header{
 padding:30px 15px 20px;
 }
+
 header h1{
 font-size:28px;
 }
+
 header p{
 font-size:16px;
 }
+
 .header-logo-left,
 .header-logo-right{
 width:70px;
 height:70px;
 }
-.header-logo-left{
-left:5px;
-}
-.header-logo-right{
-right:5px;
-}
+
 .container{
 padding:15px;
 }
+
 .service-title{
 font-size:18px;
 }
+
 .apply{
 width:100%;
 }
-#mobileForm{
-padding:12px;
+
+.modal{
+padding:10px;
 }
-.mobile-modal-card{
+
+.modal-card{
 max-width:100%;
-max-height:92dvh;
+max-height:94dvh;
 padding:20px;
 border-radius:14px;
 }
+
 .aadhaar-title-text h2{
 font-size:18px;
 }
+
 .aadhaar-title-text p{
 font-size:13px;
 }
+
 .aadhaar-icon{
 width:48px;
 height:48px;
 font-size:25px;
 }
+
 .aadhaar-arrow{
 font-size:26px;
 }
+
+.info-table th,
+.info-table td{
+font-size:14px;
+padding:9px;
 }
+
+}
+
+
+/* =========================
+   VERY SMALL SCREENS
+========================= */
+
 @media(max-width:400px){
-.mobile-modal-card{
+
+.modal-card{
 padding:16px;
 }
-.mobile-modal-card input,
-.mobile-modal-card textarea{
+
+.modal-card input,
+.modal-card textarea,
+.modal-card select{
 font-size:15px;
 }
+
 .modal-buttons{
 flex-direction:column;
 }
+
 .submit-button,
 .close-button{
 width:100%;
 }
+
 }
-body.modal-open{
-overflow:hidden;
-touch-action:none;
-}
-body.modal-open #mobileForm{
-touch-action:auto;
-}
-body.modal-open .mobile-modal-card{
-touch-action:auto;
-}
+
+
+/* =========================
+   END CSS
+========================= */
+
 </style>
+
 </head>
+
+
 <body>
 
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header>
-<img src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png" alt="KHIDMAT-E-KHALQ OFFICE Logo" class="header-logo-right">
-<img src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png" alt="Yasir Saeed Logo" class="header-logo-left">
-<p style="margin:0;font-size:16px;font-weight:600;letter-spacing:1px;color:white;">
+
+<img
+src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png"
+alt="KHIDMAT-E-KHALQ OFFICE Logo"
+class="header-logo-right"
+>
+
+<img
+src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png"
+alt="Yasir Saeed Logo"
+class="header-logo-left"
+>
+
+<p style="
+margin:0;
+font-size:16px;
+font-weight:600;
+letter-spacing:1px;
+color:white;
+">
 YASIR SAEED
 </p>
-<h1>KHIDMAT-E-KHALQ OFFICE</h1>
+
+<h1>
+KHIDMAT-E-KHALQ OFFICE
+</h1>
+
 </header>
 
+
+<!-- =========================
+     PORTAL HEADER
+========================= -->
+
 <div class="portal-header">
-<h2>Aadhaar Services Portal</h2>
-<p>Fast • Secure • Professional</p>
-<input type="text" id="searchBox" placeholder="Search Aadhaar Service..." onkeyup="searchService()">
+
+<h2>
+Aadhaar Services Portal
+</h2>
+
+<p>
+Fast • Secure • Professional
+</p>
+
+<input
+type="text"
+id="searchBox"
+placeholder="Search Aadhaar Service..."
+onkeyup="searchService()"
+>
+
 <div class="total-services">
+
 <b>Total Services :</b>
+
 <span id="totalServices"></span>
+
 </div>
+
 </div>
+
+
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
 
 <div class="container">
 
+
+<!-- =========================
+     AADHAAR MAIN SERVICE
+========================= -->
+
 <div class="service aadhaar-card">
 
-<div class="aadhaar-title" onclick="openService('aadhaarMain')">
+<div
+class="aadhaar-title"
+onclick="openService('aadhaarMain')"
+>
 
 <div class="aadhaar-title-inner">
 
@@ -521,8 +835,15 @@ YASIR SAEED
 </div>
 
 <div class="aadhaar-title-text">
-<h2>🪪 Aadhaar Services</h2>
-<p>1 Service Available</p>
+
+<h2>
+🪪 Aadhaar Services
+</h2>
+
+<p>
+3 Services Available
+</p>
+
 </div>
 
 <div class="aadhaar-arrow">
@@ -530,294 +851,2944 @@ YASIR SAEED
 </div>
 
 </div>
+
 </div>
 
-<div class="service-content" id="aadhaarMain">
 
-<div class="service" id="mobileService">
+<!-- =========================
+     AADHAAR SERVICES
+========================= -->
 
-<div class="service-title" onclick="openService('mobile')">
+<div
+class="service-content"
+id="aadhaarMain"
+>
+
+
+<!-- =========================
+     MOBILE NUMBER UPDATE
+========================= -->
+
+<div
+class="service"
+id="mobileService"
+>
+
+<div
+class="service-title"
+onclick="openService('mobile')"
+>
 Mobile Number Update
 </div>
 
-<div class="service-content" id="mobile">
 
-<h2>Mobile Number Update</h2>
+<div
+class="service-content"
+id="mobile"
+>
 
-<table>
+<h2>
+Mobile Number Update
+</h2>
+
+
+<table class="info-table">
+
 <tr>
 <th>Information</th>
 <th>Details</th>
 </tr>
+
 <tr>
 <td>Service</td>
 <td>Update Aadhaar Mobile Number</td>
 </tr>
+
 <tr>
 <td>Service Charge</td>
 <td>₹100</td>
 </tr>
+
 <tr>
 <td>Processing Time</td>
 <td>10–15 Minutes</td>
 </tr>
+
 </table>
 
-<a class="apply" href="javascript:void(0)" onclick="event.preventDefault();openForm();">
+
+<button
+class="apply"
+type="button"
+onclick="openModal('mobileForm')"
+>
 Apply Now
-</a>
+</button>
+
 
 </div>
-</div>
-</div>
-</div>
+
 </div>
 
-<div id="mobileForm" aria-hidden="true">
 
-<div class="mobile-modal-card" onclick="event.stopPropagation();">
+<!-- =========================
+     ADDRESS UPDATE
+========================= -->
 
-<h2>Mobile Number Update</h2>
+<div
+class="service"
+id="addressService"
+>
+
+<div
+class="service-title"
+onclick="openService('address')"
+>
+Address Update
+</div>
+
+
+<div
+class="service-content"
+id="address"
+>
+
+
+<!-- =========================
+     SELF DOCUMENTS
+========================= -->
+
+<div class="address-option">
+
+<h3>
+Self Documents
+</h3>
+
+<p>
+Update Aadhaar Address using your own address proof.
+</p>
+
+
+<table class="info-table">
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Address Update – Self Documents</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>Up to 30 Days</td>
+</tr>
+
+</table>
+
+
+<button
+class="apply"
+type="button"
+onclick="openModal('selfAddressForm')"
+>
+Apply Now
+</button>
+
+</div>
+
+
+<!-- =========================
+     HOF BASED
+========================= -->
+
+<div class="address-option">
+
+<h3>
+HoF Based
+</h3>
+
+<p>
+Update Aadhaar Address through Head of Family.
+</p>
+
+
+<table class="info-table">
+
+<tr>
+<th>Information</th>
+<th>Details</th>
+</tr>
+
+<tr>
+<td>Service</td>
+<td>Address Update – HoF Based</td>
+</tr>
+
+<tr>
+<td>Service Charge</td>
+<td>₹100</td>
+</tr>
+
+<tr>
+<td>Processing Time</td>
+<td>5–10 Minutes</td>
+</tr>
+
+</table>
+
+
+<button
+class="apply"
+type="button"
+onclick="openModal('hofAddressForm')"
+>
+Apply Now
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     MOBILE NUMBER UPDATE FORM
+================================================== -->
+
+<div
+class="modal"
+id="mobileForm"
+aria-hidden="true"
+>
+
+<div
+class="modal-card"
+onclick="event.stopPropagation();"
+>
+
+<h2>
+Mobile Number Update
+</h2>
 
 <br>
 
-<h3>Applicant Details</h3>
+<h3>
+Applicant Details
+</h3>
 
 <hr>
 
-<label>Full Name (Optional)</label>
-<input id="fullName" type="text" autocomplete="name">
+
+<!-- FULL NAME -->
+
+<label>
+Full Name (Optional)
+</label>
+
+<input
+id="fullName"
+type="text"
+autocomplete="name"
+>
+
+
+<!-- MOBILE -->
 
 <label>
 Aadhaar Linked Mobile Number
-<span style="color:red">*</span>
+<span class="required-star">*</span>
 </label>
 
-<input id="mobileNumber" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel">
+<input
+id="mobileNumber"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+>
 
-<div id="mobileError" class="form-error"></div>
+<div
+id="mobileError"
+class="form-error"
+>
+</div>
+
+
+<!-- AADHAAR -->
 
 <label>
 Aadhaar Number
-<span style="color:red">*</span>
+<span class="required-star">*</span>
 </label>
 
-<input id="aadhaarNumber" type="text" inputmode="numeric" maxlength="12" autocomplete="off">
+<input
+id="aadhaarNumber"
+type="text"
+inputmode="numeric"
+maxlength="12"
+autocomplete="off"
+>
 
-<div id="aadhaarError" class="form-error"></div>
+<div
+id="aadhaarError"
+class="form-error"
+>
+</div>
 
-<label>Village / Town (Optional)</label>
-<input id="village" type="text">
 
-<label>State (Optional)</label>
-<input id="state" type="text">
+<!-- VILLAGE -->
 
-<label>Upload Aadhaar Card (Optional)</label>
+<label>
+Village / Town (Optional)
+</label>
 
-<input type="file" id="aadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+<input
+id="village"
+type="text"
+>
 
-<div id="fileError" class="form-error"></div>
 
-<button type="button" class="upload-button" onclick="uploadAadhaarFile()">
+<!-- STATE -->
+
+<label>
+State (Optional)
+</label>
+
+<input
+id="state"
+type="text"
+>
+
+
+<!-- AADHAAR FILE -->
+
+<label>
+Upload Aadhaar Card (Optional)
+</label>
+
+<input
+type="file"
+id="aadhaarFile"
+accept=".jpg,.jpeg,.png,.pdf"
+>
+
+<div
+id="fileError"
+class="form-error"
+>
+</div>
+
+<button
+type="button"
+class="upload-button"
+onclick="uploadAadhaarFile()"
+>
 Upload File
 </button>
 
-<label>Question / Message (Optional)</label>
 
-<textarea id="remarks" placeholder="Write your Question or Message"></textarea>
+<!-- QUESTION -->
+
+<label>
+Question / Message (Optional)
+</label>
+
+<textarea
+id="remarks"
+placeholder="Write your Question or Message"
+></textarea>
+
+
+<!-- BUTTONS -->
 
 <div class="modal-buttons">
 
-<button type="button" class="submit-button" onclick="sendWhatsApp()">
+<button
+type="button"
+class="submit-button"
+onclick="sendMobileWhatsApp()"
+>
 Submit
 </button>
 
-<button type="button" class="close-button" onclick="closeForm()">
+<button
+type="button"
+class="close-button"
+onclick="closeModal('mobileForm')"
+>
 Close
 </button>
 
 </div>
 
 </div>
-</div>
-
-<footer>
-<h2>KHIDMAT-E-KHALQ OFFICE</h2>
-<p>Professional CSC & Online Services</p>
-<p>WhatsApp : +91 6361634389</p>
-<p>Email : hafizyasiransari4@gmail.com</p>
-<p>Thank you for visiting our website.</p>
-</footer>
-
-<div class="floating-contact">
-
-<div class="help-bubble">
-Need Help?
-</div>
-
-<a class="float-btn whatsapp" href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20KHIDMAT-E-KHALQ%20OFFICE.%20Could%20you%20please%20guide%20me%3F" target="_blank" title="Chat on WhatsApp">
-<i class="fab fa-whatsapp"></i>
-</a>
-
-<a class="float-btn instagram" href="https://instagram.com/khidmatekhalq_csc_2026" target="_blank" title="Follow on Instagram">
-<i class="fab fa-instagram"></i>
-</a>
 
 </div>
+
+
+<!-- ==================================================
+     SELF DOCUMENTS ADDRESS FORM
+================================================== -->
+
+<div
+class="modal"
+id="selfAddressForm"
+aria-hidden="true"
+>
+
+<div
+class="modal-card"
+onclick="event.stopPropagation();"
+>
+
+<h2>
+Address Update – Self Documents
+</h2>
+
+<br>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+
+<!-- FULL NAME -->
+
+<label>
+Full Name (Optional)
+</label>
+
+<input
+id="selfFullName"
+type="text"
+autocomplete="name"
+>
+
+
+<!-- AADHAAR -->
+
+<label>
+Aadhaar Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12"
+autocomplete="off"
+>
+
+<div
+id="selfAadhaarError"
+class="form-error"
+>
+</div>
+
+
+<!-- MOBILE -->
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfMobile"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+>
+
+<div
+id="selfMobileError"
+class="form-error"
+>
+</div>
+
+
+<!-- NEW ADDRESS -->
+
+<h3>
+New Address Details
+</h3>
+
+<hr>
+
+
+<!-- HOUSE -->
+
+<label>
+House / Building
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfHouse"
+type="text"
+>
+
+<div
+id="selfHouseError"
+class="form-error"
+>
+</div>
+
+
+<!-- ROAD -->
+
+<label>
+Road / Street
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfRoad"
+type="text"
+>
+
+<div
+id="selfRoadError"
+class="form-error"
+>
+</div>
+
+
+<!-- AREA -->
+
+<label>
+Area / Locality
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfArea"
+type="text"
+>
+
+<div
+id="selfAreaError"
+class="form-error"
+>
+</div>
+
+
+<!-- LANDMARK -->
+
+<label>
+Landmark
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfLandmark"
+type="text"
+>
+
+<div
+id="selfLandmarkError"
+class="form-error"
+>
+</div>
+
+
+<!-- VILLAGE / CITY -->
+
+<label>
+Village / Town / City
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfCity"
+type="text"
+>
+
+<div
+id="selfCityError"
+class="form-error"
+>
+</div>
+
+
+<!-- POST OFFICE -->
+
+<label>
+Post Office
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfPostOffice"
+type="text"
+>
+
+<div
+id="selfPostOfficeError"
+class="form-error"
+>
+</div>
+
+
+<!-- DISTRICT -->
+
+<label>
+District
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfDistrict"
+type="text"
+>
+
+<div
+id="selfDistrictError"
+class="form-error"
+>
+</div>
+
+
+<!-- STATE -->
+
+<label>
+State
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfState"
+type="text"
+>
+
+<div
+id="selfStateError"
+class="form-error"
+>
+</div>
+
+
+<!-- PIN CODE -->
+
+<label>
+PIN Code
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfPin"
+type="text"
+inputmode="numeric"
+maxlength="6"
+>
+
+<div
+id="selfPinError"
+class="form-error"
+>
+</div>
+
+
+<!-- ADDRESS PROOF -->
+
+<h3>
+Address Proof
+</h3>
+
+<hr>
+
+
+<label>
+Select Address Proof
+<span class="required-star">*</span>
+</label>
+
+<select
+id="selfProof"
+onchange="handleSelfProof()"
+>
+
+<option value="">
+Select Document
+</option>
+
+<option value="Ration Card">
+Ration Card
+</option>
+
+<option value="Voter ID">
+Voter ID
+</option>
+
+<option value="Passport">
+Passport
+</option>
+
+<option value="Driving Licence">
+Driving Licence
+</option>
+
+<option value="Electricity Bill">
+Electricity Bill
+</option>
+
+<option value="Water Bill">
+Water Bill
+</option>
+
+<option value="Telephone / Landline Bill">
+Telephone / Landline Bill
+</option>
+
+<option value="Property Tax Receipt">
+Property Tax Receipt
+</option>
+
+<option value="Bank / Post Office Statement">
+Bank / Post Office Statement
+</option>
+
+<option value="Government-issued Address Proof">
+Government-issued Address Proof
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+<div
+id="selfProofError"
+class="form-error"
+>
+</div>
+
+
+<!-- OTHER DOCUMENT NAME -->
+
+<div
+id="selfOtherBox"
+style="display:none;"
+>
+
+<label>
+Other Document Name
+<span class="required-star">*</span>
+</label>
+
+<input
+id="selfOtherDocument"
+type="text"
+placeholder="Enter your address proof name"
+>
+
+<div
+id="selfOtherDocumentError"
+class="form-error"
+>
+</div>
+
+</div>
+
+
+<!-- UPLOAD ADDRESS PROOF -->
+
+<label>
+Upload Address Proof
+<span class="required-star">*</span>
+</label>
+
+<input
+type="file"
+id="selfProofFile"
+accept=".jpg,.jpeg,.png,.pdf"
+>
+
+<div
+id="selfProofFileError"
+class="form-error"
+>
+</div>
+
+<div
+id="selfProofSuccess"
+class="file-success"
+>
+</div>
+
+<button
+type="button"
+class="upload-button"
+onclick="uploadSelfProof()"
+>
+Upload
+</button>
+
+
+<!-- QUESTION / MESSAGE -->
+
+<label>
+Question / Message (Optional)
+</label>
+
+<textarea
+id="selfRemarks"
+placeholder="Write your Question or Message"
+></textarea>
+
+
+<!-- BUTTONS -->
+
+<div class="modal-buttons">
+
+<button
+type="button"
+class="submit-button"
+onclick="sendSelfAddressWhatsApp()"
+>
+Submit
+</button>
+
+<button
+type="button"
+class="close-button"
+onclick="closeModal('selfAddressForm')"
+>
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     HOF BASED ADDRESS UPDATE FORM
+================================================== -->
+
+<div
+class="modal"
+id="hofAddressForm"
+aria-hidden="true"
+>
+
+<div
+class="modal-card"
+onclick="event.stopPropagation();"
+>
+
+<h2>
+Address Update – HoF Based
+</h2>
+
+<br>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+
+<!-- FULL NAME -->
+
+<label>
+Full Name (Optional)
+</label>
+
+<input
+id="hofFullName"
+type="text"
+autocomplete="name"
+>
+
+
+<!-- APPLICANT AADHAAR -->
+
+<label>
+Aadhaar Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofApplicantAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12"
+autocomplete="off"
+>
+
+<div
+id="hofApplicantAadhaarError"
+class="form-error"
+>
+</div>
+
+
+<!-- APPLICANT MOBILE -->
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofApplicantMobile"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+>
+
+<div
+id="hofApplicantMobileError"
+class="form-error"
+>
+</div>
+
+
+<!-- HOF DETAILS -->
+
+<h3>
+Head of Family Details
+</h3>
+
+<hr>
+
+
+<!-- HOF NAME -->
+
+<label>
+HoF Name
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofName"
+type="text"
+>
+
+<div
+id="hofNameError"
+class="form-error"
+>
+</div>
+
+
+<!-- HOF AADHAAR -->
+
+<label>
+HoF Aadhaar Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12"
+autocomplete="off"
+>
+
+<div
+id="hofAadhaarError"
+class="form-error"
+>
+</div>
+
+
+<!-- HOF LINKED MOBILE -->
+
+<label>
+HoF Aadhaar Linked Mobile Number
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofMobile"
+type="tel"
+inputmode="numeric"
+maxlength="10"
+autocomplete="tel"
+>
+
+<div
+id="hofMobileError"
+class="form-error"
+>
+</div>
+
+
+<!-- RELATIONSHIP -->
+
+<label>
+Relationship with HoF
+<span class="required-star">*</span>
+</label>
+
+<select
+id="hofRelationship"
+onchange="handleHofRelationship()"
+>
+
+<option value="">
+Select Relationship
+</option>
+
+<option value="Father">
+Father
+</option>
+
+<option value="Mother">
+Mother
+</option>
+
+<option value="Husband">
+Husband
+</option>
+
+<option value="Wife">
+Wife
+</option>
+
+<option value="Son">
+Son
+</option>
+
+<option value="Daughter">
+Daughter
+</option>
+
+<option value="Brother">
+Brother
+</option>
+
+<option value="Sister">
+Sister
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
+
+<div
+id="hofRelationshipError"
+class="form-error"
+>
+</div>
+
+
+<!-- OTHER RELATIONSHIP -->
+
+<div
+id="hofOtherRelationshipBox"
+style="display:none;"
+>
+
+<label>
+Other Relationship
+<span class="required-star">*</span>
+</label>
+
+<input
+id="hofOtherRelationship"
+type="text"
+placeholder="Enter your relationship with HoF"
+>
+
+<div
+id="hofOtherRelationshipError"
+class="form-error"
+>
+</div>
+
+</div>
+
+
+<!-- QUESTION / MESSAGE -->
+
+<label>
+Question / Message (Optional)
+</label>
+
+<textarea
+id="hofRemarks"
+placeholder="Write your Question or Message"
+></textarea>
+
+
+<!-- BUTTONS -->
+
+<div class="modal-buttons">
+
+<button
+type="button"
+class="submit-button"
+onclick="sendHofAddressWhatsApp()"
+>
+Submit
+</button>
+
+<button
+type="button"
+class="close-button"
+onclick="closeModal('hofAddressForm')"
+>
+Close
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ==================================================
+     JAVASCRIPT
+================================================== -->
 
 <script>
 
+/* ==================================================
+   SERVICE OPEN / CLOSE
+================================================== */
+
 function openService(id){
-var element=document.getElementById(id);
+
+const element = document.getElementById(id);
+
 if(!element){
 return;
 }
-if(element.style.display==="block"){
-element.style.display="none";
+
+if(element.style.display === "block"){
+
+element.style.display = "none";
+
 }else{
-element.style.display="block";
-}
-}
 
-function searchService(){
-var input=document.getElementById("searchBox").value.toUpperCase().trim();
-var services=document.getElementsByClassName("service");
+element.style.display = "block";
 
-for(var i=0;i<services.length;i++){
-var title=services[i].getElementsByClassName("service-title")[0];
-
-if(!title){
-continue;
 }
 
-if(title.innerHTML.toUpperCase().indexOf(input)>-1){
-services[i].style.display="block";
-}else{
-services[i].style.display="none";
-}
-}
 }
 
-document.getElementById("totalServices").innerHTML=
-document.getElementsByClassName("service-title").length;
 
-function openForm(){
-var form=document.getElementById("mobileForm");
+/* ==================================================
+   MODAL OPEN
+================================================== */
 
-if(!form){
+function openModal(id){
+
+const modal = document.getElementById(id);
+
+if(!modal){
 return;
 }
 
-form.style.display="flex";
+modal.style.display = "flex";
 
-form.setAttribute("aria-hidden","false");
+modal.setAttribute("aria-hidden","false");
 
 document.body.classList.add("modal-open");
+
 }
 
-function closeForm(){
-var form=document.getElementById("mobileForm");
 
-if(!form){
+/* ==================================================
+   MODAL CLOSE
+================================================== */
+
+function closeModal(id){
+
+const modal = document.getElementById(id);
+
+if(!modal){
 return;
 }
 
-form.style.display="none";
+modal.style.display = "none";
 
-form.setAttribute("aria-hidden","true");
+modal.setAttribute("aria-hidden","true");
 
 document.body.classList.remove("modal-open");
+
 }
+
+
+/* ==================================================
+   CLOSE MODAL BY CLICKING BACKDROP
+================================================== */
+
+document.querySelectorAll(".modal").forEach(function(modal){
+
+modal.addEventListener("click",function(event){
+
+if(event.target === modal){
+
+closeModal(modal.id);
+
+}
+
+});
+
+});
+
+
+/* ==================================================
+   ESC KEY CLOSE MODAL
+================================================== */
+
+document.addEventListener("keydown",function(event){
+
+if(event.key === "Escape"){
+
+document.querySelectorAll(".modal").forEach(function(modal){
+
+if(modal.style.display === "flex"){
+
+closeModal(modal.id);
+
+}
+
+});
+
+}
+
+});
+
+
+/* ==================================================
+   ERROR HELPER
+================================================== */
+
+function showError(inputId,errorId,message){
+
+const input = document.getElementById(inputId);
+
+const error = document.getElementById(errorId);
+
+if(input){
+
+input.classList.add("input-error");
+
+}
+
+if(error){
+
+error.textContent = message;
+
+}
+
+}
+
+
+/* ==================================================
+   CLEAR ERROR
+================================================== */
+
+function clearError(inputId,errorId){
+
+const input = document.getElementById(inputId);
+
+const error = document.getElementById(errorId);
+
+if(input){
+
+input.classList.remove("input-error");
+
+}
+
+if(error){
+
+error.textContent = "";
+
+}
+
+}
+
+
+/* ==================================================
+   SCROLL TO ERROR
+================================================== */
+
+function scrollToError(inputId){
+
+const input = document.getElementById(inputId);
+
+if(!input){
+return;
+}
+
+setTimeout(function(){
+
+input.scrollIntoView({
+
+behavior:"smooth",
+
+block:"center"
+
+});
+
+try{
+
+input.focus();
+
+}catch(e){}
+
+},100);
+
+}
+
+
+/* ==================================================
+   AADHAAR VALIDATION
+================================================== */
+
+function isValidAadhaar(value){
+
+return /^[0-9]{12}$/.test(value);
+
+}
+
+
+/* ==================================================
+   MOBILE VALIDATION
+================================================== */
+
+function isValidMobile(value){
+
+return /^[0-9]{10}$/.test(value);
+
+}
+
+
+/* ==================================================
+   PIN VALIDATION
+================================================== */
+
+function isValidPin(value){
+
+return /^[0-9]{6}$/.test(value);
+
+}
+
+
+/* ==================================================
+   CLEAR ALL SELF ADDRESS ERRORS
+================================================== */
+
+function clearSelfAddressErrors(){
+
+clearError("selfAadhaar","selfAadhaarError");
+
+clearError("selfMobile","selfMobileError");
+
+clearError("selfHouse","selfHouseError");
+
+clearError("selfRoad","selfRoadError");
+
+clearError("selfArea","selfAreaError");
+
+clearError("selfLandmark","selfLandmarkError");
+
+clearError("selfCity","selfCityError");
+
+clearError("selfPostOffice","selfPostOfficeError");
+
+clearError("selfDistrict","selfDistrictError");
+
+clearError("selfState","selfStateError");
+
+clearError("selfPin","selfPinError");
+
+clearError("selfProof","selfProofError");
+
+clearError("selfOtherDocument","selfOtherDocumentError");
+
+clearError("selfProofFile","selfProofFileError");
+
+}
+
+
+/* ==================================================
+   CLEAR ALL HOF ERRORS
+================================================== */
+
+function clearHofErrors(){
+
+clearError(
+"hofApplicantAadhaar",
+"hofApplicantAadhaarError"
+);
+
+clearError(
+"hofApplicantMobile",
+"hofApplicantMobileError"
+);
+
+clearError(
+"hofName",
+"hofNameError"
+);
+
+clearError(
+"hofAadhaar",
+"hofAadhaarError"
+);
+
+clearError(
+"hofMobile",
+"hofMobileError"
+);
+
+clearError(
+"hofRelationship",
+"hofRelationshipError"
+);
+
+clearError(
+"hofOtherRelationship",
+"hofOtherRelationshipError"
+);
+
+}
+
+
+/* ==================================================
+   SELF DOCUMENTS — OTHER LOGIC
+================================================== */
+
+function handleSelfProof(){
+
+const proof =
+document.getElementById("selfProof");
+
+const otherBox =
+document.getElementById("selfOtherBox");
+
+const otherInput =
+document.getElementById("selfOtherDocument");
+
+const value = proof.value;
+
+
+/* OTHER SELECTED */
+
+if(value === "Other"){
+
+otherBox.style.display = "block";
+
+}else{
+
+otherBox.style.display = "none";
+
+otherInput.value = "";
+
+clearError(
+"selfOtherDocument",
+"selfOtherDocumentError"
+);
+
+}
+
+clearError(
+"selfProof",
+"selfProofError"
+);
+
+}
+
+
+/* ==================================================
+   HOF — OTHER RELATIONSHIP LOGIC
+================================================== */
+
+function handleHofRelationship(){
+
+const relationship =
+document.getElementById("hofRelationship");
+
+const otherBox =
+document.getElementById("hofOtherRelationshipBox");
+
+const otherInput =
+document.getElementById("hofOtherRelationship");
+
+const value = relationship.value;
+
+
+/* OTHER SELECTED */
+
+if(value === "Other"){
+
+otherBox.style.display = "block";
+
+}else{
+
+otherBox.style.display = "none";
+
+otherInput.value = "";
+
+clearError(
+"hofOtherRelationship",
+"hofOtherRelationshipError"
+);
+
+}
+
+clearError(
+"hofRelationship",
+"hofRelationshipError"
+);
+
+}
+
+
+/* ==================================================
+   ALLOW ONLY NUMBERS — AADHAAR / MOBILE / PIN
+================================================== */
+
+document.addEventListener("input",function(event){
+
+const id = event.target.id;
+
+if(
+
+id === "selfAadhaar" ||
+id === "selfMobile" ||
+id === "selfPin" ||
+id === "hofApplicantAadhaar" ||
+id === "hofApplicantMobile" ||
+id === "hofAadhaar" ||
+id === "hofMobile"
+
+){
+
+event.target.value =
+event.target.value.replace(/\D/g,"");
+
+}
+
+});
+
+
+/* ==================================================
+   TOTAL SERVICES
+================================================== */
+
+function updateTotalServices(){
+
+const services =
+document.querySelectorAll(".service-title");
+
+const total =
+document.getElementById("totalServices");
+
+if(total){
+
+total.textContent = services.length;
+
+}
+
+}
+
+
+/* ==================================================
+   SEARCH SERVICES
+================================================== */
+
+function searchService(){
+
+const searchBox =
+document.getElementById("searchBox");
+
+if(!searchBox){
+return;
+}
+
+const searchValue =
+searchBox.value.toLowerCase().trim();
+
+const services =
+document.querySelectorAll(".service-title");
+
+services.forEach(function(service){
+
+const text =
+service.textContent.toLowerCase();
+
+const parent =
+service.closest(".service");
+
+if(!parent){
+return;
+}
+
+if(text.includes(searchValue)){
+
+parent.style.display = "block";
+
+}else{
+
+parent.style.display = "none";
+
+}
+
+});
+
+}
+
+
+/* ==================================================
+   INITIALIZE TOTAL SERVICES
+================================================== */
+
+document.addEventListener(
+"DOMContentLoaded",
+function(){
+
+updateTotalServices();
+
+}
+);
+
+</script>
+
+ <script>
+
+/* ==================================================
+   SELF DOCUMENTS — VALIDATION
+================================================== */
+
+function validateSelfAddress(){
+
+clearSelfAddressErrors();
+
+let firstError = null;
+
+
+/* AADHAAR */
+
+const selfAadhaar =
+document.getElementById("selfAadhaar").value.trim();
+
+if(selfAadhaar === ""){
+
+showError(
+"selfAadhaar",
+"selfAadhaarError",
+"Please enter your Aadhaar Number."
+);
+
+if(!firstError) firstError = "selfAadhaar";
+
+}
+else if(!isValidAadhaar(selfAadhaar)){
+
+showError(
+"selfAadhaar",
+"selfAadhaarError",
+"Enter a valid 12-digit Aadhaar Number."
+);
+
+if(!firstError) firstError = "selfAadhaar";
+
+}
+
+
+/* MOBILE */
+
+const selfMobile =
+document.getElementById("selfMobile").value.trim();
+
+if(selfMobile === ""){
+
+showError(
+"selfMobile",
+"selfMobileError",
+"Please enter your Aadhaar Linked Mobile Number."
+);
+
+if(!firstError) firstError = "selfMobile";
+
+}
+else if(!isValidMobile(selfMobile)){
+
+showError(
+"selfMobile",
+"selfMobileError",
+"Please enter a valid 10-digit Mobile Number."
+);
+
+if(!firstError) firstError = "selfMobile";
+
+}
+
+
+/* HOUSE */
+
+const selfHouse =
+document.getElementById("selfHouse").value.trim();
+
+if(selfHouse === ""){
+
+showError(
+"selfHouse",
+"selfHouseError",
+"Please enter your House / Building."
+);
+
+if(!firstError) firstError = "selfHouse";
+
+}
+
+
+/* ROAD */
+
+const selfRoad =
+document.getElementById("selfRoad").value.trim();
+
+if(selfRoad === ""){
+
+showError(
+"selfRoad",
+"selfRoadError",
+"Please enter your Road / Street."
+);
+
+if(!firstError) firstError = "selfRoad";
+
+}
+
+
+/* AREA */
+
+const selfArea =
+document.getElementById("selfArea").value.trim();
+
+if(selfArea === ""){
+
+showError(
+"selfArea",
+"selfAreaError",
+"Please enter your Area / Locality."
+);
+
+if(!firstError) firstError = "selfArea";
+
+}
+
+
+/* LANDMARK */
+
+const selfLandmark =
+document.getElementById("selfLandmark").value.trim();
+
+if(selfLandmark === ""){
+
+showError(
+"selfLandmark",
+"selfLandmarkError",
+"Please enter your Landmark."
+);
+
+if(!firstError) firstError = "selfLandmark";
+
+}
+
+
+/* CITY */
+
+const selfCity =
+document.getElementById("selfCity").value.trim();
+
+if(selfCity === ""){
+
+showError(
+"selfCity",
+"selfCityError",
+"Please enter your Village / Town / City."
+);
+
+if(!firstError) firstError = "selfCity";
+
+}
+
+
+/* POST OFFICE */
+
+const selfPostOffice =
+document.getElementById("selfPostOffice").value.trim();
+
+if(selfPostOffice === ""){
+
+showError(
+"selfPostOffice",
+"selfPostOfficeError",
+"Please enter your Post Office."
+);
+
+if(!firstError) firstError = "selfPostOffice";
+
+}
+
+
+/* DISTRICT */
+
+const selfDistrict =
+document.getElementById("selfDistrict").value.trim();
+
+if(selfDistrict === ""){
+
+showError(
+"selfDistrict",
+"selfDistrictError",
+"Please enter your District."
+);
+
+if(!firstError) firstError = "selfDistrict";
+
+}
+
+
+/* STATE */
+
+const selfState =
+document.getElementById("selfState").value.trim();
+
+if(selfState === ""){
+
+showError(
+"selfState",
+"selfStateError",
+"Please enter your State."
+);
+
+if(!firstError) firstError = "selfState";
+
+}
+
+
+/* PIN */
+
+const selfPin =
+document.getElementById("selfPin").value.trim();
+
+if(selfPin === ""){
+
+showError(
+"selfPin",
+"selfPinError",
+"Please enter your PIN Code."
+);
+
+if(!firstError) firstError = "selfPin";
+
+}
+else if(!isValidPin(selfPin)){
+
+showError(
+"selfPin",
+"selfPinError",
+"Enter a valid 6-digit PIN Code."
+);
+
+if(!firstError) firstError = "selfPin";
+
+}
+
+
+/* ADDRESS PROOF */
+
+const selfProof =
+document.getElementById("selfProof").value;
+
+if(selfProof === ""){
+
+showError(
+"selfProof",
+"selfProofError",
+"Please select your Address Proof."
+);
+
+if(!firstError) firstError = "selfProof";
+
+}
+
+
+/* OTHER DOCUMENT */
+
+if(selfProof === "Other"){
+
+const otherDocument =
+document.getElementById("selfOtherDocument").value.trim();
+
+if(otherDocument === ""){
+
+showError(
+"selfOtherDocument",
+"selfOtherDocumentError",
+"Please enter the name of your address proof."
+);
+
+if(!firstError) firstError = "selfOtherDocument";
+
+}
+
+}
+
+
+/* FILE */
+
+const proofFile =
+document.getElementById("selfProofFile").files[0];
+
+if(!proofFile){
+
+showError(
+"selfProofFile",
+"selfProofFileError",
+"Please choose your Address Proof file."
+);
+
+if(!firstError) firstError = "selfProofFile";
+
+}
+
+
+/* SCROLL TO FIRST ERROR */
+
+if(firstError){
+
+scrollToError(firstError);
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   HOF BASED — VALIDATION
+================================================== */
+
+function validateHofAddress(){
+
+clearHofErrors();
+
+let firstError = null;
+
+
+/* APPLICANT AADHAAR */
+
+const applicantAadhaar =
+document.getElementById("hofApplicantAadhaar")
+.value.trim();
+
+if(applicantAadhaar === ""){
+
+showError(
+"hofApplicantAadhaar",
+"hofApplicantAadhaarError",
+"Please enter your Aadhaar Number."
+);
+
+if(!firstError)
+firstError = "hofApplicantAadhaar";
+
+}
+else if(!isValidAadhaar(applicantAadhaar)){
+
+showError(
+"hofApplicantAadhaar",
+"hofApplicantAadhaarError",
+"Enter a valid 12-digit Aadhaar Number."
+);
+
+if(!firstError)
+firstError = "hofApplicantAadhaar";
+
+}
+
+
+/* APPLICANT MOBILE */
+
+const applicantMobile =
+document.getElementById("hofApplicantMobile")
+.value.trim();
+
+if(applicantMobile === ""){
+
+showError(
+"hofApplicantMobile",
+"hofApplicantMobileError",
+"Please enter your Aadhaar Linked Mobile Number."
+);
+
+if(!firstError)
+firstError = "hofApplicantMobile";
+
+}
+else if(!isValidMobile(applicantMobile)){
+
+showError(
+"hofApplicantMobile",
+"hofApplicantMobileError",
+"Please enter a valid 10-digit Mobile Number."
+);
+
+if(!firstError)
+firstError = "hofApplicantMobile";
+
+}
+
+
+/* HOF NAME */
+
+const hofName =
+document.getElementById("hofName")
+.value.trim();
+
+if(hofName === ""){
+
+showError(
+"hofName",
+"hofNameError",
+"Please enter the HoF Name."
+);
+
+if(!firstError)
+firstError = "hofName";
+
+}
+
+
+/* HOF AADHAAR */
+
+const hofAadhaar =
+document.getElementById("hofAadhaar")
+.value.trim();
+
+if(hofAadhaar === ""){
+
+showError(
+"hofAadhaar",
+"hofAadhaarError",
+"Please enter the HoF Aadhaar Number."
+);
+
+if(!firstError)
+firstError = "hofAadhaar";
+
+}
+else if(!isValidAadhaar(hofAadhaar)){
+
+showError(
+"hofAadhaar",
+"hofAadhaarError",
+"Enter a valid 12-digit HoF Aadhaar Number."
+);
+
+if(!firstError)
+firstError = "hofAadhaar";
+
+}
+
+
+/* HOF MOBILE */
+
+const hofMobile =
+document.getElementById("hofMobile")
+.value.trim();
+
+if(hofMobile === ""){
+
+showError(
+"hofMobile",
+"hofMobileError",
+"Please enter the HoF Aadhaar Linked Mobile Number."
+);
+
+if(!firstError)
+firstError = "hofMobile";
+
+}
+else if(!isValidMobile(hofMobile)){
+
+showError(
+"hofMobile",
+"hofMobileError",
+"Please enter a valid 10-digit HoF Mobile Number."
+);
+
+if(!firstError)
+firstError = "hofMobile";
+
+}
+
+
+/* RELATIONSHIP */
+
+const relationship =
+document.getElementById("hofRelationship")
+.value;
+
+if(relationship === ""){
+
+showError(
+"hofRelationship",
+"hofRelationshipError",
+"Please select your Relationship with HoF."
+);
+
+if(!firstError)
+firstError = "hofRelationship";
+
+}
+
+
+/* OTHER RELATIONSHIP */
+
+if(relationship === "Other"){
+
+const otherRelationship =
+document.getElementById("hofOtherRelationship")
+.value.trim();
+
+if(otherRelationship === ""){
+
+showError(
+"hofOtherRelationship",
+"hofOtherRelationshipError",
+"Please enter your relationship with HoF."
+);
+
+if(!firstError)
+firstError = "hofOtherRelationship";
+
+}
+
+}
+
+
+/* SCROLL TO FIRST ERROR */
+
+if(firstError){
+
+scrollToError(firstError);
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   CLEAR SELF ERROR WHEN USER STARTS CORRECTING
+================================================== */
+
+document.addEventListener("input",function(event){
+
+const id = event.target.id;
+
+const errorMap = {
+
+selfAadhaar:
+"selfAadhaarError",
+
+selfMobile:
+"selfMobileError",
+
+selfHouse:
+"selfHouseError",
+
+selfRoad:
+"selfRoadError",
+
+selfArea:
+"selfAreaError",
+
+selfLandmark:
+"selfLandmarkError",
+
+selfCity:
+"selfCityError",
+
+selfPostOffice:
+"selfPostOfficeError",
+
+selfDistrict:
+"selfDistrictError",
+
+selfState:
+"selfStateError",
+
+selfPin:
+"selfPinError",
+
+selfOtherDocument:
+"selfOtherDocumentError",
+
+hofApplicantAadhaar:
+"hofApplicantAadhaarError",
+
+hofApplicantMobile:
+"hofApplicantMobileError",
+
+hofName:
+"hofNameError",
+
+hofAadhaar:
+"hofAadhaarError",
+
+hofMobile:
+"hofMobileError",
+
+hofOtherRelationship:
+"hofOtherRelationshipError"
+
+};
+
+if(errorMap[id]){
+
+clearError(
+id,
+errorMap[id]
+);
+
+}
+
+});
+
+
+/* ==================================================
+   CLEAR SELECT ERRORS
+================================================== */
+
+document.addEventListener("change",function(event){
+
+if(event.target.id === "selfProof"){
+
+clearError(
+"selfProof",
+"selfProofError"
+);
+
+}
+
+if(event.target.id === "hofRelationship"){
+
+clearError(
+"hofRelationship",
+"hofRelationshipError"
+);
+
+}
+
+});
+
+
+/* ==================================================
+   SELF FILE CHANGE
+================================================== */
+
+document.getElementById(
+"selfProofFile"
+).addEventListener(
+"change",
+function(){
+
+clearError(
+"selfProofFile",
+"selfProofFileError"
+);
+
+const success =
+document.getElementById("selfProofSuccess");
+
+if(success){
+
+success.textContent = "";
+
+}
+
+}
+);
+
+
+/* ==================================================
+   HOF VALIDATION READY
+================================================== */
+
+console.log(
+"Self Documents and HoF validation loaded successfully."
+);
+
+ </script> 
+
+<script>
+
+/* ==================================================
+   MOBILE NUMBER UPDATE — VALIDATION
+================================================== */
+
+function validateMobileForm(){
+
+clearError("mobileNumber","mobileError");
+clearError("aadhaarNumber","aadhaarError");
+
+let firstError = null;
+
+
+/* MOBILE NUMBER */
+
+const mobile =
+document.getElementById("mobileNumber")
+.value.trim();
+
+const aadhaar =
+document.getElementById("aadhaarNumber")
+.value.trim();
+
+
+/* ==================================================
+   SPECIAL SUBMIT CONDITION
+================================================== */
+
+/*
+   Submit will work if:
+
+   1. Both Aadhaar + Mobile are filled correctly
+
+   OR
+
+   2. Aadhaar + Mobile are empty,
+      but Question / Message contains something
+
+   Otherwise validation will stop submission.
+*/
+
+
+const remarks =
+document.getElementById("remarks")
+.value.trim();
+
+
+/* ==================================================
+   CASE 1 — BOTH EMPTY + MESSAGE PRESENT
+================================================== */
+
+if(
+mobile === "" &&
+aadhaar === "" &&
+remarks !== ""
+){
+
+return true;
+
+}
+
+
+/* ==================================================
+   MOBILE VALIDATION
+================================================== */
+
+if(mobile === ""){
+
+showError(
+"mobileNumber",
+"mobileError",
+"Please enter your Aadhaar Linked Mobile Number."
+);
+
+if(!firstError){
+
+firstError = "mobileNumber";
+
+}
+
+}
+else if(!isValidMobile(mobile)){
+
+showError(
+"mobileNumber",
+"mobileError",
+"Please enter a valid 10-digit Mobile Number."
+);
+
+if(!firstError){
+
+firstError = "mobileNumber";
+
+}
+
+}
+
+
+/* ==================================================
+   AADHAAR VALIDATION
+================================================== */
+
+if(aadhaar === ""){
+
+showError(
+"aadhaarNumber",
+"aadhaarError",
+"Please enter your Aadhaar Number."
+);
+
+if(!firstError){
+
+firstError = "aadhaarNumber";
+
+}
+
+}
+else if(!isValidAadhaar(aadhaar)){
+
+showError(
+"aadhaarNumber",
+"aadhaarError",
+"Enter a valid 12-digit Aadhaar Number."
+);
+
+if(!firstError){
+
+firstError = "aadhaarNumber";
+
+}
+
+}
+
+
+/* ==================================================
+   SCROLL TO FIRST ERROR
+================================================== */
+
+if(firstError){
+
+scrollToError(firstError);
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   MOBILE FORM — FILE UPLOAD
+================================================== */
 
 function uploadAadhaarFile(){
 
-var file=document.getElementById("aadhaarFile").files[0];
-var error=document.getElementById("fileError");
+const fileInput =
+document.getElementById("aadhaarFile");
 
-error.innerHTML="";
+const fileError =
+document.getElementById("fileError");
 
-if(!file){
-error.innerHTML="Please choose a file.";
+
+if(fileError){
+
+fileError.textContent = "";
+
+}
+
+
+if(!fileInput.files.length){
+
+if(fileError){
+
+fileError.textContent =
+"Please choose an Aadhaar file.";
+
+}
+
+return false;
+
+}
+
+
+const file =
+fileInput.files[0];
+
+
+/* ==================================================
+   ALLOWED FILE TYPES
+================================================== */
+
+const allowedTypes = [
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+
+if(!allowedTypes.includes(file.type)){
+
+if(fileError){
+
+fileError.textContent =
+"Only JPG, PNG or PDF files are allowed.";
+
+}
+
+fileInput.classList.add("input-error");
+
+return false;
+
+}
+
+
+fileInput.classList.remove("input-error");
+
+
+if(fileError){
+
+fileError.style.color = "green";
+
+fileError.textContent =
+"File selected successfully.";
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   MOBILE NUMBER UPDATE — WHATSAPP
+================================================== */
+
+function sendMobileWhatsApp(){
+
+/* ==================================================
+   VALIDATE FORM
+================================================== */
+
+if(!validateMobileForm()){
+
 return;
-}
-
-if(file.size<50*1024){
-error.innerHTML="File size must be at least 50 KB.";
-return;
-}
-
-error.innerHTML="File selected successfully.";
-}
-
-function sendWhatsApp(){
-
-var name=document.getElementById("fullName").value.trim();
-var mobile=document.getElementById("mobileNumber").value.trim();
-var aadhaar=document.getElementById("aadhaarNumber").value.trim();
-var village=document.getElementById("village").value.trim();
-var state=document.getElementById("state").value.trim();
-var remarks=document.getElementById("remarks").value.trim();
-
-document.getElementById("mobileError").innerHTML="";
-document.getElementById("aadhaarError").innerHTML="";
-
-document.getElementById("mobileNumber").style.border="1px solid #ccc";
-document.getElementById("aadhaarNumber").style.border="1px solid #ccc";
-
-if(mobile==="" && aadhaar===""){
-
-if(remarks===""){
-alert("Please enter Mobile & Aadhaar or write your Question / Message.");
-return;
-}
-
-}else{
-
-if(!/^[6-9]\d{9}$/.test(mobile)){
-
-document.getElementById("mobileError").innerHTML=
-"Enter a valid 10-digit Mobile Number.";
-
-document.getElementById("mobileNumber").scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-document.getElementById("mobileNumber").style.border=
-"2px solid red";
-
-return;
-}
-
-if(!/^\d{12}$/.test(aadhaar)){
-
-document.getElementById("aadhaarError").innerHTML=
-"Enter a valid 12-digit Aadhaar Number.";
-
-document.getElementById("aadhaarNumber").scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-document.getElementById("aadhaarNumber").style.border=
-"2px solid red";
-
-return;
-}
 
 }
 
-var message=
-"Mobile Number Update%0A%0A"+
-"Full Name: "+name+"%0A%0A"+
-"Mobile: "+(mobile||"Not Provided")+"%0A%0A"+
-"Aadhaar: "+(aadhaar||"Not Provided")+"%0A%0A"+
-"Village/Town: "+village+"%0A%0A"+
-"State: "+state+"%0A%0A"+
-"Question/Message: "+remarks;
+
+/* ==================================================
+   GET VALUES
+================================================== */
+
+const fullName =
+document.getElementById("fullName")
+.value.trim();
+
+const mobile =
+document.getElementById("mobileNumber")
+.value.trim();
+
+const aadhaar =
+document.getElementById("aadhaarNumber")
+.value.trim();
+
+const village =
+document.getElementById("village")
+.value.trim();
+
+const state =
+document.getElementById("state")
+.value.trim();
+
+const remarks =
+document.getElementById("remarks")
+.value.trim();
+
+
+/* ==================================================
+   FILE INFORMATION
+================================================== */
+
+const fileInput =
+document.getElementById("aadhaarFile");
+
+let fileName = "";
+
+if(
+fileInput &&
+fileInput.files.length
+){
+
+fileName =
+fileInput.files[0].name;
+
+}
+
+
+/* ==================================================
+   WHATSAPP MESSAGE
+================================================== */
+
+let message =
+"KHIDMAT-E-KHALQ OFFICE%0A" +
+"--------------------------------%0A" +
+"Service: Aadhaar Mobile Number Update%0A%0A";
+
+
+if(fullName){
+
+message +=
+"Full Name: " +
+encodeURIComponent(fullName) +
+"%0A";
+
+}
+
+
+if(mobile){
+
+message +=
+"Aadhaar Linked Mobile: " +
+encodeURIComponent(mobile) +
+"%0A";
+
+}
+
+
+if(aadhaar){
+
+message +=
+"Aadhaar Number: " +
+encodeURIComponent(aadhaar) +
+"%0A";
+
+}
+
+
+if(village){
+
+message +=
+"Village / Town: " +
+encodeURIComponent(village) +
+"%0A";
+
+}
+
+
+if(state){
+
+message +=
+"State: " +
+encodeURIComponent(state) +
+"%0A";
+
+}
+
+
+if(fileName){
+
+message +=
+"Aadhaar File: " +
+encodeURIComponent(fileName) +
+"%0A";
+
+}
+
+
+if(remarks){
+
+message +=
+"%0AQuestion / Message:%0A" +
+encodeURIComponent(remarks) +
+"%0A";
+
+}
+
+
+message +=
+"%0A--------------------------------%0A" +
+"Please assist me with this service.";
+
+
+/* ==================================================
+   WHATSAPP NUMBER
+================================================== */
+
+const whatsappNumber =
+"916361634389";
+
+
+/* ==================================================
+   OPEN WHATSAPP
+================================================== */
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
 
 window.open(
-"https://wa.me/916361634389?text="+message,
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+/* ==================================================
+   SELF DOCUMENTS — WHATSAPP
+================================================== */
+
+function sendSelfAddressWhatsApp(){
+
+/* ==================================================
+   VALIDATE
+================================================== */
+
+if(!validateSelfAddress()){
+
+return;
+
+}
+
+
+/* ==================================================
+   GET VALUES
+================================================== */
+
+const fullName =
+document.getElementById("selfFullName")
+.value.trim();
+
+const aadhaar =
+document.getElementById("selfAadhaar")
+.value.trim();
+
+const mobile =
+document.getElementById("selfMobile")
+.value.trim();
+
+const house =
+document.getElementById("selfHouse")
+.value.trim();
+
+const road =
+document.getElementById("selfRoad")
+.value.trim();
+
+const area =
+document.getElementById("selfArea")
+.value.trim();
+
+const landmark =
+document.getElementById("selfLandmark")
+.value.trim();
+
+const city =
+document.getElementById("selfCity")
+.value.trim();
+
+const postOffice =
+document.getElementById("selfPostOffice")
+.value.trim();
+
+const district =
+document.getElementById("selfDistrict")
+.value.trim();
+
+const state =
+document.getElementById("selfState")
+.value.trim();
+
+const pin =
+document.getElementById("selfPin")
+.value.trim();
+
+const proof =
+document.getElementById("selfProof")
+.value;
+
+const otherProof =
+document.getElementById("selfOtherDocument")
+.value.trim();
+
+const remarks =
+document.getElementById("selfRemarks")
+.value.trim();
+
+
+/* ==================================================
+   ADDRESS PROOF NAME
+================================================== */
+
+let proofName = proof;
+
+if(proof === "Other"){
+
+proofName = otherProof;
+
+}
+
+
+/* ==================================================
+   FILE NAME
+================================================== */
+
+const fileInput =
+document.getElementById("selfProofFile");
+
+let fileName = "";
+
+if(
+fileInput &&
+fileInput.files.length
+){
+
+fileName =
+fileInput.files[0].name;
+
+}
+
+
+/* ==================================================
+   WHATSAPP MESSAGE
+================================================== */
+
+let message =
+"KHIDMAT-E-KHALQ OFFICE%0A" +
+"--------------------------------%0A" +
+"Service: Aadhaar Address Update – Self Documents%0A%0A";
+
+
+if(fullName){
+
+message +=
+"Full Name: " +
+encodeURIComponent(fullName) +
+"%0A";
+
+}
+
+
+message +=
+"Aadhaar Number: " +
+encodeURIComponent(aadhaar) +
+"%0A" +
+"Aadhaar Linked Mobile: " +
+encodeURIComponent(mobile) +
+"%0A%0A";
+
+
+message +=
+"NEW ADDRESS DETAILS%0A" +
+"House / Building: " +
+encodeURIComponent(house) +
+"%0A" +
+"Road / Street: " +
+encodeURIComponent(road) +
+"%0A" +
+"Area / Locality: " +
+encodeURIComponent(area) +
+"%0A" +
+"Landmark: " +
+encodeURIComponent(landmark) +
+"%0A" +
+"Village / Town / City: " +
+encodeURIComponent(city) +
+"%0A" +
+"Post Office: " +
+encodeURIComponent(postOffice) +
+"%0A" +
+"District: " +
+encodeURIComponent(district) +
+"%0A" +
+"State: " +
+encodeURIComponent(state) +
+"%0A" +
+"PIN Code: " +
+encodeURIComponent(pin) +
+"%0A%0A";
+
+
+message +=
+"Address Proof: " +
+encodeURIComponent(proofName) +
+"%0A";
+
+
+if(fileName){
+
+message +=
+"Address Proof File: " +
+encodeURIComponent(fileName) +
+"%0A";
+
+}
+
+
+if(remarks){
+
+message +=
+"%0AQuestion / Message:%0A" +
+encodeURIComponent(remarks) +
+"%0A";
+
+}
+
+
+message +=
+"%0A--------------------------------%0A" +
+"Please assist me with this service.";
+
+
+/* ==================================================
+   WHATSAPP
+================================================== */
+
+const whatsappNumber =
+"916361634389";
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+window.open(
+whatsappURL,
 "_blank"
 );
 
@@ -825,5 +3796,343 @@ window.open(
 
 </script>
 
+<!-- ==================================================
+     HOF BASED — WHATSAPP SUBMIT
+================================================== -->
+
+<script>
+
+function sendHofAddressWhatsApp(){
+
+/* ==================================================
+   VALIDATE FORM
+================================================== */
+
+if(!validateHofAddress()){
+
+return;
+
+}
+
+
+/* ==================================================
+   GET VALUES
+================================================== */
+
+const applicantAadhaar =
+document.getElementById("hofApplicantAadhaar")
+.value.trim();
+
+const applicantMobile =
+document.getElementById("hofApplicantMobile")
+.value.trim();
+
+const hofName =
+document.getElementById("hofName")
+.value.trim();
+
+const hofAadhaar =
+document.getElementById("hofAadhaar")
+.value.trim();
+
+const hofMobile =
+document.getElementById("hofMobile")
+.value.trim();
+
+const relationship =
+document.getElementById("hofRelationship")
+.value;
+
+const otherRelationship =
+document.getElementById("hofOtherRelationship")
+.value.trim();
+
+
+/* ==================================================
+   RELATIONSHIP NAME
+================================================== */
+
+let relationshipName = relationship;
+
+if(relationship === "Other"){
+
+relationshipName = otherRelationship;
+
+}
+
+
+/* ==================================================
+   WHATSAPP MESSAGE
+================================================== */
+
+let message =
+"KHIDMAT-E-KHALQ OFFICE%0A" +
+"--------------------------------%0A" +
+"Service: Aadhaar Address Update – HoF Based%0A%0A";
+
+
+message +=
+"APPLICANT DETAILS%0A" +
+"Aadhaar Number: " +
+encodeURIComponent(applicantAadhaar) +
+"%0A" +
+"Aadhaar Linked Mobile: " +
+encodeURIComponent(applicantMobile) +
+"%0A%0A";
+
+
+message +=
+"HEAD OF FAMILY (HoF) DETAILS%0A" +
+"HoF Name: " +
+encodeURIComponent(hofName) +
+"%0A" +
+"HoF Aadhaar Number: " +
+encodeURIComponent(hofAadhaar) +
+"%0A" +
+"HoF Aadhaar Linked Mobile: " +
+encodeURIComponent(hofMobile) +
+"%0A" +
+"Relationship with HoF: " +
+encodeURIComponent(relationshipName) +
+"%0A%0A";
+
+
+message +=
+"Please assist me with the HoF Based Aadhaar Address Update service.";
+
+
+/* ==================================================
+   WHATSAPP NUMBER
+================================================== */
+
+const whatsappNumber =
+"916361634389";
+
+
+/* ==================================================
+   OPEN WHATSAPP
+================================================== */
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+/* ==================================================
+   FILE UPLOAD — SELF ADDRESS PROOF
+================================================== */
+
+function uploadSelfProof(){
+
+const fileInput =
+document.getElementById("selfProofFile");
+
+const error =
+document.getElementById("selfProofFileError");
+
+const success =
+document.getElementById("selfProofSuccess");
+
+
+/* CLEAR PREVIOUS */
+
+if(error){
+
+error.textContent = "";
+
+}
+
+if(success){
+
+success.textContent = "";
+
+}
+
+
+if(!fileInput.files.length){
+
+showError(
+"selfProofFile",
+"selfProofFileError",
+"Please choose your Address Proof file."
+);
+
+return false;
+
+}
+
+
+const file =
+fileInput.files[0];
+
+
+/* ==================================================
+   ALLOWED FILE TYPES
+================================================== */
+
+const allowedTypes = [
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+
+if(!allowedTypes.includes(file.type)){
+
+showError(
+"selfProofFile",
+"selfProofFileError",
+"Only JPG, PNG or PDF files are allowed."
+);
+
+return false;
+
+}
+
+
+/* ==================================================
+   SUCCESS
+================================================== */
+
+fileInput.classList.remove("input-error");
+
+if(success){
+
+success.textContent =
+"File selected successfully.";
+
+}
+
+return true;
+
+}
+
+
+/* ==================================================
+   CLOSE ALL MODALS AFTER SUCCESSFUL SUBMISSION
+================================================== */
+
+function closeAllModals(){
+
+document.querySelectorAll(".modal").forEach(
+function(modal){
+
+modal.style.display = "none";
+
+modal.setAttribute(
+"aria-hidden",
+"true"
+);
+
+}
+);
+
+document.body.classList.remove(
+"modal-open"
+);
+
+}
+
+</script>
+
+
+<!-- ==================================================
+     FOOTER
+================================================== -->
+
+<footer>
+
+<h2>
+KHIDMAT-E-KHALQ OFFICE
+</h2>
+
+<p>
+CSC & Online Services
+</p>
+
+<p>
+📱 WhatsApp:
+<strong>6361634389</strong>
+</p>
+
+<p>
+📧 Email:
+<strong>hafizyasiransari4@gmail.com</strong>
+</p>
+
+<p>
+📸 Instagram:
+<strong>@khidmatekhalq_csc_2026</strong>
+</p>
+
+<p>
+© 2026 KHIDMAT-E-KHALQ OFFICE. All Rights Reserved.
+</p>
+
+</footer>
+
+
+<!-- ==================================================
+     FLOATING CONTACT BUTTONS
+================================================== -->
+
+<div class="floating-contact">
+
+
+<div class="help-bubble">
+Need Help? Contact Us
+</div>
+
+
+<!-- WHATSAPP -->
+
+<a
+href="https://wa.me/916361634389"
+target="_blank"
+rel="noopener noreferrer"
+class="float-btn whatsapp"
+aria-label="Contact us on WhatsApp"
+>
+
+<i class="fab fa-whatsapp"></i>
+
+</a>
+
+
+<!-- INSTAGRAM -->
+
+<a
+href="https://www.instagram.com/khidmatekhalq_csc_2026/"
+target="_blank"
+rel="noopener noreferrer"
+class="float-btn instagram"
+aria-label="Visit our Instagram"
+>
+
+<i class="fab fa-instagram"></i>
+
+</a>
+
+
+</div>
+
+
+<!-- ==================================================
+     FINAL PAGE CLOSE
+================================================== -->
+
 </body>
+
 </html>
+
+
+  
