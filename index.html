@@ -2143,53 +2143,82 @@ error.textContent = "";
 ================================================== */
 
 function scrollToError(inputId){
-
 const input = document.getElementById(inputId);
-
 if(!input){
 return;
 }
-
+   
 setTimeout(function(){
-
 input.scrollIntoView({
-
 behavior:"smooth",
-
 block:"center"
-
 });
 
 try{
-
 input.focus();
-
 }catch(e){}
-
 },100);
-
 }
-
 
 /* ==================================================
    AADHAAR VALIDATION
 ================================================== */
 
 function isValidAadhaar(value){
-
 return /^[0-9]{12}$/.test(value);
-
 }
-
 
 /* ==================================================
    MOBILE VALIDATION
 ================================================== */
 
-function isValidMobile(value){
-   
-return /^[6-9][0-9]{9}$/.test(value);
-   
+function isValidMobile(value){   
+return /^[6-9][0-9]{9}$/.test(value);  
+}
+
+function validateMobileNumber(){
+
+const mobile =
+document.getElementById("mobileNumber").value.trim();
+
+const error =
+document.getElementById("mobileSubmitError");
+
+const input =
+document.getElementById("mobileNumber");
+
+input.classList.remove("input-error");
+
+error.textContent = "";
+
+if(mobile === ""){
+
+input.classList.add("input-error");
+
+error.textContent =
+"Please enter your Aadhaar Linked Mobile Number.";
+
+input.focus();
+
+return false;
+
+}
+
+if(!isValidMobile(mobile)){
+
+input.classList.add("input-error");
+
+error.textContent =
+"Please enter a valid 10-digit Indian Mobile Number starting with 6, 7, 8 or 9.";
+
+input.focus();
+
+return false;
+
+}
+
+return true;
+
 }
 
 /* ==================================================
