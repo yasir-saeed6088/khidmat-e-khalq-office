@@ -3417,19 +3417,18 @@ fileError.style.color = "green";
 
 fileError.textContent =
 "File selected successfully.";
-
+   
 }
-
+   
 return true;
-
 }
-
 
 /* ==================================================
    MOBILE NUMBER UPDATE — WHATSAPP
 ================================================== */
 
 function sendMobileWhatsApp(){
+if(!validateMobileNumber()) return;
 
 /* ==================================================
    VALIDATE FORM
