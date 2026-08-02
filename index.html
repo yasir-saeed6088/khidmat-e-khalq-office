@@ -3410,11 +3410,8 @@ return true;
 ================================================== */
 
 function sendMobileWhatsApp(){
-if(!validateMobileNumber()) return;
 
-/* ==================================================
-   VALIDATE FORM
-================================================== */
+if(!validateMobileNumber()) return;
 
 if(!validateMobileForm()){
 
@@ -3428,28 +3425,22 @@ return;
 ================================================== */
 
 const fullName =
-document.getElementById("fullName")
-.value.trim();
+document.getElementById("fullName").value.trim();
 
 const mobile =
-document.getElementById("mobileNumber")
-.value.trim();
+document.getElementById("mobileNumber").value.trim();
 
 const aadhaar =
-document.getElementById("aadhaarNumber")
-.value.trim();
+document.getElementById("aadhaarNumber").value.trim();
 
 const village =
-document.getElementById("village")
-.value.trim();
+document.getElementById("village").value.trim();
 
 const state =
-document.getElementById("state")
-.value.trim();
+document.getElementById("state").value.trim();
 
 const remarks =
-document.getElementById("remarks")
-.value.trim();
+document.getElementById("remarks").value.trim();
 
 
 /* ==================================================
@@ -3461,10 +3452,7 @@ document.getElementById("aadhaarFile");
 
 let fileName = "";
 
-if(
-fileInput &&
-fileInput.files.length
-){
+if(fileInput && fileInput.files.length){
 
 fileName =
 fileInput.files[0].name;
@@ -3479,81 +3467,37 @@ fileInput.files[0].name;
 let message =
 "KHIDMAT-E-KHALQ OFFICE%0A" +
 "--------------------------------%0A" +
-"Service: Aadhaar Mobile Number Update%0A%0A";
+"Service: Aadhaar Mobile Number Update%0A%0A" +
 
-
-if(fullName){
-
-message +=
 "Full Name: " +
 encodeURIComponent(fullName) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(mobile){
-
-message +=
 "Aadhaar Linked Mobile: " +
 encodeURIComponent(mobile) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(aadhaar){
-
-message +=
 "Aadhaar Number: " +
 encodeURIComponent(aadhaar) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(village){
-
-message +=
 "Village / Town: " +
 encodeURIComponent(village) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(state){
-
-message +=
 "State: " +
 encodeURIComponent(state) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(fileName){
-
-message +=
 "Aadhaar File: " +
 encodeURIComponent(fileName) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-if(remarks){
-
-message +=
-"%0AQuestion / Message:%0A" +
+"Question / Message:%0A" +
 encodeURIComponent(remarks) +
-"%0A";
+"%0A%0A" +
 
-}
-
-
-message +=
-"%0A--------------------------------%0A" +
+"--------------------------------%0A" +
 "Please assist me with this service.";
 
 
@@ -3588,10 +3532,6 @@ whatsappURL,
 ================================================== */
 
 function sendSelfAddressWhatsApp(){
-
-/* ==================================================
-   VALIDATE
-================================================== */
 
 if(!validateSelfAddress()){
 
@@ -3665,6 +3605,246 @@ document.getElementById("selfRemarks")
 .value.trim();
 
 
+/* ==================================================
+   FILE INFORMATION
+================================================== */
+
+const fileInput =
+document.getElementById("selfProofFile");
+
+let fileName = "";
+
+if(fileInput && fileInput.files.length){
+
+fileName =
+fileInput.files[0].name;
+
+}
+
+
+/* ==================================================
+   WHATSAPP MESSAGE
+================================================== */
+
+let message =
+"KHIDMAT-E-KHALQ OFFICE%0A" +
+"--------------------------------%0A" +
+"Service: Aadhaar Address Update - Self Documents%0A%0A" +
+
+"Full Name: " +
+encodeURIComponent(fullName) +
+"%0A%0A" +
+
+"Aadhaar Number: " +
+encodeURIComponent(aadhaar) +
+"%0A%0A" +
+
+"Aadhaar Linked Mobile: " +
+encodeURIComponent(mobile) +
+"%0A%0A" +
+
+"House / Building: " +
+encodeURIComponent(house) +
+"%0A%0A" +
+
+"Road / Street: " +
+encodeURIComponent(road) +
+"%0A%0A" +
+
+"Area / Locality: " +
+encodeURIComponent(area) +
+"%0A%0A" +
+
+"Landmark: " +
+encodeURIComponent(landmark) +
+"%0A%0A" +
+
+"Village / Town / City: " +
+encodeURIComponent(city) +
+"%0A%0A" +
+
+"Post Office: " +
+encodeURIComponent(postOffice) +
+"%0A%0A" +
+
+"District: " +
+encodeURIComponent(district) +
+"%0A%0A" +
+
+"State: " +
+encodeURIComponent(state) +
+"%0A%0A" +
+
+"PIN Code: " +
+encodeURIComponent(pin) +
+"%0A%0A" +
+
+"Address Proof: " +
+encodeURIComponent(proof) +
+"%0A%0A" +
+
+"Other Document: " +
+encodeURIComponent(otherProof) +
+"%0A%0A" +
+
+"Address Proof File: " +
+encodeURIComponent(fileName) +
+"%0A%0A" +
+
+"Question / Message:%0A" +
+encodeURIComponent(remarks) +
+"%0A%0A" +
+
+"--------------------------------%0A" +
+"Please assist me with this service.";
+
+
+/* ==================================================
+   WHATSAPP NUMBER
+================================================== */
+
+const whatsappNumber =
+"916361634389";
+
+
+/* ==================================================
+   OPEN WHATSAPP
+================================================== */
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+}
+
+
+/* ==================================================
+   HOF BASED — WHATSAPP
+================================================== */
+
+function sendHofAddressWhatsApp(){
+
+if(!validateHofAddress()){
+
+return;
+
+}
+
+
+/* ==================================================
+   GET VALUES
+================================================== */
+
+const applicantAadhaar =
+document.getElementById("hofApplicantAadhaar")
+.value.trim();
+
+const applicantMobile =
+document.getElementById("hofApplicantMobile")
+.value.trim();
+
+const hofName =
+document.getElementById("hofName")
+.value.trim();
+
+const hofAadhaar =
+document.getElementById("hofAadhaar")
+.value.trim();
+
+const hofMobile =
+document.getElementById("hofMobile")
+.value.trim();
+
+const relationship =
+document.getElementById("hofRelationship")
+.value;
+
+const otherRelationship =
+document.getElementById("hofOtherRelationship")
+.value.trim();
+
+const remarks =
+document.getElementById("hofRemarks")
+.value.trim();
+
+
+/* ==================================================
+   WHATSAPP MESSAGE
+================================================== */
+
+let message =
+"KHIDMAT-E-KHALQ OFFICE%0A" +
+"--------------------------------%0A" +
+"Service: Aadhaar Address Update - HoF Based%0A%0A" +
+
+"Applicant Aadhaar Number: " +
+encodeURIComponent(applicantAadhaar) +
+"%0A%0A" +
+
+"Applicant Aadhaar Linked Mobile: " +
+encodeURIComponent(applicantMobile) +
+"%0A%0A" +
+
+"HoF Name: " +
+encodeURIComponent(hofName) +
+"%0A%0A" +
+
+"HoF Aadhaar Number: " +
+encodeURIComponent(hofAadhaar) +
+"%0A%0A" +
+
+"HoF Aadhaar Linked Mobile: " +
+encodeURIComponent(hofMobile) +
+"%0A%0A" +
+
+"Relationship with HoF: " +
+encodeURIComponent(relationship) +
+"%0A%0A" +
+
+"Other Relationship: " +
+encodeURIComponent(otherRelationship) +
+"%0A%0A" +
+
+"Question / Message:%0A" +
+encodeURIComponent(remarks) +
+"%0A%0A" +
+
+"--------------------------------%0A" +
+"Please assist me with this service.";
+
+
+/* ==================================================
+   WHATSAPP NUMBER
+================================================== */
+
+const whatsappNumber =
+"916361634389";
+
+
+/* ==================================================
+   OPEN WHATSAPP
+================================================== */
+
+const whatsappURL =
+"https://wa.me/" +
+whatsappNumber +
+"?text=" +
+message;
+
+window.open(
+whatsappURL,
+"_blank"
+);
+
+} 
+ 
 /* ==================================================
    ADDRESS PROOF NAME
 ================================================== */
@@ -4095,7 +4275,6 @@ CSC & Online Services
 
 </footer>
 
-
 <!-- ==================================================
      FLOATING CONTACT BUTTONS
 ================================================== -->
@@ -4106,7 +4285,6 @@ CSC & Online Services
 <div class="help-bubble">
 Need Help? Contact Us
 </div>
-
 
 <!-- WHATSAPP -->
 
@@ -4121,7 +4299,6 @@ aria-label="Contact us on WhatsApp"
 <i class="fab fa-whatsapp"></i>
 
 </a>
-
 
 <!-- INSTAGRAM -->
 
@@ -4140,7 +4317,6 @@ aria-label="Visit our Instagram"
 
 </div>
 
-
 <!-- ==================================================
      FINAL PAGE CLOSE
 ================================================== -->
@@ -4148,6 +4324,3 @@ aria-label="Visit our Instagram"
 </body>
 
 </html>
-
-
-  
