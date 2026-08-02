@@ -376,30 +376,51 @@ alt="Yasir Saeed Logo">
 
 </header>
 
-<!-- ===== AADHAAR SERVICES PORTAL ===== -->
-
-<div class="portal-box">
-
-<h2>Aadhaar Services Portal</h2>
-
-<p>Fast • Secure • Professional</p>
-
-<input
-type="text"
-id="searchBox"
-placeholder="Search Aadhaar Service..."
-oninput="searchService()">
-
-<div class="total-services">
-<b>Total Services :</b>
-<span id="totalServices"></span>
-</div>
-
-</div>
-
-<!-- ===== MAIN SERVICES CONTAINER ===== -->
+<!-- ===== AADHAAR SERVICES MAIN BOX ===== -->
 
 <div class="container">
+
+<div class="service">
+
+<div
+class="service-title"
+onclick="toggleService('aadhaarServicesContent')">
+
+<div class="service-title-inner">
+
+<div class="service-icon">
+🪪
+</div>
+
+<div class="service-title-text">
+
+<h2>Aadhaar Services</h2>
+
+<p>Available Aadhaar Services</p>
+
+</div>
+
+<div class="arrow">
+⌄
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ===== AADHAAR SERVICES CONTENT ===== -->
+
+<div
+class="service-content"
+id="aadhaarServicesContent">
+
+<h2>Aadhaar Services</h2>
+
+<p style="text-align:center;">
+Select a service below
+</p>
+
 
 <!-- ===== MOBILE NUMBER UPDATE ===== -->
 
@@ -430,6 +451,7 @@ onclick="toggleService('mobileServiceContent')">
 </div>
 
 </div>
+
 
 <div
 class="service-content"
@@ -474,6 +496,7 @@ Apply Now
 
 </div>
 
+
 <!-- ===== ADDRESS UPDATE ===== -->
 
 <div class="service">
@@ -504,6 +527,7 @@ onclick="toggleService('addressServiceContent')">
 
 </div>
 
+
 <div
 class="service-content"
 id="addressServiceContent">
@@ -514,6 +538,9 @@ id="addressServiceContent">
 Select Update Type
 </h3>
 
+
+<!-- ===== SELF DOCUMENTS BUTTON ===== -->
+
 <button
 type="button"
 class="apply"
@@ -523,6 +550,9 @@ Self Documents
 
 </button>
 
+
+<!-- ===== HOF BUTTON ===== -->
+
 <button
 type="button"
 class="apply"
@@ -531,6 +561,7 @@ onclick="toggleAddressOption('hofInfo')">
 HoF Based
 
 </button>
+
 
 <!-- ===== SELF DOCUMENTS INFORMATION ===== -->
 
@@ -579,6 +610,7 @@ Apply Now
 </button>
 
 </div>
+
 
 <!-- ===== HOF INFORMATION ===== -->
 
@@ -634,6 +666,8 @@ Apply Now
 
 </div>
 
+</div>
+  
 <!-- ===== MOBILE NUMBER UPDATE FORM ===== -->
 
 <div
