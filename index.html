@@ -1123,6 +1123,12 @@ maxlength="10"
 autocomplete="tel"
 >
 
+<script>
+document.getElementById("mobileNumber").addEventListener("input", function(){
+    this.value = this.value.replace(/\D/g,"").slice(0,10);
+});
+</script>
+   
 <div
 id="mobileError"
 class="form-error"
@@ -1175,7 +1181,6 @@ id="state"
 type="text"
 >
 
-
 <!-- AADHAAR FILE -->
 
 <label>
@@ -1202,7 +1207,6 @@ onclick="uploadAadhaarFile()"
 Upload File
 </button>
 
-
 <!-- QUESTION -->
 
 <label>
@@ -1214,8 +1218,12 @@ id="remarks"
 placeholder="Write your Question or Message"
 ></textarea>
 
+ <!-- BUTTONS -->
 
-<!-- BUTTONS -->
+<div
+id="mobileSubmitError"
+class="form-error"
+></div>
 
 <div class="modal-buttons">
 
@@ -1240,7 +1248,6 @@ Close
 </div>
 
 </div>
-
 
 <!-- ==================================================
      SELF DOCUMENTS ADDRESS FORM
