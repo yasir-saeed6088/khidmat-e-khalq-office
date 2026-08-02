@@ -2182,23 +2182,19 @@ return true;
 
 }
 
-
-/* MOBILE EMPTY */
-
-if(mobile === ""){
+if(mobile === "" && document.getElementById("remarks").value.trim() === ""){
 
 input.classList.add("input-error");
 
 error.textContent =
-"Please enter your Aadhaar Linked Mobile Number.";
+"Please enter your Aadhaar Linked Mobile Number or a Question / Message.";
 
 input.focus();
 
 return false;
 
 }
-
-
+ 
 /* MOBILE INVALID */
 
 if(!isValidMobile(mobile)){
