@@ -1364,7 +1364,6 @@ class="error">
 
 </div>
 
-
 <label>
 Upload Address Proof
 <span class="required">*</span>
@@ -1375,14 +1374,28 @@ id="selfAddressProof"
 type="file"
 accept=".jpg,.jpeg,.png,.pdf">
 
-<div
-class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
+<button
+type="button"
+onclick="uploadSelfAddressProof()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
 
 <div
 id="selfAddressProofError"
 class="error">
+</div>
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
 </div>
 
 <div class="form-actions">
