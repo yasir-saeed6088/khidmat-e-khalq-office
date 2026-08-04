@@ -1696,9 +1696,31 @@ Thank you for visiting our website.
 
 <div class="floating-contact">
 
-<div class="help-bubble">
+<div
+class="help-bubble"
+style="
+background:#28a745;
+color:white;
+padding:8px 14px;
+border-radius:20px;
+font-size:14px;
+font-weight:600;
+box-shadow:0 4px 10px rgba(40,167,69,.3);
+animation:helpMove 1.5s ease-in-out infinite;
+">
 Need Help?
 </div>
+
+<style>
+@keyframes helpMove{
+0%,100%{
+transform:translateY(0);
+}
+50%{
+transform:translateY(-4px);
+}
+}
+</style>
 
 <a
 class="float-btn whatsapp"
@@ -1727,7 +1749,6 @@ title="Follow on Instagram">
 <!-- =========================================================
      ===== FLOATING CONTACT : END ============================
      ========================================================= -->
-
 
 <div class="bottom-blue-bar"></div>
 
