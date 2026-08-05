@@ -2078,6 +2078,92 @@ return /^\d{6}$/.test(value.trim());
 
 }
 
+/* =========================================================
+   ===== FILE UPLOAD FUNCTIONS ==============================
+   ========================================================= */
+
+function uploadAadhaarFile(){
+
+var file=document.getElementById("aadhaarFile").files[0];
+
+var error=document.getElementById("aadhaarFileError");
+
+error.textContent="";
+error.style.color="red";
+
+if(!file){
+error.textContent="Please choose a file.";
+return;
+}
+
+var allowedTypes=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+if(!allowedTypes.includes(file.type)){
+error.textContent="Only JPG, JPEG, PNG or PDF files are allowed.";
+document.getElementById("aadhaarFile").style.border="2px solid red";
+return;
+}
+
+if(file.size>=1024*1024){
+error.textContent="File size must be less than 1 MB.";
+document.getElementById("aadhaarFile").style.border="2px solid red";
+return;
+}
+
+document.getElementById("aadhaarFile").style.border="2px solid green";
+
+error.style.color="green";
+error.textContent="File uploaded successfully.";
+
+}
+
+
+/* =========================================================
+   ===== ADDRESS PROOF FILE UPLOAD ==========================
+   ========================================================= */
+
+function uploadSelfAddressProof(){
+
+var file=document.getElementById("selfAddressProof").files[0];
+
+var error=document.getElementById("selfAddressProofError");
+
+error.textContent="";
+error.style.color="red";
+
+if(!file){
+error.textContent="Please choose a file.";
+return;
+}
+
+var allowedTypes=[
+"image/jpeg",
+"image/png",
+"application/pdf"
+];
+
+if(!allowedTypes.includes(file.type)){
+error.textContent="Only JPG, JPEG, PNG or PDF files are allowed.";
+document.getElementById("selfAddressProof").style.border="2px solid red";
+return;
+}
+
+if(file.size>=1024*1024){
+error.textContent="File size must be less than 1 MB.";
+document.getElementById("selfAddressProof").style.border="2px solid red";
+return;
+}
+
+document.getElementById("selfAddressProof").style.border="2px solid green";
+
+error.style.color="green";
+error.textContent="File uploaded successfully.";
+
+}
 
 /* =========================================================
    ===== VALID FILE =========================================
@@ -2106,7 +2192,6 @@ return false;
 return true;
 
 }
-
 
 /* =========================================================
    ===== FILE ERROR MESSAGE ================================
