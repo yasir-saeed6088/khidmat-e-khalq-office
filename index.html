@@ -2578,12 +2578,19 @@ documentType==="Other"
 ?otherDocument
 :documentType;
 
+var fileName=file?file.name:"";
+
 var msg=
-"KHIDMAT-E-KHALQ OFFICE\n\n"+
-"Service: Aadhaar Address Update – Self Documents\n\n"+
+"KHIDMAT-E-KHALQ OFFICE\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
+"SERVICE: AADHAAR ADDRESS UPDATE\n"+
+"TYPE: SELF DOCUMENTS\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
+"APPLICANT DETAILS\n\n"+
 "Full Name: "+name+"\n\n"+
 "Aadhaar Linked Mobile: "+mobile+"\n\n"+
 "Aadhaar Number: "+aadhaar+"\n\n"+
+"ADDRESS DETAILS\n\n"+
 "House / Building: "+house+"\n\n"+
 "Road / Street: "+street+"\n\n"+
 "Area / Locality: "+area+"\n\n"+
@@ -2593,8 +2600,10 @@ var msg=
 "District: "+district+"\n\n"+
 "State: "+state+"\n\n"+
 "PIN Code: "+pincode+"\n\n"+
+"ADDRESS PROOF\n\n"+
 "Address Proof: "+finalDocument+"\n\n"+
-"Address Proof File: "+file.name+"\n\n"+
+"Address Proof File: "+fileName+"\n\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
 "Please assist me with this service.";
 
 openWhatsApp(msg);
@@ -2731,15 +2740,21 @@ relationship==="Other"
 :relationship;
 
 var msg=
-"KHIDMAT-E-KHALQ OFFICE\n\n"+
-"Service: Aadhaar Address Update – HoF Based\n\n"+
+"KHIDMAT-E-KHALQ OFFICE\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
+"SERVICE: AADHAAR ADDRESS UPDATE\n"+
+"TYPE: HOF BASED\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
+"APPLICANT DETAILS\n\n"+
 "Full Name: "+name+"\n\n"+
-"Aadhaar Number: "+aadhaar+"\n\n"+
 "Aadhaar Linked Mobile: "+mobile+"\n\n"+
+"Aadhaar Number: "+aadhaar+"\n\n"+
+"HEAD OF FAMILY DETAILS\n\n"+
 "HoF Name: "+hofName+"\n\n"+
 "HoF Aadhaar Number: "+hofAadhaar+"\n\n"+
 "HoF Aadhaar Linked Mobile: "+hofMobile+"\n\n"+
 "Relationship with HoF: "+finalRelationship+"\n\n"+
+"━━━━━━━━━━━━━━━━━━━━\n\n"+
 "Please assist me with this service.";
 
 openWhatsApp(msg);
