@@ -2205,14 +2205,14 @@ function submitMobileForm(){
 
 clearField("mobileAadhaar","mobileAadhaarError");
 clearField("mobileLinked","mobileLinkedError");
-clearField("mobileFile","mobileFileError");
+clearField("aadhaarFile","aadhaarFileError");
 
 var name=document.getElementById("mobileName").value.trim();
 var aadhaar=document.getElementById("mobileAadhaar").value.trim();
 var mobile=document.getElementById("mobileLinked").value.trim();
 var village=document.getElementById("mobileVillage").value.trim();
 var state=document.getElementById("mobileState").value.trim();
-var file=document.getElementById("mobileFile").files[0];
+var file=document.getElementById("aadhaarFile").files[0];
 
 if(aadhaar===""){
 return showError(
@@ -2252,11 +2252,11 @@ var fileError=fileErrorText(file);
 
 if(fileError!==""){
 
-document.getElementById("mobileFileError").textContent=fileError;
+document.getElementById("aadhaarFileError").textContent=fileError;
 
-document.getElementById("mobileFile").style.border="2px solid red";
+document.getElementById("aadhaarFile").style.border="2px solid red";
 
-document.getElementById("mobileFile").scrollIntoView({
+document.getElementById("aadhaarFile").scrollIntoView({
 behavior:"smooth",
 block:"center"
 });
@@ -2283,7 +2283,6 @@ var msg=
 openWhatsApp(msg);
 
 }
-
 
 /* =========================================================
    ===== SELF FORM VALIDATION ================================
