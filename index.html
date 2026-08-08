@@ -1359,6 +1359,2085 @@ Close
      ========================================================= -->
 
 <!-- =========================================================
+     ===== SERVICE 3 : PVC AADHAAR CARD ORDER FORM ===========
+     ========================================================= -->
+
+<div
+id="pvcForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+PVC Aadhaar Card Order
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="pvcName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="pvcLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="pvcLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="pvcAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="pvcAadhaarError"
+class="error">
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitPVCForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closePVCForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 4 : E-AADHAAR DOWNLOAD FORM ===============
+     ========================================================= -->
+
+<div
+id="eAadhaarForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+e-Aadhaar Download
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="eAadhaarName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="eAadhaarLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="eAadhaarLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="eAadhaarNumber"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="eAadhaarNumberError"
+class="error">
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitEAadhaarForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeEAadhaarForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 4 : MASKED AADHAAR DOWNLOAD FORM ==========
+     ========================================================= -->
+
+<div
+id="maskedAadhaarForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+Masked Aadhaar Download
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="maskedAadhaarName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="maskedAadhaarLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="maskedAadhaarLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="maskedAadhaarNumber"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="maskedAadhaarNumberError"
+class="error">
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitMaskedAadhaarForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeMaskedAadhaarForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 5 : AADHAAR DOCUMENT UPDATE FORM ==========
+     ========================================================= -->
+
+<div
+id="documentUpdateForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+Aadhaar Document Update
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="documentName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="documentLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="documentLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="documentAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="documentAadhaarError"
+class="error">
+</div>
+
+
+<h3>
+Proof of Identity (POI)
+</h3>
+
+<hr>
+
+<label>
+Select Identity Proof
+<span class="required">*</span>
+</label>
+
+<select id="identityProof">
+
+<option value="">Select Identity Proof</option>
+<option>PAN Card</option>
+<option>Voter ID</option>
+<option>Indian Passport</option>
+<option>Driving Licence</option>
+<option>Ration Card</option>
+<option>Government Photo ID</option>
+<option>School Photo Identity Certificate</option>
+<option>Other</option>
+
+</select>
+
+<div
+id="identityProofError"
+class="error">
+</div>
+
+
+<label
+id="otherIdentityLabel"
+style="display:none;">
+
+Other Identity Document
+<span class="required">*</span>
+
+</label>
+
+<input
+id="otherIdentity"
+type="text"
+style="display:none;">
+
+<div
+id="otherIdentityError"
+class="error">
+</div>
+
+
+<label>
+Upload Identity Proof
+<span class="required">*</span>
+</label>
+
+<input
+id="identityFile"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadDocumentIdentityFile()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="identityFileError"
+class="error">
+</div>
+
+
+<h3>
+Proof of Address (POA)
+</h3>
+
+<hr>
+
+<label>
+Select Address Proof
+<span class="required">*</span>
+</label>
+
+<select id="addressProof">
+
+<option value="">Select Address Proof</option>
+<option>Voter ID</option>
+<option>Indian Passport</option>
+<option>Ration Card</option>
+<option>Electricity Bill</option>
+<option>Water Bill</option>
+<option>Gas Bill</option>
+<option>Bank / Post Office Passbook</option>
+<option>Telephone / Broadband Bill</option>
+<option>Rent / Lease Agreement</option>
+<option>Property Tax Receipt</option>
+<option>Other</option>
+
+</select>
+
+<div
+id="addressProofError"
+class="error">
+</div>
+
+
+<label
+id="otherAddressLabel"
+style="display:none;">
+
+Other Address Document
+<span class="required">*</span>
+
+</label>
+
+<input
+id="otherAddress"
+type="text"
+style="display:none;">
+
+<div
+id="otherAddressError"
+class="error">
+</div>
+
+
+<label>
+Upload Address Proof
+<span class="required">*</span>
+</label>
+
+<input
+id="addressFile"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadDocumentAddressFile()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="addressFileError"
+class="error">
+</div>
+
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 2 MB
+</div>
+
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitDocumentUpdateForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeDocumentUpdateForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 6 : AADHAAR STATUS CHECK FORM =============
+     ========================================================= -->
+
+<div
+id="statusCheckForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+Aadhaar Status Check
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="statusName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="statusLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="statusLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="statusAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="statusAadhaarError"
+class="error">
+</div>
+
+
+<h3>
+Status Details
+</h3>
+
+<hr>
+
+<label>
+SRN / URN / EID
+</label>
+
+<input
+id="statusReference"
+type="text">
+
+<label>
+Status Type
+</label>
+
+<select id="statusType">
+
+<option value="">Select Status Type</option>
+<option>Aadhaar Update Status</option>
+<option>Document Update Status</option>
+<option>PVC Card Order Status</option>
+<option>Enrolment (EID) Status</option>
+<option>Aadhaar Generation Status</option>
+
+</select>
+
+
+<label>
+Upload Acknowledgement Receipt
+</label>
+
+<input
+id="statusReceipt"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadStatusReceipt()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="statusReceiptError"
+class="error">
+</div>
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
+</div>
+
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitStatusCheckForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeStatusCheckForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 7 : BIOMETRIC LOCK FORM ===================
+     ========================================================= -->
+
+<div
+id="biometricLockForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+Biometric Lock
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="lockName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="lockLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="lockLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="lockAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="lockAadhaarError"
+class="error">
+</div>
+
+<label>
+Aadhaar File
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="lockFile"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadLockFile()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="lockFileError"
+class="error">
+</div>
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitBiometricLockForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeBiometricLockForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 7 : BIOMETRIC UNLOCK FORM =================
+     ========================================================= -->
+
+<div
+id="biometricUnlockForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+Biometric Unlock
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="unlockName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="unlockLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="unlockLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="unlockAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="unlockAadhaarError"
+class="error">
+</div>
+
+<label>
+Aadhaar File
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="unlockFile"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadUnlockFile()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="unlockFileError"
+class="error">
+</div>
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitBiometricUnlockForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeBiometricUnlockForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== SERVICE 8 : DIGITAL SIGNATURE VALIDATION FORM =====
+     ========================================================= -->
+
+<div
+id="signatureValidationForm"
+class="form-overlay"
+onclick="closeFormFromOutside(event)">
+
+<div
+class="form-box"
+onclick="event.stopPropagation()">
+
+<h2>
+e-Aadhaar Digital Signature Validation
+</h2>
+
+<h3>
+Applicant Details
+</h3>
+
+<hr>
+
+<label>
+Full Name
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="signatureName"
+type="text"
+autocomplete="name">
+
+<label>
+Aadhaar Linked Mobile Number
+<span class="required">*</span>
+</label>
+
+<input
+id="signatureLinked"
+type="tel"
+inputmode="numeric"
+maxlength="10">
+
+<div
+id="signatureLinkedError"
+class="error">
+</div>
+
+<label>
+Aadhaar Number
+<span class="required">*</span>
+</label>
+
+<input
+id="signatureAadhaar"
+type="text"
+inputmode="numeric"
+maxlength="12">
+
+<div
+id="signatureAadhaarError"
+class="error">
+</div>
+
+<label>
+Aadhaar File
+<span class="required">(Optional)</span>
+</label>
+
+<input
+id="signatureFile"
+type="file"
+accept=".jpg,.jpeg,.png,.pdf">
+
+<button
+type="button"
+onclick="uploadSignatureFile()"
+style="
+background:#0052cc;
+color:white;
+padding:10px 18px;
+border:none;
+border-radius:6px;
+cursor:pointer;
+margin-top:8px;
+">
+Upload File
+</button>
+
+<div
+id="signatureFileError"
+class="error">
+</div>
+
+<div class="file-help">
+JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
+</div>
+
+<div class="form-actions">
+
+<button
+type="button"
+class="submit-btn"
+onclick="submitSignatureValidationForm()">
+Submit
+</button>
+
+<button
+type="button"
+class="close-btn"
+onclick="closeSignatureValidationForm()">
+Close
+</button>
+
+</div>
+
+</div>
+</div>
+
+
+<!-- =========================================================
+     ===== NEW AADHAAR SERVICE FORMS : JAVASCRIPT ============
+     ========================================================= -->
+
+<script>
+
+/* =========================================================
+   ===== GENERIC OPEN / CLOSE HELPERS =======================
+   ========================================================= */
+
+function openFormById(id){
+    const form = document.getElementById(id);
+    if(form){
+        form.style.display = "flex";
+        setTimeout(() => {
+            const box = form.querySelector(".form-box");
+            if(box){
+                box.scrollTop = 0;
+            }
+        }, 50);
+    }
+}
+
+function closeFormById(id){
+    const form = document.getElementById(id);
+    if(form){
+        form.style.display = "none";
+    }
+}
+
+
+/* =========================================================
+   ===== PVC AADHAAR CARD ORDER =============================
+   ========================================================= */
+
+function openPVCForm(){
+    openFormById("pvcForm");
+}
+
+function closePVCForm(){
+    closeFormById("pvcForm");
+}
+
+function submitPVCForm(){
+
+    const name = document.getElementById("pvcName").value.trim();
+    const mobile = document.getElementById("pvcLinked").value.trim();
+    const aadhaar = document.getElementById("pvcAadhaar").value.trim();
+
+    clearFieldStyle("pvcLinked");
+    clearFieldStyle("pvcAadhaar");
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError("pvcLinked","pvcLinkedError","Please enter a valid 10-digit mobile number.");
+        valid = false;
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError("pvcAadhaar","pvcAadhaarError","Please enter a valid 12-digit Aadhaar number.");
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: PVC AADHAAR CARD ORDER
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+/* =========================================================
+   ===== E-AADHAAR DOWNLOAD ================================
+   ========================================================= */
+
+function openEAadhaarForm(){
+    openFormById("eAadhaarForm");
+}
+
+function closeEAadhaarForm(){
+    closeFormById("eAadhaarForm");
+}
+
+function submitEAadhaarForm(){
+
+    const name = document.getElementById("eAadhaarName").value.trim();
+    const mobile = document.getElementById("eAadhaarLinked").value.trim();
+    const aadhaar = document.getElementById("eAadhaarNumber").value.trim();
+
+    clearFieldStyle("eAadhaarLinked");
+    clearFieldStyle("eAadhaarNumber");
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "eAadhaarLinked",
+            "eAadhaarLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "eAadhaarNumber",
+            "eAadhaarNumberError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: E-AADHAAR DOWNLOAD
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+/* =========================================================
+   ===== MASKED AADHAAR DOWNLOAD ===========================
+   ========================================================= */
+
+function openMaskedAadhaarForm(){
+    openFormById("maskedAadhaarForm");
+}
+
+function closeMaskedAadhaarForm(){
+    closeFormById("maskedAadhaarForm");
+}
+
+function submitMaskedAadhaarForm(){
+
+    const name = document.getElementById("maskedAadhaarName").value.trim();
+    const mobile = document.getElementById("maskedAadhaarLinked").value.trim();
+    const aadhaar = document.getElementById("maskedAadhaarNumber").value.trim();
+
+    clearFieldStyle("maskedAadhaarLinked");
+    clearFieldStyle("maskedAadhaarNumber");
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "maskedAadhaarLinked",
+            "maskedAadhaarLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "maskedAadhaarNumber",
+            "maskedAadhaarNumberError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: MASKED AADHAAR DOWNLOAD
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+/* =========================================================
+   ===== DOCUMENT UPDATE ====================================
+   ========================================================= */
+
+function openDocumentUpdateForm(){
+    openFormById("documentUpdateForm");
+}
+
+function closeDocumentUpdateForm(){
+    closeFormById("documentUpdateForm");
+}
+
+
+document.getElementById("identityProof").addEventListener("change",function(){
+
+    const label = document.getElementById("otherIdentityLabel");
+    const input = document.getElementById("otherIdentity");
+
+    if(this.value === "Other"){
+        label.style.display = "block";
+        input.style.display = "block";
+    }else{
+        label.style.display = "none";
+        input.style.display = "none";
+        input.value = "";
+    }
+});
+
+
+document.getElementById("addressProof").addEventListener("change",function(){
+
+    const label = document.getElementById("otherAddressLabel");
+    const input = document.getElementById("otherAddress");
+
+    if(this.value === "Other"){
+        label.style.display = "block";
+        input.style.display = "block";
+    }else{
+        label.style.display = "none";
+        input.style.display = "none";
+        input.value = "";
+    }
+});
+
+
+function submitDocumentUpdateForm(){
+
+    const name = document.getElementById("documentName").value.trim();
+    const mobile = document.getElementById("documentLinked").value.trim();
+    const aadhaar = document.getElementById("documentAadhaar").value.trim();
+
+    const identity = document.getElementById("identityProof").value;
+    const otherIdentity = document.getElementById("otherIdentity").value.trim();
+
+    const address = document.getElementById("addressProof").value;
+    const otherAddress = document.getElementById("otherAddress").value.trim();
+
+    const identityFile = document.getElementById("identityFile").files[0];
+    const addressFile = document.getElementById("addressFile").files[0];
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "documentLinked",
+            "documentLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("documentLinked");
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "documentAadhaar",
+            "documentAadhaarError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("documentAadhaar");
+    }
+
+    if(!identity){
+        showError(
+            "identityProof",
+            "identityProofError",
+            "Please select an identity proof."
+        );
+        valid = false;
+    }
+
+    if(identity === "Other" && !otherIdentity){
+        showError(
+            "otherIdentity",
+            "otherIdentityError",
+            "Please enter the identity document name."
+        );
+        valid = false;
+    }
+
+    if(!address){
+        showError(
+            "addressProof",
+            "addressProofError",
+            "Please select an address proof."
+        );
+        valid = false;
+    }
+
+    if(address === "Other" && !otherAddress){
+        showError(
+            "otherAddress",
+            "otherAddressError",
+            "Please enter the address document name."
+        );
+        valid = false;
+    }
+
+    if(!identityFile){
+        showError(
+            "identityFile",
+            "identityFileError",
+            "Please select the identity proof file."
+        );
+        valid = false;
+    }else if(!validFile(identityFile,2)){
+        showError(
+            "identityFile",
+            "identityFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
+        );
+        valid = false;
+    }
+
+    if(!addressFile){
+        showError(
+            "addressFile",
+            "addressFileError",
+            "Please select the address proof file."
+        );
+        valid = false;
+    }else if(!validFile(addressFile,2)){
+        showError(
+            "addressFile",
+            "addressFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const identityText =
+        identity === "Other" ? otherIdentity : identity;
+
+    const addressText =
+        address === "Other" ? otherAddress : address;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: AADHAAR DOCUMENT UPDATE
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+━━━━━━━━━━━━━━━━━━━━
+
+PROOF OF IDENTITY
+
+Identity Proof: ${identityText}
+
+Identity Proof File: ${identityFile.name}
+
+━━━━━━━━━━━━━━━━━━━━
+
+PROOF OF ADDRESS
+
+Address Proof: ${addressText}
+
+Address Proof File: ${addressFile.name}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+function uploadDocumentIdentityFile(){
+
+    const file = document.getElementById("identityFile").files[0];
+
+    clearFieldStyle("identityFile");
+
+    if(!file){
+        showError(
+            "identityFile",
+            "identityFileError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,2)){
+        showError(
+            "identityFile",
+            "identityFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
+        );
+        return;
+    }
+
+    document.getElementById("identityFileError").textContent =
+        "File selected successfully.";
+}
+
+
+function uploadDocumentAddressFile(){
+
+    const file = document.getElementById("addressFile").files[0];
+
+    clearFieldStyle("addressFile");
+
+    if(!file){
+        showError(
+            "addressFile",
+            "addressFileError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,2)){
+        showError(
+            "addressFile",
+            "addressFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
+        );
+        return;
+    }
+
+    document.getElementById("addressFileError").textContent =
+        "File selected successfully.";
+}
+
+
+/* =========================================================
+   ===== STATUS CHECK ========================================
+   ========================================================= */
+
+function openStatusCheckForm(){
+    openFormById("statusCheckForm");
+}
+
+function closeStatusCheckForm(){
+    closeFormById("statusCheckForm");
+}
+
+
+function submitStatusCheckForm(){
+
+    const name = document.getElementById("statusName").value.trim();
+    const mobile = document.getElementById("statusLinked").value.trim();
+    const aadhaar = document.getElementById("statusAadhaar").value.trim();
+
+    const reference =
+        document.getElementById("statusReference").value.trim();
+
+    const statusType =
+        document.getElementById("statusType").value;
+
+    const receipt =
+        document.getElementById("statusReceipt").files[0];
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "statusLinked",
+            "statusLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("statusLinked");
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "statusAadhaar",
+            "statusAadhaarError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("statusAadhaar");
+    }
+
+    if(receipt && !validFile(receipt,1)){
+        showError(
+            "statusReceipt",
+            "statusReceiptError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: AADHAAR STATUS CHECK
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+STATUS DETAILS
+
+SRN / URN / EID: ${reference}
+
+Status Type: ${statusType}
+
+Acknowledgement Receipt: ${receipt ? receipt.name : ""}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+function uploadStatusReceipt(){
+
+    const file =
+        document.getElementById("statusReceipt").files[0];
+
+    clearFieldStyle("statusReceipt");
+
+    if(!file){
+        showError(
+            "statusReceipt",
+            "statusReceiptError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,1)){
+        showError(
+            "statusReceipt",
+            "statusReceiptError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        return;
+    }
+
+    document.getElementById("statusReceiptError").textContent =
+        "File selected successfully.";
+}
+
+
+/* =========================================================
+   ===== BIOMETRIC LOCK ======================================
+   ========================================================= */
+
+function openBiometricLockForm(){
+    openFormById("biometricLockForm");
+}
+
+function closeBiometricLockForm(){
+    closeFormById("biometricLockForm");
+}
+
+
+function submitBiometricLockForm(){
+
+    const name = document.getElementById("lockName").value.trim();
+    const mobile = document.getElementById("lockLinked").value.trim();
+    const aadhaar = document.getElementById("lockAadhaar").value.trim();
+
+    const file =
+        document.getElementById("lockFile").files[0];
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "lockLinked",
+            "lockLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("lockLinked");
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "lockAadhaar",
+            "lockAadhaarError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("lockAadhaar");
+    }
+
+    if(file && !validFile(file,1)){
+        showError(
+            "lockFile",
+            "lockFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: AADHAAR BIOMETRIC LOCK
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+Aadhaar File: ${file ? file.name : ""}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+function uploadLockFile(){
+
+    const file =
+        document.getElementById("lockFile").files[0];
+
+    clearFieldStyle("lockFile");
+
+    if(!file){
+        showError(
+            "lockFile",
+            "lockFileError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,1)){
+        showError(
+            "lockFile",
+            "lockFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        return;
+    }
+
+    document.getElementById("lockFileError").textContent =
+        "File selected successfully.";
+}
+
+
+/* =========================================================
+   ===== BIOMETRIC UNLOCK ====================================
+   ========================================================= */
+
+function openBiometricUnlockForm(){
+    openFormById("biometricUnlockForm");
+}
+
+function closeBiometricUnlockForm(){
+    closeFormById("biometricUnlockForm");
+}
+
+
+function submitBiometricUnlockForm(){
+
+    const name = document.getElementById("unlockName").value.trim();
+    const mobile = document.getElementById("unlockLinked").value.trim();
+    const aadhaar = document.getElementById("unlockAadhaar").value.trim();
+
+    const file =
+        document.getElementById("unlockFile").files[0];
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "unlockLinked",
+            "unlockLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("unlockLinked");
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "unlockAadhaar",
+            "unlockAadhaarError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("unlockAadhaar");
+    }
+
+    if(file && !validFile(file,1)){
+        showError(
+            "unlockFile",
+            "unlockFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: AADHAAR BIOMETRIC UNLOCK
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+Aadhaar File: ${file ? file.name : ""}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+function uploadUnlockFile(){
+
+    const file =
+        document.getElementById("unlockFile").files[0];
+
+    clearFieldStyle("unlockFile");
+
+    if(!file){
+        showError(
+            "unlockFile",
+            "unlockFileError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,1)){
+        showError(
+            "unlockFile",
+            "unlockFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        return;
+    }
+
+    document.getElementById("unlockFileError").textContent =
+        "File selected successfully.";
+}
+
+
+/* =========================================================
+   ===== DIGITAL SIGNATURE VALIDATION ========================
+   ========================================================= */
+
+function openSignatureValidationForm(){
+    openFormById("signatureValidationForm");
+}
+
+function closeSignatureValidationForm(){
+    closeFormById("signatureValidationForm");
+}
+
+
+function submitSignatureValidationForm(){
+
+    const name =
+        document.getElementById("signatureName").value.trim();
+
+    const mobile =
+        document.getElementById("signatureLinked").value.trim();
+
+    const aadhaar =
+        document.getElementById("signatureAadhaar").value.trim();
+
+    const file =
+        document.getElementById("signatureFile").files[0];
+
+    let valid = true;
+
+    if(!validMobile(mobile)){
+        showError(
+            "signatureLinked",
+            "signatureLinkedError",
+            "Please enter a valid 10-digit mobile number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("signatureLinked");
+    }
+
+    if(!validAadhaar(aadhaar)){
+        showError(
+            "signatureAadhaar",
+            "signatureAadhaarError",
+            "Please enter a valid 12-digit Aadhaar number."
+        );
+        valid = false;
+    }else{
+        clearFieldStyle("signatureAadhaar");
+    }
+
+    if(file && !validFile(file,1)){
+        showError(
+            "signatureFile",
+            "signatureFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        valid = false;
+    }
+
+    if(!valid) return;
+
+    const message =
+`KHIDMAT-E-KHALQ OFFICE
+━━━━━━━━━━━━━━━━━━━━
+
+SERVICE: E-AADHAAR DIGITAL SIGNATURE VALIDATION
+━━━━━━━━━━━━━━━━━━━━
+
+APPLICANT DETAILS
+
+Full Name: ${name}
+
+Aadhaar Linked Mobile: ${mobile}
+
+Aadhaar Number: ${aadhaar}
+
+Aadhaar File: ${file ? file.name : ""}
+
+━━━━━━━━━━━━━━━━━━━━
+
+Please assist me with this service.`;
+
+    openWhatsApp(message);
+}
+
+
+function uploadSignatureFile(){
+
+    const file =
+        document.getElementById("signatureFile").files[0];
+
+    clearFieldStyle("signatureFile");
+
+    if(!file){
+        showError(
+            "signatureFile",
+            "signatureFileError",
+            "Please select a file."
+        );
+        return;
+    }
+
+    if(!validFile(file,1)){
+        showError(
+            "signatureFile",
+            "signatureFileError",
+            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
+        );
+        return;
+    }
+
+    document.getElementById("signatureFileError").textContent =
+        "File selected successfully.";
+}
+
+
+/* =========================================================
+   ===== VALIDATION ==========================================
+   ========================================================= */
+
+function validMobile(value){
+
+    return /^[6-9]\d{9}$/.test(value);
+}
+
+
+function validAadhaar(value){
+
+    return /^\d{12}$/.test(value);
+}
+
+
+function validFile(file,maxMB){
+
+    const allowed = [
+        "image/jpeg",
+        "image/png",
+        "application/pdf"
+    ];
+
+    const extension =
+        file.name.split(".").pop().toLowerCase();
+
+    const validExtension =
+        ["jpg","jpeg","png","pdf"].includes(extension);
+
+    const validType =
+        allowed.includes(file.type);
+
+    const maxSize =
+        maxMB * 1024 * 1024;
+
+    return validExtension &&
+           validType &&
+           file.size < maxSize;
+}
+
+
+function clearFieldStyle(id){
+
+    const field = document.getElementById(id);
+
+    if(field){
+        field.classList.remove("error-field");
+    }
+}
+
+
+function showError(fieldId,errorId,message){
+
+    const field =
+        document.getElementById(fieldId);
+
+    const error =
+        document.getElementById(errorId);
+
+    if(field){
+        field.classList.add("error-field");
+    }
+
+    if(error){
+        error.textContent = message;
+    }
+
+    if(field){
+
+        setTimeout(() => {
+
+            field.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+
+        },50);
+
+    }
+}
+
+
+/* =========================================================
+   ===== WHATSAPP ============================================
+   ========================================================= */
+
+function openWhatsApp(message){
+
+    const encoded =
+        encodeURIComponent(message);
+
+    window.open(
+        "https://wa.me/?text=" + encoded,
+        "_blank"
+    );
+}
+
+</script>
+     
+<!-- =========================================================
      ===== SELF DOCUMENTS FORM : START =======================
      ========================================================= -->
 
