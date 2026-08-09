@@ -2,155 +2,653 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
 <title>KHIDMAT-E-KHALQ OFFICE</title>
 
 <!-- =========================================================
-     ===== FONT AWESOME =======================================
+     ===== FONT AWESOME ======================================
      ========================================================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 <!-- =========================================================
      ===== MAIN CSS : START ==================================
      ========================================================= -->
+
 <style>
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;font-family:Arial,sans-serif;background:#f5f8fc;color:#222}
-button,input,select{font-family:inherit}
-button{cursor:pointer}
-
-<!-- =========================================================
-     ===== HEADER =============================================
-     ========================================================= -->
-
-.header{background:linear-gradient(135deg,#0052cc,#0645a8);color:#fff;padding:12px 18px 20px;box-shadow:0 5px 18px rgba(0,0,0,.18)}
-.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:auto}
-.header-logo{width:110px;height:110px;border-radius:50%;object-fit:cover;background:#fff;padding:5px}
-.header-center{text-align:center;flex:1;padding:0 8px}
-.header-name{font-size:18px;font-weight:700;margin:0 0 8px}
-.header-title{font-size:30px;font-weight:800;margin:0;white-space:nowrap}
-
-<!-- =========================================================
-     ===== MAIN SERVICE INTRO =================================
-     ========================================================= -->
-
-.intro{text-align:center;background:#fff;padding:26px 15px 28px}
-.intro h1{margin:0;color:#0052cc;font-size:40px;font-weight:800}
-.intro p{margin:18px 0 30px;font-size:28px;font-weight:600}
-.search-box{max-width:650px;margin:auto}
-.search-box input{width:100%;height:88px;border:3px solid #1764bd;border-radius:17px;padding:0 24px;font-size:28px;outline:none}
-.search-box input:focus{box-shadow:0 0 0 3px rgba(0,82,204,.12)}
-.total-services{text-align:center;font-size:27px;font-weight:800;margin-top:30px}
-
-<!-- =========================================================
-     ===== AADHAAR SERVICES CARD ==============================
-     ========================================================= -->
-
-.services-area{padding:42px 18px;max-width:900px;margin:auto}
-.aadhaar-card{background:#eef7ff;border-radius:30px;border-top:7px solid #ff9b2f;box-shadow:0 12px 28px rgba(0,82,204,.14);overflow:hidden}
-.aadhaar-main-button{width:100%;border:0;background:transparent;padding:28px 25px;display:flex;align-items:center;text-align:left;color:#0052cc}
-.aadhaar-icon{width:92px;height:92px;border-radius:22px;background:#f4faff;display:flex;align-items:center;justify-content:center;font-size:48px;box-shadow:0 8px 20px rgba(0,82,204,.08);margin-right:22px}
-.aadhaar-text{flex:1}
-.aadhaar-text h2{margin:0 0 10px;font-size:30px}
-.aadhaar-text p{margin:0;color:#666;font-size:20px;font-weight:700}
-.aadhaar-arrow{font-size:30px;font-weight:900}
-
-<!-- =========================================================
-     ===== AADHAAR SERVICES LIST ==============================
-     ========================================================= -->
-
-.aadhaar-services-list{display:none;padding:0 18px 25px}
-.service-card{background:#fff;border-radius:20px;margin:18px 0;box-shadow:0 5px 18px rgba(0,0,0,.08);overflow:hidden}
-.service-title-btn{width:100%;border:0;background:#fff;padding:22px 20px;font-size:27px;font-weight:800;color:#0052cc;text-align:center}
-.service-details{display:none;padding:20px;background:#fff}
-.service-details h4{margin:8px 0 18px;color:#0052cc;font-size:23px;text-align:center}
-.info-table{width:100%;border-collapse:collapse;margin-bottom:20px}
-.info-table th,.info-table td{border:1px solid #ddd;padding:12px;text-align:left;font-size:17px}
-.info-table th{background:#f1f6fc}
-.apply{display:block;width:100%;background:#0052cc;color:#fff;border:0;border-radius:8px;padding:13px;font-size:18px;font-weight:700}
-.choice-btn{display:block;width:100%;background:#fff;color:#0052cc;border:3px solid #1764bd;border-radius:10px;padding:14px;margin:10px 0;font-size:18px;font-weight:700}
-.apply-btn{display:block;width:100%;background:#0052cc;color:#fff;border:0;border-radius:8px;padding:13px;font-size:18px;font-weight:700;margin-top:10px}
-
-<!-- =========================================================
-     ===== FORM SYSTEM CSS ====================================
-     ========================================================= -->
-
-.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:9999;overflow-y:auto;padding:20px}
-.form-box{width:100%;max-width:650px;background:#fff;border-radius:18px;margin:20px auto;padding:24px;box-shadow:0 15px 45px rgba(0,0,0,.3)}
-.form-box h2{margin:0 0 15px;color:#0052cc;text-align:center;font-size:27px}
-.form-box h3{margin:12px 0;font-size:20px}
-.form-box hr{border:0;border-top:1px solid #ddd;margin:15px 0}
-.form-box label{display:block;margin:15px 0 7px;font-weight:700}
-.required{color:#777;font-weight:400;font-size:13px}
-.form-box input,.form-box select{width:100%;padding:12px;border:2px solid #ccc;border-radius:7px;font-size:16px;outline:none;background:#fff}
-.form-box input:focus,.form-box select:focus{border-color:#0052cc}
-.error{color:#d40000;font-size:14px;font-weight:700;margin-top:5px;min-height:0}
-.error-field{border-color:#d40000!important;background:#fff5f5!important}
-.file-help{font-size:13px;color:#666;margin-top:7px}
-.form-actions{display:flex;gap:10px;margin-top:22px}
-.submit-btn,.close-btn{flex:1;border:0;border-radius:8px;padding:13px;font-size:17px;font-weight:700}
-.submit-btn{background:#0052cc;color:#fff}
-.close-btn{background:#777;color:#fff}
-
-<!-- =========================================================
-     ===== ADDRESS CHOICE PANELS ==============================
-     ========================================================= -->
-
-.choice-panel{display:none;margin-top:15px;padding:20px;background:#fff;border-radius:15px;box-shadow:0 4px 15px rgba(0,0,0,.08)}
-.choice-panel h2{text-align:center;color:#0052cc;margin-top:0}
-
-<!-- =========================================================
-     ===== FOOTER =============================================
-     ========================================================= -->
-
-.footer{background:#0052cc;color:#fff;text-align:center;padding:18px 12px;margin-top:30px}
-.footer p{margin:5px 0}
-
-<!-- =========================================================
-     ===== FLOATING CONTACT ===================================
-     ========================================================= -->
-
-.floating-contact{position:fixed;right:15px;bottom:25px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.need-help{background:#20ad4b;color:#fff;border:0;border-radius:30px;padding:14px 22px;font-size:19px;font-weight:800;box-shadow:0 5px 15px rgba(0,0,0,.2);animation:helpMove 1.8s infinite}
-.contact-icons{display:flex;flex-direction:column;gap:10px}
-.contact-icon{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:29px;text-decoration:none;box-shadow:0 5px 15px rgba(0,0,0,.25)}
-.whatsapp{background:#25d366}
-.instagram{background:linear-gradient(45deg,#feda75,#d62976,#4f5bd5)}
-
-@keyframes helpMove{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-6px)}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-<!-- =========================================================
-     ===== MOBILE RESPONSIVE ==================================
-     ========================================================= -->
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f9ff;
+    color:#222;
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    -webkit-tap-highlight-color:transparent;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+/* =========================================================
+   ===== HEADER =============================================
+   ========================================================= */
+
+.header{
+    width:100%;
+    background:linear-gradient(135deg,#0050c9,#0044ad);
+    min-height:174px;
+    padding:12px 18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    box-shadow:0 5px 18px rgba(0,0,0,.16);
+}
+
+.header-logo{
+    width:108px;
+    height:108px;
+    border-radius:50%;
+    object-fit:cover;
+    background:#fff;
+    box-shadow:0 3px 12px rgba(0,0,0,.15);
+    flex-shrink:0;
+}
+
+.header-center{
+    flex:1;
+    text-align:center;
+    padding:0 8px;
+}
+
+.header-name{
+    color:#fff;
+    font-size:19px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:13px;
+}
+
+.header-title{
+    color:#fff;
+    font-size:31px;
+    line-height:1.15;
+    font-weight:800;
+    white-space:nowrap;
+}
+
+/* =========================================================
+   ===== MAIN SERVICE INTRO =================================
+   ========================================================= */
+
+.main-intro{
+    background:#fff;
+    text-align:center;
+    padding:26px 15px 22px;
+}
+
+.main-intro h1{
+    color:#0052cc;
+    font-size:40px;
+    line-height:1.15;
+    font-weight:800;
+    margin-bottom:16px;
+}
+
+.main-intro p{
+    color:#222;
+    font-size:27px;
+    font-weight:500;
+    letter-spacing:.3px;
+    margin-bottom:34px;
+}
+
+/* =========================================================
+   ===== SEARCH =============================================
+   ========================================================= */
+
+.search-wrapper{
+    width:100%;
+    max-width:650px;
+    margin:0 auto;
+}
+
+#serviceSearch{
+    width:100%;
+    height:88px;
+    border:3px solid #0060c9;
+    border-radius:18px;
+    outline:none;
+    background:#fff;
+    padding:0 24px;
+    font-size:27px;
+    color:#222;
+    box-shadow:none;
+}
+
+#serviceSearch::placeholder{
+    color:#777;
+    opacity:1;
+}
+
+#serviceSearch:focus{
+    border-color:#0052cc;
+}
+
+.total-services{
+    margin-top:31px;
+    font-size:27px;
+    font-weight:800;
+    color:#222;
+}
+
+.total-services span{
+    color:#222;
+}
+
+/* =========================================================
+   ===== MAIN SERVICE AREA ==================================
+   ========================================================= */
+
+.services-area{
+    width:100%;
+    padding:42px 20px 35px;
+    background:linear-gradient(180deg,#edf5ff 0%,#f5f9ff 100%);
+}
+
+/* =========================================================
+   ===== AADHAAR SERVICES PVC CARD ==========================
+   ========================================================= */
+
+.aadhaar-card{
+    width:100%;
+    max-width:650px;
+    margin:0 auto;
+    background:linear-gradient(135deg,#fafdff,#eef6ff);
+    border-radius:28px;
+    border-top:8px solid #ff9d3f;
+    box-shadow:0 12px 30px rgba(0,82,204,.13);
+    overflow:hidden;
+    cursor:pointer;
+    transition:transform .2s ease,box-shadow .2s ease;
+}
+
+.aadhaar-card:active{
+    transform:scale(.99);
+}
+
+.aadhaar-card-header{
+    min-height:235px;
+    padding:38px 28px;
+    display:flex;
+    align-items:center;
+    gap:24px;
+}
+
+.aadhaar-card-icon{
+    width:94px;
+    height:94px;
+    border-radius:22px;
+    background:linear-gradient(145deg,#f8fcff,#eaf3ff);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:48px;
+    color:#1678a2;
+    box-shadow:0 8px 22px rgba(0,82,204,.10);
+    flex-shrink:0;
+}
+
+.aadhaar-card-content{
+    flex:1;
+}
+
+.aadhaar-card-content h2{
+    color:#0052bd;
+    font-size:31px;
+    font-weight:800;
+    margin-bottom:13px;
+}
+
+.aadhaar-card-content p{
+    color:#666;
+    font-size:23px;
+    font-weight:700;
+}
+
+.aadhaar-card-arrow{
+    color:#0052bd;
+    font-size:39px;
+    font-weight:900;
+    transition:transform .25s ease;
+}
+
+.aadhaar-card.open .aadhaar-card-arrow{
+    transform:rotate(180deg);
+}
+
+/* =========================================================
+   ===== AADHAAR SERVICES LIST ==============================
+   ========================================================= */
+
+#aadhaarServices{
+    display:none;
+    width:100%;
+    max-width:650px;
+    margin:34px auto 0;
+}
+
+#aadhaarServices.show{
+    display:block;
+}
+
+/* =========================================================
+   ===== SERVICE CARD ========================================
+   ========================================================= */
+
+.service-card{
+    width:100%;
+    background:#fff;
+    border-radius:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+    overflow:hidden;
+}
+
+.service-main-button{
+    width:100%;
+    min-height:88px;
+    border:none;
+    outline:none;
+    background:#fff;
+    color:#0052bd;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-size:27px;
+    font-weight:800;
+    cursor:pointer;
+    text-align:center;
+}
+
+.service-main-button:active{
+    background:#f3f8ff;
+}
+
+.service-details{
+    display:none;
+    padding:20px;
+    background:#fff;
+}
+
+.service-details.show{
+    display:block;
+}
+
+/* =========================================================
+   ===== INFORMATION TABLE ==================================
+   ========================================================= */
+
+.info-table{
+    width:100%;
+    border-collapse:collapse;
+    margin:12px 0 20px;
+    overflow:hidden;
+    border-radius:10px;
+}
+
+.info-table th,
+.info-table td{
+    border:1px solid #d8e2ef;
+    padding:12px 10px;
+    font-size:15px;
+    text-align:left;
+    vertical-align:top;
+}
+
+.info-table th{
+    background:#0052cc;
+    color:#fff;
+    font-weight:700;
+}
+
+.info-table td:first-child{
+    width:42%;
+    font-weight:700;
+    color:#333;
+}
+
+.info-table td{
+    color:#333;
+}
+
+/* =========================================================
+   ===== APPLY / CHOICE BUTTONS =============================
+   ========================================================= */
+
+.apply-btn,
+.choice-btn,
+.apply{
+    width:100%;
+    border:2px solid #0052cc;
+    background:#fff;
+    color:#0052cc;
+    border-radius:12px;
+    padding:13px 16px;
+    font-size:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.apply-btn:hover,
+.choice-btn:hover,
+.apply:hover{
+    background:#0052cc;
+    color:#fff;
+}
+
+.choice-panel{
+    display:none;
+    margin-top:15px;
+}
+
+.choice-panel.show{
+    display:block;
+}
+
+.service-details h4{
+    color:#0052cc;
+    font-size:21px;
+    margin-bottom:15px;
+}
+
+.service-details p{
+    font-size:16px;
+    line-height:1.55;
+    margin-bottom:13px;
+}
+
+.service-details p strong{
+    color:#333;
+}
+
+/* =========================================================
+   ===== FORM OVERLAY ========================================
+   ========================================================= */
+
+.form-overlay{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.62);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+    z-index:9999;
+    overflow-y:auto;
+}
+
+.form-overlay.show{
+    display:flex;
+}
+
+.form-box{
+    width:100%;
+    max-width:620px;
+    max-height:94vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:18px;
+    padding:22px;
+    box-shadow:0 15px 45px rgba(0,0,0,.3);
+}
+
+.form-box h2{
+    color:#0052cc;
+    text-align:center;
+    font-size:26px;
+    margin-bottom:20px;
+}
+
+.form-box h3{
+    color:#333;
+    font-size:20px;
+    margin-bottom:10px;
+}
+
+.form-box hr{
+    border:0;
+    border-top:1px solid #ddd;
+    margin-bottom:18px;
+}
+
+.form-box label{
+    display:block;
+    font-size:16px;
+    font-weight:700;
+    color:#333;
+    margin:14px 0 7px;
+}
+
+.required{
+    color:#d00000;
+    font-size:13px;
+    font-weight:600;
+}
+
+.form-box input,
+.form-box select{
+    width:100%;
+    min-height:48px;
+    border:2px solid #cfd8e3;
+    border-radius:9px;
+    padding:10px 12px;
+    outline:none;
+    background:#fff;
+    color:#222;
+    font-size:16px;
+}
+
+.form-box input:focus,
+.form-box select:focus{
+    border-color:#0052cc;
+}
+
+.form-box input.error-field,
+.form-box select.error-field{
+    border-color:#d00000 !important;
+    background:#fff7f7;
+}
+
+.error{
+    color:#d00000;
+    font-size:14px;
+    font-weight:600;
+    margin-top:5px;
+    min-height:0;
+}
+
+.file-help{
+    color:#666;
+    font-size:13px;
+    margin-top:7px;
+    line-height:1.4;
+}
+
+.form-actions{
+    display:flex;
+    gap:10px;
+    margin-top:22px;
+}
+
+.submit-btn,
+.close-btn{
+    flex:1;
+    min-height:48px;
+    border:none;
+    border-radius:9px;
+    padding:10px 15px;
+    font-size:17px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.submit-btn{
+    background:#0052cc;
+    color:#fff;
+}
+
+.close-btn{
+    background:#e5e5e5;
+    color:#222;
+}
+
+/* =========================================================
+   ===== RESPONSIVE ==========================================
+   ========================================================= */
 
 @media(max-width:600px){
-.header{padding:10px 12px 18px}
-.header-logo{width:80px;height:80px}
-.header-name{font-size:14px}
-.header-title{font-size:23px}
-.intro{padding:25px 12px}
-.intro h1{font-size:34px}
-.intro p{font-size:24px;margin:15px 0 25px}
-.search-box input{height:88px;font-size:24px}
-.total-services{font-size:25px}
-.services-area{padding:40px 18px}
-.aadhaar-main-button{padding:27px 18px}
-.aadhaar-icon{width:78px;height:78px;font-size:40px;margin-right:16px}
-.aadhaar-text h2{font-size:28px}
-.aadhaar-text p{font-size:18px}
-.service-title-btn{font-size:24px}
-.form-overlay{padding:10px}
-.form-box{margin:10px auto;padding:20px 16px}
-.need-help{font-size:17px;padding:13px 18px}
-.contact-icon{width:55px;height:55px;font-size:27px}
+    .header{
+        min-height:174px;
+        padding:10px 14px 20px;
+    }
+
+    .header-logo{
+        width:82px;
+        height:82px;
+    }
+
+    .header-name{
+        font-size:17px;
+        margin-bottom:11px;
+    }
+
+    .header-title{
+        font-size:25px;
+    }
+
+    .main-intro{
+        padding:27px 14px 22px;
+    }
+
+    .main-intro h1{
+        font-size:38px;
+    }
+
+    .main-intro p{
+        font-size:25px;
+        margin-bottom:31px;
+    }
+
+    #serviceSearch{
+        height:87px;
+        font-size:25px;
+        border-radius:18px;
+    }
+
+    .total-services{
+        font-size:26px;
+        margin-top:30px;
+    }
+
+    .services-area{
+        padding:42px 20px 30px;
+    }
+
+    .aadhaar-card-header{
+        min-height:235px;
+        padding:34px 25px;
+        gap:19px;
+    }
+
+    .aadhaar-card-icon{
+        width:88px;
+        height:88px;
+        font-size:43px;
+    }
+
+    .aadhaar-card-content h2{
+        font-size:29px;
+    }
+
+    .aadhaar-card-content p{
+        font-size:21px;
+    }
+
+    .aadhaar-card-arrow{
+        font-size:35px;
+    }
+
+    .service-main-button{
+        min-height:86px;
+        font-size:26px;
+    }
 }
 
+@media(max-width:430px){
+    .header-logo{
+        width:78px;
+        height:78px;
+    }
+
+    .header-title{
+        font-size:23px;
+    }
+
+    .header-name{
+        font-size:16px;
+    }
+
+    .main-intro h1{
+        font-size:36px;
+    }
+
+    .main-intro p{
+        font-size:23px;
+    }
+
+    #serviceSearch{
+        font-size:23px;
+    }
+
+    .aadhaar-card-content h2{
+        font-size:27px;
+    }
+
+    .aadhaar-card-content p{
+        font-size:20px;
+    }
+
+    .service-main-button{
+        font-size:24px;
+    }
+}
 </style>
+
 <!-- =========================================================
      ===== MAIN CSS : END ====================================
      ========================================================= -->
@@ -164,40 +662,66 @@ button{cursor:pointer}
      ========================================================= -->
 
 <header class="header">
-<div class="header-inner">
 
-<img src="logo-left.png" class="header-logo" alt="Yasir Saeed Logo">
+<img
+class="header-logo"
+src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png"
+alt="Yasir Saeed Logo">
 
 <div class="header-center">
-<div class="header-name">YASIR SAEED</div>
-<div class="header-title">KHIDMAT-E-KHALQ OFFICE</div>
+
+<div class="header-name">
+YASIR SAEED
 </div>
 
-<img src="logo-right.png" class="header-logo" alt="KHIDMAT-E-KHALQ OFFICE Logo">
+<div class="header-title">
+KHIDMAT-E-KHALQ OFFICE
+</div>
 
 </div>
+
+<img
+class="header-logo"
+src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png"
+alt="Khidmat-E-Khalq Office Logo">
+
 </header>
 
 <!-- =========================================================
      ===== HEADER : END ======================================
      ========================================================= -->
 
+
 <!-- =========================================================
      ===== MAIN SERVICE INTRO : START ========================
      ========================================================= -->
 
-<section class="intro">
+<section class="main-intro">
 
-<h1>Aadhaar Services Portal</h1>
+<h1>
+Aadhaar Services Portal
+</h1>
 
-<p>Fast • Secure • Professional</p>
+<p>
+Fast • Secure • Professional
+</p>
 
-<div class="search-box">
-<input id="serviceSearch" type="search" placeholder="Search Aadhaar Service...">
+<!-- =========================================================
+     ===== SEARCH =============================================
+     ========================================================= -->
+
+<div class="search-wrapper">
+
+<input
+id="serviceSearch"
+type="search"
+placeholder="Search Aadhaar Service..."
+autocomplete="off">
+
 </div>
 
 <div class="total-services">
-Total Services : <span id="serviceCount">8</span>
+Total Services : <span id="totalServices">8</span>
 </div>
 
 </section>
@@ -206,36 +730,62 @@ Total Services : <span id="serviceCount">8</span>
      ===== MAIN SERVICE INTRO : END ==========================
      ========================================================= -->
 
+
 <!-- =========================================================
-     ===== AADHAAR PVC CARD BUTTON : START ===================
+     ===== MAIN SERVICES AREA : START ========================
      ========================================================= -->
 
 <main class="services-area">
 
-<div class="aadhaar-card">
+<!-- =========================================================
+     ===== AADHAAR PVC CARD BUTTON : START ===================
+     ========================================================= -->
 
-<button type="button" class="aadhaar-main-button" onclick="toggleAadhaarServices()">
+<div
+id="aadhaarCard"
+class="aadhaar-card"
+onclick="toggleAadhaarServices()">
 
-<div class="aadhaar-icon">🪪</div>
+<div class="aadhaar-card-header">
 
-<div class="aadhaar-text">
-<h2>Aadhaar Services</h2>
-<p>8 Services Available</p>
+<div class="aadhaar-card-icon">
+<i class="fa-solid fa-id-card"></i>
 </div>
 
-<div class="aadhaar-arrow" id="aadhaarArrow">⌃</div>
+<div class="aadhaar-card-content">
 
-</button>
+<h2>
+Aadhaar Services
+</h2>
+
+<p>
+8 Services Available
+</p>
+
+</div>
+
+<div
+id="aadhaarArrow"
+class="aadhaar-card-arrow">
+⌃
+</div>
+
+</div>
+
+</div>
 
 <!-- =========================================================
      ===== AADHAAR PVC CARD BUTTON : END =====================
      ========================================================= -->
 
+
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : START =====================
      ========================================================= -->
 
-<div id="aadhaarServicesList" class="aadhaar-services-list">
+<div id="aadhaarServices">
+
+<!-- اگلے حصے میں تمام 8 services یہاں شروع ہوں گی۔ -->
 
 <!-- =========================================================
      ===== SERVICE 1 : MOBILE NUMBER UPDATE ==================
@@ -243,88 +793,28 @@ Total Services : <span id="serviceCount">8</span>
 
 <div class="service-card">
 
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('mobileDetails')">
+<button
+type="button"
+class="service-main-button"
+onclick="toggleServiceDetails('mobileServiceDetails')">
+
 📱 Mobile Number Update
+
 </button>
 
-<div id="mobileDetails" class="service-details">
+<div
+id="mobileServiceDetails"
+class="service-details">
 
-<h4>Mobile Number Update</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Mobile Number Update</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply" onclick="openMobileForm();return false;">
-Apply Now
-</button>
+<!-- اگلے حصے میں اس service کی Information & Details آئے گی۔ -->
 
 </div>
 
 </div>
 
 <!-- =========================================================
-     ===== SERVICE 2 : ADDRESS UPDATE ========================
+     ===== SERVICE 1 : MOBILE NUMBER UPDATE : END ============
      ========================================================= -->
-
-<div class="service-card">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('addressDetails')">
-🏠 Address Update
-</button>
-
-<div id="addressDetails" class="service-details">
-
-<h4>Address Update</h4>
-
-<button type="button" class="choice-btn" onclick="toggleAddressChoice('selfDetails')">
-Self Documents
-</button>
-
-<button type="button" class="choice-btn" onclick="toggleAddressChoice('hofDetails')">
-HoF Based
-</button>
-
-<div id="selfDetails" class="choice-panel">
-
-<h2>Self Documents</h2>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update – Self Documents</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>Up to 30 Days</td></tr>
-<tr><td>Required Document</td><td>Valid Address Proof</td></tr>
-</table>
-
-<button type="button" class="apply" onclick="openSelfForm();return false;">
-Apply Now
-</button>
-
-</div>
-
-<div id="hofDetails" class="choice-panel">
-
-<h2>HoF Based</h2>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update – HoF Based</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>05 to 10 Minutes</td></tr>
-<tr><td>Required Details</td><td>HoF Information & Aadhaar</td></tr>
-</table>
-
-<button type="button" class="apply" onclick="openHofForm();return false;">
-Apply Now
-</button>
-
-</div>
-
-</div>
 
 </div>
 
@@ -332,8 +822,8 @@ Apply Now
      ===== AADHAAR SERVICES LIST : END =======================
      ========================================================= -->
 
-</div>
-
-</div>
-
 </main>
+
+<!-- =========================================================
+     ===== MAIN SERVICES AREA : END ==========================
+     ========================================================= -->
