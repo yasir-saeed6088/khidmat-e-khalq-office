@@ -1,613 +1,690 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
+<!-- =========================================================
+     ===== BASIC META : START ================================
+     ========================================================= -->
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0052cc">
+
 <title>KHIDMAT-E-KHALQ OFFICE</title>
 
-<!-- ===== BASIC META ===== -->
-<meta name="description" content="KHIDMAT-E-KHALQ OFFICE - Aadhaar and online services">
-<meta name="robots" content="noindex,nofollow">
+<!-- =========================================================
+     ===== BASIC META : END ==================================
+     ========================================================= -->
 
-<!-- ===== FONT AWESOME ===== -->
+
+<!-- =========================================================
+     ===== FONT AWESOME : START ===============================
+     ========================================================= -->
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- =========================================================
+     ===== FONT AWESOME : END =================================
+     ========================================================= -->
+
 
 <!-- =========================================================
      ===== MAIN CSS : START ==================================
      ========================================================= -->
+
 <style>
 
+/* =========================================================
+   ===== GLOBAL RESET =======================================
+   ========================================================= */
+
 *{
-box-sizing:border-box;
+    box-sizing:border-box;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:#f2f6fb;
-color:#222;
+    margin:0;
+    padding:0;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f4f7fb;
+    color:#222;
 }
 
-button,
-input,
-select,
-textarea{
-font-family:inherit;
+
+/* =========================================================
+   ===== MAIN CONTAINER =====================================
+   ========================================================= */
+
+.main-container{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:15px;
 }
 
-button,
-.apply,
-.service-title{
--webkit-tap-highlight-color:transparent;
-}
 
-button{
-touch-action:manipulation;
-}
+/* =========================================================
+   ===== HEADER : START =====================================
+   ========================================================= */
 
 .header{
-position:relative;
-background:linear-gradient(135deg,#0052cc,#003b91);
-color:white;
-text-align:center;
-padding:20px 100px 22px;
-min-height:120px;
-box-shadow:0 4px 15px rgba(0,0,0,.2);
+    width:100%;
+    background:linear-gradient(135deg,#0052cc,#003b91);
+    border-radius:14px;
+    padding:14px 12px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    box-shadow:0 5px 18px rgba(0,0,0,.15);
 }
 
 .header-logo{
-width:78px;
-height:78px;
-object-fit:cover;
-border-radius:50%;
-position:absolute;
-top:8px;
-left:8px;
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    border-radius:10px;
+    background:#fff;
+    padding:5px;
+    flex-shrink:0;
 }
 
-.header-logo-right{
-width:78px;
-height:78px;
-object-fit:cover;
-border-radius:50%;
-position:absolute;
-top:8px;
-right:8px;
+.header-center{
+    flex:1;
+    text-align:center;
+    color:#fff;
 }
 
-.header p{
-margin:0;
-font-size:16px;
-font-weight:600;
-letter-spacing:1px;
+.header-name{
+    margin:0 0 5px;
+    font-size:19px;
+    font-weight:700;
 }
 
-.header h1{
-margin:8px 0 0;
-font-size:25px;
+.header-title{
+    margin:0;
+    font-size:21px;
+    font-weight:800;
+    letter-spacing:.3px;
 }
 
-.main-panel{
-background:white;
-padding:20px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
+.header-subtitle{
+    margin:5px 0 0;
+    font-size:12px;
+    opacity:.9;
 }
 
-.main-panel h2{
-color:#0052cc;
-text-align:center;
-margin:0;
+
+/* =========================================================
+   ===== HEADER : MOBILE ===================================
+   ========================================================= */
+
+@media(max-width:600px){
+
+    .header{
+        padding:10px 8px;
+        border-radius:12px;
+    }
+
+    .header-logo{
+        width:52px;
+        height:52px;
+    }
+
+    .header-name{
+        font-size:15px;
+    }
+
+    .header-title{
+        font-size:16px;
+    }
+
+    .header-subtitle{
+        font-size:10px;
+    }
+
 }
 
-.tagline{
-text-align:center;
-margin:10px 0 0;
-font-weight:500;
+
+/* =========================================================
+   ===== SEARCH BAR : START ================================
+   ========================================================= */
+
+.search-container{
+    margin:16px 0;
+    width:100%;
 }
 
 .search-box{
-width:100%;
-padding:14px;
-margin-top:20px;
-border:2px solid #0052cc;
-border-radius:10px;
-font-size:17px;
-outline:none;
+    width:100%;
+    position:relative;
 }
 
-.search-box:focus{
-box-shadow:0 0 0 3px rgba(0,82,204,.12);
+.search-box i{
+    position:absolute;
+    left:15px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#0052cc;
+    font-size:17px;
 }
 
-.total-services{
-text-align:center;
-font-size:18px;
-margin-top:18px;
+.search-box input{
+    width:100%;
+    height:48px;
+    border:1px solid #d3dbe8;
+    border-radius:25px;
+    padding:0 18px 0 45px;
+    outline:none;
+    font-size:15px;
+    background:#fff;
+    box-shadow:0 3px 10px rgba(0,0,0,.06);
 }
 
-.container{
-width:100%;
-max-width:700px;
-margin:0 auto;
-padding:5px 10px 100px;
+.search-box input:focus{
+    border-color:#0052cc;
+    box-shadow:0 0 0 3px rgba(0,82,204,.12);
 }
 
-.aadhaar-card-wrap{
-width:100%;
-max-width:400px;
-margin:20px auto;
+
+/* =========================================================
+   ===== MAIN SERVICE INTRO : START ========================
+   ========================================================= */
+
+.service-intro{
+    text-align:center;
+    margin:15px 0 18px;
 }
 
-.aadhaar-card{
-position:relative;
-width:100%;
-min-height:160px;
-background:linear-gradient(135deg,#ffffff,#eef6ff);
-border:1px solid #cfe0ff;
-border-top:5px solid #ff9933;
-border-radius:18px;
-padding:18px;
-cursor:pointer;
-box-shadow:0 12px 30px rgba(0,82,204,.18);
-transition:transform .2s,box-shadow .2s;
+.service-intro h2{
+    margin:0;
+    color:#0052cc;
+    font-size:22px;
 }
 
-.aadhaar-card:active{
-transform:scale(.98);
+.service-intro p{
+    margin:6px 0 0;
+    color:#666;
+    font-size:14px;
 }
 
-.aadhaar-card-row{
-display:flex;
-align-items:center;
-width:100%;
+
+/* =========================================================
+   ===== AADHAAR PVC CARD BUTTON : START ===================
+   ========================================================= */
+
+.aadhaar-service-button{
+    width:100%;
+    max-width:360px;
+    min-height:150px;
+    margin:20px auto;
+    padding:22px 18px;
+    border-radius:14px;
+    background:linear-gradient(145deg,#ffffff,#eef3fa);
+    border:1px solid #d6dfec;
+    box-shadow:0 8px 20px rgba(0,0,0,.14),inset 0 1px 0 #fff;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    cursor:pointer;
+    transition:.25s ease;
+    position:relative;
+    overflow:hidden;
 }
 
-.aadhaar-icon{
-width:55px;
-height:55px;
-border-radius:13px;
-background:#eef6ff;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:29px;
-flex-shrink:0;
-box-shadow:0 4px 10px rgba(0,82,204,.15);
+.aadhaar-service-button::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:6px;
+    background:#0052cc;
 }
 
-.aadhaar-card-text{
-flex:1;
-margin-left:15px;
+.aadhaar-service-button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 12px 25px rgba(0,0,0,.18);
 }
 
-.aadhaar-card-text h2{
-margin:0;
-font-size:21px;
-font-weight:700;
-letter-spacing:.3px;
-color:#0052cc;
+.aadhaar-service-button:active{
+    transform:scale(.98);
 }
 
-.aadhaar-card-text p{
-margin:6px 0 0;
-color:#666;
-font-size:14px;
-font-weight:600;
+.aadhaar-card-icon{
+    width:62px;
+    height:40px;
+    border-radius:7px;
+    background:linear-gradient(135deg,#0052cc,#003b91);
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:21px;
+    box-shadow:0 4px 9px rgba(0,82,204,.3);
 }
 
-.aadhaar-arrow{
-font-size:30px;
-color:#0052cc;
-font-weight:bold;
-margin-left:10px;
+.aadhaar-service-button h2{
+    margin:0;
+    color:#0052cc;
+    font-size:20px;
 }
 
-.service-content{
-display:none;
+.aadhaar-service-button p{
+    margin:6px 0 0;
+    color:#666;
+    font-size:12px;
 }
 
-.service-content.open{
-display:block;
+
+/* =========================================================
+   ===== AADHAAR SERVICES LIST : START =====================
+   ========================================================= */
+
+#aadhaarServices{
+    display:none;
+    width:100%;
+    margin-top:20px;
 }
 
-.service{
-width:96%;
-max-width:650px;
-margin:12px auto;
+#aadhaarServices.active{
+    display:block;
 }
 
-.service-title{
-background:white;
-border:1px solid #d7e4f8;
-border-radius:12px;
-padding:15px;
-color:#0052cc;
-font-size:18px;
-font-weight:700;
-text-align:center;
-cursor:pointer;
-box-shadow:0 5px 15px rgba(0,82,204,.1);
+
+/* =========================================================
+   ===== SERVICE CARD : START ===============================
+   ========================================================= */
+
+.service-card{
+    width:100%;
+    background:#fff;
+    border:1px solid #dce3ed;
+    border-radius:12px;
+    margin:12px 0;
+    padding:15px;
+    box-shadow:0 4px 12px rgba(0,0,0,.07);
 }
 
-.service-title:active{
-transform:scale(.99);
+.service-card h3{
+    margin:0 0 12px;
+    color:#0052cc;
+    font-size:17px;
+    line-height:1.4;
+}
+
+.apply-btn,
+.choice-btn,
+.apply{
+    border:none;
+    border-radius:7px;
+    background:#0052cc;
+    color:#fff;
+    padding:10px 18px;
+    font-size:14px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.2s ease;
+}
+
+.apply-btn:hover,
+.choice-btn:hover,
+.apply:hover{
+    background:#003b91;
 }
 
 .service-details{
-display:none;
-background:#fff;
-border:1px solid #dbe6f5;
-border-radius:12px;
-padding:15px;
-margin-top:8px;
-box-shadow:0 5px 15px rgba(0,0,0,.08);
+    display:none;
+    margin-top:13px;
+    padding:14px;
+    background:#f7f9fc;
+    border:1px solid #e0e6ef;
+    border-radius:9px;
 }
 
-.service-details.open{
-display:block;
+.service-details h4{
+    margin:0 0 10px;
+    color:#0052cc;
+    font-size:16px;
 }
 
-.service-details h2{
-text-align:center;
-color:#0052cc;
-margin-top:0;
+.service-details p{
+    margin:9px 0;
+    line-height:1.5;
+    font-size:14px;
 }
 
 .info-table{
-width:100%;
-border-collapse:collapse;
-margin-top:15px;
+    width:100%;
+    border-collapse:collapse;
+    margin:10px 0 14px;
+    background:#fff;
 }
 
 .info-table th,
 .info-table td{
-border:1px solid #d7d7d7;
-padding:10px;
-text-align:left;
-vertical-align:top;
+    border:1px solid #d9e0ea;
+    padding:9px;
+    text-align:left;
+    font-size:13px;
+    vertical-align:top;
 }
 
 .info-table th{
-background:#eef6ff;
-color:#0052cc;
+    background:#0052cc;
+    color:#fff;
 }
 
-.apply{
-display:block;
-width:220px;
-max-width:100%;
-margin:20px auto 0;
-padding:12px 18px;
-background:#0052cc;
-color:white;
-text-align:center;
-text-decoration:none;
-border:none;
-border-radius:8px;
-font-size:16px;
-font-weight:700;
-cursor:pointer;
+
+/* =========================================================
+   ===== ADDRESS UPDATE CHOICE ==============================
+   ========================================================= */
+
+.address-choice-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:12px;
 }
 
-.apply:active{
-transform:scale(.98);
+.address-choice-buttons .choice-btn{
+    flex:1;
+    min-width:140px;
 }
 
-.update-choice{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-justify-content:center;
-margin:15px 0;
-}
 
-.choice-btn{
-flex:1 1 200px;
-padding:13px;
-border:2px solid #0052cc;
-background:white;
-color:#0052cc;
-border-radius:9px;
-font-weight:700;
-cursor:pointer;
-}
-
-.choice-btn.active{
-background:#0052cc;
-color:white;
-}
+/* =========================================================
+   ===== CHOICE PANEL =======================================
+   ========================================================= */
 
 .choice-panel{
-display:none;
+    margin-top:12px;
+    padding:13px;
+    background:#fff;
+    border:1px solid #dce3ed;
+    border-radius:9px;
 }
 
-.choice-panel.open{
-display:block;
+.choice-panel h2{
+    margin:0 0 10px;
+    font-size:17px;
+    color:#0052cc;
 }
+
+
+/* =========================================================
+   ===== FORM OVERLAY =======================================
+   ========================================================= */
 
 .form-overlay{
-display:none;
-position:fixed;
-inset:0;
-background:rgba(0,0,0,.65);
-overflow-y:auto;
-z-index:9999;
-padding:20px 0;
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    background:rgba(0,0,0,.65);
+    padding:15px;
+    overflow-y:auto;
+    align-items:center;
+    justify-content:center;
 }
 
-.form-overlay.open{
-display:block;
+.form-overlay.active{
+    display:flex;
 }
 
 .form-box{
-position:relative;
-background:white;
-width:92%;
-max-width:650px;
-margin:20px auto;
-padding:22px;
-border-radius:14px;
-max-height:calc(100vh - 40px);
-overflow-y:auto;
-box-shadow:0 15px 45px rgba(0,0,0,.3);
+    width:100%;
+    max-width:620px;
+    max-height:92vh;
+    overflow-y:auto;
+    background:#fff;
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 15px 45px rgba(0,0,0,.3);
 }
 
 .form-box h2{
-text-align:center;
-color:#0052cc;
-margin-top:0;
+    margin:0 0 12px;
+    color:#0052cc;
+    font-size:21px;
 }
 
 .form-box h3{
-color:#0052cc;
-margin-top:22px;
+    margin:10px 0;
+    font-size:16px;
+    color:#333;
+}
+
+.form-box hr{
+    border:none;
+    border-top:1px solid #e0e5ec;
+    margin:12px 0 17px;
 }
 
 .form-box label{
-display:block;
-font-weight:600;
-margin-top:14px;
+    display:block;
+    margin:13px 0 6px;
+    font-size:14px;
+    font-weight:600;
 }
 
 .required{
-color:red;
+    color:#d00000;
+    font-size:12px;
+    font-weight:600;
 }
 
 .form-box input,
 .form-box select,
 .form-box textarea{
-width:100%;
-padding:11px;
-margin-top:6px;
-border:1px solid #bbb;
-border-radius:7px;
-font-size:16px;
-background:white;
-outline:none;
+    width:100%;
+    min-height:43px;
+    border:1px solid #ccd5e2;
+    border-radius:7px;
+    padding:9px 11px;
+    outline:none;
+    background:#fff;
+    font-size:14px;
 }
 
 .form-box input:focus,
 .form-box select:focus,
 .form-box textarea:focus{
-border-color:#0052cc;
-box-shadow:0 0 0 2px rgba(0,82,204,.1);
+    border-color:#0052cc;
+    box-shadow:0 0 0 3px rgba(0,82,204,.1);
 }
 
-.form-box textarea{
-min-height:90px;
-resize:vertical;
+.form-box input.error-field,
+.form-box select.error-field,
+.form-box textarea.error-field{
+    border:2px solid #d00000;
+    background:#fff7f7;
 }
 
 .error{
-color:red;
-font-size:13px;
-margin-top:4px;
-min-height:0;
-}
-
-.error.active{
-margin-bottom:4px;
+    min-height:18px;
+    margin-top:4px;
+    color:#d00000;
+    font-size:12px;
+    font-weight:600;
 }
 
 .file-help{
-font-size:12px;
-color:#666;
-margin-top:5px;
-}
-
-.upload-row{
-display:flex;
-gap:8px;
-align-items:center;
-margin-top:8px;
-}
-
-.upload-row button{
-background:#0052cc;
-color:white;
-padding:10px 15px;
-border:none;
-border-radius:6px;
-cursor:pointer;
+    margin-top:6px;
+    color:#666;
+    font-size:11px;
+    line-height:1.4;
 }
 
 .form-actions{
-display:flex;
-gap:10px;
-justify-content:center;
-margin-top:22px;
+    display:flex;
+    gap:10px;
+    margin-top:20px;
 }
 
 .submit-btn,
 .close-btn{
-border:none;
-border-radius:7px;
-padding:12px 25px;
-font-weight:700;
-font-size:15px;
-cursor:pointer;
+    flex:1;
+    min-height:43px;
+    border:none;
+    border-radius:7px;
+    font-size:14px;
+    font-weight:700;
+    cursor:pointer;
 }
 
 .submit-btn{
-background:#28a745;
-color:white;
+    background:#0052cc;
+    color:#fff;
+}
+
+.submit-btn:hover{
+    background:#003b91;
 }
 
 .close-btn{
-background:#dc3545;
-color:white;
+    background:#e8edf4;
+    color:#222;
 }
+
+.close-btn:hover{
+    background:#d9e0e9;
+}
+
+
+/* =========================================================
+   ===== FOOTER : BASE STYLE ================================
+   ========================================================= */
 
 .footer{
-position:relative;
-background:#0052cc;
-color:white;
-text-align:center;
-padding:25px 15px 80px;
-margin-top:30px;
+    width:100%;
+    margin-top:25px;
+    background:#0052cc;
+    color:#fff;
+    border-radius:12px;
 }
 
-.footer p{
-margin:8px 0;
-}
+
+/* =========================================================
+   ===== FLOATING CONTACT : BASE STYLE ======================
+   ========================================================= */
 
 .floating-contact{
-position:fixed;
-right:15px;
-bottom:18px;
-z-index:9000;
-display:flex;
-flex-direction:column;
-align-items:flex-end;
-gap:8px;
+    position:fixed;
+    right:15px;
+    bottom:15px;
+    z-index:9998;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    gap:8px;
 }
 
-.help-bubble{
-background:white;
-color:#0052cc;
-padding:8px 12px;
-border-radius:18px;
-font-size:13px;
-font-weight:700;
-box-shadow:0 3px 12px rgba(0,0,0,.2);
+.need-help{
+    background:#0052cc;
+    color:#fff;
+    padding:9px 13px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:700;
+    box-shadow:0 4px 12px rgba(0,0,0,.2);
+    animation:helpPulse 1.8s infinite;
 }
 
-.float-btn{
-width:50px;
-height:50px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:white;
-text-decoration:none;
-font-size:25px;
-box-shadow:0 4px 15px rgba(0,0,0,.25);
+.contact-icons{
+    display:flex;
+    gap:8px;
 }
 
-.whatsapp{
-background:#25d366;
+.contact-icon{
+    width:43px;
+    height:43px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    text-decoration:none;
+    box-shadow:0 4px 12px rgba(0,0,0,.22);
+    font-size:20px;
 }
 
-.instagram{
-background:#1258d6;
+.whatsapp-icon{
+    background:#25D366;
 }
 
-.bottom-blue-bar{
-height:8px;
-width:100%;
-background:#0052cc;
+.instagram-icon{
+    background:linear-gradient(135deg,#833AB4,#E1306C,#FCAF45);
 }
 
-.hidden{
-display:none!important;
+@keyframes helpPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.05);}
 }
+
+
+/* =========================================================
+   ===== MOBILE RESPONSIVE =================================
+   ========================================================= */
 
 @media(max-width:600px){
 
-.header{
-padding:17px 75px 18px;
-min-height:105px;
-}
+    .main-container{
+        padding:10px;
+    }
 
-.header-logo,
-.header-logo-right{
-width:65px;
-height:65px;
-top:8px;
-}
+    .service-card{
+        padding:13px;
+    }
 
-.header h1{
-font-size:19px;
-}
+    .form-overlay{
+        padding:8px;
+    }
 
-.header p{
-font-size:13px;
-}
+    .form-box{
+        max-height:94vh;
+        padding:16px;
+        border-radius:10px;
+    }
 
-.main-panel{
-padding:16px 12px;
-}
+    .info-table th,
+    .info-table td{
+        padding:7px;
+        font-size:12px;
+    }
 
-.aadhaar-card{
-min-height:145px;
-}
-
-.aadhaar-card-text h2{
-font-size:18px;
-}
-
-.info-table th,
-.info-table td{
-font-size:13px;
-padding:8px;
-}
-
-.form-box{
-width:94%;
-padding:18px;
-}
-
-.form-actions{
-flex-wrap:wrap;
-}
-
-.submit-btn,
-.close-btn{
-flex:1 1 120px;
-}
+    .floating-contact{
+        right:10px;
+        bottom:10px;
+    }
 
 }
+
+
+/* =========================================================
+   ===== MAIN CSS : END =====================================
+   ========================================================= */
 
 </style>
-<!-- =========================================================
-     ===== MAIN CSS : END ====================================
-     ========================================================= -->
 
-<style>
-html,
-body{
-min-height:100%;
-}
-
-body{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-}
-
-.footer{
-margin-top:auto;
-width:100%;
-}
-</style>
 </head>
 
 <body>
+
+<!-- =========================================================
+     ===== MAIN CONTAINER : START ============================
+     ========================================================= -->
+
+<div class="main-container">
+
 
 <!-- =========================================================
      ===== HEADER : START ====================================
@@ -615,19 +692,31 @@ width:100%;
 
 <header class="header">
 
-<img
-src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png"
-alt="Yasir Saeed Logo"
-class="header-logo">
+    <img
+        src="logo-left.png"
+        alt="KHIDMAT-E-KHALQ OFFICE Logo"
+        class="header-logo">
 
-<img
-src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png"
-alt="KHIDMAT-E-KHALQ OFFICE Logo"
-class="header-logo-right">
+    <div class="header-center">
 
-<p>YASIR SAEED</p>
+        <p class="header-name">
+            Yasir Saeed
+        </p>
 
-<h1>KHIDMAT-E-KHALQ OFFICE</h1>
+        <h1 class="header-title">
+            KHIDMAT-E-KHALQ OFFICE
+        </h1>
+
+        <p class="header-subtitle">
+            Digital &amp; Online Services
+        </p>
+
+    </div>
+
+    <img
+        src="logo-right.png"
+        alt="KHIDMAT-E-KHALQ OFFICE Logo"
+        class="header-logo">
 
 </header>
 
@@ -637,30 +726,43 @@ class="header-logo-right">
 
 
 <!-- =========================================================
+     ===== SEARCH BAR : START ================================
+     ========================================================= -->
+
+<div class="search-container">
+
+    <div class="search-box">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            id="serviceSearch"
+            type="search"
+            placeholder="Search Services..."
+            autocomplete="off">
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     ===== SEARCH BAR : END ==================================
+     ========================================================= -->
+
+
+<!-- =========================================================
      ===== MAIN SERVICE INTRO : START ========================
      ========================================================= -->
 
-<div class="main-panel">
+<div class="service-intro">
 
-<h2>Aadhaar Services Portal</h2>
+    <h2>
+        Our Online Services
+    </h2>
 
-<p class="tagline">
-Fast • Secure • Professional
-</p>
-
-<input
-type="text"
-id="searchBox"
-class="search-box"
-placeholder="Search Aadhaar Service..."
-oninput="searchService()">
-
-<div class="total-services">
-
-<b>Total Services :</b>
-<span id="totalServices">2</span>
-
-</div>
+    <p>
+        Select a service to continue
+    </p>
 
 </div>
 
@@ -669,46 +771,31 @@ oninput="searchService()">
      ========================================================= -->
 
 
-<div class="container">
-
 <!-- =========================================================
-     ===== AADHAAR SERVICES BUTTON : START ===================
+     ===== AADHAAR PVC CARD BUTTON : START ===================
      ========================================================= -->
 
-<div class="aadhaar-card-wrap">
+<button
+    type="button"
+    class="aadhaar-service-button"
+    onclick="toggleAadhaarServices()">
 
-<div
-class="aadhaar-card"
-onclick="toggleAadhaarServices()">
+    <div class="aadhaar-card-icon">
+        <i class="fa-regular fa-id-card"></i>
+    </div>
 
-<div class="aadhaar-card-row">
+    <h2>
+        🪪 AADHAAR SERVICES
+    </h2>
 
-<div class="aadhaar-icon">
-🪪
-</div>
+    <p>
+        Click to view all Aadhaar Services
+    </p>
 
-<div class="aadhaar-card-text">
-
-<h2>Aadhaar Services</h2>
-
-<p>2 Services Available</p>
-
-</div>
-
-<div
-id="aadhaarArrow"
-class="aadhaar-arrow">
-⌄
-</div>
-
-</div>
-
-</div>
-
-</div>
+</button>
 
 <!-- =========================================================
-     ===== AADHAAR SERVICES BUTTON : END =====================
+     ===== AADHAAR PVC CARD BUTTON : END =====================
      ========================================================= -->
 
 
@@ -716,66 +803,66 @@ class="aadhaar-arrow">
      ===== AADHAAR SERVICES LIST : START =====================
      ========================================================= -->
 
-<div
-id="aadhaarServices"
-class="service-content">
+<div id="aadhaarServices">
+
 
 <!-- =========================================================
      ===== SERVICE 1 : MOBILE NUMBER UPDATE ==================
      ========================================================= -->
 
-<div
-class="service"
-data-service="Mobile Number Update">
+<div class="service-card">
 
-<div
-class="service-title"
-onclick="toggleServiceDetails('mobileDetails')">
+    <h3>
+        📱 Mobile Number Update
+    </h3>
 
-📱 Mobile Number Update
+    <button
+        type="button"
+        class="apply-btn"
+        onclick="toggleServiceDetails('mobileDetails')">
+        Information &amp; Details
+    </button>
 
-</div>
+    <div
+        id="mobileDetails"
+        class="service-details">
 
-<div
-id="mobileDetails"
-class="service-details">
+        <h4>
+            Mobile Number Update
+        </h4>
 
-<h2>Mobile Number Update</h2>
+        <table class="info-table">
 
-<table class="info-table">
+            <tr>
+                <th>Information</th>
+                <th>Details</th>
+            </tr>
 
-<tr>
-<th>Information</th>
-<th>Details</th>
-</tr>
+            <tr>
+                <td>Service</td>
+                <td>Mobile Number Update</td>
+            </tr>
 
-<tr>
-<td>Service</td>
-<td>Update Aadhaar Mobile Number</td>
-</tr>
+            <tr>
+                <td>Service Charge</td>
+                <td>₹100</td>
+            </tr>
 
-<tr>
-<td>Service Charge</td>
-<td>₹100</td>
-</tr>
+            <tr>
+                <td>Processing Time</td>
+                <td>5–10 Minutes</td>
+            </tr>
 
-<tr>
-<td>Processing Time</td>
-<td>10-15 Minutes</td>
-</tr>
+        </table>
 
-</table>
+        <button
+            type="button"
+            class="apply"
+            onclick="openMobileForm();return false;">
+            Apply Now
+        </button>
 
-<button
-type="button"
-class="apply"
-onclick="openMobileForm();return false;">
-
-Apply Now
-
-</button>
-
-</div>
+    </div>
 
 </div>
 
@@ -788,45 +875,29 @@ Apply Now
      ===== SERVICE 2 : ADDRESS UPDATE ========================
      ========================================================= -->
 
-<div
-class="service"
-data-service="Address Update">
+<div class="service-card">
 
-<div
-class="service-title"
-onclick="toggleServiceDetails('addressDetails')">
+    <h3>
+        🏠 Address Update
+    </h3>
 
-🏠 Address Update
+    <div class="address-choice-buttons">
 
-</div>
+        <button
+            type="button"
+            class="choice-btn"
+            onclick="toggleAddressChoice('selfDetails')">
+            Self Documents
+        </button>
 
-<div
-id="addressDetails"
-class="service-details">
+        <button
+            type="button"
+            class="choice-btn"
+            onclick="toggleAddressChoice('hofDetails')">
+            HoF Based
+        </button>
 
-<h2>Address Update</h2>
-
-<div class="update-choice">
-
-<button
-type="button"
-class="choice-btn"
-onclick="toggleChoice('selfDetails','hofDetails',this)">
-
-Self Documents
-
-</button>
-
-<button
-type="button"
-class="choice-btn"
-onclick="toggleChoice('hofDetails','selfDetails',this)">
-
-HoF Based
-
-</button>
-
-</div>
+    </div>
 
 
 <!-- =======================================================
@@ -834,48 +905,49 @@ HoF Based
      ======================================================= -->
 
 <div
-id="selfDetails"
-class="choice-panel">
+    id="selfDetails"
+    class="choice-panel"
+    style="display:none;">
 
-<h2>Self Documents</h2>
+    <h2>
+        Self Documents
+    </h2>
 
-<table class="info-table">
+    <table class="info-table">
 
-<tr>
-<th>Information</th>
-<th>Details</th>
-</tr>
+        <tr>
+            <th>Information</th>
+            <th>Details</th>
+        </tr>
 
-<tr>
-<td>Service</td>
-<td>Address Update – Self Documents</td>
-</tr>
+        <tr>
+            <td>Service</td>
+            <td>Address Update – Self Documents</td>
+        </tr>
 
-<tr>
-<td>Service Charge</td>
-<td>₹100</td>
-</tr>
+        <tr>
+            <td>Service Charge</td>
+            <td>₹100</td>
+        </tr>
 
-<tr>
-<td>Processing Time</td>
-<td>Up to 30 Days</td>
-</tr>
+        <tr>
+            <td>Processing Time</td>
+            <td>Up to 30 Days</td>
+        </tr>
 
-<tr>
-<td>Required Document</td>
-<td>Valid Address Proof</td>
-</tr>
+        <tr>
+            <td>Required Document</td>
+            <td>Valid Address Proof</td>
+        </tr>
 
-</table>
+    </table>
 
-<button
-type="button"
-class="apply"
-onclick="openSelfForm();return false;">
-
-Apply Now
-
-</button>
+    <button
+        type="button"
+        class="apply"
+        onclick="openSelfForm();return false;">
+        Apply Now
+    </button>
 
 </div>
 
@@ -889,48 +961,49 @@ Apply Now
      ======================================================= -->
 
 <div
-id="hofDetails"
-class="choice-panel">
+    id="hofDetails"
+    class="choice-panel"
+    style="display:none;">
 
-<h2>HoF Based</h2>
+    <h2>
+        HoF Based
+    </h2>
 
-<table class="info-table">
+    <table class="info-table">
 
-<tr>
-<th>Information</th>
-<th>Details</th>
-</tr>
+        <tr>
+            <th>Information</th>
+            <th>Details</th>
+        </tr>
 
-<tr>
-<td>Service</td>
-<td>Address Update – HoF Based</td>
-</tr>
+        <tr>
+            <td>Service</td>
+            <td>Address Update – HoF Based</td>
+        </tr>
 
-<tr>
-<td>Service Charge</td>
-<td>₹100</td>
-</tr>
+        <tr>
+            <td>Service Charge</td>
+            <td>₹100</td>
+        </tr>
 
-<tr>
-<td>Processing Time</td>
-<td>05 to 10 Minutes</td>
-</tr>
+        <tr>
+            <td>Processing Time</td>
+            <td>05 to 10 Minutes</td>
+        </tr>
 
-<tr>
-<td>Required Details</td>
-<td>HoF Information & Aadhaar</td>
-</tr>
+        <tr>
+            <td>Required Details</td>
+            <td>HoF Information &amp; Aadhaar</td>
+        </tr>
 
-</table>
+    </table>
 
-<button
-type="button"
-class="apply"
-onclick="openHofForm();return false;">
-
-Apply Now
-
-</button>
+    <button
+        type="button"
+        class="apply"
+        onclick="openHofForm();return false;">
+        Apply Now
+    </button>
 
 </div>
 
@@ -940,4200 +1013,179 @@ Apply Now
 
 </div>
 
-</div>
-
 <!-- =========================================================
      ===== SERVICE 2 : ADDRESS UPDATE : END ==================
      ========================================================= -->
 
-</div>
+
+<!-- =========================================================
+     ===== NEXT PART LOCATION ================================
+     ========================================================= -->
 
 <!-- =========================================================
      ===== SERVICE 3 : PVC AADHAAR CARD ORDER ===============
      ========================================================= -->
 
 <div class="service-card">
+<h3>💳 PVC Aadhaar Card Order</h3>
+<button type="button" class="apply-btn" onclick="toggleServiceDetails('pvcDetails')">Information &amp; Details</button>
 
-    <h3>💳 PVC Aadhaar Card Order</h3>
-
-    <button
-        type="button"
-        class="apply-btn"
-        onclick="openPVCForm()">
-        Apply Now
-    </button>
-
-    <div class="service-details">
-
-        <h4>PVC Aadhaar Card Order</h4>
-
-        <h4>Information &amp; Details</h4>
-
-        <p>
-            <strong>Service</strong><br>
-            PVC Aadhaar Card Order
-        </p>
-
-        <p>
-            <strong>Required Details</strong><br>
-            Aadhaar Number
-        </p>
-
-        <p>
-            <strong>Service Charge</strong><br>
-            ₹100
-        </p>
-
-        <p>
-            <strong>Processing Time</strong><br>
-            Up to 5 Working Days
-        </p>
-
-    </div>
-
+<div id="pvcDetails" class="service-details">
+<h4>PVC Aadhaar Card Order</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>PVC Aadhaar Card Order</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>Up to 5 Working Days</td></tr>
+</table>
+<button type="button" class="apply" onclick="openPVCForm();return false;">Apply Now</button>
 </div>
-
+</div>
 
 <!-- =========================================================
      ===== SERVICE 4 : AADHAAR DOWNLOAD =====================
      ========================================================= -->
 
 <div class="service-card">
+<h3>📥 Aadhaar Download</h3>
+<button type="button" class="choice-btn" onclick="toggleAadhaarDownload()">Aadhaar Download</button>
 
-    <h3>📥 Aadhaar Download</h3>
+<div id="aadhaarDownloadChoices" class="service-details" style="display:none;">
 
-    <button
-        type="button"
-        class="choice-btn"
-        onclick="toggleAadhaarDownload()">
-        Aadhaar Download
-    </button>
+<button type="button" class="choice-btn" onclick="toggleServiceDetails('eAadhaarDetails')">e-Aadhaar Download</button>
 
-    <div
-        id="aadhaarDownloadChoices"
-        class="service-details"
-        style="display:none;">
-
-        <button
-            type="button"
-            class="choice-btn"
-            onclick="openEAadhaarForm()">
-            e-Aadhaar Download
-        </button>
-
-        <button
-            type="button"
-            class="choice-btn"
-            onclick="openMaskedAadhaarForm()">
-            Masked Aadhaar Download
-        </button>
-
-    </div>
-
+<div id="eAadhaarDetails" class="service-details">
+<h4>e-Aadhaar Download</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>e-Aadhaar Download</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openEAadhaarForm();return false;">Apply Now</button>
 </div>
 
+<button type="button" class="choice-btn" onclick="toggleServiceDetails('maskedAadhaarDetails')">Masked Aadhaar Download</button>
+
+<div id="maskedAadhaarDetails" class="service-details">
+<h4>Masked Aadhaar Download</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Masked Aadhaar Download</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openMaskedAadhaarForm();return false;">Apply Now</button>
+</div>
+
+</div>
+</div>
 
 <!-- =========================================================
      ===== SERVICE 5 : AADHAAR DOCUMENT UPDATE ===============
      ========================================================= -->
 
 <div class="service-card">
+<h3>🪪 Aadhaar Document Update</h3>
+<button type="button" class="apply-btn" onclick="toggleServiceDetails('documentUpdateDetails')">Information &amp; Details</button>
 
-    <h3>🪪 Aadhaar Document Update</h3>
-
-    <button
-        type="button"
-        class="apply-btn"
-        onclick="openDocumentUpdateForm()">
-        Apply Now
-    </button>
-
-    <div class="service-details">
-
-        <h4>Aadhaar Document Update</h4>
-
-        <h4>Information &amp; Details</h4>
-
-        <p>
-            <strong>Service</strong><br>
-            Aadhaar Document Update
-        </p>
-
-        <p>
-            <strong>Required Documents</strong><br>
-            Proof of Identity (POI)<br>
-            Proof of Address (POA)
-        </p>
-
-        <p>
-            <strong>Service Charge</strong><br>
-            ₹50
-        </p>
-
-        <p>
-            <strong>Processing Time</strong><br>
-            Usually completed within 30 days
-        </p>
-
-    </div>
-
+<div id="documentUpdateDetails" class="service-details">
+<h4>Aadhaar Document Update</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Aadhaar Document Update</td></tr>
+<tr><td>Service Charge</td><td>₹50</td></tr>
+<tr><td>Processing Time</td><td>Usually completed within 30 days</td></tr>
+</table>
+<button type="button" class="apply" onclick="openDocumentUpdateForm();return false;">Apply Now</button>
 </div>
-
+</div>
 
 <!-- =========================================================
      ===== SERVICE 6 : AADHAAR STATUS CHECK =================
      ========================================================= -->
 
 <div class="service-card">
+<h3>📋 Aadhaar Status Check</h3>
+<button type="button" class="apply-btn" onclick="toggleServiceDetails('statusCheckDetails')">Information &amp; Details</button>
 
-    <h3>📋 Aadhaar Status Check</h3>
-
-    <button
-        type="button"
-        class="apply-btn"
-        onclick="openStatusCheckForm()">
-        Apply Now
-    </button>
-
-    <div class="service-details">
-
-        <h4>Aadhaar Status Check</h4>
-
-        <h4>Information &amp; Details</h4>
-
-        <p>
-            <strong>Service</strong><br>
-            Aadhaar Status Check
-        </p>
-
-        <p>
-            <strong>Required Details</strong><br>
-            Aadhaar Number
-        </p>
-
-        <p>
-            <strong>Service Charge</strong><br>
-            Free of Cost
-        </p>
-
-        <p>
-            <strong>Processing Time</strong><br>
-            2–5 Minutes
-        </p>
-
-    </div>
-
+<div id="statusCheckDetails" class="service-details">
+<h4>Aadhaar Status Check</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Aadhaar Status Check</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openStatusCheckForm();return false;">Apply Now</button>
 </div>
-
+</div>
 
 <!-- =========================================================
      ===== SERVICE 7 : BIOMETRIC SERVICES ===================
      ========================================================= -->
 
 <div class="service-card">
+<h3>🔒 Biometric Services</h3>
+<button type="button" class="choice-btn" onclick="toggleBiometricChoices()">Biometric Services</button>
 
-    <h3>🔒 Biometric Services</h3>
+<div id="biometricChoices" class="service-details" style="display:none;">
 
-    <button
-        type="button"
-        class="choice-btn"
-        onclick="toggleBiometricChoices()">
-        Biometric Services
-    </button>
+<button type="button" class="choice-btn" onclick="toggleServiceDetails('biometricLockDetails')">Biometric Lock</button>
 
-    <div
-        id="biometricChoices"
-        class="service-details"
-        style="display:none;">
-
-        <button
-            type="button"
-            class="choice-btn"
-            onclick="openBiometricLockForm()">
-            Biometric Lock
-        </button>
-
-        <button
-            type="button"
-            class="choice-btn"
-            onclick="openBiometricUnlockForm()">
-            Biometric Unlock
-        </button>
-
-    </div>
-
+<div id="biometricLockDetails" class="service-details">
+<h4>Biometric Lock</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Aadhaar Biometric Lock</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openBiometricLockForm();return false;">Apply Now</button>
 </div>
 
+<button type="button" class="choice-btn" onclick="toggleServiceDetails('biometricUnlockDetails')">Biometric Unlock</button>
+
+<div id="biometricUnlockDetails" class="service-details">
+<h4>Biometric Unlock</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Aadhaar Biometric Unlock</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openBiometricUnlockForm();return false;">Apply Now</button>
+</div>
+
+</div>
+</div>
 
 <!-- =========================================================
      ===== SERVICE 8 : E-AADHAAR DIGITAL SIGNATURE ===========
      ========================================================= -->
 
 <div class="service-card">
+<h3>🪪 e-Aadhaar Digital Signature Validation</h3>
+<button type="button" class="apply-btn" onclick="toggleServiceDetails('signatureValidationDetails')">Information &amp; Details</button>
 
-    <h3>🪪 e-Aadhaar Digital Signature Validation</h3>
-
-    <button
-        type="button"
-        class="apply-btn"
-        onclick="openSignatureValidationForm()">
-        Apply Now
-    </button>
-
-    <div class="service-details">
-
-        <h4>e-Aadhaar Digital Signature Validation</h4>
-
-        <h4>Information &amp; Details</h4>
-
-        <p>
-            <strong>Service</strong><br>
-            e-Aadhaar Digital Signature Validation
-        </p>
-
-        <p>
-            <strong>Required Details</strong><br>
-            Aadhaar Number
-        </p>
-
-        <p>
-            <strong>Service Charge</strong><br>
-            ₹50
-        </p>
-
-        <p>
-            <strong>Processing Time</strong><br>
-            5–10 Minutes
-        </p>
-
-    </div>
-
+<div id="signatureValidationDetails" class="service-details">
+<h4>e-Aadhaar Digital Signature Validation</h4>
+<table class="info-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>e-Aadhaar Digital Signature Validation</td></tr>
+<tr><td>Service Charge</td><td>₹50</td></tr>
+<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
+</table>
+<button type="button" class="apply" onclick="openSignatureValidationForm();return false;">Apply Now</button>
+</div>
 </div>
 
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : END =======================
      ========================================================= -->
 
-</div>
-
 <!-- =========================================================
-     ===== MOBILE NUMBER UPDATE FORM : START =================
+     ===== NEXT PART LOCATION : END ==========================
      ========================================================= -->
 
-<div
-id="mobileForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Mobile Number Update
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="mobileName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="mobileAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="mobileAadhaarError"
-class="error">
-</div>
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="mobileLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="mobileLinkedError"
-class="error">
-</div>
-
-<label>
-Village / Town
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="mobileVillage"
-type="text">
-
-<label>
-State
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="mobileState"
-type="text">
-
-<label>
-Aadhaar File (Optional)
-</label>
-
-<input
-id="aadhaarFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadAadhaarFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="aadhaarFileError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitMobileForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeMobileForm()">
-Close
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE FORM : END ===================
-     ========================================================= -->
-
-<!-- =========================================================
-     ===== SERVICE 3 : PVC AADHAAR CARD ORDER FORM ===========
-     ========================================================= -->
-
-<div
-id="pvcForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-PVC Aadhaar Card Order
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="pvcName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="pvcLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="pvcLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="pvcAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="pvcAadhaarError"
-class="error">
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitPVCForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closePVCForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 4 : E-AADHAAR DOWNLOAD FORM ===============
-     ========================================================= -->
-
-<div
-id="eAadhaarForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-e-Aadhaar Download
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="eAadhaarName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="eAadhaarLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="eAadhaarLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="eAadhaarNumber"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="eAadhaarNumberError"
-class="error">
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitEAadhaarForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeEAadhaarForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 4 : MASKED AADHAAR DOWNLOAD FORM ==========
-     ========================================================= -->
-
-<div
-id="maskedAadhaarForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Masked Aadhaar Download
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="maskedAadhaarName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="maskedAadhaarLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="maskedAadhaarLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="maskedAadhaarNumber"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="maskedAadhaarNumberError"
-class="error">
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitMaskedAadhaarForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeMaskedAadhaarForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 5 : AADHAAR DOCUMENT UPDATE FORM ==========
-     ========================================================= -->
-
-<div
-id="documentUpdateForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Aadhaar Document Update
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="documentName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="documentLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="documentLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="documentAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="documentAadhaarError"
-class="error">
-</div>
-
-
-<h3>
-Proof of Identity (POI)
-</h3>
-
-<hr>
-
-<label>
-Select Identity Proof
-<span class="required">*</span>
-</label>
-
-<select id="identityProof">
-
-<option value="">Select Identity Proof</option>
-<option>PAN Card</option>
-<option>Voter ID</option>
-<option>Indian Passport</option>
-<option>Driving Licence</option>
-<option>Ration Card</option>
-<option>Government Photo ID</option>
-<option>School Photo Identity Certificate</option>
-<option>Other</option>
-
-</select>
-
-<div
-id="identityProofError"
-class="error">
-</div>
-
-
-<label
-id="otherIdentityLabel"
-style="display:none;">
-
-Other Identity Document
-<span class="required">*</span>
-
-</label>
-
-<input
-id="otherIdentity"
-type="text"
-style="display:none;">
-
-<div
-id="otherIdentityError"
-class="error">
-</div>
-
-
-<label>
-Upload Identity Proof
-<span class="required">*</span>
-</label>
-
-<input
-id="identityFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadDocumentIdentityFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="identityFileError"
-class="error">
-</div>
-
-
-<h3>
-Proof of Address (POA)
-</h3>
-
-<hr>
-
-<label>
-Select Address Proof
-<span class="required">*</span>
-</label>
-
-<select id="addressProof">
-
-<option value="">Select Address Proof</option>
-<option>Voter ID</option>
-<option>Indian Passport</option>
-<option>Ration Card</option>
-<option>Electricity Bill</option>
-<option>Water Bill</option>
-<option>Gas Bill</option>
-<option>Bank / Post Office Passbook</option>
-<option>Telephone / Broadband Bill</option>
-<option>Rent / Lease Agreement</option>
-<option>Property Tax Receipt</option>
-<option>Other</option>
-
-</select>
-
-<div
-id="addressProofError"
-class="error">
-</div>
-
-
-<label
-id="otherAddressLabel"
-style="display:none;">
-
-Other Address Document
-<span class="required">*</span>
-
-</label>
-
-<input
-id="otherAddress"
-type="text"
-style="display:none;">
-
-<div
-id="otherAddressError"
-class="error">
-</div>
-
-
-<label>
-Upload Address Proof
-<span class="required">*</span>
-</label>
-
-<input
-id="addressFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadDocumentAddressFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="addressFileError"
-class="error">
-</div>
-
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 2 MB
-</div>
-
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitDocumentUpdateForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeDocumentUpdateForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 6 : AADHAAR STATUS CHECK FORM =============
-     ========================================================= -->
-
-<div
-id="statusCheckForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Aadhaar Status Check
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="statusName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="statusLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="statusLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="statusAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="statusAadhaarError"
-class="error">
-</div>
-
-
-<h3>
-Status Details
-</h3>
-
-<hr>
-
-<label>
-SRN / URN / EID
-</label>
-
-<input
-id="statusReference"
-type="text">
-
-<label>
-Status Type
-</label>
-
-<select id="statusType">
-
-<option value="">Select Status Type</option>
-<option>Aadhaar Update Status</option>
-<option>Document Update Status</option>
-<option>PVC Card Order Status</option>
-<option>Enrolment (EID) Status</option>
-<option>Aadhaar Generation Status</option>
-
-</select>
-
-
-<label>
-Upload Acknowledgement Receipt
-</label>
-
-<input
-id="statusReceipt"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadStatusReceipt()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="statusReceiptError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitStatusCheckForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeStatusCheckForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 7 : BIOMETRIC LOCK FORM ===================
-     ========================================================= -->
-
-<div
-id="biometricLockForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Biometric Lock
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="lockName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="lockLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="lockLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="lockAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="lockAadhaarError"
-class="error">
-</div>
-
-<label>
-Aadhaar File
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="lockFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadLockFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="lockFileError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitBiometricLockForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeBiometricLockForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 7 : BIOMETRIC UNLOCK FORM =================
-     ========================================================= -->
-
-<div
-id="biometricUnlockForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Biometric Unlock
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="unlockName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="unlockLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="unlockLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="unlockAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="unlockAadhaarError"
-class="error">
-</div>
-
-<label>
-Aadhaar File
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="unlockFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadUnlockFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="unlockFileError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitBiometricUnlockForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeBiometricUnlockForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== SERVICE 8 : DIGITAL SIGNATURE VALIDATION FORM =====
-     ========================================================= -->
-
-<div
-id="signatureValidationForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-e-Aadhaar Digital Signature Validation
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="signatureName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="signatureLinked"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="signatureLinkedError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="signatureAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="signatureAadhaarError"
-class="error">
-</div>
-
-<label>
-Aadhaar File
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="signatureFile"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadSignatureFile()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="signatureFileError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitSignatureValidationForm()">
-Submit
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeSignatureValidationForm()">
-Close
-</button>
-
-</div>
-
-</div>
-</div>
-
-
-<!-- =========================================================
-     ===== NEW AADHAAR SERVICE FORMS : JAVASCRIPT ============
-     ========================================================= -->
-
-<script>
-
-/* =========================================================
-   ===== GENERIC OPEN / CLOSE HELPERS =======================
-   ========================================================= */
-
-function openFormById(id){
-    const form = document.getElementById(id);
-    if(form){
-        form.style.display = "flex";
-        setTimeout(() => {
-            const box = form.querySelector(".form-box");
-            if(box){
-                box.scrollTop = 0;
-            }
-        }, 50);
-    }
-}
-
-function closeFormById(id){
-    const form = document.getElementById(id);
-    if(form){
-        form.style.display = "none";
-    }
-}
-
-
-/* =========================================================
-   ===== PVC AADHAAR CARD ORDER =============================
-   ========================================================= */
-
-function openPVCForm(){
-    openFormById("pvcForm");
-}
-
-function closePVCForm(){
-    closeFormById("pvcForm");
-}
-
-function submitPVCForm(){
-
-    const name = document.getElementById("pvcName").value.trim();
-    const mobile = document.getElementById("pvcLinked").value.trim();
-    const aadhaar = document.getElementById("pvcAadhaar").value.trim();
-
-    clearFieldStyle("pvcLinked");
-    clearFieldStyle("pvcAadhaar");
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError("pvcLinked","pvcLinkedError","Please enter a valid 10-digit mobile number.");
-        valid = false;
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError("pvcAadhaar","pvcAadhaarError","Please enter a valid 12-digit Aadhaar number.");
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: PVC AADHAAR CARD ORDER
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-/* =========================================================
-   ===== E-AADHAAR DOWNLOAD ================================
-   ========================================================= */
-
-function openEAadhaarForm(){
-    openFormById("eAadhaarForm");
-}
-
-function closeEAadhaarForm(){
-    closeFormById("eAadhaarForm");
-}
-
-function submitEAadhaarForm(){
-
-    const name = document.getElementById("eAadhaarName").value.trim();
-    const mobile = document.getElementById("eAadhaarLinked").value.trim();
-    const aadhaar = document.getElementById("eAadhaarNumber").value.trim();
-
-    clearFieldStyle("eAadhaarLinked");
-    clearFieldStyle("eAadhaarNumber");
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "eAadhaarLinked",
-            "eAadhaarLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "eAadhaarNumber",
-            "eAadhaarNumberError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: E-AADHAAR DOWNLOAD
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-/* =========================================================
-   ===== MASKED AADHAAR DOWNLOAD ===========================
-   ========================================================= */
-
-function openMaskedAadhaarForm(){
-    openFormById("maskedAadhaarForm");
-}
-
-function closeMaskedAadhaarForm(){
-    closeFormById("maskedAadhaarForm");
-}
-
-function submitMaskedAadhaarForm(){
-
-    const name = document.getElementById("maskedAadhaarName").value.trim();
-    const mobile = document.getElementById("maskedAadhaarLinked").value.trim();
-    const aadhaar = document.getElementById("maskedAadhaarNumber").value.trim();
-
-    clearFieldStyle("maskedAadhaarLinked");
-    clearFieldStyle("maskedAadhaarNumber");
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "maskedAadhaarLinked",
-            "maskedAadhaarLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "maskedAadhaarNumber",
-            "maskedAadhaarNumberError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: MASKED AADHAAR DOWNLOAD
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-/* =========================================================
-   ===== DOCUMENT UPDATE ====================================
-   ========================================================= */
-
-function openDocumentUpdateForm(){
-    openFormById("documentUpdateForm");
-}
-
-function closeDocumentUpdateForm(){
-    closeFormById("documentUpdateForm");
-}
-
-
-document.getElementById("identityProof").addEventListener("change",function(){
-
-    const label = document.getElementById("otherIdentityLabel");
-    const input = document.getElementById("otherIdentity");
-
-    if(this.value === "Other"){
-        label.style.display = "block";
-        input.style.display = "block";
-    }else{
-        label.style.display = "none";
-        input.style.display = "none";
-        input.value = "";
-    }
-});
-
-
-document.getElementById("addressProof").addEventListener("change",function(){
-
-    const label = document.getElementById("otherAddressLabel");
-    const input = document.getElementById("otherAddress");
-
-    if(this.value === "Other"){
-        label.style.display = "block";
-        input.style.display = "block";
-    }else{
-        label.style.display = "none";
-        input.style.display = "none";
-        input.value = "";
-    }
-});
-
-
-function submitDocumentUpdateForm(){
-
-    const name = document.getElementById("documentName").value.trim();
-    const mobile = document.getElementById("documentLinked").value.trim();
-    const aadhaar = document.getElementById("documentAadhaar").value.trim();
-
-    const identity = document.getElementById("identityProof").value;
-    const otherIdentity = document.getElementById("otherIdentity").value.trim();
-
-    const address = document.getElementById("addressProof").value;
-    const otherAddress = document.getElementById("otherAddress").value.trim();
-
-    const identityFile = document.getElementById("identityFile").files[0];
-    const addressFile = document.getElementById("addressFile").files[0];
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "documentLinked",
-            "documentLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("documentLinked");
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "documentAadhaar",
-            "documentAadhaarError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("documentAadhaar");
-    }
-
-    if(!identity){
-        showError(
-            "identityProof",
-            "identityProofError",
-            "Please select an identity proof."
-        );
-        valid = false;
-    }
-
-    if(identity === "Other" && !otherIdentity){
-        showError(
-            "otherIdentity",
-            "otherIdentityError",
-            "Please enter the identity document name."
-        );
-        valid = false;
-    }
-
-    if(!address){
-        showError(
-            "addressProof",
-            "addressProofError",
-            "Please select an address proof."
-        );
-        valid = false;
-    }
-
-    if(address === "Other" && !otherAddress){
-        showError(
-            "otherAddress",
-            "otherAddressError",
-            "Please enter the address document name."
-        );
-        valid = false;
-    }
-
-    if(!identityFile){
-        showError(
-            "identityFile",
-            "identityFileError",
-            "Please select the identity proof file."
-        );
-        valid = false;
-    }else if(!validFile(identityFile,2)){
-        showError(
-            "identityFile",
-            "identityFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
-        );
-        valid = false;
-    }
-
-    if(!addressFile){
-        showError(
-            "addressFile",
-            "addressFileError",
-            "Please select the address proof file."
-        );
-        valid = false;
-    }else if(!validFile(addressFile,2)){
-        showError(
-            "addressFile",
-            "addressFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const identityText =
-        identity === "Other" ? otherIdentity : identity;
-
-    const addressText =
-        address === "Other" ? otherAddress : address;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: AADHAAR DOCUMENT UPDATE
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-━━━━━━━━━━━━━━━━━━━━
-
-PROOF OF IDENTITY
-
-Identity Proof: ${identityText}
-
-Identity Proof File: ${identityFile.name}
-
-━━━━━━━━━━━━━━━━━━━━
-
-PROOF OF ADDRESS
-
-Address Proof: ${addressText}
-
-Address Proof File: ${addressFile.name}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-function uploadDocumentIdentityFile(){
-
-    const file = document.getElementById("identityFile").files[0];
-
-    clearFieldStyle("identityFile");
-
-    if(!file){
-        showError(
-            "identityFile",
-            "identityFileError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,2)){
-        showError(
-            "identityFile",
-            "identityFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
-        );
-        return;
-    }
-
-    document.getElementById("identityFileError").textContent =
-        "File selected successfully.";
-}
-
-
-function uploadDocumentAddressFile(){
-
-    const file = document.getElementById("addressFile").files[0];
-
-    clearFieldStyle("addressFile");
-
-    if(!file){
-        showError(
-            "addressFile",
-            "addressFileError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,2)){
-        showError(
-            "addressFile",
-            "addressFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 2 MB."
-        );
-        return;
-    }
-
-    document.getElementById("addressFileError").textContent =
-        "File selected successfully.";
-}
-
-
-/* =========================================================
-   ===== STATUS CHECK ========================================
-   ========================================================= */
-
-function openStatusCheckForm(){
-    openFormById("statusCheckForm");
-}
-
-function closeStatusCheckForm(){
-    closeFormById("statusCheckForm");
-}
-
-
-function submitStatusCheckForm(){
-
-    const name = document.getElementById("statusName").value.trim();
-    const mobile = document.getElementById("statusLinked").value.trim();
-    const aadhaar = document.getElementById("statusAadhaar").value.trim();
-
-    const reference =
-        document.getElementById("statusReference").value.trim();
-
-    const statusType =
-        document.getElementById("statusType").value;
-
-    const receipt =
-        document.getElementById("statusReceipt").files[0];
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "statusLinked",
-            "statusLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("statusLinked");
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "statusAadhaar",
-            "statusAadhaarError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("statusAadhaar");
-    }
-
-    if(receipt && !validFile(receipt,1)){
-        showError(
-            "statusReceipt",
-            "statusReceiptError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: AADHAAR STATUS CHECK
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-STATUS DETAILS
-
-SRN / URN / EID: ${reference}
-
-Status Type: ${statusType}
-
-Acknowledgement Receipt: ${receipt ? receipt.name : ""}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-function uploadStatusReceipt(){
-
-    const file =
-        document.getElementById("statusReceipt").files[0];
-
-    clearFieldStyle("statusReceipt");
-
-    if(!file){
-        showError(
-            "statusReceipt",
-            "statusReceiptError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,1)){
-        showError(
-            "statusReceipt",
-            "statusReceiptError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        return;
-    }
-
-    document.getElementById("statusReceiptError").textContent =
-        "File selected successfully.";
-}
-
-
-/* =========================================================
-   ===== BIOMETRIC LOCK ======================================
-   ========================================================= */
-
-function openBiometricLockForm(){
-    openFormById("biometricLockForm");
-}
-
-function closeBiometricLockForm(){
-    closeFormById("biometricLockForm");
-}
-
-
-function submitBiometricLockForm(){
-
-    const name = document.getElementById("lockName").value.trim();
-    const mobile = document.getElementById("lockLinked").value.trim();
-    const aadhaar = document.getElementById("lockAadhaar").value.trim();
-
-    const file =
-        document.getElementById("lockFile").files[0];
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "lockLinked",
-            "lockLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("lockLinked");
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "lockAadhaar",
-            "lockAadhaarError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("lockAadhaar");
-    }
-
-    if(file && !validFile(file,1)){
-        showError(
-            "lockFile",
-            "lockFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: AADHAAR BIOMETRIC LOCK
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-Aadhaar File: ${file ? file.name : ""}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-function uploadLockFile(){
-
-    const file =
-        document.getElementById("lockFile").files[0];
-
-    clearFieldStyle("lockFile");
-
-    if(!file){
-        showError(
-            "lockFile",
-            "lockFileError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,1)){
-        showError(
-            "lockFile",
-            "lockFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        return;
-    }
-
-    document.getElementById("lockFileError").textContent =
-        "File selected successfully.";
-}
-
-
-/* =========================================================
-   ===== BIOMETRIC UNLOCK ====================================
-   ========================================================= */
-
-function openBiometricUnlockForm(){
-    openFormById("biometricUnlockForm");
-}
-
-function closeBiometricUnlockForm(){
-    closeFormById("biometricUnlockForm");
-}
-
-
-function submitBiometricUnlockForm(){
-
-    const name = document.getElementById("unlockName").value.trim();
-    const mobile = document.getElementById("unlockLinked").value.trim();
-    const aadhaar = document.getElementById("unlockAadhaar").value.trim();
-
-    const file =
-        document.getElementById("unlockFile").files[0];
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "unlockLinked",
-            "unlockLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("unlockLinked");
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "unlockAadhaar",
-            "unlockAadhaarError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("unlockAadhaar");
-    }
-
-    if(file && !validFile(file,1)){
-        showError(
-            "unlockFile",
-            "unlockFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: AADHAAR BIOMETRIC UNLOCK
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-Aadhaar File: ${file ? file.name : ""}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-function uploadUnlockFile(){
-
-    const file =
-        document.getElementById("unlockFile").files[0];
-
-    clearFieldStyle("unlockFile");
-
-    if(!file){
-        showError(
-            "unlockFile",
-            "unlockFileError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,1)){
-        showError(
-            "unlockFile",
-            "unlockFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        return;
-    }
-
-    document.getElementById("unlockFileError").textContent =
-        "File selected successfully.";
-}
-
-
-/* =========================================================
-   ===== DIGITAL SIGNATURE VALIDATION ========================
-   ========================================================= */
-
-function openSignatureValidationForm(){
-    openFormById("signatureValidationForm");
-}
-
-function closeSignatureValidationForm(){
-    closeFormById("signatureValidationForm");
-}
-
-
-function submitSignatureValidationForm(){
-
-    const name =
-        document.getElementById("signatureName").value.trim();
-
-    const mobile =
-        document.getElementById("signatureLinked").value.trim();
-
-    const aadhaar =
-        document.getElementById("signatureAadhaar").value.trim();
-
-    const file =
-        document.getElementById("signatureFile").files[0];
-
-    let valid = true;
-
-    if(!validMobile(mobile)){
-        showError(
-            "signatureLinked",
-            "signatureLinkedError",
-            "Please enter a valid 10-digit mobile number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("signatureLinked");
-    }
-
-    if(!validAadhaar(aadhaar)){
-        showError(
-            "signatureAadhaar",
-            "signatureAadhaarError",
-            "Please enter a valid 12-digit Aadhaar number."
-        );
-        valid = false;
-    }else{
-        clearFieldStyle("signatureAadhaar");
-    }
-
-    if(file && !validFile(file,1)){
-        showError(
-            "signatureFile",
-            "signatureFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        valid = false;
-    }
-
-    if(!valid) return;
-
-    const message =
-`KHIDMAT-E-KHALQ OFFICE
-━━━━━━━━━━━━━━━━━━━━
-
-SERVICE: E-AADHAAR DIGITAL SIGNATURE VALIDATION
-━━━━━━━━━━━━━━━━━━━━
-
-APPLICANT DETAILS
-
-Full Name: ${name}
-
-Aadhaar Linked Mobile: ${mobile}
-
-Aadhaar Number: ${aadhaar}
-
-Aadhaar File: ${file ? file.name : ""}
-
-━━━━━━━━━━━━━━━━━━━━
-
-Please assist me with this service.`;
-
-    openWhatsApp(message);
-}
-
-
-function uploadSignatureFile(){
-
-    const file =
-        document.getElementById("signatureFile").files[0];
-
-    clearFieldStyle("signatureFile");
-
-    if(!file){
-        showError(
-            "signatureFile",
-            "signatureFileError",
-            "Please select a file."
-        );
-        return;
-    }
-
-    if(!validFile(file,1)){
-        showError(
-            "signatureFile",
-            "signatureFileError",
-            "File must be JPG, JPEG, PNG or PDF and less than 1 MB."
-        );
-        return;
-    }
-
-    document.getElementById("signatureFileError").textContent =
-        "File selected successfully.";
-}
-
-
-/* =========================================================
-   ===== VALIDATION ==========================================
-   ========================================================= */
-
-function validMobile(value){
-
-    return /^[6-9]\d{9}$/.test(value);
-}
-
-
-function validAadhaar(value){
-
-    return /^\d{12}$/.test(value);
-}
-
-
-function validFile(file,maxMB){
-
-    const allowed = [
-        "image/jpeg",
-        "image/png",
-        "application/pdf"
-    ];
-
-    const extension =
-        file.name.split(".").pop().toLowerCase();
-
-    const validExtension =
-        ["jpg","jpeg","png","pdf"].includes(extension);
-
-    const validType =
-        allowed.includes(file.type);
-
-    const maxSize =
-        maxMB * 1024 * 1024;
-
-    return validExtension &&
-           validType &&
-           file.size < maxSize;
-}
-
-
-function clearFieldStyle(id){
-
-    const field = document.getElementById(id);
-
-    if(field){
-        field.classList.remove("error-field");
-    }
-}
-
-
-function showError(fieldId,errorId,message){
-
-    const field =
-        document.getElementById(fieldId);
-
-    const error =
-        document.getElementById(errorId);
-
-    if(field){
-        field.classList.add("error-field");
-    }
-
-    if(error){
-        error.textContent = message;
-    }
-
-    if(field){
-
-        setTimeout(() => {
-
-            field.scrollIntoView({
-                behavior:"smooth",
-                block:"center"
-            });
-
-        },50);
-
-    }
-}
-
-
-/* =========================================================
-   ===== WHATSAPP ============================================
-   ========================================================= */
-
-function openWhatsApp(message){
-
-    const encoded =
-        encodeURIComponent(message);
-
-    window.open(
-        "https://wa.me/?text=" + encoded,
-        "_blank"
-    );
-}
-
-</script>
      
-<!-- =========================================================
-     ===== SELF DOCUMENTS FORM : START =======================
-     ========================================================= -->
-
-<div
-id="selfForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Address Update – Self Documents
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="selfName"
-type="text"
-autocomplete="name">
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="selfMobile"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="selfMobileError"
-class="error">
-</div>
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="selfAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="selfAadhaarError"
-class="error">
-</div>
-
-
-<h3>
-New Address Details
-</h3>
-
-<hr>
-
-<label>
-House / Building
-<span class="required">*</span>
-</label>
-
-<input
-id="selfHouse"
-type="text">
-
-<div
-id="selfHouseError"
-class="error">
-</div>
-
-<label>
-Road / Street
-<span class="required">*</span>
-</label>
-
-<input
-id="selfStreet"
-type="text">
-
-<div
-id="selfStreetError"
-class="error">
-</div>
-
-<label>
-Area / Locality
-<span class="required">*</span>
-</label>
-
-<input
-id="selfArea"
-type="text">
-
-<div
-id="selfAreaError"
-class="error">
-</div>
-
-<label>
-Landmark
-<span class="required">*</span>
-</label>
-
-<input
-id="selfLandmark"
-type="text">
-
-<div
-id="selfLandmarkError"
-class="error">
-</div>
-
-<label>
-Village / Town / City
-<span class="required">*</span>
-</label>
-
-<input
-id="selfVillage"
-type="text">
-
-<div
-id="selfVillageError"
-class="error">
-</div>
-
-<label>
-Post Office
-<span class="required">*</span>
-</label>
-
-<input
-id="selfPostOffice"
-type="text">
-
-<div
-id="selfPostOfficeError"
-class="error">
-</div>
-
-<label>
-District
-<span class="required">*</span>
-</label>
-
-<input
-id="selfDistrict"
-type="text">
-
-<div
-id="selfDistrictError"
-class="error">
-</div>
-
-<label>
-State
-<span class="required">*</span>
-</label>
-
-<input
-id="selfState"
-type="text">
-
-<div
-id="selfStateError"
-class="error">
-</div>
-
-<label>
-PIN Code
-<span class="required">*</span>
-</label>
-
-<input
-id="selfPincode"
-type="text"
-inputmode="numeric"
-maxlength="6">
-
-<div
-id="selfPincodeError"
-class="error">
-</div>
-
-
-<h3>
-Address Proof
-</h3>
-
-<hr>
-
-<label>
-Select Address Proof
-<span class="required">*</span>
-</label>
-
-<select
-id="selfDocumentType"
-onchange="handleOtherDocument()">
-
-<option value="">
--- Select Address Proof --
-</option>
-
-<option value="Ration Card">
-Ration Card
-</option>
-
-<option value="Voter ID">
-Voter ID
-</option>
-
-<option value="Passport">
-Passport
-</option>
-
-<option value="Driving Licence">
-Driving Licence
-</option>
-
-<option value="Electricity Bill">
-Electricity Bill
-</option>
-
-<option value="Water Bill">
-Water Bill
-</option>
-
-<option value="Telephone / Landline Bill">
-Telephone / Landline Bill
-</option>
-
-<option value="Property Tax Receipt">
-Property Tax Receipt
-</option>
-
-<option value="Bank / Post Office Statement">
-Bank / Post Office Statement
-</option>
-
-<option value="Government-issued Address Proof">
-Government-issued Address Proof
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-<div
-id="selfDocumentTypeError"
-class="error">
-</div>
-
-
-<div
-id="otherDocumentBox"
-class="hidden">
-
-<label>
-Other Document Name
-<span class="required">*</span>
-</label>
-
-<input
-id="selfOtherDocument"
-type="text">
-
-<div
-id="selfOtherDocumentError"
-class="error">
-</div>
-
-</div>
-
-<label>
-Upload Address Proof
-<span class="required">*</span>
-</label>
-
-<input
-id="selfAddressProof"
-type="file"
-accept=".jpg,.jpeg,.png,.pdf">
-
-<button
-type="button"
-onclick="uploadSelfAddressProof()"
-style="
-background:#0052cc;
-color:white;
-padding:10px 18px;
-border:none;
-border-radius:6px;
-cursor:pointer;
-margin-top:8px;
-">
-Upload File
-</button>
-
-<div
-id="selfAddressProofError"
-class="error">
-</div>
-
-<div class="file-help">
-JPG, JPEG, PNG or PDF • Maximum size: less than 1 MB
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitSelfForm()">
-
-Submit
-
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeSelfForm()">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================================================
-     ===== SELF DOCUMENTS FORM : END =========================
-     ========================================================= -->
-
-
-<!-- =========================================================
-     ===== HOF FORM : START ==================================
-     ========================================================= -->
-
-<div
-id="hofForm"
-class="form-overlay"
-onclick="closeFormFromOutside(event)">
-
-<div
-class="form-box"
-onclick="event.stopPropagation()">
-
-<h2>
-Address Update – HoF Based
-</h2>
-
-<h3>
-Applicant Details
-</h3>
-
-<hr>
-
-<label>
-Full Name
-<span class="required">(Optional)</span>
-</label>
-
-<input
-id="hofApplicantName"
-type="text">
-
-<label>
-Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="hofApplicantAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="hofApplicantAadhaarError"
-class="error">
-</div>
-
-<label>
-Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="hofApplicantMobile"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="hofApplicantMobileError"
-class="error">
-</div>
-
-
-<h3>
-Head of Family Details
-</h3>
-
-<hr>
-
-<label>
-HoF Name
-<span class="required">*</span>
-</label>
-
-<input
-id="hofName"
-type="text">
-
-<div
-id="hofNameError"
-class="error">
-</div>
-
-<label>
-HoF Aadhaar Number
-<span class="required">*</span>
-</label>
-
-<input
-id="hofAadhaar"
-type="text"
-inputmode="numeric"
-maxlength="12">
-
-<div
-id="hofAadhaarError"
-class="error">
-</div>
-
-<label>
-HoF Aadhaar Linked Mobile Number
-<span class="required">*</span>
-</label>
-
-<input
-id="hofMobile"
-type="tel"
-inputmode="numeric"
-maxlength="10">
-
-<div
-id="hofMobileError"
-class="error">
-</div>
-
-<label>
-Relationship with HoF
-<span class="required">*</span>
-</label>
-
-<select
-id="hofRelationship"
-onchange="handleOtherRelationship()">
-
-<option value="">
--- Select Relationship --
-</option>
-
-<option value="Father">
-Father
-</option>
-
-<option value="Mother">
-Mother
-</option>
-
-<option value="Husband">
-Husband
-</option>
-
-<option value="Wife">
-Wife
-</option>
-
-<option value="Son">
-Son
-</option>
-
-<option value="Daughter">
-Daughter
-</option>
-
-<option value="Brother">
-Brother
-</option>
-
-<option value="Sister">
-Sister
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
-<div
-id="hofRelationshipError"
-class="error">
-</div>
-
-
-<div
-id="otherRelationshipBox"
-class="hidden">
-
-<label>
-Other Relationship
-<span class="required">*</span>
-</label>
-
-<input
-id="hofOtherRelationship"
-type="text">
-
-<div
-id="hofOtherRelationshipError"
-class="error">
-</div>
-
-</div>
-
-<div class="form-actions">
-
-<button
-type="button"
-class="submit-btn"
-onclick="submitHofForm()">
-
-Submit
-
-</button>
-
-<button
-type="button"
-class="close-btn"
-onclick="closeHofForm()">
-
-Close
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-<!-- =========================================================
-     ===== HOF FORM : END ====================================
-     ========================================================= -->
-
- 
-<!-- =========================================================
-     ===== FOOTER : START ====================================
-     ========================================================= -->
-
-<footer
-class="footer"
-style="
-padding:10px 12px 9px;
-min-height:85px;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-">
-
-<p style="
-font-size:15px;
-font-weight:600;
-margin:3px 0;
-">
-WhatsApp : +91 6361634389
-</p>
-
-<p style="
-font-size:15px;
-font-weight:600;
-margin:3px 0;
-">
-Email : hafizyasiransari4@gmail.com
-</p>
-
-<p style="
-font-size:15px;
-font-weight:600;
-margin:3px 0;
-">
-Thank you for visiting our website.
-</p>
-
-<p style="
-font-size:13px;
-margin:3px 0 0;
-opacity:.9;
-">
-Fast • Secure • Professional Online Services
-</p>
-
-<p style="
-font-size:13px;
-margin:3px 0 0;
-opacity:.9;
-">
-Your trusted partner for digital services.
-</p>
-
-</footer>
-
-<!-- =========================================================
-     ===== FOOTER : END ======================================
-     ========================================================= -->
-     
-<!-- =========================================================
-     ===== FLOATING CONTACT : START ==========================
-     ========================================================= -->
-
-<div class="floating-contact">
-
-<div
-class="help-bubble"
-style="
-background:#28a745;
-color:white;
-padding:8px 14px;
-border-radius:20px;
-font-size:14px;
-font-weight:600;
-box-shadow:0 4px 10px rgba(40,167,69,.3);
-animation:helpMove 1.5s ease-in-out infinite;
-">
-Need Help?
-</div>
-
-<style>
-@keyframes helpMove{
-0%,100%{
-transform:translateY(0);
-}
-50%{
-transform:translateY(-4px);
-}
-}
-</style>
-
-<a
-class="float-btn whatsapp"
-href="https://wa.me/916361634389?text=Hello%20Yasir%20Saeed,%20I%20would%20like%20to%20know%20more%20about%20the%20services%20offered%20by%20KHIDMAT-E-KHALQ%20OFFICE.%20Could%20you%20please%20guide%20me%3F"
-target="_blank"
-rel="noopener"
-title="Chat on WhatsApp">
-
-<i class="fab fa-whatsapp"></i>
-
-</a>
-
-<a
-class="float-btn instagram"
-href="https://instagram.com/khidmatekhalq_csc_2026"
-target="_blank"
-rel="noopener"
-title="Follow on Instagram"
-style="
-background:linear-gradient(
-45deg,
-#F58529,
-#FEDA77,
-#DD2A7B,
-#8134AF,
-#515BD4
-);
-color:white;
-display:flex;
-align-items:center;
-justify-content:center;
-">
-
-<i class="fab fa-instagram"></i>
-
-</a>
-
-</div>
-
-<!-- =========================================================
-     ===== FLOATING CONTACT : END ============================
-     ========================================================= -->
-
-<div class="bottom-blue-bar"></div>
-
-
-<!-- =========================================================
-     ===== JAVASCRIPT : START ================================
-     ========================================================= -->
-
-<script>
-
-/* =========================================================
-   ===== SERVICE OPEN / CLOSE ==============================
-   ========================================================= */
-
-function toggleAadhaarServices(){
-
-var box=document.getElementById("aadhaarServices");
-var arrow=document.getElementById("aadhaarArrow");
-
-box.classList.toggle("open");
-
-if(box.classList.contains("open")){
-arrow.textContent="⌃";
-}else{
-arrow.textContent="⌄";
-}
-
-}
-
-
-/* =========================================================
-   ===== SERVICE DETAILS ================================
-   ========================================================= */
-
-function toggleServiceDetails(id){
-
-var current=document.getElementById(id);
-
-if(!current){
-return;
-}
-
-var isOpen=current.classList.contains("open");
-
-document.querySelectorAll(".service-details").forEach(function(item){
-item.classList.remove("open");
-});
-
-if(!isOpen){
-current.classList.add("open");
-}
-
-}
-
-
-/* =========================================================
-   ===== ADDRESS SELF / HOF CHOICE =========================
-   ========================================================= */
-
-function toggleChoice(openId,closeId,button){
-
-var openPanel=document.getElementById(openId);
-var closePanel=document.getElementById(closeId);
-
-var wasOpen=openPanel.classList.contains("open");
-
-openPanel.classList.remove("open");
-closePanel.classList.remove("open");
-
-document.querySelectorAll(".choice-btn").forEach(function(btn){
-btn.classList.remove("active");
-});
-
-if(!wasOpen){
-openPanel.classList.add("open");
-
-if(button){
-button.classList.add("active");
-}
-
-}
-
-}
-
-
-/* =========================================================
-   ===== SEARCH =============================================
-   ========================================================= */
-
-function searchService(){
-
-var input=document.getElementById("searchBox").value.trim().toLowerCase();
-
-var services=document.querySelectorAll(".service");
-
-services.forEach(function(service){
-
-var title=service.getAttribute("data-service").toLowerCase();
-
-if(title.indexOf(input)>-1){
-service.style.display="block";
-}else{
-service.style.display="none";
-}
-
-});
-
-}
-
-
-/* =========================================================
-   ===== MOBILE FORM OPEN / CLOSE ===========================
-   ========================================================= */
-
-function openMobileForm(){
-
-document.getElementById("mobileForm").classList.add("open");
-
-document.body.style.overflow="hidden";
-
-}
-
-
-function closeMobileForm(){
-
-document.getElementById("mobileForm").classList.remove("open");
-
-document.body.style.overflow="";
-
-}
-
-
-/* =========================================================
-   ===== SELF FORM OPEN / CLOSE =============================
-   ========================================================= */
-
-function openSelfForm(){
-
-document.getElementById("selfForm").classList.add("open");
-
-document.body.style.overflow="hidden";
-
-}
-
-
-function closeSelfForm(){
-
-document.getElementById("selfForm").classList.remove("open");
-
-document.body.style.overflow="";
-
-}
-
-
-/* =========================================================
-   ===== HOF FORM OPEN / CLOSE ==============================
-   ========================================================= */
-
-function openHofForm(){
-
-document.getElementById("hofForm").classList.add("open");
-
-document.body.style.overflow="hidden";
-
-}
-
-
-function closeHofForm(){
-
-document.getElementById("hofForm").classList.remove("open");
-
-document.body.style.overflow="";
-
-}
-
-
-/* =========================================================
-   ===== OUTSIDE FORM CLICK ================================
-   ========================================================= */
-
-function closeFormFromOutside(event){
-
-if(event.target===event.currentTarget){
-
-event.currentTarget.classList.remove("open");
-
-document.body.style.overflow="";
-
-}
-
-}
-
-
-/* =========================================================
-   ===== OTHER DOCUMENT =====================================
-   ========================================================= */
-
-function handleOtherDocument(){
-
-var type=document.getElementById("selfDocumentType").value;
-var box=document.getElementById("otherDocumentBox");
-
-if(type==="Other"){
-box.classList.remove("hidden");
-}else{
-box.classList.add("hidden");
-document.getElementById("selfOtherDocument").value="";
-document.getElementById("selfOtherDocumentError").textContent="";
-}
-
-}
-
-
-/* =========================================================
-   ===== OTHER RELATIONSHIP =================================
-   ========================================================= */
-
-function handleOtherRelationship(){
-
-var relationship=document.getElementById("hofRelationship").value;
-var box=document.getElementById("otherRelationshipBox");
-
-if(relationship==="Other"){
-box.classList.remove("hidden");
-}else{
-box.classList.add("hidden");
-document.getElementById("hofOtherRelationship").value="";
-document.getElementById("hofOtherRelationshipError").textContent="";
-}
-
-}
-
-
-/* =========================================================
-   ===== VALID MOBILE =======================================
-   ========================================================= */
-
-function validMobile(value){
-
-return /^[6-9]\d{9}$/.test(value.trim());
-
-}
-
-
-/* =========================================================
-   ===== VALID AADHAAR ======================================
-   ========================================================= */
-
-function validAadhaar(value){
-
-return /^\d{12}$/.test(value.trim());
-
-}
-
-
-/* =========================================================
-   ===== VALID PIN ==========================================
-   ========================================================= */
-
-function validPin(value){
-
-return /^\d{6}$/.test(value.trim());
-
-}
-
-/* =========================================================
-   ===== FILE UPLOAD FUNCTIONS ==============================
-   ========================================================= */
-
-function uploadAadhaarFile(){
-
-var file=document.getElementById("aadhaarFile").files[0];
-
-var error=document.getElementById("aadhaarFileError");
-
-error.textContent="";
-error.style.color="red";
-
-if(!file){
-error.textContent="Please choose a file.";
-return;
-}
-
-var allowedTypes=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(!allowedTypes.includes(file.type)){
-error.textContent="Only JPG, JPEG, PNG or PDF files are allowed.";
-document.getElementById("aadhaarFile").style.border="2px solid red";
-return;
-}
-
-if(file.size>=1024*1024){
-error.textContent="File size must be less than 1 MB.";
-document.getElementById("aadhaarFile").style.border="2px solid red";
-return;
-}
-
-document.getElementById("aadhaarFile").style.border="2px solid green";
-
-error.style.color="green";
-error.textContent="File uploaded successfully.";
-
-}
-
-
-/* =========================================================
-   ===== ADDRESS PROOF FILE UPLOAD ==========================
-   ========================================================= */
-
-function uploadSelfAddressProof(){
-
-var file=document.getElementById("selfAddressProof").files[0];
-
-var error=document.getElementById("selfAddressProofError");
-
-error.textContent="";
-error.style.color="red";
-
-if(!file){
-error.textContent="Please choose a file.";
-return;
-}
-
-var allowedTypes=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(!allowedTypes.includes(file.type)){
-error.textContent="Only JPG, JPEG, PNG or PDF files are allowed.";
-document.getElementById("selfAddressProof").style.border="2px solid red";
-return;
-}
-
-if(file.size>=1024*1024){
-error.textContent="File size must be less than 1 MB.";
-document.getElementById("selfAddressProof").style.border="2px solid red";
-return;
-}
-
-document.getElementById("selfAddressProof").style.border="2px solid green";
-
-error.style.color="green";
-error.textContent="File uploaded successfully.";
-
-}
-
-/* =========================================================
-   ===== VALID FILE =========================================
-   ========================================================= */
-
-function validFile(file){
-
-if(!file){
-return false;
-}
-
-var allowed=[
-"image/jpeg",
-"image/png",
-"application/pdf"
-];
-
-if(allowed.indexOf(file.type)===-1){
-return false;
-}
-
-if(file.size>=1024*1024){
-return false;
-}
-
-return true;
-
-}
-
-/* =========================================================
-   ===== FILE ERROR MESSAGE ================================
-   ========================================================= */
-
-function fileErrorText(file){
-
-if(!file){
-return"Please select a file.";
-}
-
-if(
-file.type!=="image/jpeg" &&
-file.type!=="image/png" &&
-file.type!=="application/pdf"
-){
-return"Only JPG, JPEG, PNG or PDF files are allowed.";
-}
-
-if(file.size>=1024*1024){
-return"File size must be less than 1 MB.";
-}
-
-return"";
-
-}
-
-
-/* =========================================================
-   ===== CLEAR ERROR ========================================
-   ========================================================= */
-
-function clearError(id){
-
-var element=document.getElementById(id);
-
-if(element){
-element.textContent="";
-}
-
-}
-
-
-/* =========================================================
-   ===== SHOW ERROR =========================================
-   ========================================================= */
-
-function showError(inputId,errorId,message){
-
-var input=document.getElementById(inputId);
-var error=document.getElementById(errorId);
-
-error.textContent=message;
-
-input.style.border="2px solid red";
-
-input.scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-setTimeout(function(){
-input.focus();
-},150);
-
-return false;
-
-}
-
-
-/* =========================================================
-   ===== CLEAR FIELD STYLE ==================================
-   ========================================================= */
-
-function clearField(inputId,errorId){
-
-var input=document.getElementById(inputId);
-var error=document.getElementById(errorId);
-
-input.style.border="";
-
-error.textContent="";
-
-}
-
-
-/* =========================================================
-   ===== MOBILE FORM VALIDATION =============================
-   ========================================================= */
-
-function submitMobileForm(){
-
-clearField("mobileAadhaar","mobileAadhaarError");
-clearField("mobileLinked","mobileLinkedError");
-clearField("aadhaarFile","aadhaarFileError");
-
-var name=document.getElementById("mobileName").value.trim();
-var aadhaar=document.getElementById("mobileAadhaar").value.trim();
-var mobile=document.getElementById("mobileLinked").value.trim();
-var village=document.getElementById("mobileVillage").value.trim();
-var state=document.getElementById("mobileState").value.trim();
-var file=document.getElementById("aadhaarFile").files[0];
-
-if(aadhaar===""){
-return showError(
-"mobileAadhaar",
-"mobileAadhaarError",
-"Please enter your Aadhaar Number."
-);
-}
-
-if(!validAadhaar(aadhaar)){
-return showError(
-"mobileAadhaar",
-"mobileAadhaarError",
-"Enter a valid 12-digit Aadhaar Number."
-);
-}
-
-if(mobile===""){
-return showError(
-"mobileLinked",
-"mobileLinkedError",
-"Please enter your Aadhaar Linked Mobile Number."
-);
-}
-
-if(!validMobile(mobile)){
-return showError(
-"mobileLinked",
-"mobileLinkedError",
-"Enter a valid 10-digit Mobile Number."
-);
-}
-
-if(file){
-
-var fileError=fileErrorText(file);
-
-if(fileError!==""){
-
-document.getElementById("aadhaarFileError").textContent=fileError;
-
-document.getElementById("aadhaarFile").style.border="2px solid red";
-
-document.getElementById("aadhaarFile").scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-return;
-
-}
-
-}
-
-var fileName=file?file.name:"";
-
-var msg=
-"KHIDMAT-E-KHALQ OFFICE\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"SERVICE: AADHAAR MOBILE NUMBER UPDATE\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"APPLICANT DETAILS\n\n"+
-"Full Name: "+name+"\n\n"+
-"Aadhaar Linked Mobile: "+mobile+"\n\n"+
-"Aadhaar Number: "+aadhaar+"\n\n"+
-"Village / Town: "+village+"\n\n"+
-"State: "+state+"\n\n"+
-"Aadhaar File: "+fileName+"\n\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"Please assist me with this service.";
-
-openWhatsApp(msg);
-
-}
-
-/* =========================================================
-   ===== SELF FORM VALIDATION ================================
-   ========================================================= */
-
-function submitSelfForm(){
-
-var ids=[
-["selfMobile","selfMobileError"],
-["selfAadhaar","selfAadhaarError"],
-["selfHouse","selfHouseError"],
-["selfStreet","selfStreetError"],
-["selfArea","selfAreaError"],
-["selfLandmark","selfLandmarkError"],
-["selfVillage","selfVillageError"],
-["selfPostOffice","selfPostOfficeError"],
-["selfDistrict","selfDistrictError"],
-["selfState","selfStateError"],
-["selfPincode","selfPincodeError"],
-["selfDocumentType","selfDocumentTypeError"],
-["selfAddressProof","selfAddressProofError"]
-];
-
-ids.forEach(function(pair){
-clearField(pair[0],pair[1]);
-});
-
-clearField(
-"selfOtherDocument",
-"selfOtherDocumentError"
-);
-
-var name=document.getElementById("selfName").value.trim();
-var mobile=document.getElementById("selfMobile").value.trim();
-var aadhaar=document.getElementById("selfAadhaar").value.trim();
-var house=document.getElementById("selfHouse").value.trim();
-var street=document.getElementById("selfStreet").value.trim();
-var area=document.getElementById("selfArea").value.trim();
-var landmark=document.getElementById("selfLandmark").value.trim();
-var village=document.getElementById("selfVillage").value.trim();
-var postOffice=document.getElementById("selfPostOffice").value.trim();
-var district=document.getElementById("selfDistrict").value.trim();
-var state=document.getElementById("selfState").value.trim();
-var pincode=document.getElementById("selfPincode").value.trim();
-var documentType=document.getElementById("selfDocumentType").value;
-var otherDocument=document.getElementById("selfOtherDocument").value.trim();
-var file=document.getElementById("selfAddressProof").files[0];
-
-if(mobile===""){
-return showError(
-"selfMobile",
-"selfMobileError",
-"Please enter your Aadhaar Linked Mobile Number."
-);
-}
-
-if(!validMobile(mobile)){
-return showError(
-"selfMobile",
-"selfMobileError",
-"Enter a valid 10-digit Aadhaar Linked Mobile Number."
-);
-}
-
-if(aadhaar===""){
-return showError(
-"selfAadhaar",
-"selfAadhaarError",
-"Please enter your Aadhaar Number."
-);
-}
-
-if(!validAadhaar(aadhaar)){
-return showError(
-"selfAadhaar",
-"selfAadhaarError",
-"Enter a valid 12-digit Aadhaar Number."
-);
-}
-
-if(house===""){
-return showError(
-"selfHouse",
-"selfHouseError",
-"Please enter your House / Building."
-);
-}
-
-if(street===""){
-return showError(
-"selfStreet",
-"selfStreetError",
-"Please enter your Road / Street."
-);
-}
-
-if(area===""){
-return showError(
-"selfArea",
-"selfAreaError",
-"Please enter your Area / Locality."
-);
-}
-
-if(landmark===""){
-return showError(
-"selfLandmark",
-"selfLandmarkError",
-"Please enter your Landmark."
-);
-}
-
-if(village===""){
-return showError(
-"selfVillage",
-"selfVillageError",
-"Please enter your Village / Town / City."
-);
-}
-
-if(postOffice===""){
-return showError(
-"selfPostOffice",
-"selfPostOfficeError",
-"Please enter your Post Office."
-);
-}
-
-if(district===""){
-return showError(
-"selfDistrict",
-"selfDistrictError",
-"Please enter your District."
-);
-}
-
-if(state===""){
-return showError(
-"selfState",
-"selfStateError",
-"Please enter your State."
-);
-}
-
-if(pincode===""){
-return showError(
-"selfPincode",
-"selfPincodeError",
-"Please enter your PIN Code."
-);
-}
-
-if(!validPin(pincode)){
-return showError(
-"selfPincode",
-"selfPincodeError",
-"Enter a valid 6-digit PIN Code."
-);
-}
-
-if(documentType===""){
-return showError(
-"selfDocumentType",
-"selfDocumentTypeError",
-"Please select an Address Proof."
-);
-}
-
-if(documentType==="Other" && otherDocument===""){
-
-return showError(
-"selfOtherDocument",
-"selfOtherDocumentError",
-"Please enter the Other Document Name."
-);
-
-}
-
-if(!file){
-
-return showError(
-"selfAddressProof",
-"selfAddressProofError",
-"Please select your Address Proof file."
-);
-
-}
-
-var fileError=fileErrorText(file);
-
-if(fileError!==""){
-
-document.getElementById("selfAddressProofError").textContent=fileError;
-
-document.getElementById("selfAddressProof").style.border="2px solid red";
-
-document.getElementById("selfAddressProof").scrollIntoView({
-behavior:"smooth",
-block:"center"
-});
-
-return;
-
-}
-
-var finalDocument=
-documentType==="Other"
-?otherDocument
-:documentType;
-
-var fileName=file?file.name:"";
-
-var msg=
-"KHIDMAT-E-KHALQ OFFICE\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"SERVICE: AADHAAR ADDRESS UPDATE\n"+
-"TYPE: SELF DOCUMENTS\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"APPLICANT DETAILS\n\n"+
-"Full Name: "+name+"\n\n"+
-"Aadhaar Linked Mobile: "+mobile+"\n\n"+
-"Aadhaar Number: "+aadhaar+"\n\n"+
-"ADDRESS DETAILS\n\n"+
-"House / Building: "+house+"\n\n"+
-"Road / Street: "+street+"\n\n"+
-"Area / Locality: "+area+"\n\n"+
-"Landmark: "+landmark+"\n\n"+
-"Village / Town / City: "+village+"\n\n"+
-"Post Office: "+postOffice+"\n\n"+
-"District: "+district+"\n\n"+
-"State: "+state+"\n\n"+
-"PIN Code: "+pincode+"\n\n"+
-"ADDRESS PROOF\n\n"+
-"Address Proof: "+finalDocument+"\n\n"+
-"Address Proof File: "+fileName+"\n\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"Please assist me with this service.";
-
-openWhatsApp(msg);
-
-}
-
-
-/* =========================================================
-   ===== HOF FORM VALIDATION ================================
-   ========================================================= */
-
-function submitHofForm(){
-
-var ids=[
-["hofApplicantAadhaar","hofApplicantAadhaarError"],
-["hofApplicantMobile","hofApplicantMobileError"],
-["hofName","hofNameError"],
-["hofAadhaar","hofAadhaarError"],
-["hofMobile","hofMobileError"],
-["hofRelationship","hofRelationshipError"]
-];
-
-ids.forEach(function(pair){
-clearField(pair[0],pair[1]);
-});
-
-clearField(
-"hofOtherRelationship",
-"hofOtherRelationshipError"
-);
-
-var name=document.getElementById("hofApplicantName").value.trim();
-var aadhaar=document.getElementById("hofApplicantAadhaar").value.trim();
-var mobile=document.getElementById("hofApplicantMobile").value.trim();
-var hofName=document.getElementById("hofName").value.trim();
-var hofAadhaar=document.getElementById("hofAadhaar").value.trim();
-var hofMobile=document.getElementById("hofMobile").value.trim();
-var relationship=document.getElementById("hofRelationship").value;
-var otherRelationship=document.getElementById("hofOtherRelationship").value.trim();
-
-if(aadhaar===""){
-return showError(
-"hofApplicantAadhaar",
-"hofApplicantAadhaarError",
-"Please enter your Aadhaar Number."
-);
-}
-
-if(!validAadhaar(aadhaar)){
-return showError(
-"hofApplicantAadhaar",
-"hofApplicantAadhaarError",
-"Enter a valid 12-digit Aadhaar Number."
-);
-}
-
-if(mobile===""){
-return showError(
-"hofApplicantMobile",
-"hofApplicantMobileError",
-"Please enter your Aadhaar Linked Mobile Number."
-);
-}
-
-if(!validMobile(mobile)){
-return showError(
-"hofApplicantMobile",
-"hofApplicantMobileError",
-"Enter a valid 10-digit Aadhaar Linked Mobile Number."
-);
-}
-
-if(hofName===""){
-return showError(
-"hofName",
-"hofNameError",
-"Please enter HoF Name."
-);
-}
-
-if(hofAadhaar===""){
-return showError(
-"hofAadhaar",
-"hofAadhaarError",
-"Please enter HoF Aadhaar Number."
-);
-}
-
-if(!validAadhaar(hofAadhaar)){
-return showError(
-"hofAadhaar",
-"hofAadhaarError",
-"Enter a valid 12-digit HoF Aadhaar Number."
-);
-}
-
-if(hofMobile===""){
-return showError(
-"hofMobile",
-"hofMobileError",
-"Please enter HoF Aadhaar Linked Mobile Number."
-);
-}
-
-if(!validMobile(hofMobile)){
-return showError(
-"hofMobile",
-"hofMobileError",
-"Enter a valid 10-digit HoF Aadhaar Linked Mobile Number."
-);
-}
-
-if(relationship===""){
-return showError(
-"hofRelationship",
-"hofRelationshipError",
-"Please select Relationship with HoF."
-);
-}
-
-if(relationship==="Other" && otherRelationship===""){
-
-return showError(
-"hofOtherRelationship",
-"hofOtherRelationshipError",
-"Please enter the Other Relationship."
-);
-
-}
-
-var finalRelationship=
-relationship==="Other"
-?otherRelationship
-:relationship;
-
-var msg=
-"KHIDMAT-E-KHALQ OFFICE\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"SERVICE: AADHAAR ADDRESS UPDATE\n"+
-"TYPE: HOF BASED\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"APPLICANT DETAILS\n\n"+
-"Full Name: "+name+"\n\n"+
-"Aadhaar Linked Mobile: "+mobile+"\n\n"+
-"Aadhaar Number: "+aadhaar+"\n\n"+
-"HEAD OF FAMILY DETAILS\n\n"+
-"HoF Name: "+hofName+"\n\n"+
-"HoF Aadhaar Number: "+hofAadhaar+"\n\n"+
-"HoF Aadhaar Linked Mobile: "+hofMobile+"\n\n"+
-"Relationship with HoF: "+finalRelationship+"\n\n"+
-"━━━━━━━━━━━━━━━━━━━━\n\n"+
-"Please assist me with this service.";
-
-openWhatsApp(msg);
-
-}
-
-
-/* =========================================================
-   ===== WHATSAPP ===========================================
-   ========================================================= */
-
-function openWhatsApp(message){
-
-var url=
-"https://wa.me/916361634389?text="+
-encodeURIComponent(message);
-
-window.open(url,"_blank");
-
-}
-
-
-/* =========================================================
-   ===== INITIAL STATE ======================================
-   ========================================================= */
-
-document.addEventListener("DOMContentLoaded",function(){
-
-document.getElementById("totalServices").textContent=
-document.querySelectorAll(".service").length;
-
-});
-
-</script>
-
-<!-- =========================================================
-     ===== JAVASCRIPT : END ==================================
-     ========================================================= -->
-
-</body>
-</html>
