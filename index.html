@@ -4,524 +4,737 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0052cc">
 <title>KHIDMAT-E-KHALQ OFFICE</title>
+
+<!-- =========================================================
+     ===== FONT AWESOME : START ===============================
+     ========================================================= -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
 <!-- =========================================================
-     ===== MAIN CSS : START ==================================
+     ===== FONT AWESOME : END =================================
      ========================================================= -->
 
+<!-- =========================================================
+     ===== MAIN CSS : START ===================================
+     ========================================================= -->
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:Arial,sans-serif;background:#fff;color:#222;overflow-x:hidden}
-button,input,select{font:inherit}
-button{cursor:pointer}
-
-.header{background:linear-gradient(135deg,#0052cc,#064fc1);min-height:174px;padding:12px 18px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:#fff;box-shadow:0 5px 18px rgba(0,0,0,.18)}
-.header-logo{width:112px;height:112px;border-radius:50%;object-fit:cover;background:#fff;flex-shrink:0}
-.header-center{text-align:center;flex:1;min-width:0}
-.header-center .name{font-size:21px;font-weight:700;letter-spacing:1px;margin-bottom:10px}
-.header-center .office{font-size:30px;font-weight:800;letter-spacing:.4px;white-space:nowrap}
-
-.main-intro{text-align:center;padding:28px 18px 25px;background:#fff}
-.main-intro h1{font-size:42px;color:#0758c8;font-weight:800;margin-bottom:12px}
-.main-intro p{font-size:27px;font-weight:500;margin-bottom:28px}
-.search-box{width:94%;max-width:650px;height:88px;margin:auto;border:3px solid #0860c9;border-radius:17px;padding:0 24px;font-size:28px;outline:none;color:#222}
-.search-box::placeholder{color:#777}
-.total-services{font-size:27px;font-weight:700;margin-top:30px}
-
-.services-area{background:#f2f5fa;padding:42px 18px 80px;min-height:500px}
-
-.aadhaar-main-card{width:100%;max-width:660px;margin:0 auto;background:linear-gradient(145deg,#f8fcff,#eef7ff);border-radius:28px;border-top:7px solid #ff9d32;box-shadow:0 12px 28px rgba(0,82,204,.13);padding:32px 28px;display:flex;align-items:center;gap:22px;min-height:210px;position:relative}
-.aadhaar-card-icon{width:100px;height:100px;border-radius:24px;background:#f0f7ff;box-shadow:0 8px 20px rgba(0,82,204,.10);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.aadhaar-card-icon i{font-size:48px;color:#0871bf}
-.aadhaar-card-text{flex:1}
-.aadhaar-card-text h2{font-size:31px;color:#0758bd;margin-bottom:10px}
-.aadhaar-card-text p{font-size:22px;color:#555;font-weight:600}
-.aadhaar-card-arrow{font-size:34px;color:#0758bd;transition:transform .25s}
-.aadhaar-main-card.open .aadhaar-card-arrow{transform:rotate(180deg)}
-
-#aadhaarServices{display:none}
-#aadhaarServices.open{display:block}
-
-.service-card{width:100%;max-width:640px;margin:20px auto 0;background:#fff;border-radius:20px;box-shadow:0 5px 18px rgba(0,0,0,.08);overflow:hidden}
-.service-title-btn{width:100%;min-height:88px;border:0;background:#fff;color:#0758bd;font-size:28px;font-weight:700;padding:18px 22px;text-align:left}
-.service-details{display:none;padding:22px;background:#fff}
-.service-details.open{display:block}
-.service-details h3,.service-details h4{color:#0758bd;text-align:center;margin-bottom:15px}
-.info-table{width:100%;border-collapse:collapse;margin-bottom:18px}
-.info-table th,.info-table td{border:1px solid #d8e0ea;padding:12px;text-align:left;font-size:16px}
-.info-table th{background:#f1f6fc;color:#0758bd}
-.apply-btn,.apply{display:block;width:100%;border:0;border-radius:10px;background:#0758bd;color:#fff;padding:13px 18px;font-size:18px;font-weight:700}
-.choice-btn{width:100%;border:2px solid #0758bd;border-radius:12px;background:#fff;color:#0758bd;padding:14px;margin-top:12px;font-weight:700;font-size:18px}
-
-.form-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.68);z-index:9999;overflow-y:auto;padding:20px 12px}
-.form-overlay.show{display:block}
-.form-box{width:100%;max-width:620px;margin:20px auto;background:#fff;border-radius:18px;padding:24px;box-shadow:0 15px 50px rgba(0,0,0,.35)}
-.form-box h2{text-align:center;color:#0758bd;margin-bottom:20px}
-.form-box h3{color:#333;margin-bottom:10px}
-.form-box hr{border:0;border-top:1px solid #ddd;margin:10px 0 20px}
-.form-box label{display:block;font-weight:700;margin:14px 0 6px}
-.required{color:#d11;font-weight:600;font-size:13px}
-.form-box input,.form-box select{width:100%;height:48px;border:2px solid #ccc;border-radius:8px;padding:8px 12px;outline:none;background:#fff}
-.form-box input:focus,.form-box select:focus{border-color:#0758bd}
-.error-field{border-color:#e00000!important;background:#fff5f5!important}
-.error{color:#d00000;font-size:14px;font-weight:600;min-height:18px;margin-top:4px}
-.file-help{font-size:13px;color:#666;margin-top:7px}
-.form-actions{display:flex;gap:10px;margin-top:22px}
-.submit-btn,.close-btn{flex:1;border:0;border-radius:8px;padding:13px;font-weight:700;font-size:17px}
-.submit-btn{background:#0758bd;color:#fff}
-.close-btn{background:#666;color:#fff}
-
-.footer{background:#0758bd;color:#fff;text-align:center;padding:20px 12px}
-.footer p{margin:5px 0;font-size:15px;font-weight:600}
-
-.floating-contact{position:fixed;right:15px;bottom:20px;z-index:9998;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-.need-help{background:#22a447;color:#fff;border:0;border-radius:30px;padding:13px 21px;font-size:18px;font-weight:700;box-shadow:0 5px 15px rgba(0,0,0,.2);animation:helpMove 1.8s ease-in-out infinite}
-.contact-icons{display:flex;flex-direction:column;gap:10px}
-.contact-icons a{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;font-size:30px;box-shadow:0 5px 15px rgba(0,0,0,.25)}
-.whatsapp{background:#25d366}
-.instagram{background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045)}
-
-@keyframes helpMove{0%,100%{transform:translateX(0)}50%{transform:translateX(-7px)}}
-
-@media(max-width:600px){
-.header{min-height:164px;padding:10px 12px}
-.header-logo{width:90px;height:90px}
-.header-center .name{font-size:16px;margin-bottom:8px}
-.header-center .office{font-size:24px;white-space:normal;line-height:1.15}
-.main-intro{padding:25px 12px 23px}
-.main-intro h1{font-size:36px}
-.main-intro p{font-size:25px}
-.search-box{height:87px;width:95%;font-size:27px}
-.total-services{font-size:25px}
-.services-area{padding:40px 18px 80px}
-.aadhaar-main-card{min-height:205px;padding:28px 20px;gap:15px}
-.aadhaar-card-icon{width:82px;height:82px}
-.aadhaar-card-icon i{font-size:39px}
-.aadhaar-card-text h2{font-size:28px}
-.aadhaar-card-text p{font-size:20px}
-.aadhaar-card-arrow{font-size:29px}
-.service-title-btn{font-size:25px}
-.form-box{padding:20px 16px;margin:10px auto}
-.floating-contact{right:12px;bottom:16px}
-.need-help{font-size:17px;padding:12px 18px}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
-@media(min-width:601px){
-body{max-width:100%;margin:auto}
+html{
+scroll-behavior:smooth;
 }
 
+body{
+font-family:Arial,Helvetica,sans-serif;
+background:#f4f8fc;
+color:#222;
+overflow-x:hidden;
+}
+
+button,
+input,
+select{
+font-family:inherit;
+}
+
+button{
+-webkit-tap-highlight-color:transparent;
+}
+
+<!-- =========================================================
+     ===== HEADER : CSS =======================================
+     ========================================================= -->
+
+.header{
+width:100%;
+background:linear-gradient(135deg,#0052cc,#0046ad);
+padding:10px 15px 18px;
+box-shadow:0 4px 15px rgba(0,0,0,.20);
+}
+
+.header-inner{
+width:100%;
+max-width:900px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:10px;
+}
+
+.header-logo{
+width:112px;
+height:112px;
+border-radius:50%;
+background:#fff;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+flex-shrink:0;
+box-shadow:0 3px 10px rgba(0,0,0,.12);
+}
+
+.header-logo img{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+.header-title{
+flex:1;
+text-align:center;
+color:#fff;
+}
+
+.header-name{
+font-size:18px;
+font-weight:700;
+letter-spacing:1px;
+margin-bottom:8px;
+}
+
+.header-office{
+font-size:30px;
+font-weight:800;
+line-height:1.15;
+}
+
+<!-- =========================================================
+     ===== MAIN SERVICE INTRO : CSS ==========================
+     ========================================================= -->
+
+.main-intro{
+background:#fff;
+text-align:center;
+padding:26px 15px 25px;
+box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+.main-intro h1{
+font-size:38px;
+font-weight:800;
+color:#0052cc;
+margin-bottom:16px;
+}
+
+.main-intro p{
+font-size:25px;
+font-weight:500;
+color:#222;
+margin-bottom:32px;
+}
+
+.search-box{
+width:100%;
+max-width:650px;
+margin:0 auto 30px;
+position:relative;
+}
+
+.search-box input{
+width:100%;
+height:88px;
+border:3px solid #1765c0;
+border-radius:18px;
+outline:none;
+padding:0 24px;
+font-size:27px;
+color:#222;
+background:#fff;
+}
+
+.search-box input::placeholder{
+color:#777;
+opacity:1;
+}
+
+.search-box input:focus{
+box-shadow:0 0 0 3px rgba(0,82,204,.12);
+}
+
+.total-services{
+font-size:27px;
+font-weight:800;
+color:#222;
+}
+
+<!-- =========================================================
+     ===== AADHAAR PVC CARD BUTTON : CSS =====================
+     ========================================================= -->
+
+.aadhaar-wrapper{
+width:100%;
+max-width:1000px;
+margin:0 auto;
+padding:40px 20px 30px;
+}
+
+.aadhaar-card{
+width:100%;
+min-height:240px;
+background:linear-gradient(135deg,#f8fbff,#eaf3fc);
+border-radius:28px;
+border-top:8px solid #ff9d32;
+box-shadow:0 12px 30px rgba(0,82,204,.14);
+padding:38px 28px;
+cursor:pointer;
+transition:.25s ease;
+position:relative;
+}
+
+.aadhaar-card:active{
+transform:scale(.99);
+}
+
+.aadhaar-card-top{
+display:flex;
+align-items:center;
+gap:25px;
+}
+
+.aadhaar-icon{
+width:100px;
+height:100px;
+border-radius:22px;
+background:#f0f7ff;
+display:flex;
+align-items:center;
+justify-content:center;
+box-shadow:0 5px 18px rgba(0,82,204,.10);
+flex-shrink:0;
+}
+
+.aadhaar-icon i{
+font-size:55px;
+color:#397b9c;
+}
+
+.aadhaar-card-text{
+flex:1;
+}
+
+.aadhaar-card-text h2{
+font-size:32px;
+font-weight:800;
+color:#0757b7;
+margin-bottom:12px;
+}
+
+.aadhaar-card-text p{
+font-size:22px;
+font-weight:600;
+color:#666;
+}
+
+.aadhaar-arrow{
+font-size:38px;
+font-weight:800;
+color:#0052cc;
+transition:.25s ease;
+}
+
+.aadhaar-card.open .aadhaar-arrow{
+transform:rotate(180deg);
+}
+
+<!-- =========================================================
+     ===== AADHAAR SERVICES LIST : CSS ======================
+     ========================================================= -->
+
+.aadhaar-services-list{
+display:none;
+width:100%;
+max-width:1000px;
+margin:0 auto;
+padding:0 20px 40px;
+}
+
+.aadhaar-services-list.show{
+display:block;
+}
+
+.service-card{
+width:100%;
+background:#fff;
+border-radius:18px;
+margin-bottom:18px;
+box-shadow:0 5px 16px rgba(0,0,0,.08);
+overflow:hidden;
+}
+
+.service-header{
+width:100%;
+min-height:86px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:15px;
+padding:20px 25px;
+cursor:pointer;
+background:#fff;
+}
+
+.service-header h3{
+font-size:25px;
+font-weight:800;
+color:#0757b7;
+line-height:1.25;
+}
+
+.service-arrow{
+font-size:27px;
+color:#0757b7;
+transition:.25s ease;
+flex-shrink:0;
+}
+
+.service-card.open .service-arrow{
+transform:rotate(180deg);
+}
+
+.service-details{
+display:none;
+padding:10px 25px 28px;
+background:#fff;
+}
+
+.service-card.open .service-details{
+display:block;
+}
+
+.service-details h4{
+font-size:23px;
+color:#0757b7;
+margin:12px 0 18px;
+}
+
+.info-table{
+width:100%;
+border-collapse:collapse;
+margin-bottom:20px;
+}
+
+.info-table th,
+.info-table td{
+border:1px solid #ddd;
+padding:13px 12px;
+text-align:left;
+font-size:16px;
+}
+
+.info-table th{
+background:#f0f5fa;
+font-weight:800;
+}
+
+.apply-btn,
+.apply{
+width:100%;
+min-height:52px;
+border:none;
+border-radius:10px;
+background:#0052cc;
+color:#fff;
+font-size:19px;
+font-weight:700;
+cursor:pointer;
+padding:12px 18px;
+box-shadow:0 4px 10px rgba(0,82,204,.18);
+}
+
+.apply-btn:active,
+.apply:active{
+transform:scale(.99);
+}
+
+.choice-btn{
+width:100%;
+min-height:55px;
+border:3px solid #1765c0;
+border-radius:12px;
+background:#fff;
+color:#0757b7;
+font-size:19px;
+font-weight:700;
+cursor:pointer;
+padding:10px 15px;
+margin-bottom:12px;
+}
+
+.choice-panel{
+display:none;
+padding:5px 0 20px;
+}
+
+.choice-panel.show{
+display:block;
+}
+
+<!-- =========================================================
+     ===== FORM SYSTEM : CSS =================================
+     ========================================================= -->
+
+.form-overlay{
+display:none;
+position:fixed;
+inset:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.68);
+z-index:9999;
+overflow-y:auto;
+padding:20px 12px;
+}
+
+.form-overlay.show{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.form-box{
+width:100%;
+max-width:620px;
+background:#fff;
+border-radius:16px;
+padding:25px 20px;
+box-shadow:0 15px 40px rgba(0,0,0,.35);
+max-height:calc(100vh - 40px);
+overflow-y:auto;
+}
+
+.form-box h2{
+font-size:27px;
+color:#0052cc;
+text-align:center;
+margin-bottom:20px;
+}
+
+.form-box h3{
+font-size:21px;
+color:#222;
+margin-bottom:10px;
+}
+
+.form-box hr{
+border:0;
+border-top:1px solid #ddd;
+margin-bottom:20px;
+}
+
+.form-box label{
+display:block;
+font-size:17px;
+font-weight:700;
+margin:14px 0 7px;
+color:#222;
+}
+
+.required{
+color:#d00000;
+font-size:14px;
+font-weight:600;
+}
+
+.form-box input,
+.form-box select{
+width:100%;
+height:50px;
+border:2px solid #ccc;
+border-radius:8px;
+padding:0 12px;
+font-size:16px;
+outline:none;
+background:#fff;
+}
+
+.form-box input:focus,
+.form-box select:focus{
+border-color:#0052cc;
+}
+
+.form-box input.error-field,
+.form-box select.error-field{
+border-color:#d00000 !important;
+background:#fff7f7;
+}
+
+.error{
+min-height:20px;
+color:#d00000;
+font-size:14px;
+font-weight:600;
+margin-top:4px;
+}
+
+.file-help{
+font-size:13px;
+color:#666;
+margin-top:7px;
+line-height:1.4;
+}
+
+.form-actions{
+display:flex;
+gap:10px;
+margin-top:22px;
+}
+
+.submit-btn,
+.close-btn{
+flex:1;
+height:50px;
+border:0;
+border-radius:8px;
+font-size:17px;
+font-weight:700;
+cursor:pointer;
+}
+
+.submit-btn{
+background:#0052cc;
+color:#fff;
+}
+
+.close-btn{
+background:#777;
+color:#fff;
+}
+
+<!-- =========================================================
+     ===== FOOTER : CSS ======================================
+     ========================================================= -->
+
+.footer{
+width:100%;
+background:#0052cc;
+color:#fff;
+margin-top:20px;
+}
+
+<!-- =========================================================
+     ===== FLOATING CONTACT : CSS ============================
+     ========================================================= -->
+
+.floating-contact{
+position:fixed;
+right:14px;
+bottom:25px;
+z-index:9998;
+display:flex;
+flex-direction:column;
+align-items:flex-end;
+gap:10px;
+}
+
+.need-help{
+background:#20ad48;
+color:#fff;
+border-radius:35px;
+padding:13px 21px;
+font-size:18px;
+font-weight:700;
+box-shadow:0 5px 15px rgba(0,0,0,.20);
+animation:helpMove 2s ease-in-out infinite;
+}
+
+@keyframes helpMove{
+0%,100%{transform:translateX(0);}
+50%{transform:translateX(-5px);}
+}
+
+.contact-icons{
+display:flex;
+flex-direction:column;
+gap:10px;
+align-items:center;
+}
+
+.contact-icon{
+width:68px;
+height:68px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+color:#fff;
+font-size:35px;
+text-decoration:none;
+box-shadow:0 5px 15px rgba(0,0,0,.20);
+}
+
+.whatsapp-icon{
+background:#25d366;
+}
+
+.instagram-icon{
+background:linear-gradient(45deg,#f9ce34,#ee2a7b,#6228d7);
+}
+
+<!-- =========================================================
+     ===== RESPONSIVE CSS ====================================
+     ========================================================= -->
+
+@media(max-width:700px){
+
+.header{
+padding:10px 12px 18px;
+}
+
+.header-logo{
+width:82px;
+height:82px;
+}
+
+.header-name{
+font-size:15px;
+margin-bottom:7px;
+}
+
+.header-office{
+font-size:24px;
+}
+
+.main-intro{
+padding:27px 15px 25px;
+}
+
+.main-intro h1{
+font-size:37px;
+}
+
+.main-intro p{
+font-size:25px;
+}
+
+.search-box input{
+height:88px;
+font-size:25px;
+border-radius:18px;
+}
+
+.total-services{
+font-size:26px;
+}
+
+.aadhaar-wrapper{
+padding:40px 18px 25px;
+}
+
+.aadhaar-card{
+min-height:240px;
+padding:35px 22px;
+border-radius:28px;
+}
+
+.aadhaar-card-top{
+gap:20px;
+}
+
+.aadhaar-icon{
+width:90px;
+height:90px;
+}
+
+.aadhaar-icon i{
+font-size:48px;
+}
+
+.aadhaar-card-text h2{
+font-size:29px;
+}
+
+.aadhaar-card-text p{
+font-size:21px;
+}
+
+.aadhaar-arrow{
+font-size:34px;
+}
+
+.aadhaar-services-list{
+padding:0 20px 30px;
+}
+
+.service-header{
+min-height:86px;
+padding:19px 20px;
+}
+
+.service-header h3{
+font-size:25px;
+}
+
+.service-details{
+padding:8px 20px 25px;
+}
+
+.form-overlay{
+padding:10px;
+}
+
+.form-box{
+max-height:calc(100vh - 20px);
+padding:22px 17px;
+}
+
+.need-help{
+font-size:17px;
+padding:12px 19px;
+}
+
+.contact-icon{
+width:62px;
+height:62px;
+font-size:32px;
+}
+
+}
+
+@media(max-width:430px){
+
+.header-logo{
+width:76px;
+height:76px;
+}
+
+.header-office{
+font-size:21px;
+}
+
+.header-name{
+font-size:13px;
+}
+
+.main-intro h1{
+font-size:35px;
+}
+
+.main-intro p{
+font-size:23px;
+}
+
+.aadhaar-card-text h2{
+font-size:27px;
+}
+
+.aadhaar-card-text p{
+font-size:19px;
+}
+
+.service-header h3{
+font-size:23px;
+}
+
+}
 </style>
-
 <!-- =========================================================
-     ===== MAIN CSS : END ====================================
+     ===== MAIN CSS : END =====================================
      ========================================================= -->
-
 </head>
-
-<body>
-
-<!-- =========================================================
-     ===== HEADER : START ====================================
-     ========================================================= -->
-
-<header class="header">
-
-<img class="header-logo"
-src="Gemini_Generated_Image_vhcb6hvhcb6hvhcb.png"
-alt="KHIDMAT-E-KHALQ OFFICE Logo">
-
-<div class="header-center">
-<div class="name">YASIR SAEED</div>
-<div class="office">KHIDMAT-E-KHALQ OFFICE</div>
-</div>
-
-<img class="header-logo"
-src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png"
-alt="KHIDMAT-E-KHALQ OFFICE Logo">
-
-</header>
-
-<!-- =========================================================
-     ===== HEADER : END ======================================
-     ========================================================= -->
-
-<!-- =========================================================
-     ===== MAIN SERVICE INTRO : START ========================
-     ========================================================= -->
-
-<section class="main-intro">
-
-<h1>Aadhaar Services Portal</h1>
-
-<p>Fast • Secure • Professional</p>
-
-<input
-id="serviceSearch"
-class="search-box"
-type="search"
-placeholder="Search Aadhaar Service..."
-autocomplete="off">
-
-<div class="total-services">
-Total Services : <span id="totalServices">8</span>
-</div>
-
-</section>
-
-<!-- =========================================================
-     ===== MAIN SERVICE INTRO : END ==========================
-     ========================================================= -->
-
-<div class="services-area">
-
-<!-- =========================================================
-     ===== AADHAAR PVC CARD BUTTON : START ===================
-     ========================================================= -->
-
-<div
-class="aadhaar-main-card"
-id="aadhaarMainCard"
-onclick="toggleAadhaarServices()">
-
-<div class="aadhaar-card-icon">
-<i class="fa-solid fa-id-card"></i>
-</div>
-
-<div class="aadhaar-card-text">
-<h2>Aadhaar Services</h2>
-<p>8 Services Available</p>
-</div>
-
-<div class="aadhaar-card-arrow">
-<i class="fa-solid fa-chevron-up"></i>
-</div>
-
-</div>
-
-<!-- =========================================================
-     ===== AADHAAR PVC CARD BUTTON : END =====================
-     ========================================================= -->
-
-<!-- =========================================================
-     ===== AADHAAR SERVICES LIST : START =====================
-     ========================================================= -->
-
-<div id="aadhaarServices">
-
-<!-- =========================================================
-     ===== SERVICE 1 : MOBILE NUMBER UPDATE ==================
-     ========================================================= -->
-
-<div class="service-card" data-service="Mobile Number Update">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('mobileDetails')">
-📱 Mobile Number Update
-</button>
-
-<div id="mobileDetails" class="service-details">
-
-<h3>Mobile Number Update</h3>
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Mobile Number Update</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openMobileForm()">Apply Now</button>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 2 : ADDRESS UPDATE ========================
-     ========================================================= -->
-
-<div class="service-card" data-service="Address Update">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('addressDetails')">
-🏠 Address Update
-</button>
-
-<div id="addressDetails" class="service-details">
-
-<h3>Address Update</h3>
-
-<button type="button" class="choice-btn" onclick="toggleAddressChoice('selfDetails','hofDetails')">
-Self Documents
-</button>
-
-<div id="selfDetails" class="choice-panel">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update – Self Documents</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>Up to 30 Days</td></tr>
-<tr><td>Required Document</td><td>Valid Address Proof</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openSelfForm()">Apply Now</button>
-
-</div>
-
-<button type="button" class="choice-btn" onclick="toggleAddressChoice('hofDetails','selfDetails')">
-HoF Based
-</button>
-
-<div id="hofDetails" class="choice-panel">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update – HoF Based</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>05 to 10 Minutes</td></tr>
-<tr><td>Required Details</td><td>HoF Information &amp; Aadhaar</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openHofForm()">Apply Now</button>
-
-</div>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 3 : PVC AADHAAR CARD ORDER ===============
-     ========================================================= -->
-
-<div class="service-card" data-service="PVC Aadhaar Card Order">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('pvcDetails')">
-💳 PVC Aadhaar Card Order
-</button>
-
-<div id="pvcDetails" class="service-details">
-
-<h3>PVC Aadhaar Card Order</h3>
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>PVC Aadhaar Card Order</td></tr>
-<tr><td>Required Details</td><td>Aadhaar Number</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>Up to 5 Working Days</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openPVCForm()">Apply Now</button>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 4 : AADHAAR DOWNLOAD =====================
-     ========================================================= -->
-
-<div class="service-card" data-service="Aadhaar Download">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('downloadDetails')">
-📥 Aadhaar Download
-</button>
-
-<div id="downloadDetails" class="service-details">
-
-<h3>Aadhaar Download</h3>
-
-<button type="button" class="choice-btn" onclick="toggleServiceDetails('eAadhaarDetails')">
-e-Aadhaar Download
-</button>
-
-<div id="eAadhaarDetails" class="service-details">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>e-Aadhaar Download</td></tr>
-<tr><td>Service Charge</td><td>Free of Cost</td></tr>
-<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openEAadhaarForm()">Apply Now</button>
-
-</div>
-
-<button type="button" class="choice-btn" onclick="toggleServiceDetails('maskedAadhaarDetails')">
-Masked Aadhaar Download
-</button>
-
-<div id="maskedAadhaarDetails" class="service-details">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Masked Aadhaar Download</td></tr>
-<tr><td>Service Charge</td><td>Free of Cost</td></tr>
-<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openMaskedAadhaarForm()">Apply Now</button>
-
-</div>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 5 : AADHAAR DOCUMENT UPDATE ===============
-     ========================================================= -->
-
-<div class="service-card" data-service="Aadhaar Document Update">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('documentUpdateDetails')">
-🪪 Aadhaar Document Update
-</button>
-
-<div id="documentUpdateDetails" class="service-details">
-
-<h3>Aadhaar Document Update</h3>
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Aadhaar Document Update</td></tr>
-<tr><td>Service Charge</td><td>₹50</td></tr>
-<tr><td>Processing Time</td><td>Usually completed within 30 days</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openDocumentUpdateForm()">Apply Now</button>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 6 : AADHAAR STATUS CHECK =================
-     ========================================================= -->
-
-<div class="service-card" data-service="Aadhaar Status Check">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('statusCheckDetails')">
-📋 Aadhaar Status Check
-</button>
-
-<div id="statusCheckDetails" class="service-details">
-
-<h3>Aadhaar Status Check</h3>
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Aadhaar Status Check</td></tr>
-<tr><td>Service Charge</td><td>Free of Cost</td></tr>
-<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openStatusCheckForm()">Apply Now</button>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 7 : BIOMETRIC SERVICES ===================
-     ========================================================= -->
-
-<div class="service-card" data-service="Biometric Services">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('biometricDetails')">
-🔒 Biometric Services
-</button>
-
-<div id="biometricDetails" class="service-details">
-
-<h3>Biometric Services</h3>
-
-<button type="button" class="choice-btn" onclick="toggleServiceDetails('biometricLockDetails')">
-Biometric Lock
-</button>
-
-<div id="biometricLockDetails" class="service-details">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Aadhaar Biometric Lock</td></tr>
-<tr><td>Service Charge</td><td>Free of Cost</td></tr>
-<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openBiometricLockForm()">Apply Now</button>
-
-</div>
-
-<button type="button" class="choice-btn" onclick="toggleServiceDetails('biometricUnlockDetails')">
-Biometric Unlock
-</button>
-
-<div id="biometricUnlockDetails" class="service-details">
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Aadhaar Biometric Unlock</td></tr>
-<tr><td>Service Charge</td><td>Free of Cost</td></tr>
-<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openBiometricUnlockForm()">Apply Now</button>
-
-</div>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== SERVICE 8 : E-AADHAAR DIGITAL SIGNATURE ==========
-     ========================================================= -->
-
-<div class="service-card" data-service="e-Aadhaar Digital Signature Validation">
-
-<button type="button" class="service-title-btn" onclick="toggleServiceDetails('signatureDetails')">
-🪪 e-Aadhaar Digital Signature Validation
-</button>
-
-<div id="signatureDetails" class="service-details">
-
-<h3>e-Aadhaar Digital Signature Validation</h3>
-
-<h4>Information &amp; Details</h4>
-
-<table class="info-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>e-Aadhaar Digital Signature Validation</td></tr>
-<tr><td>Required Details</td><td>Aadhaar Number</td></tr>
-<tr><td>Service Charge</td><td>₹50</td></tr>
-<tr><td>Processing Time</td><td>5–10 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-btn" onclick="openSignatureValidationForm()">Apply Now</button>
-
-</div>
-</div>
-
-<!-- =========================================================
-     ===== AADHAAR SERVICES LIST : END =======================
-     ========================================================= -->
-
-</div>
