@@ -199,3 +199,11 @@ id="aadhaarServicesButton">
      ===== AADHAAR SERVICES LIST : END ======================
      ========================================================= -->
      
+<!-- =========================================================
+     ===== AADHAAR SERVICES LIST : SCRIPT ==================
+     ========================================================= -->
+
+<script>
+const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");
+aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+</script>
