@@ -83,8 +83,6 @@ button,input{font-family:inherit}
 .aadhaar-text h3{font-size:17px}  
 .aadhaar-text p{font-size:13px}  
 .aadhaar-arrow{font-size:32px}  
-.mobile-service{display:none;padding:0 18px 30px;background:#eef5fd}  
-.mobile-service-btn{width:100%;max-width:630px;height:50px;margin:0 auto;background:#fff;border:1px solid rgba(7,88,201,.18);border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;gap:8px;color:#0758c9;font-size:19px;font-weight:800;cursor:pointer}
 }
 </style>
 
@@ -181,18 +179,6 @@ id="aadhaarServicesButton">
      ========================================================= -->
 
 <!-- =========================================================
-     ===== MOBILE NUMBER UPDATE : START =====================
-     ========================================================= -->
-
-<section class="mobile-service" id="mobileService">
-<button type="button" class="mobile-service-btn">📱 Mobile Number Update</button>
-</section>
-
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE : END =======================
-     ========================================================= -->
-
-<!-- =========================================================
      ===== AADHAAR SERVICES LIST : START ====================
      ========================================================= -->
 
@@ -213,11 +199,3 @@ id="aadhaarServicesButton">
      ===== AADHAAR SERVICES LIST : END ======================
      ========================================================= -->
      
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE : SCRIPT ====================
-     ========================================================= -->
-
-<script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton"),mobileService=document.getElementById("mobileService");
-aadhaarBtn.onclick=()=>{const open=mobileService.style.display==="block";mobileService.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
-</script>
