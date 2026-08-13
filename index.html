@@ -190,3 +190,12 @@ id="aadhaarServicesButton">
 <!-- =========================================================
      ===== MOBILE NUMBER UPDATE : END =======================
      ========================================================= -->
+
+<!-- =========================================================
+     ===== MOBILE NUMBER UPDATE : SCRIPT ====================
+     ========================================================= -->
+
+<script>
+const aadhaarBtn=document.getElementById("aadhaarServicesButton"),mobileService=document.getElementById("mobileService");
+aadhaarBtn.onclick=()=>{const open=mobileService.style.display==="block";mobileService.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+</script>
