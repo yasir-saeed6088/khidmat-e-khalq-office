@@ -58,7 +58,7 @@ button,input{font-family:inherit}
 .aadhaar-arrow{font-size:32px;color:#0758c9;font-weight:800}
 .service-list{display:none;padding:0 18px 30px;background:#eef5fd}
 .service-btn{width:100%;max-width:630px;height:50px;margin:0 auto 10px;background:#fff;border:1px solid rgba(7,88,201,.18);border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.06);display:flex;align-items:center;justify-content:center;gap:8px;color:#0758c9;font-size:17px;font-weight:800;cursor:pointer}
-     
+.sub-service-list{display:none;padding:0 18px 20px;background:#eef5fd}.sub-service-btn{width:100%;max-width:600px;height:46px;margin:0 auto 10px;background:#fff;border:1px solid rgba(7,88,201,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#0758c9;font-size:16px;font-weight:700;cursor:pointer}   
 @media(max-width:600px){
 
 .header{min-height:105px;padding:8px 8px 12px}
@@ -185,7 +185,11 @@ id="aadhaarServicesButton">
 <section class="service-list" id="serviceList">
 
 <button type="button" class="service-btn">📱 Mobile Number Update</button>
-<button type="button" class="service-btn">🏠 Address Update</button>
+<button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>
+<section class="sub-service-list" id="addressOptions">
+<button type="button" class="sub-service-btn">📄 Self Documents</button>
+<button type="button" class="sub-service-btn">👨‍👩‍👧 Head of Family (HOF)</button>
+</section>
 <button type="button" class="service-btn">💳 PVC Aadhaar Card Order</button>
 <button type="button" class="service-btn">📥 Aadhaar Download</button>
 <button type="button" class="service-btn">🪪 Aadhaar Document Update</button>
@@ -206,4 +210,9 @@ id="aadhaarServicesButton">
 <script>
 const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");
 aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+</script>
+
+<script>
+const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");
+addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";addressOptions.style.display=open?"none":"block"};
 </script>
