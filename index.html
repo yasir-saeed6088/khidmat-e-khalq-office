@@ -194,10 +194,20 @@ id="aadhaarServicesButton">
 <button type="button" class="sub-service-btn">👨‍👩‍👧 Head of Family (HOF)</button>
 </section>
 <button type="button" class="service-btn">💳 PVC Aadhaar Card Order</button>
-<button type="button" class="service-btn">📥 Aadhaar Download</button>
+<button type="button" class="service-btn" id="downloadBtn">📥 Aadhaar Download</button>
+<section class="sub-service-list" id="downloadOptions">
+<div class="sub-service-title">Aadhaar Download</div>
+<button type="button" class="sub-service-btn">📥 e-Aadhaar Download</button>
+<button type="button" class="sub-service-btn">🔒 Masked Aadhaar Download</button>
+</section>
 <button type="button" class="service-btn">🪪 Aadhaar Document Update</button>
 <button type="button" class="service-btn">📋 Aadhaar Status Check</button>
-<button type="button" class="service-btn">🔒 Biometric Services</button>
+<button type="button" class="service-btn" id="biometricBtn">🔒 Biometric Services</button>
+<section class="sub-service-list" id="biometricOptions">
+<div class="sub-service-title">Biometric Services</div>
+<button type="button" class="sub-service-btn">🔒 Biometric Lock</button>
+<button type="button" class="sub-service-btn">🔓 Biometric Unlock</button>
+</section>
 <button type="button" class="service-btn">🪪 e-Aadhaar Digital Signature Validation</button>
 
 </section>
@@ -218,4 +228,14 @@ aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceLi
 <script>
 const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");
 addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";addressOptions.style.display=open?"none":"block"};
+</script>
+
+<script>
+const downloadBtn=document.getElementById("downloadBtn"),downloadOptions=document.getElementById("downloadOptions");
+downloadBtn.onclick=()=>{const open=downloadOptions.style.display==="block";downloadOptions.style.display=open?"none":"block"};
+</script>
+
+<script>
+const biometricBtn=document.getElementById("biometricBtn"),biometricOptions=document.getElementById("biometricOptions");
+biometricBtn.onclick=()=>{const open=biometricOptions.style.display==="block";biometricOptions.style.display=open?"none":"block"};
 </script>
