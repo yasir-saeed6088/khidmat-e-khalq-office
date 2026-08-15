@@ -221,6 +221,6 @@ id="aadhaarServicesButton">
      ========================================================= -->
 
 <script>
-const subBtns=document.querySelectorAll(".service-btn"),subLists=document.querySelectorAll(".sub-service-list");
-subBtns.forEach(btn=>btn.onclick=()=>{const list=document.getElementById(btn.id==="addressUpdateBtn"?"addressOptions":btn.id==="downloadBtn"?"downloadOptions":"biometricOptions");if(!list)return;const open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");if(!open)list.style.display="block"});
+const subLists=document.querySelectorAll(".sub-service-list");
+["addressUpdateBtn","downloadBtn","biometricBtn"].forEach(id=>document.getElementById(id).onclick=()=>{const list=document.getElementById({addressUpdateBtn:"addressOptions",downloadBtn:"downloadOptions",biometricBtn:"biometricOptions"}[id]),open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");if(!open)list.style.display="block"});
 </script>
