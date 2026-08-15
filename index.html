@@ -64,6 +64,14 @@ button,input{font-family:inherit}
 .sub-service-title{font-size:23px;color:#0758c9;text-align:center;font-weight:800;margin-bottom:28px}
 .sub-service-btn{width:100%;height:45px;margin:0 auto 16px;background:#fff;border:2px solid #0758c9;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0758c9;font-size:14px;font-weight:800;cursor:pointer} 
 
+.info-details-box{display:none;background:#fff;max-width:630px;margin:0 auto 20px;padding:20px 18px 22px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.06)}
+.info-details-title{font-size:23px;color:#0758c9;text-align:center;font-weight:800;margin-bottom:20px}
+.info-details-row{display:flex;border:1px solid rgba(7,88,201,.18);border-radius:12px;overflow:hidden}
+.info-column,.details-column{width:50%;padding:14px 10px;text-align:center;font-size:15px;font-weight:700;line-height:1.5}
+.info-column{color:#0758c9;border-right:1px solid rgba(7,88,201,.25)}
+.details-column{color:#222}
+.apply-now-btn{display:block;width:150px;height:44px;margin:20px auto 0;background:#198754;border:0;border-radius:10px;color:#fff;font-size:16px;font-weight:800;cursor:pointer}
+
 @media(max-width:600px){
 
 .header{min-height:105px;padding:8px 8px 12px}
@@ -186,38 +194,54 @@ id="aadhaarServicesButton">
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : START ====================
      ========================================================= -->
-
 <section class="service-list" id="serviceList">
 
-<button type="button" class="service-btn">📱 Mobile Number Update</button>
+<button type="button" class="service-btn" id="mobileBtn">📱 Mobile Number Update</button>
+<section class="info-details-box" id="mobileInfo">
+<div class="info-details-title">Mobile Number Update</div>
+<div class="info-details-row">
+<div class="info-column">Service</div><div class="details-column">Update Aadhaar Mobile Number</div>
+<div class="info-column">Service Charge</div><div class="details-column">₹100</div>
+<div class="info-column">Processing Time</div><div class="details-column">10–15 Minutes</div>
+</div>
+<button type="button" class="apply-now-btn">Apply Now</button>
+</section>
+
 <button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>
 <section class="sub-service-list" id="addressOptions">
 <div class="sub-service-title">Address Update</div>
 <button type="button" class="sub-service-btn">📄 Self Documents</button>
 <button type="button" class="sub-service-btn">👨‍👩‍👧 Head of Family (HOF)</button>
 </section>
+     
 <button type="button" class="service-btn">💳 PVC Aadhaar Card Order</button>
+
 <button type="button" class="service-btn" id="downloadBtn">📥 Aadhaar Download</button>
 <section class="sub-service-list" id="downloadOptions">
 <div class="sub-service-title">Aadhaar Download</div>
 <button type="button" class="sub-service-btn">📥 e-Aadhaar Download</button>
 <button type="button" class="sub-service-btn">🔒 Masked Aadhaar Download</button>
 </section>
+     
 <button type="button" class="service-btn">🪪 Aadhaar Document Update</button>
+
 <button type="button" class="service-btn">📋 Aadhaar Status Check</button>
+
 <button type="button" class="service-btn" id="biometricBtn">🔒 Biometric Services</button>
 <section class="sub-service-list" id="biometricOptions">
 <div class="sub-service-title">Biometric Services</div>
 <button type="button" class="sub-service-btn">🔒 Biometric Lock</button>
 <button type="button" class="sub-service-btn">🔓 Biometric Unlock</button>
 </section>
+
 <button type="button" class="service-btn">🪪 e-Aadhaar Digital Signature Validation</button>
 </section>
 
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : END ======================
      ========================================================= -->
-     <!-- =========================================================
+
+<!-- =========================================================
      ===== AADHAAR SERVICES TOGGLE : SCRIPT ================
      ========================================================= -->
 
@@ -232,4 +256,9 @@ aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceLi
 <script>
 const subLists=document.querySelectorAll(".sub-service-list");
 ["addressUpdateBtn","downloadBtn","biometricBtn"].forEach(id=>document.getElementById(id).onclick=()=>{const list=document.getElementById({addressUpdateBtn:"addressOptions",downloadBtn:"downloadOptions",biometricBtn:"biometricOptions"}[id]),open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");if(!open)list.style.display="block"});
+</script>
+
+<script>
+const mobileBtn=document.getElementById("mobileBtn"),mobileInfo=document.getElementById("mobileInfo");
+mobileBtn.onclick=()=>{const open=mobileInfo.style.display==="block";document.querySelectorAll(".info-details-box,.sub-service-list").forEach(x=>x.style.display="none");if(!open)mobileInfo.style.display="block"};
 </script>
