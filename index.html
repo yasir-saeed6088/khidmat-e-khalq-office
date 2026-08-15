@@ -221,21 +221,6 @@ id="aadhaarServicesButton">
      ========================================================= -->
 
 <script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");
-aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
-</script>
-
-<script>
-const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");
-addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";addressOptions.style.display=open?"none":"block"};
-</script>
-
-<script>
-const downloadBtn=document.getElementById("downloadBtn"),downloadOptions=document.getElementById("downloadOptions");
-downloadBtn.onclick=()=>{const open=downloadOptions.style.display==="block";downloadOptions.style.display=open?"none":"block"};
-</script>
-
-<script>
-const biometricBtn=document.getElementById("biometricBtn"),biometricOptions=document.getElementById("biometricOptions");
-biometricBtn.onclick=()=>{const open=biometricOptions.style.display==="block";biometricOptions.style.display=open?"none":"block"};
+const subBtns=document.querySelectorAll(".service-btn"),subLists=document.querySelectorAll(".sub-service-list");
+subBtns.forEach(btn=>btn.onclick=()=>{const list=document.getElementById(btn.id==="addressUpdateBtn"?"addressOptions":btn.id==="downloadBtn"?"downloadOptions":"biometricOptions");if(!list)return;const open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");if(!open)list.style.display="block"});
 </script>
