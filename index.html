@@ -241,7 +241,17 @@ id="aadhaarServicesButton">
 </section>
 </section>
      
-<button type="button" class="service-btn">💳 PVC Aadhaar Card Order</button>
+<button type="button" class="service-btn" id="pvcAadhaarBtn">💳 PVC Aadhaar Card Order</button>
+<section class="service-details" id="pvcAadhaarDetails">
+<div class="service-details-title">PVC Aadhaar Card Order</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>PVC Aadhaar Card Order</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>Up to 5 Working Days</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
 
 <button type="button" class="service-btn" id="downloadBtn">📥 Aadhaar Download</button>
 <section class="sub-service-list" id="downloadOptions">
@@ -293,4 +303,12 @@ mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";subLists
 
 <script>
 const selfBtn=document.getElementById("selfDocumentsBtn"),hofBtn=document.getElementById("hofBasedBtn"),selfDetails=document.getElementById("selfDocumentsDetails"),hofDetails=document.getElementById("hofBasedDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";selfDetails.style.display=open?"none":"block";hofDetails.style.display="none"};hofBtn.onclick=()=>{const open=hofDetails.style.display==="block";hofDetails.style.display=open?"none":"block";selfDetails.style.display="none"};
+</script>
+
+<!-- =========================================================
+     ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
+     ========================================================= -->
+
+<script>
+const pvcBtn=document.getElementById("pvcAadhaarBtn"),pvcDetails=document.getElementById("pvcAadhaarDetails");pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");pvcDetails.style.display=open?"none":"block"};
 </script>
