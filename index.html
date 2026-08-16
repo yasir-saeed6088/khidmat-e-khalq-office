@@ -370,8 +370,15 @@ Total Services : <span>8</span>
      ========================================================= -->
 
 <script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");
-aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+const aadhaarBtn=document.getElementById("aadhaarServicesButton");
+const serviceList=document.getElementById("serviceList");
+
+aadhaarBtn.onclick=()=>{
+const open=serviceList.style.display==="block";
+
+serviceList.style.display=open?"none":"block";
+aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
+};
 </script>
 
 <!-- =========================================================
@@ -379,8 +386,17 @@ aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceLi
      ========================================================= -->
 
 <script>
-const mobileBtn=document.getElementById("mobileUpdateBtn"),mobileDetails=document.getElementById("mobileUpdateDetails");
-mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)mobileDetails.style.display="block"};
+const mobileBtn=document.getElementById("mobileUpdateBtn");
+const mobileDetails=document.getElementById("mobileUpdateDetails");
+
+mobileBtn.onclick=()=>{
+const open=mobileDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)mobileDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -388,29 +404,65 @@ mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";document
      ========================================================= -->
 
 <script>
-const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");
-addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)addressOptions.style.display="block"};
+const addressBtn=document.getElementById("addressUpdateBtn");
+const addressOptions=document.getElementById("addressOptions");
+
+addressBtn.onclick=()=>{
+const open=addressOptions.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)addressOptions.style.display="block";
+};
 </script>
 
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS : SCRIPT ==================== -->
+
 <script>
-const selfBtn=document.getElementById("selfDocumentsBtn"),selfDetails=document.getElementById("selfDocumentsDetails");
-selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)selfDetails.style.display="block"};
+const selfBtn=document.getElementById("selfDocumentsBtn");
+const selfDetails=document.getElementById("selfDocumentsDetails");
+
+selfBtn.onclick=()=>{
+const open=selfDetails.style.display==="block";
+
+document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)selfDetails.style.display="block";
+};
 </script>
 
-<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT = ==================== -->
+<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT ==================== -->
+
 <script>
-const hofBtn=document.getElementById("hofBasedBtn"),hofDetails=document.getElementById("hofBasedDetails");
-hofBtn.onclick=()=>{const open=hofDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)hofDetails.style.display="block"};
+const hofBtn=document.getElementById("hofBasedBtn");
+const hofDetails=document.getElementById("hofBasedDetails");
+
+hofBtn.onclick=()=>{
+const open=hofDetails.style.display==="block";
+
+document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)hofDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
      ========================================================= -->
-     
+
 <script>
-const pvcBtn=document.getElementById("pvcAadhaarBtn"),pvcDetails=document.getElementById("pvcAadhaarDetails");
-pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)pvcDetails.style.display="block"};
+const pvcBtn=document.getElementById("pvcAadhaarBtn");
+const pvcDetails=document.getElementById("pvcAadhaarDetails");
+
+pvcBtn.onclick=()=>{
+const open=pvcDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)pvcDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -418,21 +470,47 @@ pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.query
      ========================================================= -->
 
 <script>
-const downloadBtn=document.getElementById("downloadBtn"),downloadOptions=document.getElementById("downloadOptions");
-downloadBtn.onclick=()=>{const open=downloadOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)downloadOptions.style.display="block"};
+const downloadBtn=document.getElementById("downloadBtn");
+const downloadOptions=document.getElementById("downloadOptions");
+
+downloadBtn.onclick=()=>{
+const open=downloadOptions.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)downloadOptions.style.display="block";
+};
 </script>
 
- 
-<!-- ==================== E-AADHAAR DOWNLOAD : SCRIPT = ==================== -->
+<!-- ==================== E-AADHAAR DOWNLOAD : SCRIPT ==================== -->
+
 <script>
-const eAadhaarBtn=document.getElementById("eAadhaarBtn"),eAadhaarDetails=document.getElementById("eAadhaarDetails");
-eAadhaarBtn.onclick=()=>{const open=eAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)eAadhaarDetails.style.display="block"};
+const eAadhaarBtn=document.getElementById("eAadhaarBtn");
+const eAadhaarDetails=document.getElementById("eAadhaarDetails");
+
+eAadhaarBtn.onclick=()=>{
+const open=eAadhaarDetails.style.display==="block";
+
+document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)eAadhaarDetails.style.display="block";
+};
 </script>
 
-<!-- ==================== MASKED AADHAAR DOWNLOAD : SCRIPT = ==================== -->
+<!-- ==================== MASKED AADHAAR DOWNLOAD : SCRIPT ==================== -->
+
 <script>
-const maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn"),maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");
-maskedAadhaarBtn.onclick=()=>{const open=maskedAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)maskedAadhaarDetails.style.display="block"};
+const maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn");
+const maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");
+
+maskedAadhaarBtn.onclick=()=>{
+const open=maskedAadhaarDetails.style.display==="block";
+
+document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)maskedAadhaarDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -440,8 +518,17 @@ maskedAadhaarBtn.onclick=()=>{const open=maskedAadhaarDetails.style.display==="b
      ========================================================= -->
 
 <script>
-const documentUpdateBtn=document.getElementById("documentUpdateBtn"),documentUpdateDetails=document.getElementById("documentUpdateDetails");
-documentUpdateBtn.onclick=()=>{const open=documentUpdateDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentUpdateDetails.style.display="block"};
+const documentUpdateBtn=document.getElementById("documentUpdateBtn");
+const documentUpdateDetails=document.getElementById("documentUpdateDetails");
+
+documentUpdateBtn.onclick=()=>{
+const open=documentUpdateDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)documentUpdateDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -449,8 +536,17 @@ documentUpdateBtn.onclick=()=>{const open=documentUpdateDetails.style.display===
      ========================================================= -->
 
 <script>
-const statusCheckBtn=document.getElementById("statusCheckBtn"),statusCheckDetails=document.getElementById("statusCheckDetails");
-statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)statusCheckDetails.style.display="block"};
+const statusCheckBtn=document.getElementById("statusCheckBtn");
+const statusCheckDetails=document.getElementById("statusCheckDetails");
+
+statusCheckBtn.onclick=()=>{
+const open=statusCheckDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)statusCheckDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -458,20 +554,47 @@ statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block
      ========================================================= -->
 
 <script>
-const biometricBtn=document.getElementById("biometricBtn"),biometricOptions=document.getElementById("biometricOptions");
-biometricBtn.onclick=()=>{const open=biometricOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)biometricOptions.style.display="block"};
+const biometricBtn=document.getElementById("biometricBtn");
+const biometricOptions=document.getElementById("biometricOptions");
+
+biometricBtn.onclick=()=>{
+const open=biometricOptions.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)biometricOptions.style.display="block";
+};
 </script>
 
-<!-- ==================== BIOMETRIC LOCK : SCRIPT = ==================== -->
-<script>
-const biometricLockBtn=document.getElementById("biometricLockBtn"),biometricLockDetails=document.getElementById("biometricLockDetails");
-biometricLockBtn.onclick=()=>{const open=biometricLockDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)biometricLockDetails.style.display="block"};
-</script>
+<!-- ==================== BIOMETRIC LOCK : SCRIPT ==================== -->
 
-<!-- ==================== BIOMETRIC UNLOCK : SCRIPT = ==================== -->
 <script>
-const biometricUnlockBtn=document.getElementById("biometricUnlockBtn"),biometricUnlockDetails=document.getElementById("biometricUnlockDetails");
-biometricUnlockBtn.onclick=()=>{const open=biometricUnlockDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)biometricUnlockDetails.style.display="block"};
+const biometricLockBtn=document.getElementById("biometricLockBtn");
+const biometricLockDetails=document.getElementById("biometricLockDetails");
+
+biometricLockBtn.onclick=()=>{
+const open=biometricLockDetails.style.display==="block";
+
+document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)biometricLockDetails.style.display="block";
+};
+</script>
+     
+<!-- ==================== BIOMETRIC UNLOCK : SCRIPT ==================== -->
+
+<script>
+const biometricUnlockBtn=document.getElementById("biometricUnlockBtn");
+const biometricUnlockDetails=document.getElementById("biometricUnlockDetails");
+
+biometricUnlockBtn.onclick=()=>{
+const open=biometricUnlockDetails.style.display==="block";
+
+document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");
+
+if(!open)biometricUnlockDetails.style.display="block";
+};
 </script>
 
 <!-- =========================================================
@@ -479,6 +602,15 @@ biometricUnlockBtn.onclick=()=>{const open=biometricUnlockDetails.style.display=
      ========================================================= -->
 
 <script>
-const signatureValidationBtn=document.getElementById("signatureValidationBtn"),signatureValidationDetails=document.getElementById("signatureValidationDetails");
-signatureValidationBtn.onclick=()=>{const open=signatureValidationDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)signatureValidationDetails.style.display="block"};
+const signatureValidationBtn=document.getElementById("signatureValidationBtn");
+const signatureValidationDetails=document.getElementById("signatureValidationDetails");
+
+signatureValidationBtn.onclick=()=>{
+const open=signatureValidationDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)signatureValidationDetails.style.display="block";
+};
 </script>
