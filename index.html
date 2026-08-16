@@ -130,24 +130,19 @@ class="logo">
 src="Gemini_Generated_Image_ngqq51ngqq51ngqq.png"
 alt="Khidmat-E-Khalq Office Logo"
 class="logo">
-
 </header>
 
 <!-- =========================================================
      ===== HEADER : END ======================================
      ========================================================= -->
 
-
 <!-- =========================================================
      ===== MAIN SERVICE INTRO : START ========================
      ========================================================= -->
 
 <section class="main-intro">
-
 <h2>Digital Services Portal</h2>
-
 <p>Fast • Secure • Professional</p>
-
 <div class="search-box">
 <input
 type="search"
@@ -155,46 +150,34 @@ id="serviceSearch"
 placeholder="Search Aadhaar Service..."
 autocomplete="off">
 </div>
-
 <div class="total-services">
 Total Services : <span>8</span>
 </div>
-
 </section>
 
 <!-- =========================================================
      ===== MAIN SERVICE INTRO : END ==========================
      ========================================================= -->
-
-
+     
 <!-- =========================================================
-     ===== AADHAAR SERVICES BUTTON: START ===================
+     ===== AADHAAR SERVICES BUTTON : START ==================
      ========================================================= -->
 
 <section class="aadhaar-section">
-
-<button
-type="button"
-class="aadhaar-toggle"
-id="aadhaarServicesButton">
-
+<button type="button" class="aadhaar-toggle" id="aadhaarServicesButton">
 <div class="aadhaar-icon">🪪</div>
-
 <div class="aadhaar-text">
 <h3>Aadhaar Services</h3>
 <p>8 Services Available</p>
 </div>
-
 <div class="aadhaar-arrow">⌄</div>
-
 </button>
-
 </section>
 
 <!-- =========================================================
-     ===== AADHAAR SERVICES BUTTON : END =====================
+     ===== AADHAAR SERVICES BUTTON : END ====================
      ========================================================= -->
-
+     
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : START ====================
      ========================================================= -->
@@ -339,35 +322,110 @@ aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceLi
 </script>
 
 <!-- =========================================================
-     ===== AADHAAR SERVICES LIST : SCRIPT ==================
+     ===== MOBILE NUMBER UPDATE : SCRIPT ====================
      ========================================================= -->
 
 <script>
-const subLists=document.querySelectorAll(".sub-service-list"),mobileDetails=document.getElementById("mobileUpdateDetails"),mobileBtn=document.getElementById("mobileUpdateBtn");
-mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";subLists.forEach(x=>x.style.display="none");mobileDetails.style.display=open?"none":"block"};
-["addressUpdateBtn","downloadBtn","biometricBtn"].forEach(id=>document.getElementById(id).onclick=()=>{const list=document.getElementById({addressUpdateBtn:"addressOptions",downloadBtn:"downloadOptions",biometricBtn:"biometricOptions"}[id]),open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");mobileDetails.style.display="none";if(!open)list.style.display="block"});
+const mobileBtn=document.getElementById("mobileUpdateBtn"),mobileDetails=document.getElementById("mobileUpdateDetails");
+mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)mobileDetails.style.display="block"};
 </script>
 
 <!-- =========================================================
-     ===== ADDRESS UPDATE : SCRIPT =================
+     ===== ADDRESS UPDATE : SCRIPT ==========================
      ========================================================= -->
 
 <script>
-const selfBtn=document.getElementById("selfDocumentsBtn"),hofBtn=document.getElementById("hofBasedBtn"),selfDetails=document.getElementById("selfDocumentsDetails"),hofDetails=document.getElementById("hofBasedDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";selfDetails.style.display=open?"none":"block";hofDetails.style.display="none"};hofBtn.onclick=()=>{const open=hofDetails.style.display==="block";hofDetails.style.display=open?"none":"block";selfDetails.style.display="none"};
+const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");
+addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)addressOptions.style.display="block"};
+</script>
+
+<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS : SCRIPT ==================== -->
+<script>
+const selfBtn=document.getElementById("selfDocumentsBtn"),selfDetails=document.getElementById("selfDocumentsDetails");
+selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)selfDetails.style.display="block"};
+</script>
+
+<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT = ==================== -->
+<script>
+const hofBtn=document.getElementById("hofBasedBtn"),hofDetails=document.getElementById("hofBasedDetails");
+hofBtn.onclick=()=>{const open=hofDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)hofDetails.style.display="block"};
 </script>
 
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
      ========================================================= -->
-
+     
 <script>
-const pvcBtn=document.getElementById("pvcAadhaarBtn"),pvcDetails=document.getElementById("pvcAadhaarDetails");pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");pvcDetails.style.display=open?"none":"block"};
+const pvcBtn=document.getElementById("pvcAadhaarBtn"),pvcDetails=document.getElementById("pvcAadhaarDetails");
+pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)pvcDetails.style.display="block"};
 </script>
 
 <!-- =========================================================
-     ===== AADHAAR DOWNLOAD : SCRIPT ================
+     ===== AADHAAR DOWNLOAD : SCRIPT =========================
      ========================================================= -->
 
 <script>
-const eAadhaarBtn=document.getElementById("eAadhaarBtn"),maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn"),eAadhaarDetails=document.getElementById("eAadhaarDetails"),maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");eAadhaarBtn.onclick=()=>{const open=eAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)eAadhaarDetails.style.display="block"};maskedAadhaarBtn.onclick=()=>{const open=maskedAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)maskedAadhaarDetails.style.display="block"};
+const downloadBtn=document.getElementById("downloadBtn"),downloadOptions=document.getElementById("downloadOptions");
+downloadBtn.onclick=()=>{const open=downloadOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)downloadOptions.style.display="block"};
+</script>
+
+ 
+<!-- ==================== E-AADHAAR DOWNLOAD : SCRIPT = ==================== -->
+<script>
+const eAadhaarBtn=document.getElementById("eAadhaarBtn"),eAadhaarDetails=document.getElementById("eAadhaarDetails");
+eAadhaarBtn.onclick=()=>{const open=eAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)eAadhaarDetails.style.display="block"};
+</script>
+
+<!-- ==================== MASKED AADHAAR DOWNLOAD : SCRIPT = ==================== -->
+<script>
+const maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn"),maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");
+maskedAadhaarBtn.onclick=()=>{const open=maskedAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)maskedAadhaarDetails.style.display="block"};
+</script>
+
+<!-- =========================================================
+     ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
+     ========================================================= -->
+
+<script>
+const documentUpdateBtn=document.getElementById("documentUpdateBtn"),documentUpdateDetails=document.getElementById("documentUpdateDetails");
+documentUpdateBtn.onclick=()=>{const open=documentUpdateDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentUpdateDetails.style.display="block"};
+</script>
+
+<!-- =========================================================
+     ===== AADHAAR STATUS CHECK : SCRIPT ====================
+     ========================================================= -->
+
+<script>
+const statusCheckBtn=document.getElementById("statusCheckBtn"),statusCheckDetails=document.getElementById("statusCheckDetails");
+statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)statusCheckDetails.style.display="block"};
+</script>
+
+<!-- =========================================================
+     ===== BIOMETRIC SERVICES : SCRIPT ======================
+     ========================================================= -->
+
+<script>
+const biometricBtn=document.getElementById("biometricBtn"),biometricOptions=document.getElementById("biometricOptions");
+biometricBtn.onclick=()=>{const open=biometricOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)biometricOptions.style.display="block"};
+</script>
+
+<!-- ==================== BIOMETRIC LOCK : SCRIPT = ==================== -->
+<script>
+const biometricLockBtn=document.getElementById("biometricLockBtn"),biometricLockDetails=document.getElementById("biometricLockDetails");
+biometricLockBtn.onclick=()=>{const open=biometricLockDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)biometricLockDetails.style.display="block"};
+</script>
+
+<!-- ==================== BIOMETRIC UNLOCK : SCRIPT = ==================== -->
+<script>
+const biometricUnlockBtn=document.getElementById("biometricUnlockBtn"),biometricUnlockDetails=document.getElementById("biometricUnlockDetails");
+biometricUnlockBtn.onclick=()=>{const open=biometricUnlockDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)biometricUnlockDetails.style.display="block"};
+</script>
+
+<!-- =========================================================
+     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
+     ========================================================= -->
+
+<script>
+const signatureValidationBtn=document.getElementById("signatureValidationBtn"),signatureValidationDetails=document.getElementById("signatureValidationDetails");
+signatureValidationBtn.onclick=()=>{const open=signatureValidationDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)signatureValidationDetails.style.display="block"};
 </script>
