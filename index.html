@@ -201,6 +201,9 @@ id="aadhaarServicesButton">
 
 <section class="service-list" id="serviceList">
 
+<!-- =========================================================
+     ===== MOBILE NUMBER UPDATE : HTML ======================
+     ========================================================= -->
 <button type="button" class="service-btn" id="mobileUpdateBtn">📱 Mobile Number Update</button>
 <section class="service-details" id="mobileUpdateDetails">
 <div class="service-details-title">Mobile Number Update</div>
@@ -212,10 +215,15 @@ id="aadhaarServicesButton">
 </table>
 <button type="button" class="apply-now-btn"><i class="fa-brands fa-whatsapp"></i>Apply Now</button>
 </section>
- 
+
+<!-- =========================================================
+     ===== ADDRESS UPDATE : HTML ============================
+     ========================================================= -->
 <button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>
 <section class="sub-service-list" id="addressOptions">
 <div class="sub-service-title">Address Update</div>
+     
+<!-- ===================== ADDRESS UPDATE SELF DOCUMENTS : HTML ===================== -->
 <button type="button" class="sub-service-btn" id="selfDocumentsBtn">📄 Self Documents</button>
 <section class="service-details" id="selfDocumentsDetails">
 <div class="service-details-title">Self Documents</div>
@@ -228,6 +236,7 @@ id="aadhaarServicesButton">
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- ===================== ADDRESS UPDATE HEAD OF FAMILY: HTML ===================== -->
 <button type="button" class="sub-service-btn" id="hofBasedBtn">👨‍👩‍👧 Head of Family (HOF)</button>
 <section class="service-details" id="hofBasedDetails">
 <div class="service-details-title">Head of Family (HOF)</div>
@@ -240,7 +249,10 @@ id="aadhaarServicesButton">
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 </section>
-     
+
+<!-- =========================================================
+     ===== PVC AADHAAR CARD ORDER : HTML ====================
+     ========================================================= -->
 <button type="button" class="service-btn" id="pvcAadhaarBtn">💳 PVC Aadhaar Card Order</button>
 <section class="service-details" id="pvcAadhaarDetails">
 <div class="service-details-title">PVC Aadhaar Card Order</div>
@@ -253,17 +265,53 @@ id="aadhaarServicesButton">
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- =========================================================
+     ===== AADHAAR DOWNLOAD : HTML ====================
+     ========================================================= -->
 <button type="button" class="service-btn" id="downloadBtn">📥 Aadhaar Download</button>
 <section class="sub-service-list" id="downloadOptions">
 <div class="sub-service-title">Aadhaar Download</div>
-<button type="button" class="sub-service-btn">📥 e-Aadhaar Download</button>
-<button type="button" class="sub-service-btn">🔒 Masked Aadhaar Download</button>
+
+<!-- ===================== E-AADHAR DOWNLOAD : HTML ===================== -->
+<button type="button" class="sub-service-btn" id="eAadhaarBtn">📥 e-Aadhaar Download</button>
+<section class="service-details" id="eAadhaarDetails">
+<div class="service-details-title">e-Aadhaar Download</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>e-Aadhaar Download</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
-     
+
+<!-- ===================== MASTER AADHAR DOWNLOAD : HTML ===================== -->
+<button type="button" class="sub-service-btn" id="maskedAadhaarBtn">🔒 Masked Aadhaar Download</button>
+<section class="service-details" id="maskedAadhaarDetails">
+<div class="service-details-title">Masked Aadhaar Download</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Masked Aadhaar Download</td></tr>
+<tr><td>Service Charge</td><td>Free of Cost</td></tr>
+<tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
+</section>
+
+<!-- =========================================================
+     ===== AADHAR DOCUMENT UPDATE : HTML ====================
+     ========================================================= -->
 <button type="button" class="service-btn">🪪 Aadhaar Document Update</button>
 
+<!-- =========================================================
+     ===== AADHAR STATUS CHECK : HTML ====================
+     ========================================================= -->
 <button type="button" class="service-btn">📋 Aadhaar Status Check</button>
 
+<!-- =========================================================
+     =====  BIOMETRIC SERVICES : HTML ====================
+     ========================================================= -->
 <button type="button" class="service-btn" id="biometricBtn">🔒 Biometric Services</button>
 <section class="sub-service-list" id="biometricOptions">
 <div class="sub-service-title">Biometric Services</div>
@@ -271,6 +319,9 @@ id="aadhaarServicesButton">
 <button type="button" class="sub-service-btn">🔓 Biometric Unlock</button>
 </section>
      
+ <!-- =========================================================
+     =====  E-AADHAR DIGITAL SIGNATURE VALIDATION : HTML ====================
+     ========================================================= -->    
 <button type="button" class="service-btn">🪪 e-Aadhaar Digital Signature Validation</button>
 </section>
 
@@ -311,4 +362,12 @@ const selfBtn=document.getElementById("selfDocumentsBtn"),hofBtn=document.getEle
 
 <script>
 const pvcBtn=document.getElementById("pvcAadhaarBtn"),pvcDetails=document.getElementById("pvcAadhaarDetails");pvcBtn.onclick=()=>{const open=pvcDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");pvcDetails.style.display=open?"none":"block"};
+</script>
+
+<!-- =========================================================
+     ===== AADHAAR DOWNLOAD OPTIONS : SCRIPT ================
+     ========================================================= -->
+
+<script>
+const eAadhaarBtn=document.getElementById("eAadhaarBtn"),maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn"),eAadhaarDetails=document.getElementById("eAadhaarDetails"),maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");eAadhaarBtn.onclick=()=>{const open=eAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)eAadhaarDetails.style.display="block"};maskedAadhaarBtn.onclick=()=>{const open=maskedAadhaarDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)maskedAadhaarDetails.style.display="block"};
 </script>
