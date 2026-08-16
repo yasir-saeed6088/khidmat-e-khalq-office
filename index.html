@@ -215,24 +215,51 @@ id="aadhaarServicesButton">
 <button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>
 <section class="sub-service-list" id="addressOptions">
 <div class="sub-service-title">Address Update</div>
-<button type="button" class="sub-service-btn">📄 Self Documents</button>
-<button type="button" class="sub-service-btn">👨‍👩‍👧 Head of Family (HOF)</button>
+<button type="button" class="sub-service-btn" id="selfDocumentsBtn">📄 Self Documents</button>
+<section class="service-details" id="selfDocumentsDetails">
+<div class="service-details-title">Self Documents</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Address Update — Self Documents</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>Up to 30 Days</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
+
+<button type="button" class="sub-service-btn" id="hofBasedBtn">👨‍👩‍👧 Head of Family (HOF)</button>
+<section class="service-details" id="hofBasedDetails">
+<div class="service-details-title">Head of Family (HOF)</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Address Update — HoF Based</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>05–10 Minutes</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
+</section>
+     
 <button type="button" class="service-btn">💳 PVC Aadhaar Card Order</button>
+
 <button type="button" class="service-btn" id="downloadBtn">📥 Aadhaar Download</button>
 <section class="sub-service-list" id="downloadOptions">
 <div class="sub-service-title">Aadhaar Download</div>
 <button type="button" class="sub-service-btn">📥 e-Aadhaar Download</button>
 <button type="button" class="sub-service-btn">🔒 Masked Aadhaar Download</button>
 </section>
+     
 <button type="button" class="service-btn">🪪 Aadhaar Document Update</button>
+
 <button type="button" class="service-btn">📋 Aadhaar Status Check</button>
+
 <button type="button" class="service-btn" id="biometricBtn">🔒 Biometric Services</button>
 <section class="sub-service-list" id="biometricOptions">
 <div class="sub-service-title">Biometric Services</div>
 <button type="button" class="sub-service-btn">🔒 Biometric Lock</button>
 <button type="button" class="sub-service-btn">🔓 Biometric Unlock</button>
 </section>
+     
 <button type="button" class="service-btn">🪪 e-Aadhaar Digital Signature Validation</button>
 </section>
 
@@ -257,4 +284,12 @@ aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceLi
 const subLists=document.querySelectorAll(".sub-service-list"),mobileDetails=document.getElementById("mobileUpdateDetails"),mobileBtn=document.getElementById("mobileUpdateBtn");
 mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";subLists.forEach(x=>x.style.display="none");mobileDetails.style.display=open?"none":"block"};
 ["addressUpdateBtn","downloadBtn","biometricBtn"].forEach(id=>document.getElementById(id).onclick=()=>{const list=document.getElementById({addressUpdateBtn:"addressOptions",downloadBtn:"downloadOptions",biometricBtn:"biometricOptions"}[id]),open=list.style.display==="block";subLists.forEach(x=>x.style.display="none");mobileDetails.style.display="none";if(!open)list.style.display="block"});
+</script>
+
+<!-- =========================================================
+     ===== ADDRESS UPDATE OPTIONS : SCRIPT =================
+     ========================================================= -->
+
+<script>
+const selfBtn=document.getElementById("selfDocumentsBtn"),hofBtn=document.getElementById("hofBasedBtn"),selfDetails=document.getElementById("selfDocumentsDetails"),hofDetails=document.getElementById("hofBasedDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";selfDetails.style.display=open?"none":"block";hofDetails.style.display="none"};hofBtn.onclick=()=>{const open=hofDetails.style.display==="block";hofDetails.style.display=open?"none":"block";selfDetails.style.display="none"};
 </script>
