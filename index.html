@@ -76,30 +76,30 @@ button,input{font-family:inherit}
 .apply-now-btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(37,211,102,.28)}
 .apply-now-btn i{font-size:20px}
 
-/* =========================================================
-   ===== MOBILE NUMBER UPDATE FORM : CSS ===================
+/* =========================================================    
+   ===== MOBILE NUMBER UPDATE FORM : CSS ===================    
+   ========================================================= */    
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden}    
+.service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}    
+.form-content{padding:20px 22px 24px}    
+.form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}    
+.form-content label{display:block;font-size:14px;font-weight:700;color:#333;margin:0 0 7px}    
+.form-content input[type="text"],    
+.form-content input[type="tel"]{width:100%;height:46px;border:1px solid rgba(7,88,201,.25);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:15px}    
+.form-content input:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}    
+.optional-text{font-weight:500;color:#777}    
+.required-star{color:#e00000}    
+.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:7px}    
+.file-upload-note{font-size:12px;color:#666;margin-bottom:20px}    
+.form-buttons{display:flex;justify-content:center;gap:12px}    
+.form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}    
+.form-submit-btn{background:#25D366}    
+.form-close-btn{background:#e00000}    
+    
+/* =========================================================    
+   ===== MOBILE NUMBER UPDATE FORM : CSS : END ============    
    ========================================================= */
-.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden}
-.service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}
-.form-content{padding:20px 22px 24px}
-.form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}
-.form-content label{display:block;font-size:14px;font-weight:700;color:#333;margin:0 0 7px}
-.form-content input[type="text"],
-.form-content input[type="tel"]{width:100%;height:46px;border:1px solid rgba(7,88,201,.25);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:15px}
-.form-content input:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}
-.optional-text{font-weight:500;color:#777}
-.required-star{color:#e00000}
-.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:7px}
-.file-upload-note{font-size:12px;color:#666;margin-bottom:20px}
-.form-buttons{display:flex;justify-content:center;gap:12px}
-.form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}
-.form-submit-btn{background:#25D366}
-.form-close-btn{background:#e00000}
-
-/* =========================================================
-   ===== MOBILE NUMBER UPDATE FORM : CSS : END ============
-   ========================================================= */
-
+     
  @media(max-width:600px){
 
 .header{min-height:105px;padding:8px 8px 12px}
@@ -208,65 +208,65 @@ Total Services : <span>8</span>
 
 <section class="service-list" id="serviceList">
 
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE : HTML ======================
-     ========================================================= -->
-<button type="button" class="service-btn" id="mobileUpdateBtn">📱 Mobile Number Update</button>
-
-<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
-<section class="service-details" id="mobileUpdateDetails">
-<div class="service-details-title">Mobile Number Update</div>
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Update Aadhaar Mobile Number</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>10–15 Minutes</td></tr>
-</table>
-<button type="button" class="apply-now-btn"><i class="fa-brands fa-whatsapp"></i>Apply Now</button>
-</section>
-
-<!-- ==================== MOBILE NUMBER UPDATE FORM : HTML ==================== -->
-<div class="popup-overlay" id="mobileUpdatePopup">
-<div class="service-form-popup">
-<div class="service-details-title">Mobile Number Update Form</div>
-<div class="form-content">
-
-<!-- ===================== APPLICANT DETAILS ===================== -->
-     
-<div class="form-section-title">Applicant Details</div>
-
-<label for="mobileFullName">Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="mobileFullName" placeholder="Enter Full Name">
-
-<label for="mobileLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="mobileLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" oninput="this.value=this.value.replace(/\D/g,'').slice(0,10)">
-
-<label for="mobileAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="mobileAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" oninput="this.value=this.value.replace(/\D/g,'').slice(0,12)">
-
-<label for="mobileVillage">Village / Town <span class="optional-text">(Optional)</span></label>
-<input type="text" id="mobileVillage" placeholder="Enter Village / Town">
-
-<label for="mobileState">State <span class="optional-text">(Optional)</span></label>
-<input type="text" id="mobileState" placeholder="Enter State">
-
-<label for="mobileAadhaarFile">Aadhaar File <span class="optional-text">(Optional)</span></label>
-<input type="file" id="mobileAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
-<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
-
-<!-- ===================== FORM BUTTONS ===================== -->
-<div class="form-buttons">
-<button type="button" class="form-submit-btn" id="mobileUpdateSubmit">Submit</button>
-<button type="button" class="form-close-btn" id="mobileUpdateClose">Close</button>
-</div>
-
-</div>
-</div>
-</div>
-
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE : HTML : END ===============
-     ========================================================= -->
+<!-- =========================================================    
+     ===== MOBILE NUMBER UPDATE : HTML ======================    
+     ========================================================= -->    
+<button type="button" class="service-btn" id="mobileUpdateBtn">📱 Mobile Number Update</button>    
+    
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->    
+<section class="service-details" id="mobileUpdateDetails">    
+<div class="service-details-title">Mobile Number Update</div>    
+<table class="details-table">    
+<tr><th>Information</th><th>Details</th></tr>    
+<tr><td>Service</td><td>Update Aadhaar Mobile Number</td></tr>    
+<tr><td>Service Charge</td><td>₹100</td></tr>    
+<tr><td>Processing Time</td><td>10–15 Minutes</td></tr>    
+</table>    
+<button type="button" class="apply-now-btn"><i class="fa-brands fa-whatsapp"></i>Apply Now</button>    
+</section>    
+    
+<!-- ==================== MOBILE NUMBER UPDATE FORM : HTML ==================== -->    
+<div class="popup-overlay" id="mobileUpdatePopup">    
+<div class="service-form-popup">    
+<div class="service-details-title">Mobile Number Update Form</div>    
+<div class="form-content">    
+    
+<!-- ===================== APPLICANT DETAILS ===================== -->    
+         
+<div class="form-section-title">Applicant Details</div>    
+    
+<label for="mobileFullName">Full Name <span class="optional-text">(Optional)</span></label>    
+<input type="text" id="mobileFullName" placeholder="Enter Full Name">    
+    
+<label for="mobileLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>    
+<input type="tel" id="mobileLinkedNumber" placeholder="Enter 10-digit Mobile Number">    
+    
+<label for="mobileAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>    
+<input type="tel" id="mobileAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number">    
+    
+<label for="mobileVillage">Village / Town <span class="optional-text">(Optional)</span></label>    
+<input type="text" id="mobileVillage" placeholder="Enter Village / Town">    
+    
+<label for="mobileState">State <span class="optional-text">(Optional)</span></label>    
+<input type="text" id="mobileState" placeholder="Enter State">    
+    
+<label for="mobileAadhaarFile">Aadhaar File <span class="optional-text">(Optional)</span></label>    
+<input type="file" id="mobileAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">    
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>    
+    
+<!-- ===================== FORM BUTTONS ===================== -->    
+<div class="form-buttons">    
+<button type="button" class="form-submit-btn" id="mobileUpdateSubmit">Submit</button>    
+<button type="button" class="form-close-btn" id="mobileUpdateClose">Close</button>    
+</div>    
+    
+</div>    
+</div>    
+</div>    
+    
+<!-- =========================================================    
+     ===== MOBILE NUMBER UPDATE : HTML : END ===============    
+     ========================================================= --> 
 
      
 <!-- =========================================================
@@ -451,84 +451,92 @@ aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
 };
 </script>
 
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE FORM : SCRIPT ==============
-     ========================================================= -->
+<!-- =========================================================      
+     ===== MOBILE NUMBER UPDATE FORM : SCRIPT ==============      
+     ========================================================= -->      
+      
+<script>      
+const mobileBtn=document.getElementById("mobileUpdateBtn");      
+const mobileDetails=document.getElementById("mobileUpdateDetails");      
+      
+mobileBtn.onclick=()=>{      
+const open=mobileDetails.style.display==="block";      
+      
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");      
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");      
+      
+if(!open)mobileDetails.style.display="block";      
+};      
+</script>      
+      
+ <!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT ===================== -->      
+      
+<script>      
+const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document      
+.getElementById("mobileUpdatePopup"),mobileClose=document      
+.getElementById("mobileUpdateClose"),mobileSubmit=document      
+.getElementById("mobileUpdateSubmit"),mobileForm=document      
+.querySelector("#mobileUpdatePopup .form-content"),mobileFields={name:document      
+.getElementById("mobileFullName"),mobile:document      
+.getElementById("mobileLinkedNumber"),aadhaar:document      
+.getElementById("mobileAadhaarNumber"),village:document      
+.getElementById("mobileVillage"),state:document      
+.getElementById("mobileState"),file:document      
+.getElementById("mobileAadhaarFile")};      
+      
+// ===================== OPEN / CLOSE FORM =====================      
+      
+mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};      
+mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};      
+mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};      
+  
+// ===================== AADHAAR VALIDATION =====================  
+  
+const verhoeffValidate=num=>{const d=[[0,1,2,3,4,5,6,7,8,9],[1,2,3,4,0,6,7,8,9,5],[2,3,4,0,1,7,8,9,5,6],[3,4,0,1,2,8,9,5,6,7],[4,0,1,2,3,9,5,6,7,8],[5,9,6,7,8,0,4,3,2,1],[6,5,7,8,9,4,0,1,3,2],[7,8,9,5,6,3,1,0,2,4],[8,6,5,9,7,2,3,4,0,1],[9,7,8,6,5,1,2,3,4,0]],p=[[0,1,2,3,4,5,6,7,8,9],[1,5,7,6,2,8,3,0,9,4],[5,8,0,3,7,9,6,1,4,2],[8,9,1,0,6,4,3,5,2,7],[9,4,5,3,1,2,6,8,7,0],[4,2,8,6,5,7,3,9,0,1],[2,7,9,3,8,0,6,4,1,5],[7,0,4,6,9,1,3,2,5,8]];let c=0;  
+num.split("").reverse().forEach((x,i)=>c=d[c][p[i%8][+x]]);return c===0};  
+  
+// ===================== FORM VALIDATION =====================      
+      
+mobileSubmit.onclick=()=>{document.querySelectorAll(".form-error").forEach(x=>x.remove());      
+document.querySelectorAll("#mobileUpdatePopup input").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");      
+let first=null,error=(field,msg)=>{field.style.borderColor="#e00000";      
+let e=document.createElement("div");      
+e.className="form-error";      
+e.textContent=msg;      
+e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14px";      
+field.after(e);      
+if(!first)first=field};      
+      
+if(!mobileFields.mobile.value.trim())error(mobileFields.mobile,"Enter your Aadhaar Linked 10-digit mobile number.");      
+else if(!/^[6-9]\d{9}$/.test(mobileFields.mobile.value.trim()))error(mobileFields.mobile,"Enter a valid 10-digit mobile number.");      
+      
+const aadhaar=mobileFields.aadhaar.value.trim();      
+if(!aadhaar)error(mobileFields.aadhaar,"Enter your 12-digit Aadhaar Number.");      
+else if(!/^[1-9]\d{11}$/.test(aadhaar)||!verhoeffValidate(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");      
+      
+// ===================== FILE VALIDATION =====================      
+      
+const file=mobileFields.file.files[0];      
+if(file&&(!["image/jpeg","image/png","application/pdf"].includes(file.type)||file.size>=1048576))error(mobileFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");      
+if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}      
+                                
+// ===================== WHATSAPP MESSAGE =====================      
+      
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";      
+const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";      
+add("Full Name",mobileFields.name.value.trim());      
+add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());      
+add("Aadhaar Number",mobileFields.aadhaar.value.trim());      
+add("Village / Town",mobileFields.village.value.trim());      
+add("State",mobileFields.state.value.trim());      
+add("Aadhaar File",file?file.name:"");      
+msg+="___________________________________\nPlease assist me with this service.";      
+window.open("whatsapp://send?phone=916361634389&text="+encodeURIComponent(msg),"_blank");};      
+</script>      
+      
+<!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== --> 
 
-<script>
-const mobileBtn=document.getElementById("mobileUpdateBtn");
-const mobileDetails=document.getElementById("mobileUpdateDetails");
-
-mobileBtn.onclick=()=>{
-const open=mobileDetails.style.display==="block";
-
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-
-if(!open)mobileDetails.style.display="block";
-};
-</script>
-
- <!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT ===================== -->
-
-<script>
-const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document
-.getElementById("mobileUpdatePopup"),mobileClose=document
-.getElementById("mobileUpdateClose"),mobileSubmit=document
-.getElementById("mobileUpdateSubmit"),mobileForm=document
-.querySelector("#mobileUpdatePopup .form-content"),mobileFields={name:document
-.getElementById("mobileFullName"),mobile:document
-.getElementById("mobileLinkedNumber"),aadhaar:document
-.getElementById("mobileAadhaarNumber"),village:document
-.getElementById("mobileVillage"),state:document
-.getElementById("mobileState"),file:document
-.getElementById("mobileAadhaarFile")};
-
-// ===================== OPEN / CLOSE FORM =====================
-
-mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
-mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};
-mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};
-
-const verhoeffValidate=num=>{const d=[[0,1,2,3,4,5,6,7,8,9],
-[1,2,3,4,0,6,7,8,9,5],
-[2,3,4,0,1,7,8,9,5,6],
-[3,4,0,1,2,8,9,5,6,7],
-[4,0,1,2,3,9,5,6,7,8],
-[5,9,6,7,8,0,4,3,2,1],
-[6,5,7,8,9,4,0,1,3,2],
-[7,8,9,5,6,3,1,0,2,4],[8,6,5,9,7,2,3,4,0,1],[9,7,8,6,5,1,2,3,4,0]],p=[[0,1,2,3,4,5,6,7,8,9],[1,5,7,6,2,8,3,0,9,4],[5,8,0,3,7,9,6,1,4,2],[8,9,1,0,6,4,3,5,2,7],[9,4,5,3,1,2,6,8,7,0],[4,2,8,6,5,7,3,9,0,1],[2,7,9,3,8,0,6,4,1,5],[7,0,4,6,9,1,3,2,5,8]];let c=0;
-num.split("").reverse().forEach((x,i)=>c=d[c][p[i%8][+x]]);return c===0};
      
-// ===================== FORM VALIDATION =====================
-
-mobileSubmit.onclick=()=>{document.querySelectorAll(".form-error").forEach(x=>x.remove());
-document.querySelectorAll("#mobileUpdatePopup input").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");let first=null,error=(field,msg)=>
-{field.style.borderColor="#e00000";let e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14px";field.after(e);if(!first)first=field};
-
-if(!/^[6-9]\d{9}$/.test(mobileFields.mobile.value.trim()))error(mobileFields.mobile,"Enter a valid 10-digit mobile number starting with 6, 7, 8 or 9.");
-const aadhaar=mobileFields.aadhaar.value.trim();
-if(!/^[1-9]\d{11}$/.test(aadhaar)||!verhoeffValidate(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
-
-// ===================== FILE VALIDATION =====================
-
-const file=mobileFields.file.files[0];
-if(file&&(!["image/jpeg","image/png","application/pdf"].includes(file.type)||file.size>=1048576))error(mobileFields.file,"File must be JPG, JPEG, PNG or PDF and less than 1 MB.");
-                          
-if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}
-
-// ===================== WHATSAPP MESSAGE =====================
-
-let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";          
-const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";          
-add("Full Name",mobileFields.name.value.trim());add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());          
-add("Aadhaar Number",mobileFields.aadhaar.value.trim());add("Village / Town",mobileFields.village.value.trim());          
-add("State",mobileFields.state.value.trim());add("Aadhaar File",file?file.name:"");msg+="___________________________________\nPlease assist me with this service.";
-window.open("https://wa.me/6361634389?text="+encodeURIComponent(msg),"_blank");};
-</script>
-
-<!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== -->
-
 <!-- =========================================================
      ===== ADDRESS UPDATE : SCRIPT ==========================
      ========================================================= -->
