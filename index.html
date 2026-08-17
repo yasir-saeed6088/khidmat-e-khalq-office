@@ -490,15 +490,6 @@ mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.ov
 mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};      
 mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};      
   
-// ===================== AADHAAR VALIDATION =====================
-
-const aadhaar=mobileFields.aadhaar.value.trim();
-
-if(!aadhaar)
-error(mobileFields.aadhaar,"Enter your 12-digit Aadhaar Number.");
-else if(!/^\d{12}$/.test(aadhaar))
-error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
-     
 // ===================== FORM VALIDATION =====================      
       
 mobileSubmit.onclick=()=>{document.querySelectorAll(".form-error").forEach(x=>x.remove());      
@@ -511,13 +502,12 @@ e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14p
 field.after(e);      
 if(!first)first=field};      
       
-if(!mobileFields.mobile.value.trim())error(mobileFields.mobile,"Enter your Aadhaar Linked 10-digit mobile number.");      
-else if(!/^[6-9]\d{9}$/.test(mobileFields.mobile.value.trim()))error(mobileFields.mobile,"Enter a valid 10-digit mobile number.");      
-      
-const aadhaar=mobileFields.aadhaar.value.trim();      
-if(!aadhaar)error(mobileFields.aadhaar,"Enter your 12-digit Aadhaar Number.");      
-else if(!/^[1-9]\d{11}$/.test(aadhaar)||!verhoeffValidate(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");      
-      
+if(!mobileFields.mobile.value.trim())error(mobileFields.mobile,"Enter your Aadhaar Linked 10-digit mobile number.");
+else if(!/^[6-9]\d{9}$/.test(mobileFields.mobile.value.trim()))error(mobileFields.mobile,"Enter a valid 10-digit mobile number.");
+const aadhaar=mobileFields.aadhaar.value.trim();
+if(!aadhaar)error(mobileFields.aadhaar,"Enter your 12-digit Aadhaar Number.");
+else if(!/^\d{12}$/.test(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
+                          
 // ===================== FILE VALIDATION =====================      
       
 const file=mobileFields.file.files[0];      
