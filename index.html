@@ -79,7 +79,7 @@ button,input{font-family:inherit}
 /* =========================================================
    ===== MOBILE NUMBER UPDATE FORM : CSS ===================
    ========================================================= */
-.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow-y:auto}
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden
 .service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}
 .form-content{padding:20px 22px 24px}
 .form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}
@@ -93,8 +93,8 @@ button,input{font-family:inherit}
 .file-upload-note{font-size:12px;color:#666;margin-bottom:20px}
 .form-buttons{display:flex;justify-content:center;gap:12px}
 .form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}
-.form-submit-btn{background:#0758c9}
-.form-close-btn{background:#777}
+.form-submit-btn{background:#25D366}
+.form-close-btn{background:#e00000}
 
 /* =========================================================
    ===== MOBILE NUMBER UPDATE FORM : CSS : END ============
@@ -486,11 +486,10 @@ const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),
 
 // ===================== OPEN / CLOSE FORM =====================
 
-mobileApply.onclick=()=>{mobilePopup.style.display="flex"};
-mobileClose.onclick=()=>{mobilePopup.style.display="none"};
-
-mobilePopup.onclick=e=>{if(e.target===mobilePopup)mobilePopup.style.display="none"};
-
+mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
+mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};
+mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};
+     
 // ===================== FORM VALIDATION =====================
 
 mobileSubmit.onclick=()=>{document.querySelectorAll(".form-error").forEach(x=>x.remove());
@@ -504,14 +503,17 @@ if(!/^\d{12}$/.test(mobileFields.aadhaar.value.trim()))error(mobileFields.aadhaa
 
 const file=mobileFields.file.files[0];
 if(file&&(!["image/jpeg","image/png","application/pdf"].includes(file.type)||file.size>=1048576))error(mobileFields.file,"File must be JPG, JPEG, PNG or PDF and less than 1 MB.");
-
+                          
 if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}
 
 // ===================== WHATSAPP MESSAGE =====================
 
-let msg="KHIDMAT-E-KHALQ OFFICE\n\nService: Aadhaar Mobile Number Update\n\n";const add=(label,value)=>{if(value)msg+=label+": "+value+"\n"};add("Full Name",mobileFields.name.value.trim());add("Aadhaar Number",mobileFields.aadhaar.value.trim());add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());add("Village / Town",mobileFields.village.value.trim());add("State",mobileFields.state.value.trim());add("Aadhaar File",file?file.name:"");msg+="\nPlease assist me with this service.";
-window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");
-};
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";
+const add=(label,value)=>msg+=label+": "+(value||"")+"\n";
+add("Full Name",mobileFields.name.value.trim());add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());
+add("Aadhaar Number",mobileFields.aadhaar.value.trim());add("Village / Town",mobileFields.village.value.trim());
+add("State",mobileFields.state.value.trim());add("Aadhaar File",file?file.name:"");msg+="___________________________________\nPlease assist me with this service.";
+window.open("https://wa.me/?text="+encodeURIComponent(msg),"_blank");};
 </script>
 
 <!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== -->
