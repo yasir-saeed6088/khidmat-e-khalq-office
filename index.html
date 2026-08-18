@@ -493,7 +493,7 @@ if(file&&(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(fil
 if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}
 
 // ===================== WHATSAPP MESSAGE =====================
-let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————\n\n*APPLICANT DETAILS*\n\n";
 const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
 add("Full Name",mobileFields.name.value.trim());
 add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());
@@ -501,7 +501,7 @@ add("Aadhaar Number",mobileFields.aadhaar.value.trim());
 add("Village / Town",mobileFields.village.value.trim());
 add("State",mobileFields.state.value.trim());
 add("Aadhaar File",file?file.name:"");
-msg+="___________________________________\nPlease assist me with this service.";
+msg+="__________________________________\nPlease assist me with this service.";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
 </script>
