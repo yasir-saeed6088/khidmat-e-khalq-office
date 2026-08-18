@@ -273,40 +273,191 @@ Total Services : <span>8</span>
      ========================================================= --> 
 
      
-<!-- =========================================================
-     ===== ADDRESS UPDATE : HTML ============================
+<!-- =========================================================  
+     ===== ADDRESS UPDATE : HTML ============================  
+     ========================================================= -->  
+<button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>    
+<section class="sub-service-list" id="addressOptions">  
+<div class="sub-service-title">Address Update</div>  
+       
+<!-- ===================== ADDRESS UPDATE SELF DOCUMENTS : HTML ===================== -->  
+<button type="button" class="sub-service-btn" id="selfDocumentsBtn">📄 Self Documents</button>  
+  
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->  
+<section class="service-details" id="selfDocumentsDetails">  
+<div class="service-details-title">Self Documents</div>  
+<table class="details-table">  
+<tr><th>Information</th><th>Details</th></tr>  
+<tr><td>Service</td><td>Address Update — Self Documents</td></tr>  
+<tr><td>Service Charge</td><td>₹100</td></tr>  
+<tr><td>Processing Time</td><td>Up to 30 Days</td></tr>  
+</table>  
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>  
+</section>  
+  
+<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : HTML ==================== -->  
+<div class="popup-overlay" id="selfDocumentsPopup">  
+<div class="service-form-popup">  
+<div class="service-details-title">Address Update – Self Documents Form</div>  
+<div class="form-content">  
+  
+<!-- ===================== APPLICANT DETAILS ===================== -->  
+<div class="form-section-title">Applicant Details</div>  
+  
+<label for="selfFullName">Full Name <span class="optional-text">(Optional)</span></label>  
+<input type="text" id="selfFullName" placeholder="Enter Full Name">  
+  
+<label for="selfLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>  
+<input type="tel" id="selfLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">  
+  
+<label for="selfAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>  
+<input type="tel" id="selfAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">  
+  
+<!-- ===================== NEW ADDRESS DETAILS ===================== -->  
+<div class="form-section-title">New Address Details</div>  
+  
+<label for="selfHouse">House / Building <span class="required-star">*</span></label>  
+<input type="text" id="selfHouse" placeholder="Enter House / Building">  
+  
+<label for="selfRoad">Road / Street <span class="required-star">*</span></label>  
+<input type="text" id="selfRoad" placeholder="Enter Road / Street">  
+  
+<label for="selfArea">Area / Locality <span class="required-star">*</span></label>  
+<input type="text" id="selfArea" placeholder="Enter Area / Locality">  
+  
+<label for="selfLandmark">Landmark <span class="required-star">*</span></label>  
+<input type="text" id="selfLandmark" placeholder="Enter Landmark">  
+  
+<label for="selfVillage">Village / Town / City <span class="required-star">*</span></label>  
+<input type="text" id="selfVillage" placeholder="Enter Village / Town / City">  
+  
+<label for="selfPostOffice">Post Office <span class="required-star">*</span></label>  
+<input type="text" id="selfPostOffice" placeholder="Enter Post Office">  
+  
+<label for="selfDistrict">District <span class="required-star">*</span></label>  
+<input type="text" id="selfDistrict" placeholder="Enter District">  
+  
+<label for="selfState">State <span class="required-star">*</span></label>  
+<input type="text" id="selfState" placeholder="Enter State">  
+  
+<label for="selfPinCode">PIN Code <span class="required-star">*</span></label>  
+<input type="tel" id="selfPinCode" placeholder="Enter 6-digit PIN Code" inputmode="numeric" maxlength="6">  
+  
+<!-- ===================== ADDRESS PROOF ===================== -->  
+<div class="form-section-title">Address Proof</div>  
+  
+<label for="selfAddressProof">Select Address Proof <span class="required-star">*</span></label>  
+<select id="selfAddressProof">  
+<option value="">-- Select Address Proof --</option>  
+<option value="Ration Card">Ration Card</option>  
+<option value="Voter ID">Voter ID</option>  
+<option value="Passport">Passport</option>  
+<option value="Driving Licence">Driving Licence</option>  
+<option value="Electricity Bill">Electricity Bill</option>  
+<option value="Water Bill">Water Bill</option>  
+<option value="Telephone / Landline Bill">Telephone / Landline Bill</option>  
+<option value="Property Tax Receipt">Property Tax Receipt</option>  
+<option value="Bank / Post Office Statement">Bank / Post Office Statement</option>  
+<option value="Government-issued Address Proof">Government-issued Address Proof</option>  
+<option value="Other">Other</option>  
+</select>  
+  
+<label for="selfOtherDocument">Other Document Name <span class="required-star">*</span></label>  
+<input type="text" id="selfOtherDocument" placeholder="Enter Document Name">  
+  
+<label for="selfAddressFile">Upload Address Proof <span class="required-star">*</span></label>  
+<input type="file" id="selfAddressFile" accept=".jpg,.jpeg,.png,.pdf">  
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: less than 1 MB</div>  
+  
+<!-- ===================== FORM BUTTONS ===================== -->  
+<div class="form-buttons">  
+<button type="button" class="form-submit-btn" id="selfDocumentsSubmit">Submit</button>  
+<button type="button" class="form-close-btn" id="selfDocumentsClose">Close</button>  
+</div>  
+  
+</div>  
+</div>  
+</div>  
+  
+<!-- ===================== ADDRESS UPDATE HEAD OF FAMILY: HTML ===================== -->  
+<button type="button" class="sub-service-btn" id="hofBasedBtn">👨‍👩‍👧 Head of Family (HOF)</button>  
+  
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->  
+<section class="service-details" id="hofBasedDetails">  
+<div class="service-details-title">Head of Family (HOF)</div>  
+<table class="details-table">  
+<tr><th>Information</th><th>Details</th></tr>  
+<tr><td>Service</td><td>Address Update — HoF Based</td></tr>  
+<tr><td>Service Charge</td><td>₹100</td></tr>  
+<tr><td>Processing Time</td><td>05–10 Minutes</td></tr>  
+</table>  
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>  
+</section>  
+  
+<!-- ==================== ADDRESS UPDATE HOF BASED FORM : HTML ==================== -->  
+<div class="popup-overlay" id="hofBasedPopup">  
+<div class="service-form-popup">  
+<div class="service-details-title">Address Update – HoF Based Form</div>  
+<div class="form-content">  
+  
+<!-- ===================== APPLICANT DETAILS ===================== -->  
+<div class="form-section-title">Applicant Details</div>  
+  
+<label for="hofFullName">Full Name <span class="optional-text">(Optional)</span></label>  
+<input type="text" id="hofFullName" placeholder="Enter Full Name">  
+  
+<label for="hofLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>  
+<input type="tel" id="hofLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">  
+  
+<label for="hofAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>  
+<input type="tel" id="hofAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">  
+  
+<!-- ===================== HEAD OF FAMILY DETAILS ===================== -->  
+<div class="form-section-title">Head of Family Details</div>  
+  
+<label for="hofName">HoF Name <span class="required-star">*</span></label>  
+<input type="text" id="hofName" placeholder="Enter HoF Name">  
+  
+<label for="hofAadhaar">HoF Aadhaar Number <span class="required-star">*</span></label>  
+<input type="tel" id="hofAadhaar" placeholder="Enter 12-digit HoF Aadhaar Number" inputmode="numeric" maxlength="12">  
+  
+<label for="hofMobile">HoF Aadhaar Linked Mobile Number <span class="required-star">*</span></label>  
+<input type="tel" id="hofMobile" placeholder="Enter 10-digit HoF Mobile Number" inputmode="numeric" maxlength="10">  
+  
+<label for="hofRelationship">Relationship with HoF <span class="required-star">*</span></label>  
+<select id="hofRelationship">  
+<option value="">-- Select Relationship --</option>  
+<option value="Father">Father</option>  
+<option value="Mother">Mother</option>  
+<option value="Husband">Husband</option>  
+<option value="Wife">Wife</option>  
+<option value="Son">Son</option>  
+<option value="Daughter">Daughter</option>  
+<option value="Brother">Brother</option>  
+<option value="Sister">Sister</option>  
+<option value="Other">Other</option>  
+</select>  
+  
+<label for="hofOtherRelationship">Other Relationship <span class="required-star">*</span></label>  
+<input type="text" id="hofOtherRelationship" placeholder="Enter Relationship">  
+  
+<!-- ===================== FORM BUTTONS ===================== -->  
+<div class="form-buttons">  
+<button type="button" class="form-submit-btn" id="hofBasedSubmit">Submit</button>  
+<button type="button" class="form-close-btn" id="hofBasedClose">Close</button>  
+</div>  
+  
+</div>  
+</div>  
+</div>  
+  
+</section>  
+  
+<!-- =========================================================  
+     ===== ADDRESS UPDATE : HTML :  END ============================  
      ========================================================= -->
-<button type="button" class="service-btn" id="addressUpdateBtn">🏠 Address Update</button>
-<section class="sub-service-list" id="addressOptions">
-<div class="sub-service-title">Address Update</div>
+
      
-<!-- ===================== ADDRESS UPDATE SELF DOCUMENTS : HTML ===================== -->
-<button type="button" class="sub-service-btn" id="selfDocumentsBtn">📄 Self Documents</button>
-<section class="service-details" id="selfDocumentsDetails">
-<div class="service-details-title">Self Documents</div>
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update — Self Documents</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>Up to 30 Days</td></tr>
-</table>
-<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
-</section>
-
-<!-- ===================== ADDRESS UPDATE HEAD OF FAMILY: HTML ===================== -->
-<button type="button" class="sub-service-btn" id="hofBasedBtn">👨‍👩‍👧 Head of Family (HOF)</button>
-<section class="service-details" id="hofBasedDetails">
-<div class="service-details-title">Head of Family (HOF)</div>
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Address Update — HoF Based</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>05–10 Minutes</td></tr>
-</table>
-<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
-</section>
-</section>
-
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : HTML ====================
      ========================================================= -->
