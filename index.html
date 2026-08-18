@@ -469,67 +469,43 @@ if(!open)mobileDetails.style.display="block";
 };      
 </script>      
       
- <!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT ===================== -->      
-      
-<script>      
-const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document      
-.getElementById("mobileUpdatePopup"),mobileClose=document      
-.getElementById("mobileUpdateClose"),mobileSubmit=document      
-.getElementById("mobileUpdateSubmit"),mobileForm=document      
-.querySelector("#mobileUpdatePopup .form-content"),mobileFields={name:document      
-.getElementById("mobileFullName"),mobile:document      
-.getElementById("mobileLinkedNumber"),aadhaar:document      
-.getElementById("mobileAadhaarNumber"),village:document      
-.getElementById("mobileVillage"),state:document      
-.getElementById("mobileState"),file:document      
-.getElementById("mobileAadhaarFile")};      
-      
-// ===================== OPEN / CLOSE FORM =====================      
-      
-mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};      
-mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};      
-mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};      
-  
-// ===================== FORM VALIDATION =====================      
-      
-mobileSubmit.onclick=()=>{document.querySelectorAll(".form-error").forEach(x=>x.remove());      
-document.querySelectorAll("#mobileUpdatePopup input").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");      
-let first=null,error=(field,msg)=>{field.style.borderColor="#e00000";      
-let e=document.createElement("div");      
-e.className="form-error";      
-e.textContent=msg;      
-e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14px";      
-field.after(e);      
-if(!first)first=field};      
-      
-if(!mobileFields.mobile.value.trim())error(mobileFields.mobile,"Enter your Aadhaar Linked 10-digit mobile number.");
-else if(!/^[6-9]\d{9}$/.test(mobileFields.mobile.value.trim()))error(mobileFields.mobile,"Enter a valid 10-digit mobile number.");
-const aadhaar=mobileFields.aadhaar.value.trim();
-if(!aadhaar)error(mobileFields.aadhaar,"Enter your 12-digit Aadhaar Number.");
-else if(!/^\d{12}$/.test(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
-                          
-// ===================== FILE VALIDATION =====================      
-      
-const file=mobileFields.file.files[0];      
-if(file&&(!["image/jpeg","image/png","application/pdf"].includes(file.type)||file.size>=1048576))error(mobileFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");      
-if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}      
-                                
-// ===================== WHATSAPP MESSAGE =====================      
-      
-let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";      
-const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";      
-add("Full Name",mobileFields.name.value.trim());      
-add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());      
-add("Aadhaar Number",mobileFields.aadhaar.value.trim());      
-add("Village / Town",mobileFields.village.value.trim());      
-add("State",mobileFields.state.value.trim());      
-add("Aadhaar File",file?file.name:"");      
-msg+="___________________________________\nPlease assist me with this service.";      
-window.open("whatsapp://send?phone=916361634389&text="+encodeURIComponent(msg),"_blank");};      
-</script>      
-      
-<!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== --> 
+<!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT ===================== -->
+<script>
+const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document.getElementById("mobileUpdatePopup"),mobileClose=document.getElementById("mobileUpdateClose"),mobileSubmit=document.getElementById("mobileUpdateSubmit"),mobileFields={name:document.getElementById("mobileFullName"),mobile:document.getElementById("mobileLinkedNumber"),aadhaar:document.getElementById("mobileAadhaarNumber"),village:document.getElementById("mobileVillage"),state:document.getElementById("mobileState"),file:document.getElementById("mobileAadhaarFile")};
 
+// ===================== OPEN / CLOSE FORM =====================
+mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
+mobileClose.onclick=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};
+mobilePopup.onclick=e=>{if(e.target===mobilePopup){mobilePopup.style.display="none";document.body.style.overflow=""}};
+
+// ===================== FORM VALIDATION =====================
+mobileSubmit.onclick=()=>{
+document.querySelectorAll(".form-error").forEach(x=>x.remove());
+document.querySelectorAll("#mobileUpdatePopup input").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");
+let first=null,error=(field,msg)=>{field.style.borderColor="#e00000";let e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14px";field.after(e);if(!first)first=field};
+const mobile=mobileFields.mobile.value.trim(),aadhaar=mobileFields.aadhaar.value.trim();
+if(!/^[6-9]\d{9}$/.test(mobile))error(mobileFields.mobile,"Enter a valid 10-digit mobile number.");
+if(!/^\d{12}$/.test(aadhaar))error(mobileFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
+
+// ===================== FILE VALIDATION =====================
+const file=mobileFields.file.files[0];
+if(file&&(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(file.type)||file.size>=1048576))error(mobileFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");
+if(first){first.scrollIntoView({behavior:"smooth",block:"center"});return}
+
+// ===================== WHATSAPP MESSAGE =====================
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————————\n\n*APPLICANT DETAILS*\n\n";
+const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
+add("Full Name",mobileFields.name.value.trim());
+add("Aadhaar Linked Mobile",mobileFields.mobile.value.trim());
+add("Aadhaar Number",mobileFields.aadhaar.value.trim());
+add("Village / Town",mobileFields.village.value.trim());
+add("State",mobileFields.state.value.trim());
+add("Aadhaar File",file?file.name:"");
+msg+="___________________________________\nPlease assist me with this service.";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+</script>
+<!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== -->
      
 <!-- =========================================================
      ===== ADDRESS UPDATE : SCRIPT ==========================
