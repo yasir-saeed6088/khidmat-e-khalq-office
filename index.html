@@ -697,58 +697,46 @@ if(!open)selfDetails.style.display="block";
 
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT ==================== -->
 <script>
-const selfApply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),selfPopup=document.getElementById("selfDocumentsPopup"),selfClose=document.getElementById("selfDocumentsClose"),selfSubmit=document.getElementById("selfDocumentsSubmit"),selfFields={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")};
+const selfApply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),selfPopup=document.getElementById("selfDocumentsPopup"),selfClose=document.getElementById("selfDocumentsClose"),selfSubmit=document.getElementById("selfDocumentsSubmit"),selfFields={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},selfOtherGroup=document.getElementById("selfOtherDocumentGroup"),selfUpload=document.getElementById("selfAddressUpload");
 
-// ===================== OPEN / CLOSE FORM =====================
 selfApply.onclick=()=>{selfPopup.style.display="flex";document.body.style.overflow="hidden"};
 selfClose.onclick=()=>{selfPopup.style.display="none";document.body.style.overflow=""};
 selfPopup.onclick=e=>{if(e.target===selfPopup){selfPopup.style.display="none";document.body.style.overflow=""}};
 
-// ===================== FORM VALIDATION =====================
+const selfClearError=field=>{field.style.borderColor="rgba(7,88,201,.25)";const e=field.parentElement.querySelector(".form-error");if(e)e.remove()};
+const selfShowError=(field,msg)=>{selfClearError(field);field.style.borderColor="#e00000";let e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+const selfValid={mobile:()=>/^[6-9]\d{9}$/.test(selfFields.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(selfFields.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(selfFields.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!selfFields.proof.value,file:()=>{const f=selfFields.file.files[0];return f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<1048576}};
+
+selfFields.proof.onchange=()=>{selfOtherGroup.style.display=selfFields.proof.value==="Other"?"block":"none";if(selfFields.proof.value!=="Other")selfFields.other.value="";selfClearError(selfFields.proof);selfClearError(selfFields.other)};
+[selfFields.mobile,selfFields.aadhaar,selfFields.house,selfFields.road,selfFields.area,selfFields.landmark,selfFields.village,selfFields.postOffice,selfFields.district,selfFields.state,selfFields.pin,selfFields.other].forEach(f=>f.addEventListener("input",()=>selfClearError(f)));
+selfFields.file.onchange=()=>selfClearError(selfFields.file);
+selfUpload.onclick=()=>{const f=selfFields.file.files[0];if(!f)selfShowError(selfFields.file,"Upload your Address Proof.");else if(!selfValid.file())selfShowError(selfFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");else selfClearError(selfFields.file)};
+
 selfSubmit.onclick=()=>{
 document.querySelectorAll("#selfDocumentsPopup .form-error").forEach(x=>x.remove());
 document.querySelectorAll("#selfDocumentsPopup input,#selfDocumentsPopup select").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");
-let first=null,error=(field,msg)=>{field.style.borderColor="#e00000";let e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:-10px 0 14px";field.after(e);if(!first)first=field};
-
-const mobile=selfFields.mobile.value.trim(),aadhaar=selfFields.aadhaar.value.trim(),pin=selfFields.pin.value.trim();
-if(!/^[6-9]\d{9}$/.test(mobile))error(selfFields.mobile,"Enter a valid 10-digit mobile number.");
-if(!/^\d{12}$/.test(aadhaar))error(selfFields.aadhaar,"Enter a valid 12-digit Aadhaar Number.");
-[selfFields.house,selfFields.road,selfFields.area,selfFields.landmark,selfFields.village,selfFields.postOffice,selfFields.district,selfFields.state].forEach(x=>{if(!x.value.trim())error(x,"This field is required.")});
-if(!/^\d{6}$/.test(pin))error(selfFields.pin,"Enter a valid 6-digit PIN Code.");
-if(!selfFields.proof.value)error(selfFields.proof,"Select an Address Proof.");
-if(selfFields.proof.value==="Other"&&!selfFields.other.value.trim())error(selfFields.other,"Enter Document Name.");
-
-const file=selfFields.file.files[0];
-if(!file)error(selfFields.file,"Upload your Address Proof.");
-else if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(file.type)||file.size>=1048576)error(selfFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");
-
+let first=null,check=(field,ok,msg)=>{if(!ok){selfShowError(field,msg);if(!first)first=field}};
+check(selfFields.mobile,selfValid.mobile(),"Enter a valid 10-digit mobile number.");
+check(selfFields.aadhaar,selfValid.aadhaar(),"Enter a valid 12-digit Aadhaar Number.");
+[selfFields.house,selfFields.road,selfFields.area,selfFields.landmark,selfFields.village,selfFields.postOffice,selfFields.district,selfFields.state].forEach(f=>check(f,selfValid.text(f),"This field is required."));
+check(selfFields.pin,selfValid.pin(),"Enter a valid 6-digit PIN Code.");
+check(selfFields.proof,selfValid.proof(),"Please select an Address Proof.");
+if(selfFields.proof.value==="Other")check(selfFields.other,selfValid.text(selfFields.other),"Enter Document Name.");
+const file=selfFields.file.files[0];check(selfFields.file,selfValid.file(),"Upload JPG, JPEG, PNG or PDF under 1 MB.");
 if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
 
-// ===================== WHATSAPP MESSAGE =====================
-let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – SELF DOCUMENTS\n————————————————————\n\n*APPLICANT DETAILS*\n\n";
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – SELF DOCUMENTS\n————————————————————\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
-add("Full Name",selfFields.name.value.trim());
-add("Aadhaar Linked Mobile",mobile);
-add("Aadhaar Number",aadhaar);
-msg+="*NEW ADDRESS DETAILS*\n\n";
-add("House / Building",selfFields.house.value.trim());
-add("Road / Street",selfFields.road.value.trim());
-add("Area / Locality",selfFields.area.value.trim());
-add("Landmark",selfFields.landmark.value.trim());
-add("Village / Town / City",selfFields.village.value.trim());
-add("Post Office",selfFields.postOffice.value.trim());
-add("District",selfFields.district.value.trim());
-add("State",selfFields.state.value.trim());
-add("PIN Code",pin);
-msg+="*ADDRESS PROOF*\n\n";
-add("Address Proof",selfFields.proof.value==="Other"?selfFields.other.value.trim():selfFields.proof.value);
-add("Address Proof File",file.name);
+add("Full Name",selfFields.name.value.trim());add("Aadhaar Linked Mobile",selfFields.mobile.value.trim());add("Aadhaar Number",selfFields.aadhaar.value.trim());
+msg+="```NEW ADDRESS DETAILS```\n\n";
+add("House / Building",selfFields.house.value.trim());add("Road / Street",selfFields.road.value.trim());add("Area / Locality",selfFields.area.value.trim());add("Landmark",selfFields.landmark.value.trim());add("Village / Town / City",selfFields.village.value.trim());add("Post Office",selfFields.postOffice.value.trim());add("District",selfFields.district.value.trim());add("State",selfFields.state.value.trim());add("PIN Code",selfFields.pin.value.trim());
+msg+="```ADDRESS PROOF```\n\n";add("Address Proof",selfFields.proof.value==="Other"?selfFields.other.value.trim():selfFields.proof.value);add("Address Proof File",file.name);
 msg+="__________________________________\nPlease assist me with this service.";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
 </script>
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT : END ==================== -->
-     
+ 
 <!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT ==================== -->
 
 <script>
