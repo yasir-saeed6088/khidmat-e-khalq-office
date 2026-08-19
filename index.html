@@ -76,35 +76,38 @@ button,input{font-family:inherit}
 .apply-now-btn:hover{transform:translateY(-1px);box-shadow:0 7px 18px rgba(37,211,102,.28)}
 .apply-now-btn i{font-size:20px}
 
-/* =========================================================    
-   ===== MOBILE NUMBER UPDATE FORM : CSS ===================    
-   ========================================================= */    
-.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden}    
-.service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}    
-.form-content{padding:20px 22px 24px}    
-.form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}    
-.form-content label{display:block;font-size:14px;font-weight:700;color:#333;margin:0 0 7px}    
-.form-content input[type="text"],    
-.form-content input[type="tel"]{width:100%;height:46px;border:1px solid rgba(7,88,201,.25);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:15px}    
-.form-content input:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}    
-.optional-text{font-weight:500;color:#777}    
-.required-star{color:#e00000}    
-.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:7px}    
-.file-upload-note{font-size:12px;color:#666;margin-bottom:20px}    
-
-.form-buttons{display:flex;justify-content:center;gap:12px}    
-.form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}    
-
+/* =========================================================
+   ===== MOBILE NUMBER UPDATE FORM : CSS ===================
+   ========================================================= */
+.popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden}
+.service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}
+.form-content{padding:20px 22px 24px}
+.form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}
+.form-content label{display:block;font-size:14px;font-weight:700;color:#333;margin:0 0 7px}
+.form-content input[type="text"],
+.form-content input[type="tel"]{width:100%;height:46px;border:1px solid rgba(7,88,201,.25);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:15px}
+.form-content input:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}
+.form-content select{width:100%;height:50px;border:1px solid rgba(7,88,201,.35);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:20px;background:#f8fbff;color:#333}
+.form-content select:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}
+.optional-text{font-weight:500;color:#777}
+.required-star{color:#e00000}
+.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:14px}
+.file-upload-note{font-size:12px;color:#666;margin-bottom:20px}
+.form-error{color:#e00000;font-size:12px;font-weight:700;margin:-8px 0 14px!important;display:block;clear:both}
+.file-upload-btn{display:block;width:120px;height:40px;margin:0 0 20px;border:0;border-radius:9px;background:#0758c9;color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.file-upload-btn:hover{background:#0649a8;transform:translateY(-1px)}
+.form-buttons{display:flex;justify-content:center;gap:12px}
+.form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}
 .form-submit-btn{background:#25D366;box-shadow:0 4px 10px rgba(37,211,102,.25)}
 .form-close-btn{background:#e00000;box-shadow:0 4px 10px rgba(224,0,0,.20)}
 .form-submit-btn:hover{background:#20bd5b;transform:translateY(-1px)}
 .form-close-btn:hover{background:#c90000;transform:translateY(-1px)}
-    
-/* =========================================================    
-   ===== MOBILE NUMBER UPDATE FORM : CSS : END ============    
+
+/* =========================================================
+   ===== MOBILE NUMBER UPDATE FORM : CSS : END ============
    ========================================================= */
-     
- @media(max-width:600px){
+ 
+@media(max-width:600px){
 
 .header{min-height:105px;padding:8px 8px 12px}
 .logo{width:65px;height:65px}
@@ -362,11 +365,14 @@ Total Services : <span>8</span>
 <option value="Other">Other</option>  
 </select>  
   
+<div id="selfOtherDocumentGroup" style="display:none">  
 <label for="selfOtherDocument">Other Document Name <span class="required-star">*</span></label>  
 <input type="text" id="selfOtherDocument" placeholder="Enter Document Name">  
+</div>  
   
 <label for="selfAddressFile">Upload Address Proof <span class="required-star">*</span></label>  
 <input type="file" id="selfAddressFile" accept=".jpg,.jpeg,.png,.pdf">  
+<button type="button" class="file-upload-btn" id="selfAddressUpload">Upload</button>  
 <div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: less than 1 MB</div>  
   
 <!-- ===================== FORM BUTTONS ===================== -->  
@@ -399,7 +405,7 @@ Total Services : <span>8</span>
 <div class="service-form-popup">  
 <div class="service-details-title">Address Update – HoF Based Form</div>  
 <div class="form-content">  
-  
+
 <!-- ===================== APPLICANT DETAILS ===================== -->  
 <div class="form-section-title">Applicant Details</div>  
   
@@ -438,8 +444,10 @@ Total Services : <span>8</span>
 <option value="Other">Other</option>  
 </select>  
   
+<div id="hofOtherRelationshipGroup" style="display:none">  
 <label for="hofOtherRelationship">Other Relationship <span class="required-star">*</span></label>  
 <input type="text" id="hofOtherRelationship" placeholder="Enter Relationship">  
+</div>  
   
 <!-- ===================== FORM BUTTONS ===================== -->  
 <div class="form-buttons">  
@@ -455,8 +463,8 @@ Total Services : <span>8</span>
   
 <!-- =========================================================  
      ===== ADDRESS UPDATE : HTML :  END ============================  
-     ========================================================= -->
-
+     ========================================================= -->   
+     
      
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : HTML ====================
@@ -661,97 +669,134 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 };
 </script>
 <!-- ===================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ===================== -->
+
      
 <!-- =========================================================
      ===== ADDRESS UPDATE : SCRIPT ==========================
      ========================================================= -->
 
 <script>
-const addressBtn=document.getElementById("addressUpdateBtn");
-const addressOptions=document.getElementById("addressOptions");
-
-addressBtn.onclick=()=>{
-const open=addressOptions.style.display==="block";
-
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-
-if(!open)addressOptions.style.display="block";
-};
+(()=>{const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)addressOptions.style.display="block"};})();
 </script>
 
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS : SCRIPT ==================== -->
 
 <script>
-const selfBtn=document.getElementById("selfDocumentsBtn");
-const selfDetails=document.getElementById("selfDocumentsDetails");
-
-selfBtn.onclick=()=>{
-const open=selfDetails.style.display==="block";
-
-document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");
-
-if(!open)selfDetails.style.display="block";
-};
+(()=>{const selfBtn=document.getElementById("selfDocumentsBtn"),selfDetails=document.getElementById("selfDocumentsDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)selfDetails.style.display="block"};})();
 </script>
 
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT ==================== -->
+
 <script>
-const selfApply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),selfPopup=document.getElementById("selfDocumentsPopup"),selfClose=document.getElementById("selfDocumentsClose"),selfSubmit=document.getElementById("selfDocumentsSubmit"),selfFields={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},selfOtherGroup=document.getElementById("selfOtherDocumentGroup"),selfUpload=document.getElementById("selfAddressUpload");
+(()=>{const F={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},popup=document.getElementById("selfDocumentsPopup"),apply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),close=document.getElementById("selfDocumentsClose"),submit=document.getElementById("selfDocumentsSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
 
-selfApply.onclick=()=>{selfPopup.style.display="flex";document.body.style.overflow="hidden"};
-selfClose.onclick=()=>{selfPopup.style.display="none";document.body.style.overflow=""};
-selfPopup.onclick=e=>{if(e.target===selfPopup){selfPopup.style.display="none";document.body.style.overflow=""}};
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.parentElement.querySelector(".form-error");if(e)e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<1048576}};
 
-const selfClearError=field=>{field.style.borderColor="rgba(7,88,201,.25)";const e=field.parentElement.querySelector(".form-error");if(e)e.remove()};
-const selfShowError=(field,msg)=>{selfClearError(field);field.style.borderColor="#e00000";let e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-const selfValid={mobile:()=>/^[6-9]\d{9}$/.test(selfFields.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(selfFields.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(selfFields.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!selfFields.proof.value,file:()=>{const f=selfFields.file.files[0];return f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<1048576}};
+F.other.style.display="none";F.other.previousElementSibling.style.display="none";
+const upload=document.createElement("button");upload.type="button";upload.className="file-upload-btn";upload.textContent="Upload";F.file.after(upload);
 
-selfFields.proof.onchange=()=>{selfOtherGroup.style.display=selfFields.proof.value==="Other"?"block":"none";if(selfFields.proof.value!=="Other")selfFields.other.value="";selfClearError(selfFields.proof);selfClearError(selfFields.other)};
-[selfFields.mobile,selfFields.aadhaar,selfFields.house,selfFields.road,selfFields.area,selfFields.landmark,selfFields.village,selfFields.postOffice,selfFields.district,selfFields.state,selfFields.pin,selfFields.other].forEach(f=>f.addEventListener("input",()=>selfClearError(f)));
-selfFields.file.onchange=()=>selfClearError(selfFields.file);
-selfUpload.onclick=()=>{const f=selfFields.file.files[0];if(!f)selfShowError(selfFields.file,"Upload your Address Proof.");else if(!selfValid.file())selfShowError(selfFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");else selfClearError(selfFields.file)};
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
 
-selfSubmit.onclick=()=>{
-document.querySelectorAll("#selfDocumentsPopup .form-error").forEach(x=>x.remove());
-document.querySelectorAll("#selfDocumentsPopup input,#selfDocumentsPopup select").forEach(x=>x.style.borderColor="rgba(7,88,201,.25)");
-let first=null,check=(field,ok,msg)=>{if(!ok){selfShowError(field,msg);if(!first)first=field}};
-check(selfFields.mobile,selfValid.mobile(),"Enter a valid 10-digit mobile number.");
-check(selfFields.aadhaar,selfValid.aadhaar(),"Enter a valid 12-digit Aadhaar Number.");
-[selfFields.house,selfFields.road,selfFields.area,selfFields.landmark,selfFields.village,selfFields.postOffice,selfFields.district,selfFields.state].forEach(f=>check(f,selfValid.text(f),"This field is required."));
-check(selfFields.pin,selfValid.pin(),"Enter a valid 6-digit PIN Code.");
-check(selfFields.proof,selfValid.proof(),"Please select an Address Proof.");
-if(selfFields.proof.value==="Other")check(selfFields.other,selfValid.text(selfFields.other),"Enter Document Name.");
-const file=selfFields.file.files[0];check(selfFields.file,selfValid.file(),"Upload JPG, JPEG, PNG or PDF under 1 MB.");
+/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
+
+F.proof.onchange=()=>{const other=F.proof.value==="Other";F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.proof)};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[F.mobile,F.aadhaar,F.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=f===F.mobile?valid.mobile():f===F.aadhaar?valid.aadhaar():valid.pin();if(ok)clear(f)}}));
+[F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
+
+/* ====================  FILE VALIDATION : SCRIPT ==================== */
+
+const validateFile=()=>{const f=F.file.files[0];if(!f){show(F.file,"Upload your Address Proof.");return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)||f.size>=1048576){show(F.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");return false}clear(F.file);return true};
+F.file.onchange=validateFile;upload.onclick=validateFile;
+
+/* ====================  FORM VALIDATION : SCRIPT ==================== */
+
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Enter a valid 10-digit mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Enter a valid 12-digit Aadhaar Number.");
+[F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state].forEach(f=>check(f,valid.text(f),"This field is required."));
+check(F.pin,valid.pin(),"Enter a valid 6-digit PIN Code.");
+check(F.proof,valid.proof(),"Please select an Address Proof.");
+if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Enter Document Name.");
+check(F.file,valid.file(),"Upload JPG, JPEG, PNG or PDF under 1 MB.");
 if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
+
+/* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
 
 let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – SELF DOCUMENTS\n————————————————————\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
-add("Full Name",selfFields.name.value.trim());add("Aadhaar Linked Mobile",selfFields.mobile.value.trim());add("Aadhaar Number",selfFields.aadhaar.value.trim());
+add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
 msg+="```NEW ADDRESS DETAILS```\n\n";
-add("House / Building",selfFields.house.value.trim());add("Road / Street",selfFields.road.value.trim());add("Area / Locality",selfFields.area.value.trim());add("Landmark",selfFields.landmark.value.trim());add("Village / Town / City",selfFields.village.value.trim());add("Post Office",selfFields.postOffice.value.trim());add("District",selfFields.district.value.trim());add("State",selfFields.state.value.trim());add("PIN Code",selfFields.pin.value.trim());
-msg+="```ADDRESS PROOF```\n\n";add("Address Proof",selfFields.proof.value==="Other"?selfFields.other.value.trim():selfFields.proof.value);add("Address Proof File",file.name);
+add("House / Building",F.house.value.trim());add("Road / Street",F.road.value.trim());add("Area / Locality",F.area.value.trim());add("Landmark",F.landmark.value.trim());add("Village / Town / City",F.village.value.trim());add("Post Office",F.postOffice.value.trim());add("District",F.district.value.trim());add("State",F.state.value.trim());add("PIN Code",F.pin.value.trim());
+msg+="```ADDRESS PROOF```\n\n";
+add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);add("Address Proof File",F.file.files[0].name);
 msg+="__________________________________\nPlease assist me with this service.";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
+})();
 </script>
+
 <!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT : END ==================== -->
- 
+
 <!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT ==================== -->
 
 <script>
-const hofBtn=document.getElementById("hofBasedBtn");
-const hofDetails=document.getElementById("hofBasedDetails");
+(()=>{const B={name:document.getElementById("hofFullName"),mobile:document.getElementById("hofLinkedNumber"),aadhaar:document.getElementById("hofAadhaarNumber"),hofName:document.getElementById("hofName"),hofAadhaar:document.getElementById("hofAadhaar"),hofMobile:document.getElementById("hofMobile"),relationship:document.getElementById("hofRelationship"),other:document.getElementById("hofOtherRelationship")},btn=document.getElementById("hofBasedBtn"),details=document.getElementById("hofBasedDetails"),apply=document.querySelector("#hofBasedDetails .apply-now-btn"),popup=document.getElementById("hofBasedPopup"),close=document.getElementById("hofBasedClose"),submit=document.getElementById("hofBasedSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
 
-hofBtn.onclick=()=>{
-const open=hofDetails.style.display==="block";
+btn.onclick=()=>{const open=details.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)details.style.display="block"};
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+B.other.style.display="none";B.other.previousElementSibling.style.display="none";
 
-document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");
+const clear=f=>{f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;const e=f.parentElement.querySelector(".form-error");if(e)e.remove()};
+const show=(f,msg)=>{clear(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;f.after(e)};
+const valid={mobile:f=>/^[6-9]\d{9}$/.test(f.value.trim()),aadhaar:f=>/^\d{12}$/.test(f.value.trim()),text:f=>!!f.value.trim(),relationship:()=>!!B.relationship.value};
 
-if(!open)hofDetails.style.display="block";
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[B.mobile,B.aadhaar,B.hofAadhaar,B.hofMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=(f===B.mobile||f===B.hofMobile)?valid.mobile(f):valid.aadhaar(f);if(ok)clear(f)}}));
+[B.hofName].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+B.relationship.onchange=()=>{const other=B.relationship.value==="Other";B.other.style.display=other?"block":"none";B.other.previousElementSibling.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}clear(B.relationship)};
+B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(B.mobile,valid.mobile(B.mobile),"Enter a valid 10-digit mobile number.");
+check(B.aadhaar,valid.aadhaar(B.aadhaar),"Enter a valid 12-digit Aadhaar Number.");
+check(B.hofName,valid.text(B.hofName),"Enter HoF Name.");
+check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Enter a valid 12-digit HoF Aadhaar Number.");
+check(B.hofMobile,valid.mobile(B.hofMobile),"Enter a valid 10-digit HoF Mobile Number.");
+check(B.relationship,valid.relationship(),"Please select a Relationship with HoF.");
+if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Enter Relationship.");
+if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
+
+/* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
+
+let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – HOF BASED\n————————————————————\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
+add("Full Name",B.name.value.trim());add("Aadhaar Linked Mobile",B.mobile.value.trim());add("Aadhaar Number",B.aadhaar.value.trim());
+msg+="```HEAD OF FAMILY DETAILS```\n\n";
+add("HoF Name",B.hofName.value.trim());add("HoF Aadhaar Number",B.hofAadhaar.value.trim());add("HoF Aadhaar Linked Mobile",B.hofMobile.value.trim());add("Relationship with HoF",B.relationship.value==="Other"?B.other.value.trim():B.relationship.value);
+msg+="__________________________________\nPlease assist me with this service.";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
+})();
 </script>
 
+<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT : END ==================== -->
+
+ 
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
      ========================================================= -->
