@@ -713,7 +713,8 @@ popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.
 
 /* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
 
-F.proof.onchange=()=>{const other=F.proof.value==="Other";F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.proof)};
+F.proof.onchange=()=>{const other=F.proof.value==="Other";const group=document.getElementById("selfOtherDocumentGroup");group.style.display=other?"block":"none";
+F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.proof)};
 
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
 
