@@ -724,20 +724,24 @@ F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
 /* ====================  FILE VALIDATION : SCRIPT ==================== */
 
 const validateFile=()=>{const f=F.file.files[0];if(!f){show(F.file,"Please upload your Address Proof.");return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");return false}if(f.size>=1048576){show(F.file,"Please upload a file smaller than 1 MB.");return false}clear(F.file);return true};
-F.file.onchange=validateFile;document.getElementById("selfAddressUpload").onclick=validateFile;
+F.file.onchange=()=>{if(F.file.files.length)validateFile()};
       
 /* ====================  FORM VALIDATION : SCRIPT ==================== */
 
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,valid.mobile(),"Enter a valid 10-digit mobile number.");
-check(F.aadhaar,valid.aadhaar(),"Enter a valid 12-digit Aadhaar Number.");
-[F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state].forEach(f=>check(f,valid.text(f),"This field is required."));
-check(F.pin,valid.pin(),"Enter a valid 6-digit PIN Code.");
-check(F.proof,valid.proof(),"Please select an Address Proof.");
-if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Enter Document Name.");
-check(F.file,valid.file(),"Upload JPG, JPEG, PNG or PDF under 1 MB.");
-if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);
+let first=null;const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.house,valid.text(F.house),"Please enter your House / Building.");
+check(F.road,valid.text(F.road),"Please enter your Road / Street.");
+check(F.area,valid.text(F.area),"Please enter your Area / Locality.");
+check(F.landmark,valid.text(F.landmark),"Please enter your Landmark.");
+check(F.village,valid.text(F.village),"Please enter your Village / Town / City.");
+check(F.postOffice,valid.text(F.postOffice),"Please enter your Post Office.");
+check(F.district,valid.text(F.district),"Please enter your District.");
+check(F.state,valid.text(F.state),"Please enter your State.");
+check(F.pin,valid.pin(),"Please enter a valid 6-digit PIN Code.");
+check(F.proof,valid.proof(),"Please select an Address Proof.");if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
+check(F.file,valid.file(),"Please upload a JPG, JPEG, PNG or PDF file smaller than 1 MB.");if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
 
 /* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
 
