@@ -105,6 +105,10 @@ button,input{font-family:inherit}
 .file-upload-note{font-size:12px;color:#666;margin-bottom:20px}
 .file-upload-btn{display:block;width:100px;height:38px;margin:0 0 12px;border:1px solid #0758c9;border-radius:9px;background:#fff;color:#0758c9;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 3px 8px rgba(7,88,201,.12);transition:.2s}
 .file-upload-btn:hover{background:#0758c9;color:#fff;transform:translateY(-1px);box-shadow:0 5px 12px rgba(7,88,201,.18)}
+.file-upload-btn.file-success{background:#eefaf5;border-color:#159a68;color:#087a50;box-shadow:0 3px 8px rgba(21,154,104,.14)}
+.file-upload-btn.file-success:hover{background:#159a68;color:#fff}
+.file-upload-btn.file-error{background:#fff4f4;border-color:#e00000;color:#c00000;box-shadow:0 3px 8px rgba(224,0,0,.12)}
+.file-upload-btn.file-error:hover{background:#e00000;color:#fff}
      
 /* ==================== FORM BUTTONS : CSS ==================== */
 .form-buttons{display:flex;justify-content:center;gap:10px}
@@ -724,8 +728,8 @@ F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
       
 /* ====================  FILE VALIDATION : SCRIPT ==================== */
 
-const validateFile=()=>{const f=F.file.files[0];if(!f){show(F.file,"Please upload your Address Proof.");return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");return false}if(f.size>=1048576){show(F.file,"Please upload a file smaller than 1 MB.");return false}clear(F.file);return true};
-F.file.onchange=()=>{if(F.file.files.length)validateFile()};
+const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";if(!f){show(F.file,"Please upload your Address Proof.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>=1048576){show(F.file,"Please upload a file smaller than 1 MB.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clear(F.file);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";if(F.file.files.length)validateFile()};
       
 /* ====================  FORM VALIDATION : SCRIPT ==================== */
 
