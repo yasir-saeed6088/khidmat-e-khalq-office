@@ -79,10 +79,14 @@ button,input{font-family:inherit}
 /* =========================================================
    ===== MOBILE NUMBER UPDATE FORM : CSS ===================
    ========================================================= */
+
+/* ==================== FORM POPUP : CSS ==================== */
 .popup-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9999;align-items:center;justify-content:center;padding:18px;overflow:hidden}
 .service-form-popup{width:100%;max-width:630px;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 10px 35px rgba(0,0,0,.25);max-height:92vh;overflow-y:auto}
 .form-content{padding:20px 22px 24px}
 .form-section-title{font-size:18px;color:#0758c9;font-weight:800;margin-bottom:18px}
+
+/* ==================== FORM FIELDS : CSS ==================== */
 .form-content label{display:block;font-size:14px;font-weight:700;color:#333;margin:0 0 7px}
 .form-content input[type="text"],
 .form-content input[type="tel"]{width:100%;height:46px;border:1px solid rgba(7,88,201,.25);border-radius:10px;padding:0 13px;font-size:15px;outline:none;margin-bottom:15px}
@@ -91,11 +95,18 @@ button,input{font-family:inherit}
 .form-content select:focus{border-color:#0758c9;box-shadow:0 0 0 2px rgba(7,88,201,.08)}
 .optional-text{font-weight:500;color:#777}
 .required-star{color:#e00000}
-.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:14px}
+
+/* ==================== FORM VALIDATION : CSS ==================== */
+.form-error{color:#e00000;font-size:12px;font-weight:700;margin:-7px 0 15px!important;padding:0;display:block;clear:both;line-height:1.4}
+.form-content input.form-error-field,.form-content select.form-error-field{border-color:#e00000!important}
+
+/* ==================== FILE UPLOAD : CSS ==================== */
+.form-content input[type="file"]{width:100%;font-size:14px;margin-bottom:8px}
 .file-upload-note{font-size:12px;color:#666;margin-bottom:20px}
-.form-error{color:#e00000;font-size:12px;font-weight:700;margin:-8px 0 14px!important;display:block;clear:both}
-.file-upload-btn{display:block;width:120px;height:40px;margin:0 0 20px;border:0;border-radius:9px;background:#0758c9;color:#fff;font-size:14px;font-weight:700;cursor:pointer}
+.file-upload-btn{display:block;width:120px;height:40px;margin:0 0 12px;border:0;border-radius:9px;background:#0758c9;color:#fff;font-size:14px;font-weight:700;cursor:pointer}
 .file-upload-btn:hover{background:#0649a8;transform:translateY(-1px)}
+
+/* ==================== FORM BUTTONS : CSS ==================== */
 .form-buttons{display:flex;justify-content:center;gap:12px}
 .form-submit-btn,.form-close-btn{width:120px;height:44px;border:0;border-radius:10px;color:#fff;font-size:15px;font-weight:800;cursor:pointer}
 .form-submit-btn{background:#25D366;box-shadow:0 4px 10px rgba(37,211,102,.25)}
@@ -106,7 +117,7 @@ button,input{font-family:inherit}
 /* =========================================================
    ===== MOBILE NUMBER UPDATE FORM : CSS : END ============
    ========================================================= */
- 
+
 @media(max-width:600px){
 
 .header{min-height:105px;padding:8px 8px 12px}
@@ -370,9 +381,9 @@ Total Services : <span>8</span>
 <input type="text" id="selfOtherDocument" placeholder="Enter Document Name">  
 </div>  
   
-<label for="selfAddressFile">Upload Address Proof <span class="required-star">*</span></label>  
-<input type="file" id="selfAddressFile" accept=".jpg,.jpeg,.png,.pdf">  
-<button type="button" class="file-upload-btn" id="selfAddressUpload">Upload</button>  
+<label for="selfAddressFile">Upload Address Proof <span class="required-star">*</span></label>
+<input type="file" id="selfAddressFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="selfAddressUpload">Upload</button>
 <div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: less than 1 MB</div>  
   
 <!-- ===================== FORM BUTTONS ===================== -->  
@@ -690,12 +701,11 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <script>
 (()=>{const F={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},popup=document.getElementById("selfDocumentsPopup"),apply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),close=document.getElementById("selfDocumentsClose"),submit=document.getElementById("selfDocumentsSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
 
-const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.parentElement.querySelector(".form-error");if(e)e.remove()};
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
 const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
 const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<1048576}};
 
 F.other.style.display="none";F.other.previousElementSibling.style.display="none";
-const upload=document.createElement("button");upload.type="button";upload.className="file-upload-btn";upload.textContent="Upload";F.file.after(upload);
 
 apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
 close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
@@ -707,15 +717,15 @@ F.proof.onchange=()=>{const other=F.proof.value==="Other";F.other.style.display=
 
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
 
-[F.mobile,F.aadhaar,F.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=f===F.mobile?valid.mobile():f===F.aadhaar?valid.aadhaar():valid.pin();if(ok)clear(f)}}));
+[F.mobile,F.aadhaar,F.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():f===F.aadhaar?valid.aadhaar():valid.pin();if(ok)clear(f)}));
 [F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
 F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
-
+      
 /* ====================  FILE VALIDATION : SCRIPT ==================== */
 
-const validateFile=()=>{const f=F.file.files[0];if(!f){show(F.file,"Upload your Address Proof.");return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)||f.size>=1048576){show(F.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");return false}clear(F.file);return true};
-F.file.onchange=validateFile;upload.onclick=validateFile;
-
+const validateFile=()=>{const f=F.file.files[0];if(!f){show(F.file,"Please upload your Address Proof.");return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");return false}if(f.size>=1048576){show(F.file,"Please upload a file smaller than 1 MB.");return false}clear(F.file);return true};
+F.file.onchange=validateFile;document.getElementById("selfAddressUpload").onclick=validateFile;
+      
 /* ====================  FORM VALIDATION : SCRIPT ==================== */
 
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
