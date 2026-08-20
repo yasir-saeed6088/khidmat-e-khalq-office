@@ -439,11 +439,11 @@ Total Services : <span>8</span>
 <label for="hofName">HoF Name <span class="required-star">*</span></label>  
 <input type="text" id="hofName" placeholder="Enter HoF Name">  
   
-<label for="hofAadhaar">HoF Aadhaar Number <span class="required-star">*</span></label>  
-<input type="tel" id="hofAadhaar" placeholder="Enter 12-digit HoF Aadhaar Number" inputmode="numeric" maxlength="12">  
-  
 <label for="hofMobile">HoF Aadhaar Linked Mobile Number <span class="required-star">*</span></label>  
 <input type="tel" id="hofMobile" placeholder="Enter 10-digit HoF Mobile Number" inputmode="numeric" maxlength="10">  
+
+<label for="hofAadhaar">HoF Aadhaar Number <span class="required-star">*</span></label>  
+<input type="tel" id="hofAadhaar" placeholder="Enter 12-digit HoF Aadhaar Number" inputmode="numeric" maxlength="12">  
   
 <label for="hofRelationship">Relationship with HoF <span class="required-star">*</span></label>  
 <select id="hofRelationship">  
@@ -783,21 +783,16 @@ const valid={mobile:f=>/^[6-9]\d{9}$/.test(f.value.trim()),aadhaar:f=>/^\d{12}$/
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
 
 [B.mobile,B.aadhaar,B.hofAadhaar,B.hofMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=(f===B.mobile||f===B.hofMobile)?valid.mobile(f):valid.aadhaar(f);if(ok)clear(f)}}));
-[B.hofName].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
-B.relationship.onchange=()=>{const other=B.relationship.value==="Other";B.other.style.display=other?"block":"none";B.other.previousElementSibling.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}clear(B.relationship)};
+B.hofName.addEventListener("input",()=>{if(B.hofName.value.trim())clear(B.hofName)});
+B.relationship.onchange=()=>{const other=B.relationship.value==="Other";B.other.style.display=other?"block":"none";B.other.previousElementSibling.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}if(B.relationship.value)clear(B.relationship)};
 B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
 
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
 
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
 const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(B.mobile,valid.mobile(B.mobile),"Enter a valid 10-digit mobile number.");
-check(B.aadhaar,valid.aadhaar(B.aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-check(B.hofName,valid.text(B.hofName),"Enter HoF Name.");
-check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Enter a valid 12-digit HoF Aadhaar Number.");
-check(B.hofMobile,valid.mobile(B.hofMobile),"Enter a valid 10-digit HoF Mobile Number.");
-check(B.relationship,valid.relationship(),"Please select a Relationship with HoF.");
-if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Enter Relationship.");
+
+check(B.mobile,valid.mobile(B.mobile),"Please enter a valid Aadhaar-linked mobile number.");check(B.aadhaar,valid.aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");check(B.hofName,valid.text(B.hofName),"Please enter the HoF Name.");check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Please enter a valid 12-digit HoF Aadhaar number.");check(B.hofMobile,valid.mobile(B.hofMobile),"Please enter a valid Aadhaar-linked HoF mobile number.");check(B.relationship,valid.relationship(),"Please select your relationship with HoF.");if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Please enter the Other Relationship.");
 if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
 
 /* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
