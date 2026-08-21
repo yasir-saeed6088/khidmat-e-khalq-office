@@ -791,10 +791,9 @@ B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
 
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
 const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-
 check(B.mobile,valid.mobile(B.mobile),"Please enter a valid Aadhaar-linked mobile number.");check(B.aadhaar,valid.aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");check(B.hofName,valid.text(B.hofName),"Please enter the HoF Name.");check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Please enter a valid 12-digit HoF Aadhaar number.");check(B.hofMobile,valid.mobile(B.hofMobile),"Please enter a valid Aadhaar-linked HoF mobile number.");check(B.relationship,valid.relationship(),"Please select your relationship with HoF.");if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Please enter the Other Relationship.");
-if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
-
+if(first){setTimeout(()=>{popup.scrollTop=first.offsetTop-30;first.focus()},50);return}
+                    
 /* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
 
 let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – HOF BASED\n————————————————————\n\n```APPLICANT DETAILS```\n\n";
