@@ -784,9 +784,9 @@ const valid={mobile:f=>/^[6-9]\d{9}$/.test(f.value.trim()),aadhaar:f=>/^\d{12}$/
 
 [B.mobile,B.aadhaar,B.hofAadhaar,B.hofMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=(f===B.mobile||f===B.hofMobile)?valid.mobile(f):valid.aadhaar(f);if(ok)clear(f)}}));
 B.hofName.addEventListener("input",()=>{if(B.hofName.value.trim())clear(B.hofName)});
-B.relationship.onchange=()=>{const other=B.relationship.value==="Other";B.other.style.display=other?"block":"none";B.other.previousElementSibling.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}if(B.relationship.value)clear(B.relationship)};
+B.relationship.onchange=()=>{const other=B.relationship.value==="Other";otherGroup.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}if(B.relationship.value)clear(B.relationship)};
 B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
-
+      
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
 
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
