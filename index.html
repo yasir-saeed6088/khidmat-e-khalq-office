@@ -663,7 +663,7 @@ const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
 const mobile=mobileFields.mobile.value.trim(),aadhaar=mobileFields.aadhaar.value.trim(),file=mobileFields.file.files[0];
 check(mobileFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
 check(mobileFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-if(file)check(mobileFields.file,allowedFiles.includes(file.type)&&file.size<1048576,"Upload JPG, JPEG, PNG or PDF under 1 MB.");
+if(file)check(mobileFields.file,allowedFiles.includes(file.type)&&file.size<=1048576&&mobileFields.upload.classList.contains("file-success"),"Please click the Upload button to upload your Aadhaar File.");
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
 
 // ===================== WHATSAPP MESSAGE =====================
@@ -704,7 +704,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
 const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<1048576}};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
 
 F.other.style.display="none";F.other.previousElementSibling.style.display="none";
 
