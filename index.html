@@ -647,16 +647,16 @@ const closeMobilePopup=()=>{mobilePopup.style.display="none";document.body.style
 mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
 mobileClose.onclick=closeMobilePopup;
 mobilePopup.onclick=e=>{if(e.target===mobilePopup)closeMobilePopup()};
-mobileFields.upload.onclick=()=>mobileFields.file.click();
 
 // ==================== LIVE ERROR CLEARING : SCRIPT ====================
 mobileFields.mobile.oninput=()=>{mobileFields.mobile.value=mobileFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(mobileFields.mobile.value))removeError(mobileFields.mobile)};
 mobileFields.aadhaar.oninput=()=>{mobileFields.aadhaar.value=mobileFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(mobileFields.aadhaar.value))removeError(mobileFields.aadhaar)};
 
 // ==================== FILE VALIDATION : SCRIPT ====================
-const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);if(!f)return true;if(!allowedFiles.includes(f.type)||f.size>=1048576){showError(mobileFields.file,"Upload JPG, JPEG, PNG or PDF under 1 MB.");mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
-mobileFields.file.onchange=validateMobileFile;
-
+const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);if(!f)return false;if(!allowedFiles.includes(f.type)||f.size>1048576){showError(mobileFields.file,"Upload JPG, JPEG, PNG or PDF — Maximum Size: 1 MB.");mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
+mobileFields.file.onchange=()=>{mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file)};
+mobileFields.upload.onclick=()=>validateMobileFile();
+     
 // ===================== FORM VALIDATION =====================
 mobileSubmit.onclick=()=>{mobilePopup.querySelectorAll(".form-error").forEach(x=>x.remove());mobilePopup.querySelectorAll("input").forEach(x=>x.style.borderColor=normalBorder);let first=null;
 const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
