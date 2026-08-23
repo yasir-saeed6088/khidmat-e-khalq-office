@@ -388,8 +388,8 @@ Total Services : <span>8</span>
 <label for="selfAddressFile">Upload Address Proof <span class="required-star">*</span></label>
 <input type="file" id="selfAddressFile" accept=".jpg,.jpeg,.png,.pdf">
 <button type="button" class="file-upload-btn" id="selfAddressUpload">Upload</button>
-<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: less than 1 MB</div>  
-  
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+     
 <!-- ===================== FORM BUTTONS ===================== -->  
 <div class="form-buttons">  
 <button type="button" class="form-submit-btn" id="selfDocumentsSubmit">Submit</button>  
@@ -723,15 +723,17 @@ F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
       
 /* ==================== FILE VALIDATION : SCRIPT ==================== */
 const upload=document.getElementById("selfAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clear(F.file);if(!f){show(F.file,"Please select an Address Proof file first.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){show(F.file,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clear(F.file);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload"};
+const removeFileError=()=>{[F.file,upload].forEach(x=>{const e=popup.querySelector(".form-error[data-field='"+x.id+"']");if(e)e.remove()});F.file.style.borderColor=normal;upload.style.borderColor=""};
+const showFileError=(target,msg)=>{removeFileError();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";removeFileError();if(!f){showFileError(F.file,"Please select a file.");return false}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";removeFileError();F.file.style.borderColor=normal;upload.style.borderColor=""};
 upload.onclick=validateFile;
       
-/* ====================  FORM VALIDATION : SCRIPT ==================== */
-
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);
-let first=null;const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
+const check=(f,ok,msg,target=f)=>{if(!ok){show(f,msg);if(target!==f)showFileError(target,msg);if(!first)first=target}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
 check(F.house,valid.text(F.house),"Please enter your House / Building.");
 check(F.road,valid.text(F.road),"Please enter your Road / Street.");
 check(F.area,valid.text(F.area),"Please enter your Area / Locality.");
@@ -741,18 +743,25 @@ check(F.postOffice,valid.text(F.postOffice),"Please enter your Post Office.");
 check(F.district,valid.text(F.district),"Please enter your District.");
 check(F.state,valid.text(F.state),"Please enter your State.");
 check(F.pin,valid.pin(),"Please enter a valid 6-digit PIN Code.");
-check(F.proof,valid.proof(),"Please select an Address Proof.");if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
-check(F.file,!!F.file.files[0]&&upload.classList.contains("file-success"),"Please click the Upload button to upload your Address Proof.");if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
+check(F.proof,valid.proof(),"Please select an Address Proof.");
+if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
+const file=F.file.files[0];
+if(!file)check(F.file,false,"Please select a file.");
+else if(!allowedFiles.includes(file.type))check(F.file,false,"Please upload a JPG, JPEG, PNG or PDF file.");
+else if(file.size>1048576)check(F.file,false,"Please upload a file of 1 MB or less.");
+else if(!upload.classList.contains("file-success"))check(upload,false,"Please click the Upload button to upload your file.",upload);
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+                    
 
 /* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
-
 let msg="KHIDMAT-E-KHALQ OFFICE\n🥀==================🌹\n\nSERVICE: AADHAAR ADDRESS UPDATE – SELF DOCUMENTS\n————————————————————\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
 add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
 msg+="```NEW ADDRESS DETAILS```\n\n";
 add("House / Building",F.house.value.trim());add("Road / Street",F.road.value.trim());add("Area / Locality",F.area.value.trim());add("Landmark",F.landmark.value.trim());add("Village / Town / City",F.village.value.trim());add("Post Office",F.postOffice.value.trim());add("District",F.district.value.trim());add("State",F.state.value.trim());add("PIN Code",F.pin.value.trim());
 msg+="```ADDRESS PROOF```\n\n";
-add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);add("Address Proof File",F.file.files[0]?F.file.files[0].name:"");
+add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);
+add("Address Proof File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
 msg+="__________________________________\nPlease assist me with this service.";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
