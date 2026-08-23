@@ -723,10 +723,11 @@ F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.
 [F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
 F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
       
-/* ====================  FILE VALIDATION : SCRIPT ==================== */
-
-const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";if(!f){show(F.file,"Please upload your Address Proof.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>=1048576){show(F.file,"Please upload a file smaller than 1 MB.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clear(F.file);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";if(F.file.files.length)validateFile()};
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+const upload=document.getElementById("selfAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clear(F.file);if(!f){show(F.file,"Please select an Address Proof file first.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){show(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){show(F.file,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clear(F.file);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload"};
+upload.onclick=validateFile;
       
 /* ====================  FORM VALIDATION : SCRIPT ==================== */
 
@@ -743,7 +744,7 @@ check(F.district,valid.text(F.district),"Please enter your District.");
 check(F.state,valid.text(F.state),"Please enter your State.");
 check(F.pin,valid.pin(),"Please enter a valid 6-digit PIN Code.");
 check(F.proof,valid.proof(),"Please select an Address Proof.");if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
-check(F.file,valid.file(),"Please upload a JPG, JPEG, PNG or PDF file smaller than 1 MB.");if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
+check(F.file,!!F.file.files[0]&&upload.classList.contains("file-success"),"Please click the Upload button to upload your Address Proof.");if(first){first.scrollIntoView({behavior:"smooth",block:"center"});first.focus();return}
 
 /* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
 
@@ -753,7 +754,7 @@ add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.
 msg+="```NEW ADDRESS DETAILS```\n\n";
 add("House / Building",F.house.value.trim());add("Road / Street",F.road.value.trim());add("Area / Locality",F.area.value.trim());add("Landmark",F.landmark.value.trim());add("Village / Town / City",F.village.value.trim());add("Post Office",F.postOffice.value.trim());add("District",F.district.value.trim());add("State",F.state.value.trim());add("PIN Code",F.pin.value.trim());
 msg+="```ADDRESS PROOF```\n\n";
-add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);add("Address Proof File",F.file.files[0].name);
+add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);add("Address Proof File",F.file.files[0]?F.file.files[0].name:"");
 msg+="__________________________________\nPlease assist me with this service.";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
