@@ -809,7 +809,7 @@ const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
 check(B.mobile,valid.mobile(B.mobile),"Please enter a valid Aadhaar-linked mobile number.");check(B.aadhaar,valid.aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");check(B.hofName,valid.text(B.hofName),"Please enter the HoF Name.");check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Please enter a valid 12-digit HoF Aadhaar number.");check(B.hofMobile,valid.mobile(B.hofMobile),"Please enter a valid Aadhaar-linked HoF mobile number.");check(B.relationship,valid.relationship(),"Please select your relationship with HoF.");if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Please enter the Other Relationship.");
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
                     
- /* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
+/* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
 let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR ADDRESS_\n      _UPDATE – HOF BASED_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
 add("Full Name",B.name.value.trim());
@@ -817,8 +817,8 @@ add("Aadhaar Linked Mobile",B.mobile.value.trim());
 add("Aadhaar Number",B.aadhaar.value.trim());
 msg+="```HEAD OF FAMILY DETAILS```\n\n";
 add("HoF Name",B.hofName.value.trim());
-add("HoF Aadhaar Number",B.hofAadhaar.value.trim());
 add("HoF Aadhaar Linked Mobile",B.hofMobile.value.trim());
+add("HoF Aadhaar Number",B.hofAadhaar.value.trim());
 add("Relationship with HoF",B.relationship.value==="Other"?B.other.value.trim():B.relationship.value);
 msg+="__________________________________\n_Please assist me with this service._";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
