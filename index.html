@@ -651,19 +651,19 @@ mobileFields.mobile.oninput=()=>{mobileFields.mobile.value=mobileFields.mobile.v
 mobileFields.aadhaar.oninput=()=>{mobileFields.aadhaar.value=mobileFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(mobileFields.aadhaar.value))removeError(mobileFields.aadhaar)};
 
 // ==================== FILE VALIDATION : SCRIPT ====================
-const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);if(!f){showError(mobileFields.file,"Please select a file first.");return false}if(!allowedFiles.includes(f.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}if(f.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
+const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);if(!f)return false;if(!allowedFiles.includes(f.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");showError(mobileFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}if(f.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");showError(mobileFields.upload,"Please upload a file of 1 MB or less.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
 mobileFields.file.onchange=()=>{mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);mobileFields.file.style.borderColor=normalBorder;mobileFields.upload.style.borderColor=""};
 mobileFields.upload.onclick=()=>validateMobileFile();
-     
+
 // ===================== FORM VALIDATION =====================
 mobileSubmit.onclick=()=>{mobilePopup.querySelectorAll(".form-error").forEach(x=>x.remove());mobilePopup.querySelectorAll("input").forEach(x=>x.style.borderColor=normalBorder);mobileFields.upload.style.borderColor="";let first=null;
-const check=(f,ok,msg,target=f)=>{if(!ok){showError(f,msg,target);if(!first)first=target}};
+const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
 const mobile=mobileFields.mobile.value.trim(),aadhaar=mobileFields.aadhaar.value.trim(),file=mobileFields.file.files[0];
 check(mobileFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
 check(mobileFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-if(file){if(!allowedFiles.includes(file.type))check(mobileFields.file,false,"Please upload a JPG, JPEG, PNG or PDF file.");else if(file.size>1048576)check(mobileFields.file,false,"Please upload a file of 1 MB or less.");else if(!mobileFields.upload.classList.contains("file-success"))check(mobileFields.upload,false,"Please click the Upload button to upload your file.",mobileFields.upload)}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-                          
+if(file){if(!allowedFiles.includes(file.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=mobileFields.file}else if(file.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");if(!first)first=mobileFields.file}else if(!mobileFields.upload.classList.contains("file-success")){showError(mobileFields.upload,"Please click the Upload button to upload your file.",mobileFields.upload);if(!first)first=mobileFields.upload}}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}                          
+
 // ===================== WHATSAPP MESSAGE =====================
 let msg="KHIDMAT-E-KHALQ OFFICE\n🥀===================🌹\n\nSERVICE: AADHAAR MOBILE NUMBER UPDATE\n————————————————————\n\n*APPLICANT DETAILS*\n\n";
 const add=(label,value)=>msg+=label+": "+(value||"")+"\n\n";
