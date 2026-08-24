@@ -748,8 +748,8 @@ check(F.proof,valid.proof(),"Please select an Address Proof.");
 if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
 const file=F.file.files[0];
 if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
-else if(!allowedFiles.includes(file.type))check(F.file,false,"Please upload a JPG, JPEG, PNG or PDF file.");
-else if(file.size>1048576)check(F.file,false,"Please upload a file of 1 MB or less.");
+else if(!allowedFiles.includes(file.type))showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");
+else if(file.size>1048576)showFileError(F.file,"Please upload a file of 1 MB or less.");
 else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
                     
