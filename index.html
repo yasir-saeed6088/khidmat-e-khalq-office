@@ -1168,22 +1168,25 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- ==================== AADHAAR DOWNLOAD : SCRIPT : END ==================== -->
      
 
-<!-- =========================================================      
-     ===== AADHAAR DOCUMENT UPDATE: SCRIPT ====================      
-     ========================================================= -->      
-    
-<script>    
-    
-const documentUpdateBtn=docum ent.getElementById("documentUp dateBtn");    
-const documentUpdateDetails=do cument.getElementById("documen tUpdateDetails");    
-    
-documentUpdateBtn.onclick=()=>{ const open=documentUpdateDetai Is.style.display==="block";    
-    
-document.querySelectorAll(".serv ice-details").forEach(x=>x.style.dis play="none");    
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.di splay="none");    
-    
-if(!open)documentUpdateDetails.s tyle.display="block"; };    
-</script>   
+<!-- =========================================================
+     ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
+     ========================================================= -->
+
+<script>
+const documentUpdateBtn=document.getElementById("documentUpdateBtn");
+const documentUpdateDetails=document.getElementById("documentUpdateDetails");
+
+documentUpdateBtn.onclick=()=>{
+const open=documentUpdateDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)documentUpdateDetails.style.display="block";
+};
+</script>
+
+<!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
     
  <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT ==================== -->          
 <script>          
