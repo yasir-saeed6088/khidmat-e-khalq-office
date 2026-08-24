@@ -485,6 +485,8 @@ Total Services : <span>8</span>
      ===== PVC AADHAAR CARD ORDER : HTML ====================
      ========================================================= -->
 <button type="button" class="service-btn" id="pvcAadhaarBtn">💳 PVC Aadhaar Card Order</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->  
 <section class="service-details" id="pvcAadhaarDetails">
 <div class="service-details-title">PVC Aadhaar Card Order</div>
 <table class="details-table">
@@ -538,6 +540,8 @@ Total Services : <span>8</span>
 
 <!-- ===================== E-AADHAAR DOWNLOAD : HTML ===================== -->
 <button type="button" class="sub-service-btn" id="eAadhaarBtn">📥 e-Aadhaar Download</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->  
 <section class="service-details" id="eAadhaarDetails">
 <div class="service-details-title">e-Aadhaar Download</div>
 <table class="details-table">
@@ -549,8 +553,39 @@ Total Services : <span>8</span>
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- ==================== E-AADHAAR DOWNLOAD FORM : HTML ==================== -->
+<div class="popup-overlay" id="eAadhaarPopup" role="dialog" aria-modal="true" aria-labelledby="eAadhaarFormTitle">
+<div class="service-form-popup">
+<div class="service-details-title" id="eAadhaarFormTitle">Aadhaar Download — e-Aadhaar Download Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="eAadhaarFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="eAadhaarFullName" placeholder="Enter Full Name" autocomplete="name">
+
+<label for="eAadhaarLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="eAadhaarLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="eAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="eAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="eAadhaarSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="eAadhaarClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ==================== E-AADHAAR DOWNLOAD FORM : HTML : END ==================== -->
+     
 <!-- ===================== MASKED AADHAAR DOWNLOAD : HTML ===================== -->
 <button type="button" class="sub-service-btn" id="maskedAadhaarBtn">🔒 Masked Aadhaar Download</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->  
 <section class="service-details" id="maskedAadhaarDetails">
 <div class="service-details-title">Masked Aadhaar Download</div>
 <table class="details-table">
