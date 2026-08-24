@@ -630,20 +630,106 @@ Total Services : <span>8</span>
 <!-- ==================== MASKED AADHAAR DOWNLOAD FORM : HTML : END ==================== -->  
   
 
-<!-- =========================================================
-     ===== AADHAAR DOCUMENT UPDATE : HTML ====================
-     ========================================================= -->
-<button type="button" class="service-btn" id="documentUpdateBtn">🪪 Aadhaar Document Update</button>
-<section class="service-details" id="documentUpdateDetails">
-<div class="service-details-title">Aadhaar Document Update</div>
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>Aadhaar Document Update</td></tr>
-<tr><td>Service Charge</td><td>₹50</td></tr>
-<tr><td>Processing Time</td><td>Usually Completed Within 30 Days</td></tr>
-</table>
-<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
-</section>
+<!-- =========================================================  
+     ===== AADHAAR DOCUMENT UPDATE : HTML ====================  
+     ========================================================= -->  
+<button type="button" class="service-btn" id="documentUpdateBtn">🪪 Aadhaar Document Update</button>  
+<section class="service-details" id="documentUpdateDetails">  
+<div class="service-details-title">Aadhaar Document Update</div>  
+<table class="details-table">  
+<tr><th>Information</th><th>Details</th></tr>  
+<tr><td>Service</td><td>Aadhaar Document Update</td></tr>  
+<tr><td>Service Charge</td><td>₹50</td></tr>  
+<tr><td>Processing Time</td><td>Usually Completed Within 30 Days</td></tr>  
+</table>  
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>  
+</section>  
+  
+<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : HTML ==================== -->  
+<div class="popup-overlay" id="documentUpdatePopup" role="dialog" aria-modal="true" aria-labelledby="documentUpdateFormTitle">  
+<div class="service-form-popup">  
+<div class="service-details-title" id="documentUpdateFormTitle">Aadhaar Document Update Form</div>  
+<div class="form-content">  
+  
+<!-- ===================== APPLICANT DETAILS ===================== -->  
+<div class="form-section-title">Applicant Details</div>  
+  
+<label for="documentFullName">Full Name <span class="optional-text">(Optional)</span></label>  
+<input type="text" id="documentFullName" placeholder="Enter Full Name" autocomplete="name">  
+  
+<label for="documentLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>  
+<input type="tel" id="documentLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>  
+  
+<label for="documentAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>  
+<input type="tel" id="documentAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>  
+  
+<!-- ===================== PROOF OF IDENTITY : POI ===================== -->  
+<div class="form-section-title">Proof of Identity (POI)</div>  
+  
+<label for="identityProof">Select Identity Proof <span class="required-star">*</span></label>  
+<select id="identityProof" required>  
+<option value="">Select Identity Proof</option>  
+<option value="PAN Card">PAN Card</option>  
+<option value="Voter ID">Voter ID</option>  
+<option value="Indian Passport">Indian Passport</option>  
+<option value="Driving Licence">Driving Licence</option>  
+<option value="Ration Card">Ration Card</option>  
+<option value="Government Photo ID">Government Photo ID</option>  
+<option value="School Photo Identity Certificate">School Photo Identity Certificate</option>  
+<option value="Other">Other</option>  
+</select>  
+  
+<div id="otherIdentityWrap" style="display:none">  
+<label for="otherIdentity">Other Identity Document <span class="required-star">*</span></label>  
+<input type="text" id="otherIdentity" placeholder="Enter Identity Document">  
+</div>  
+  
+<label for="identityFile">Upload Identity Proof <span class="required-star">*</span></label>  
+<input type="file" id="identityFile" accept=".jpg,.jpeg,.png,.pdf" hidden>  
+<button type="button" class="file-upload-btn" id="identityUpload">Upload</button>  
+  
+<!-- ===================== PROOF OF ADDRESS : POA ===================== -->  
+<div class="form-section-title">Proof of Address (POA)</div>  
+  
+<label for="addressProof">Select Address Proof <span class="required-star">*</span></label>  
+<select id="addressProof" required>  
+<option value="">Select Address Proof</option>  
+<option value="Voter ID">Voter ID</option>  
+<option value="Indian Passport">Indian Passport</option>  
+<option value="Ration Card">Ration Card</option>  
+<option value="Electricity Bill">Electricity Bill</option>  
+<option value="Water Bill">Water Bill</option>  
+<option value="Gas Bill">Gas Bill</option>  
+<option value="Bank / Post Office Passbook">Bank / Post Office Passbook</option>  
+<option value="Telephone / Broadband Bill">Telephone / Broadband Bill</option>  
+<option value="Rent / Lease Agreement">Rent / Lease Agreement</option>  
+<option value="Property Tax Receipt">Property Tax Receipt</option>  
+<option value="Other">Other</option>  
+</select>  
+  
+<div id="otherAddressWrap" style="display:none">  
+<label for="otherAddress">Other Address Document <span class="required-star">*</span></label>  
+<input type="text" id="otherAddress" placeholder="Enter Address Document">  
+</div>  
+  
+<label for="addressFile">Upload Address Proof <span class="required-star">*</span></label>  
+<input type="file" id="addressFile" accept=".jpg,.jpeg,.png,.pdf" hidden>  
+<button type="button" class="file-upload-btn" id="addressUpload">Upload</button>  
+  
+<!-- ===================== FORM BUTTONS ===================== -->  
+<div class="form-buttons">  
+<button type="button" class="form-submit-btn" id="documentUpdateSubmit">Submit</button>  
+<button type="button" class="form-close-btn" id="documentUpdateClose">Close</button>  
+</div>  
+  
+</div>  
+</div>  
+</div>  
+<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : HTML : END ==================== -->  
+  
+<!-- ==================== AADHAAR DOCUMENT UPDATE : HTML : END ==================== -->  
+  
+  
 
 <!-- =========================================================
      ===== AADHAAR STATUS CHECK : HTML ====================
@@ -659,6 +745,9 @@ Total Services : <span>8</span>
 </table>
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
+
+<!--==================== AADHAAR STATUS CHECK : HTML : END ==================== -->
+     
 
 <!-- =========================================================
      ===== BIOMETRIC SERVICES : HTML =========================
@@ -1097,6 +1186,11 @@ document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none"
 if(!open)documentUpdateDetails.style.display="block";
 };
 </script>
+
+
+
+<!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
+     
 
 <!-- =========================================================
      ===== AADHAAR STATUS CHECK : SCRIPT ====================
