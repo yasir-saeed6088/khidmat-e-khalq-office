@@ -496,6 +496,39 @@ Total Services : <span>8</span>
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- ==================== PVC AADHAAR CARD ORDER FORM : HTML ==================== -->
+<div class="popup-overlay" id="pvcAadhaarPopup" role="dialog" aria-modal="true" aria-labelledby="pvcAadhaarFormTitle">
+<div class="service-form-popup">
+<div class="service-details-title" id="pvcAadhaarFormTitle">PVC Aadhaar Card Order Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="pvcFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="pvcFullName" placeholder="Enter Full Name" autocomplete="name">
+
+<label for="pvcLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="pvcLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="pvcAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="pvcAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="pvcAadhaarSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="pvcAadhaarClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+     
+<!-- =========================================================
+     ===== PVC AADHAAR CARD ORDER : HTML :END ====================
+     ========================================================= -->
+
+     
 <!-- =========================================================
      ===== AADHAAR DOWNLOAD : HTML ====================
      ========================================================= -->
@@ -677,10 +710,9 @@ msg+="__________________________________\n_Please assist me with this service._"
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
 </script>
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE FORM : SCRIPT : END ========
-     ========================================================= -->
-     
+<!-- ==================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ==================== -->
+
+
 <!-- =========================================================
      ===== ADDRESS UPDATE : SCRIPT ==========================
      ========================================================= -->
@@ -846,6 +878,42 @@ if(!open)pvcDetails.style.display="block";
 };
 </script>
 
+<!-- ==================== PVC AADHAAR CARD ORDER FORM : SCRIPT ==================== -->
+<script>
+(()=>{const F={name:document.getElementById("pvcFullName"),mobile:document.getElementById("pvcLinkedNumber"),aadhaar:document.getElementById("pvcAadhaarNumber")},popup=document.getElementById("pvcAadhaarPopup"),apply=document.querySelector("#pvcAadhaarDetails .apply-now-btn"),close=document.getElementById("pvcAadhaarClose"),submit=document.getElementById("pvcAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
+F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
+F.name.addEventListener("input",()=>{if(F.name.value.trim())clear(F.name)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== PVC AADHAAR CARD ORDER : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: PVC AADHAAR CARD_\n      _ORDER_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+ 
+<!-- ==================== PVC AADHAAR CARD ORDER : SCRIPT : END ==================== -->
+     
+
 <!-- =========================================================
      ===== AADHAAR DOWNLOAD : SCRIPT =========================
      ========================================================= -->
@@ -893,6 +961,9 @@ document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.styl
 if(!open)maskedAadhaarDetails.style.display="block";
 };
 </script>
+
+<!-- ==================== AADHAAR DOWNLOAD : SCRIPT : END ==================== -->
+     
 
 <!-- =========================================================
      ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
