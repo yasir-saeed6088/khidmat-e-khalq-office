@@ -687,7 +687,8 @@ Total Services : <span>8</span>
 <label for="identityFile">Upload Identity Proof <span class="required-star">*</span></label>
 <input type="file" id="identityFile" accept=".jpg,.jpeg,.png,.pdf">
 <button type="button" class="file-upload-btn" id="identityUpload">Upload</button>
-
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+     
 <!-- ===================== PROOF OF ADDRESS : POA ===================== -->  
 <div class="form-section-title">Proof of Address (POA)</div>  
   
@@ -713,8 +714,10 @@ Total Services : <span>8</span>
 </div>  
   
 <label for="addressFile">Upload Address Proof <span class="required-star">*</span></label>
-<input type="file" id="addressFile" accept=".jpg,.jpeg,.png,.pdf"><button type="button" class="file-upload-btn" id="addressUpload">Upload</button>
-     
+<input type="file" id="addressFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="addressUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+
 <!-- ===================== FORM BUTTONS ===================== -->  
 <div class="form-buttons">  
 <button type="button" class="form-submit-btn" id="documentUpdateSubmit">Submit</button>  
@@ -1203,15 +1206,15 @@ popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.
 F.identity.onchange=()=>{const other=F.identity.value==="Other";document.getElementById("otherIdentityWrap").style.display=other?"block":"none";if(!other){F.otherIdentity.value="";clear(F.otherIdentity)}else clear(F.identity)};          
 F.address.onchange=()=>{const other=F.address.value==="Other";document.getElementById("otherAddressWrap").style.display=other?"block":"none";if(!other){F.otherAddress.value="";clear(F.otherAddress)}else clear(F.address)};          
           
-/* ==================== FILE UPLOAD : SCRIPT ==================== */          
-const validateFile=(file,upload)=>{clearUpload(upload);if(!file)return false;if(!allowedFiles.includes(file.type)){upload.classList.add("file-error");upload.textContent="Try Again";return false}if(file.size>maxFileSize){upload.classList.add("file-error");upload.textContent="Try Again";return false}upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};          
-          
-F.identityUpload.onclick=()=>F.identityFile.click();          
-F.addressUpload.onclick=()=>F.addressFile.click();          
-          
-F.identityFile.onchange=()=>{clearUpload(F.identityUpload);if(F.identityFile.files[0])validateFile(F.identityFile.files[0],F.identityUpload)};          
-F.addressFile.onchange=()=>{clearUpload(F.addressUpload);if(F.addressFile.files[0])validateFile(F.addressFile.files[0],F.addressUpload)};          
-          
+/* ==================== FILE UPLOAD : SCRIPT ==================== */
+const identityAllowed=["image/jpeg","image/jpg","image/png","application/pdf"],addressAllowed=identityAllowed;
+const fileError=(file,upload,msg)=>{const e=upload.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove();upload.style.borderColor=error;const x=document.createElement("div");x.className="form-error";x.textContent=msg;x.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";upload.after(x);file.style.borderColor=error};
+const validateFile=(file,upload,allowed)=>{const e=upload.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove();upload.classList.remove("file-success","file-error");upload.textContent="Upload";upload.style.borderColor="";if(!file){fileError(file,upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowed.includes(file.type)){fileError(file,upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(file.size>1048576){fileError(file,upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.identityFile.onchange=()=>{F.identityUpload.classList.remove("file-success","file-error");F.identityUpload.textContent="Upload";F.identityUpload.style.borderColor=""};
+F.addressFile.onchange=()=>{F.addressUpload.classList.remove("file-success","file-error");F.addressUpload.textContent="Upload";F.addressUpload.style.borderColor=""};
+F.identityUpload.onclick=()=>validateFile(F.identityFile.files[0],F.identityUpload,identityAllowed);
+F.addressUpload.onclick=()=>validateFile(F.addressFile.files[0],F.addressUpload,addressAllowed);
+      
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */          
 F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});          
 F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});          
@@ -1220,7 +1223,8 @@ F.otherIdentity.addEventListener("input",()=>{if(F.otherIdentity.value.trim())cl
 F.otherAddress.addEventListener("input",()=>{if(F.otherAddress.value.trim())clear(F.otherAddress)});          
           
 /* ==================== FORM VALIDATION : SCRIPT ==================== */          
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=normal);clearUpload(F.identityUpload);clearUpload(F.addressUpload);let first=null;          
+
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=normal);F.identityUpload.style.borderColor="";F.addressUpload.style.borderColor="";let first=null;
 const check=(f,ok,msg,target=f)=>{if(!ok){show(f,msg,target);if(!first)first=target}};          
           
 /* ==================== APPLICANT DETAILS : VALIDATION ==================== */          
