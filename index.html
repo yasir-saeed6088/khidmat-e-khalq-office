@@ -631,56 +631,101 @@ Total Services : <span>8</span>
   
 
  <!-- =========================================================
-     ===== AADHAAR DOCUMENT UPDATE : HTML ====================
+     ===== AADHAAR DOCUMENT UPDATE : HTML ==================
      ========================================================= -->
 <button type="button" class="service-btn" id="documentUpdateBtn">🪪 Aadhaar Document Update</button>
 <section class="service-details" id="documentUpdateDetails">
 <div class="service-details-title">Aadhaar Document Update</div>
-<table class="details-table"><tr><th>Information</th><th>Details</th></tr><tr><td>Service</td><td>Aadhaar Document Update</td></tr><tr><td>Service Charge</td><td>₹50</td></tr><tr><td>Processing Time</td><td>Usually Completed Within 30 Days</td></tr></table>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>Aadhaar Document Update</td></tr>
+<tr><td>Service Charge</td><td>₹50</td></tr>
+<tr><td>Processing Time</td><td>Usually Completed Within 30 Days</td></tr>
+</table>
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
 <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : HTML ==================== -->
-<div class="popup-overlay" id="documentUpdatePopup" role="dialog" aria-modal="true" aria-labelledby="documentUpdateFormTitle">
+<div class="popup-overlay" id="documentUpdatePopup">
 <div class="service-form-popup">
-<div class="service-details-title" id="documentUpdateFormTitle">Aadhaar Document Update Form</div>
+<div class="service-details-title">Aadhaar Document Update Form</div>
 <div class="form-content">
 
 <!-- ===================== APPLICANT DETAILS ===================== -->
 <div class="form-section-title">Applicant Details</div>
-<label for="documentFullName">Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="documentFullName" placeholder="Enter Full Name" autocomplete="name">
-<label for="documentLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="documentLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
-<label for="documentAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="documentAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
 
-<!-- ===================== PROOF OF IDENTITY : POI ===================== -->
+<label for="documentFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="documentFullName" placeholder="Enter Full Name">
+
+<label for="documentLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="documentLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+
+<label for="documentAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="documentAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== PROOF OF IDENTITY ===================== -->
 <div class="form-section-title">Proof of Identity (POI)</div>
-<label for="identityProof">Select Identity Proof <span class="required-star">*</span></label>
-<select id="identityProof" required><option value="">Select Identity Proof</option><option value="PAN Card">PAN Card</option><option value="Voter ID">Voter ID</option><option value="Indian Passport">Indian Passport</option><option value="Driving Licence">Driving Licence</option><option value="Ration Card">Ration Card</option><option value="Government Photo ID">Government Photo ID</option><option value="School Photo Identity Certificate">School Photo Identity Certificate</option><option value="Other">Other</option></select>
-<div id="otherIdentityWrap" style="display:none"><label for="otherIdentity">Other Identity Document <span class="required-star">*</span></label><input type="text" id="otherIdentity" placeholder="Enter Identity Document"></div>
-<label for="identityFile">Upload Identity Proof <span class="required-star">*</span></label>
-<input type="file" id="identityFile" accept=".jpg,.jpeg,.png,.pdf">
-<button type="button" class="file-upload-btn" id="identityUpload">Upload</button>
+
+<label for="documentIdentityProof">Select Identity Proof <span class="required-star">*</span></label>
+<select id="documentIdentityProof">
+<option value="">-- Select Identity Proof --</option>
+<option value="Passport">Passport</option>
+<option value="Voter ID">Voter ID</option>
+<option value="Driving Licence">Driving Licence</option>
+<option value="PAN Card">PAN Card</option>
+<option value="Government-issued Identity Proof">Government-issued Identity Proof</option>
+<option value="Other">Other</option>
+</select>
+
+<div id="documentOtherIdentityGroup" style="display:none">
+<label for="documentOtherIdentity">Other Document Name <span class="required-star">*</span></label>
+<input type="text" id="documentOtherIdentity" placeholder="Enter Document Name">
+</div>
+
+<label for="documentIdentityFile">Upload Identity Proof <span class="required-star">*</span></label>
+<input type="file" id="documentIdentityFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="documentIdentityUpload">Upload</button>
 <div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
 
-<!-- ===================== PROOF OF ADDRESS : POA ===================== -->
+<!-- ===================== PROOF OF ADDRESS ===================== -->
 <div class="form-section-title">Proof of Address (POA)</div>
-<label for="addressProof">Select Address Proof <span class="required-star">*</span></label>
-<select id="addressProof" required><option value="">Select Address Proof</option><option value="Voter ID">Voter ID</option><option value="Indian Passport">Indian Passport</option><option value="Ration Card">Ration Card</option><option value="Electricity Bill">Electricity Bill</option><option value="Water Bill">Water Bill</option><option value="Gas Bill">Gas Bill</option><option value="Bank / Post Office Passbook">Bank / Post Office Passbook</option><option value="Telephone / Broadband Bill">Telephone / Broadband Bill</option><option value="Rent / Lease Agreement">Rent / Lease Agreement</option><option value="Property Tax Receipt">Property Tax Receipt</option><option value="Other">Other</option></select>
-<div id="otherAddressWrap" style="display:none"><label for="otherAddress">Other Address Document <span class="required-star">*</span></label><input type="text" id="otherAddress" placeholder="Enter Address Document"></div>
-<label for="addressFile">Upload Address Proof <span class="required-star">*</span></label>
-<input type="file" id="addressFile" accept=".jpg,.jpeg,.png,.pdf">
-<button type="button" class="file-upload-btn" id="addressUpload">Upload</button>
+
+<label for="documentAddressProof">Select Address Proof <span class="required-star">*</span></label>
+<select id="documentAddressProof">
+<option value="">-- Select Address Proof --</option>
+<option value="Ration Card">Ration Card</option>
+<option value="Voter ID">Voter ID</option>
+<option value="Passport">Passport</option>
+<option value="Driving Licence">Driving Licence</option>
+<option value="Electricity Bill">Electricity Bill</option>
+<option value="Water Bill">Water Bill</option>
+<option value="Telephone / Landline Bill">Telephone / Landline Bill</option>
+<option value="Property Tax Receipt">Property Tax Receipt</option>
+<option value="Bank / Post Office Statement">Bank / Post Office Statement</option>
+<option value="Government-issued Address Proof">Government-issued Address Proof</option>
+<option value="Other">Other</option>
+</select>
+
+<div id="documentOtherAddressGroup" style="display:none">
+<label for="documentOtherAddress">Other Document Name <span class="required-star">*</span></label>
+<input type="text" id="documentOtherAddress" placeholder="Enter Document Name">
+</div>
+
+<label for="documentAddressFile">Upload Address Proof <span class="required-star">*</span></label>
+<input type="file" id="documentAddressFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="documentAddressUpload">Upload</button>
 <div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
 
 <!-- ===================== FORM BUTTONS ===================== -->
-<div class="form-buttons"><button type="button" class="form-submit-btn" id="documentUpdateSubmit">Submit</button><button type="button" class="form-close-btn" id="documentUpdateClose">Close</button></div>
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="documentUpdateSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="documentUpdateClose">Close</button>
+</div>
 
 </div>
 </div>
 </div>
+
 <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : HTML : END ==================== -->
 <!-- ==================== AADHAAR DOCUMENT UPDATE : HTML : END ==================== -->
   
@@ -1122,90 +1167,86 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- ==================== AADHAAR DOWNLOAD : SCRIPT : END ==================== -->
      
 
-<!-- =========================================================
+ <!-- =========================================================
      ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
      ========================================================= -->
+
 <script>
-const documentUpdateBtn=document.getElementById("documentUpdateBtn"),documentUpdateDetails=document.getElementById("documentUpdateDetails");
-documentUpdateBtn.onclick=()=>{const open=documentUpdateDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentUpdateDetails.style.display="block"};
+(()=>{const documentBtn=document.getElementById("documentUpdateBtn"),documentDetails=document.getElementById("documentUpdateDetails");documentBtn.onclick=()=>{const open=documentDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentDetails.style.display="block"};})();
 </script>
-<!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
 
 <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT ==================== -->
-<script>
-(()=>{const F={name:document.getElementById("documentFullName"),mobile:document.getElementById("documentLinkedNumber"),aadhaar:document.getElementById("documentAadhaarNumber"),identity:document.getElementById("identityProof"),otherIdentity:document.getElementById("otherIdentity"),identityFile:document.getElementById("identityFile"),identityUpload:document.getElementById("identityUpload"),address:document.getElementById("addressProof"),otherAddress:document.getElementById("otherAddress"),addressFile:document.getElementById("addressFile"),addressUpload:document.getElementById("addressUpload")},popup=document.getElementById("documentUpdatePopup"),apply=document.querySelector("#documentUpdateDetails .apply-now-btn"),close=document.getElementById("documentUpdateClose"),submit=document.getElementById("documentUpdateSubmit"),normal="rgba(7,88,201,.25)",error="#e00000",maxFileSize=1048576,allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 
-const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const clearUpload=upload=>{upload.style.borderColor="";upload.classList.remove("file-success","file-error");upload.textContent="Upload";const e=upload.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg,target=field)=>{if(target===field){clear(field);field.style.borderColor=error}else{clearUpload(target);target.style.borderColor=error}const e=document.createElement("div");e.className="form-error";e.textContent=msg;target.after(e)};
+<script>
+(()=>{const F={name:document.getElementById("documentFullName"),mobile:document.getElementById("documentLinkedNumber"),aadhaar:document.getElementById("documentAadhaarNumber"),identityProof:document.getElementById("documentIdentityProof"),otherIdentity:document.getElementById("documentOtherIdentity"),identityFile:document.getElementById("documentIdentityFile"),addressProof:document.getElementById("documentAddressProof"),otherAddress:document.getElementById("documentOtherAddress"),addressFile:document.getElementById("documentAddressFile")},popup=document.getElementById("documentUpdatePopup"),apply=document.querySelector("#documentUpdateDetails .apply-now-btn"),close=document.getElementById("documentUpdateClose"),submit=document.getElementById("documentUpdateSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),proof:f=>!!f.value,file:f=>{const f1=f.files[0];return!!f1&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f1.type)&&f1.size<=1048576}};
+
+F.otherIdentity.style.display="none";F.otherAddress.style.display="none";F.otherIdentity.previousElementSibling.style.display="none";F.otherAddress.previousElementSibling.style.display="none";
 
 apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
 close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
 popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
 
-/* ==================== OTHER DOCUMENT : SCRIPT ==================== */
-F.identity.onchange=()=>{const other=F.identity.value==="Other";document.getElementById("otherIdentityWrap").style.display=other?"block":"none";if(!other){F.otherIdentity.value="";clear(F.otherIdentity)}else clear(F.identity)};
-F.address.onchange=()=>{const other=F.address.value==="Other";document.getElementById("otherAddressWrap").style.display=other?"block":"none";if(!other){F.otherAddress.value="";clear(F.otherAddress)}else clear(F.address)};
+/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
 
-/* ==================== FILE UPLOAD : SCRIPT ==================== */
-const identityAllowed=allowedFiles,addressAllowed=allowedFiles;
-const fileErr=(target,msg)=>{if(!target)return;const e=target.parentNode.querySelector('.form-error[data-field="'+target.id+'"]');if(e)e.remove();target.style.borderColor=error;const x=document.createElement("div");x.className="form-error";x.dataset.field=target.id;x.textContent=msg;x.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(x)};
-const clearFileErr=target=>{if(!target)return;const e=target.parentNode.querySelector('.form-error[data-field="'+target.id+'"]');if(e)e.remove();target.style.borderColor=""};
-const clearFileState=(file,upload)=>{clearFileErr(file);clearFileErr(upload);upload.classList.remove("file-success","file-error");upload.textContent="Upload"};
-const validateFile=(file,upload,allowed)=>{clearFileState(file,upload);if(!file){fileErr(file,"Please select a file.");return false}if(!allowed.includes(file.type)){fileErr(file,"Please upload a JPG, JPEG, PNG or PDF file.");return false}if(file.size>maxFileSize){fileErr(file,"Please upload a file of 1 MB or less.");return false}return true};
-const uploadFile=(file,upload,allowed)=>{clearFileErr(upload);if(!file){fileErr(file,"Please select a file.");return false}if(!allowed.includes(file.type)){fileErr(file,"Please upload a JPG, JPEG, PNG or PDF file.");fileErr(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(file.size>maxFileSize){fileErr(file,"Please upload a file of 1 MB or less.");fileErr(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileErr(file);clearFileErr(upload);upload.classList.remove("file-error");upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.identityFile.onchange=()=>{clearFileState(F.identityFile,F.identityUpload);validateFile(F.identityFile.files[0],F.identityUpload,identityAllowed)};
-F.addressFile.onchange=()=>{clearFileState(F.addressFile,F.addressUpload);validateFile(F.addressFile.files[0],F.addressUpload,addressAllowed)};
-F.identityUpload.onclick=()=>uploadFile(F.identityFile.files[0],F.identityUpload,identityAllowed);
-F.addressUpload.onclick=()=>uploadFile(F.addressFile.files[0],F.addressUpload,addressAllowed);
+F.identityProof.onchange=()=>{const other=F.identityProof.value==="Other",group=document.getElementById("documentOtherIdentityGroup");group.style.display=other?"block":"none";F.otherIdentity.style.display=other?"block":"none";F.otherIdentity.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherIdentity.value="";clear(F.otherIdentity)}clear(F.identityProof)};
+F.addressProof.onchange=()=>{const other=F.addressProof.value==="Other",group=document.getElementById("documentOtherAddressGroup");group.style.display=other?"block":"none";F.otherAddress.style.display=other?"block":"none";F.otherAddress.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherAddress.value="";clear(F.otherAddress)}clear(F.addressProof)};
 
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
-F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
-F.name.addEventListener("input",()=>{if(F.name.value.trim())clear(F.name)});
-F.otherIdentity.addEventListener("input",()=>{if(F.otherIdentity.value.trim())clear(F.otherIdentity)});
-F.otherAddress.addEventListener("input",()=>{if(F.otherAddress.value.trim())clear(F.otherAddress)});
+
+[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
+[F.otherIdentity,F.otherAddress].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+[F.identityProof,F.addressProof].forEach(f=>f.addEventListener("change",()=>{if(valid.proof(f))clear(f)}));
+
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+
+const identityUpload=document.getElementById("documentIdentityUpload"),addressUpload=document.getElementById("documentAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const clearFileError=f=>{const e=popup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove();f.style.borderColor=normal};
+const clearUploadError=u=>{const e=popup.querySelector(".form-error[data-field='"+u.id+"']");if(e)e.remove();u.style.borderColor=""};
+const showFileError=(target,msg)=>{const clear=target.type==="file"?()=>clearFileError(target):()=>clearUploadError(target);clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=(fileInput,upload)=>{const f=fileInput.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError(upload);if(!f){showFileError(fileInput,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(fileInput,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(fileInput,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError(fileInput);clearUploadError(upload);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.identityFile.onchange=()=>{identityUpload.classList.remove("file-success","file-error");identityUpload.textContent="Upload";clearFileError(F.identityFile);clearUploadError(identityUpload);F.identityFile.style.borderColor=normal;identityUpload.style.borderColor=""};
+F.addressFile.onchange=()=>{addressUpload.classList.remove("file-success","file-error");addressUpload.textContent="Upload";clearFileError(F.addressFile);clearUploadError(addressUpload);F.addressFile.style.borderColor=normal;addressUpload.style.borderColor=""};
+identityUpload.onclick=()=>validateFile(F.identityFile,identityUpload);
+addressUpload.onclick=()=>validateFile(F.addressFile,addressUpload);
 
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=normal);F.identityUpload.classList.remove("file-error","file-success");F.addressUpload.classList.remove("file-error","file-success");F.identityUpload.textContent="Upload";F.addressUpload.textContent="Upload";let first=null;
-const check=(f,ok,msg,target=f)=>{if(!ok){show(f,msg,target);if(!first)first=target}};
 
-/* ==================== APPLICANT DETAILS : VALIDATION ==================== */
-check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
-
-/* ==================== PROOF OF IDENTITY : VALIDATION ==================== */
-check(F.identity,F.identity.value!=="","Please select an Identity Proof.");
-if(F.identity.value==="Other")check(F.otherIdentity,F.otherIdentity.value.trim()!=="","Please enter the Other Identity Document.");
-const identityFile=F.identityFile.files[0];
-if(!identityFile){fileErr(F.identityFile,"Please select an Identity Proof file.");if(!first)first=F.identityFile}
-else if(!identityAllowed.includes(identityFile.type)){fileErr(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.identityFile}
-else if(identityFile.size>maxFileSize){fileErr(F.identityFile,"Please upload a file of 1 MB or less.");if(!first)first=F.identityFile}
-else if(!F.identityUpload.classList.contains("file-success")){fileErr(F.identityUpload,"Please click the Upload button to upload your file.");if(!first)first=F.identityUpload}
-
-/* ==================== PROOF OF ADDRESS : VALIDATION ==================== */
-check(F.address,F.address.value!=="","Please select an Address Proof.");
-if(F.address.value==="Other")check(F.otherAddress,F.otherAddress.value.trim()!=="","Please enter the Other Address Document.");
-const addressFile=F.addressFile.files[0];
-if(!addressFile){fileErr(F.addressFile,"Please select an Address Proof file.");if(!first)first=F.addressFile}
-else if(!addressAllowed.includes(addressFile.type)){fileErr(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.addressFile}
-else if(addressFile.size>maxFileSize){fileErr(F.addressFile,"Please upload a file of 1 MB or less.");if(!first)first=F.addressFile}
-else if(!F.addressUpload.classList.contains("file-success")){fileErr(F.addressUpload,"Please click the Upload button to upload your file.");if(!first)first=F.addressUpload}
-
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);identityUpload.style.borderColor="";addressUpload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.identityProof,valid.proof(F.identityProof),"Please select an Identity Proof.");
+if(F.identityProof.value==="Other")check(F.otherIdentity,valid.text(F.otherIdentity),"Please enter the Other Identity Document Name.");
+check(F.addressProof,valid.proof(F.addressProof),"Please select an Address Proof.");
+if(F.addressProof.value==="Other")check(F.otherAddress,valid.text(F.otherAddress),"Please enter the Other Address Document Name.");
+const identityFile=F.identityFile.files[0],addressFile=F.addressFile.files[0];
+if(!identityFile){showFileError(F.identityFile,"Please select a file.");if(!first)first=F.identityFile}else if(!allowedFiles.includes(identityFile.type))showFileError(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");else if(identityFile.size>1048576)showFileError(F.identityFile,"Please upload a file of 1 MB or less.");else if(!identityUpload.classList.contains("file-success")){showFileError(identityUpload,"Please click the Upload button to upload your file.");if(!first)first=identityUpload}
+if(!addressFile){showFileError(F.addressFile,"Please select a file.");if(!first)first=F.addressFile}else if(!allowedFiles.includes(addressFile.type))showFileError(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");else if(addressFile.size>1048576)showFileError(F.addressFile,"Please upload a file of 1 MB or less.");else if(!addressUpload.classList.contains("file-success")){showFileError(addressUpload,"Please click the Upload button to upload your file.");if(!first)first=addressUpload}
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
 
 /* ==================== AADHAAR DOCUMENT UPDATE : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR DOCUMENT_\n              _UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR DOCUMENT_\n          _UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
+add("Full Name",F.name.value.trim());
+add("Aadhaar Linked Mobile",F.mobile.value.trim());
+add("Aadhaar Number",F.aadhaar.value.trim());
 msg+="```PROOF OF IDENTITY (POI)```\n\n";
-add("Identity Proof",F.identity.value==="Other"?F.otherIdentity.value.trim():F.identity.value);add("Identity Proof File",F.identityFile.files[0].name);
+add("Identity Proof",F.identityProof.value==="Other"?F.otherIdentity.value.trim():F.identityProof.value);
+add("Identity Proof File",F.identityFile.files[0]&&identityUpload.classList.contains("file-success")?F.identityFile.files[0].name:"");
 msg+="```PROOF OF ADDRESS (POA)```\n\n";
-add("Address Proof",F.address.value==="Other"?F.otherAddress.value.trim():F.address.value);add("Address Proof File",F.addressFile.files[0].name);
+add("Address Proof",F.addressProof.value==="Other"?F.otherAddress.value.trim():F.addressProof.value);
+add("Address Proof File",F.addressFile.files[0]&&addressUpload.classList.contains("file-success")?F.addressFile.files[0].name:"");
 msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")};
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
 })();
 </script>
+
 <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT : END ==================== -->
 <!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
  
