@@ -634,6 +634,8 @@ Total Services : <span>8</span>
      ===== AADHAAR DOCUMENT UPDATE : HTML ==================
      ========================================================= -->
 <button type="button" class="service-btn" id="documentUpdateBtn">🪪 Aadhaar Document Update</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->    
 <section class="service-details" id="documentUpdateDetails">
 <div class="service-details-title">Aadhaar Document Update</div>
 <table class="details-table">
@@ -731,9 +733,11 @@ Total Services : <span>8</span>
   
 
 <!-- =========================================================
-     ===== AADHAAR STATUS CHECK : HTML ====================
+     ===== AADHAAR STATUS CHECK : HTML ======================
      ========================================================= -->
 <button type="button" class="service-btn" id="statusCheckBtn">📋 Aadhaar Status Check</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
 <section class="service-details" id="statusCheckDetails">
 <div class="service-details-title">Aadhaar Status Check</div>
 <table class="details-table">
@@ -745,9 +749,57 @@ Total Services : <span>8</span>
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
-<!--==================== AADHAAR STATUS CHECK : HTML : END ==================== -->
-     
+<!-- ===================== AADHAAR STATUS CHECK FORM : HTML ===================== -->
+<div class="popup-overlay" id="statusCheckPopup">
+<div class="service-form-popup">
+<div class="service-details-title">Aadhaar Status Check Form</div>
+<div class="form-content">
 
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="statusFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="statusFullName" placeholder="Enter Full Name">
+
+<label for="statusLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="statusLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+
+<label for="statusAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="statusAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== STATUS DETAILS ===================== -->
+<div class="form-section-title">Status Details</div>
+
+<label for="statusReference">SRN / URN / EID <span class="required-star">*</span></label>
+<input type="text" id="statusReference" placeholder="Enter SRN / URN / EID">
+
+<label for="statusType">Status Type <span class="required-star">*</span></label>
+<select id="statusType">
+<option value="">-- Select Status Type --</option>
+<option value="Aadhaar Update Status">Aadhaar Update Status</option>
+<option value="Document Update Status">Document Update Status</option>
+<option value="PVC Card Order Status">PVC Card Order Status</option>
+<option value="Enrolment (EID) Status">Enrolment (EID) Status</option>
+<option value="Aadhaar Generation Status">Aadhaar Generation Status</option>
+</select>
+
+<label for="statusAcknowledgementFile">Upload Acknowledgement Receipt <span class="required-star">*</span></label>
+<input type="file" id="statusAcknowledgementFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="statusAcknowledgementUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="statusCheckSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="statusCheckClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ==================== AADHAAR STATUS CHECK : HTML : END ==================== -->
+
+     
 <!-- =========================================================
      ===== BIOMETRIC SERVICES : HTML =========================
      ========================================================= -->
@@ -1256,19 +1308,73 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ========================================================= -->
 
 <script>
-const statusCheckBtn=document.getElementById("statusCheckBtn");
-const statusCheckDetails=document.getElementById("statusCheckDetails");
-
-statusCheckBtn.onclick=()=>{
-const open=statusCheckDetails.style.display==="block";
-
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-
-if(!open)statusCheckDetails.style.display="block";
-};
+(()=>{const statusCheckBtn=document.getElementById("statusCheckBtn"),statusCheckDetails=document.getElementById("statusCheckDetails");statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)statusCheckDetails.style.display="block"};})();
 </script>
 
+<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT ==================== -->
+
+<script>
+(()=>{const F={name:document.getElementById("statusFullName"),mobile:document.getElementById("statusLinkedNumber"),aadhaar:document.getElementById("statusAadhaarNumber"),reference:document.getElementById("statusReference"),type:document.getElementById("statusType"),file:document.getElementById("statusAcknowledgementFile")},popup=document.getElementById("statusCheckPopup"),apply=document.querySelector("#statusCheckDetails .apply-now-btn"),close=document.getElementById("statusCheckClose"),submit=document.getElementById("statusCheckSubmit"),upload=document.getElementById("statusAcknowledgementUpload"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),type:()=>!!F.type.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
+F.reference.addEventListener("input",()=>{if(F.reference.value.trim())clear(F.reference)});
+F.type.addEventListener("change",()=>{if(valid.type())clear(F.type)});
+
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+
+const allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
+const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
+const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError();if(!f){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
+upload.onclick=validateFile;
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.reference,valid.text(F.reference),"Please enter your SRN / URN / EID.");
+check(F.type,valid.type(),"Please select a Status Type.");
+const file=F.file.files[0];
+if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
+else if(!allowedFiles.includes(file.type))showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");
+else if(file.size>1048576)showFileError(F.file,"Please upload a file of 1 MB or less.");
+else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== AADHAAR STATUS CHECK : WHATSAPP MESSAGE ==================== */
+
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR STATUS CHECK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());
+add("Aadhaar Linked Mobile",F.mobile.value.trim());
+add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="```STATUS DETAILS```\n\n";
+add("SRN / URN / EID",F.reference.value.trim());
+add("Status Type",F.type.value);
+add("Acknowledgement Receipt File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+
+<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT : END ==================== -->
+
+     
 <!-- =========================================================
      ===== BIOMETRIC SERVICES : SCRIPT ======================
      ========================================================= -->
