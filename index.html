@@ -774,15 +774,20 @@ Total Services : <span>8</span>
 <input type="text" id="statusReference" placeholder="Enter SRN / URN / EID">
 
 <label for="statusType">Status Type <span class="required-star">*</span></label>
-<select id="statusType">
-<option value="">-- Select Status Type --</option>
-<option value="Aadhaar Update Status">Aadhaar Update Status</option>
-<option value="Document Update Status">Document Update Status</option>
-<option value="PVC Card Order Status">PVC Card Order Status</option>
-<option value="Enrolment (EID) Status">Enrolment (EID) Status</option>
+<select id="statusType">    
+<option value="">-- Select Status Type --</option>    
+<option value="Aadhaar Update Status">Aadhaar Update Status</option>    
+<option value="Document Update Status">Document Update Status</option>    
+<option value="PVC Card Order Status">PVC Card Order Status</option>    
+<option value="Enrolment (EID) Status">Enrolment (EID) Status</option>    
 <option value="Aadhaar Generation Status">Aadhaar Generation Status</option>
+<option value="Other">Other</option>
 </select>
-
+<div id="statusOtherTypeGroup" style="display:none">
+<label for="statusOtherType">Other Status Type <span class="required-star">*</span></label>
+<input type="text" id="statusOtherType" placeholder="Enter Other Status Type">
+</div>
+     
 <label for="statusAcknowledgementFile">Upload Acknowledgement Receipt <span class="required-star">*</span></label>
 <input type="file" id="statusAcknowledgementFile" accept=".jpg,.jpeg,.png,.pdf">
 <button type="button" class="file-upload-btn" id="statusAcknowledgementUpload">Upload</button>
