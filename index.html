@@ -1344,15 +1344,16 @@ submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove())
 const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
 check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
 check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
-check(F.reference,valid.text(F.reference),"Please enter your SRN / URN / EID.");
+check(F.reference,valid.reference(),"Please enter your SRN / URN / EID.");
 check(F.type,valid.type(),"Please select a Status Type.");
+if(F.type.value==="Other")check(F.other,valid.other(),"Please enter the Other Status Type.");
 const file=F.file.files[0];
 if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
-else if(!allowedFiles.includes(file.type))showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");
-else if(file.size>1048576)showFileError(F.file,"Please upload a file of 1 MB or less.");
+else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
+else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
 else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}   
+                    
 /* ==================== AADHAAR STATUS CHECK : WHATSAPP MESSAGE ==================== */
 
 let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR STATUS CHECK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
