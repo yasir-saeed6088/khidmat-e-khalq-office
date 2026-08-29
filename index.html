@@ -1369,7 +1369,7 @@ add("Aadhaar Linked Mobile",F.mobile.value.trim());
 add("Aadhaar Number",F.aadhaar.value.trim());
 msg+="```STATUS DETAILS```\n\n";
 add("SRN / URN / EID",F.reference.value.trim());
-add("Status Type",F.type.value);
+add("Status Type",F.type.value==="Other"?F.other.value.trim():F.type.value);
 add("Acknowledgement Receipt File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
 msg+="__________________________________\n_Please assist me with this service._";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
