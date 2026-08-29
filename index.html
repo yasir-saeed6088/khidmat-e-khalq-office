@@ -1317,23 +1317,25 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT ==================== -->
 
 <script>
-(()=>{const F={name:document.getElementById("statusFullName"),mobile:document.getElementById("statusLinkedNumber"),aadhaar:document.getElementById("statusAadhaarNumber"),reference:document.getElementById("statusReference"),type:document.getElementById("statusType"),file:document.getElementById("statusAcknowledgementFile")},popup=document.getElementById("statusCheckPopup"),apply=document.querySelector("#statusCheckDetails .apply-now-btn"),close=document.getElementById("statusCheckClose"),submit=document.getElementById("statusCheckSubmit"),upload=document.getElementById("statusAcknowledgementUpload"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
-
+(()=>{const F={name:document.getElementById("statusFullName"),mobile:document.getElementById("statusLinkedNumber"),aadhaar:document.getElementById("statusAadhaarNumber"),reference:document.getElementById("statusReference"),type:document.getElementById("statusType"),other:document.getElementById("statusOtherType"),file:document.getElementById("statusAcknowledgementFile")},popup=document.getElementById("statusCheckPopup"),apply=document.querySelector("#statusCheckDetails .apply-now-btn"),close=document.getElementById("statusCheckClose"),submit=document.getElementById("statusCheckSubmit"),upload=document.getElementById("statusAcknowledgementUpload"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+      
 const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
 const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),type:()=>!!F.type.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
-
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),reference:()=>!!F.reference.value.trim(),type:()=>!!F.type.value,other:()=>!!F.other.value.trim(),file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
+      
 apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
 close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
 popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
 
+ /* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
+F.type.onchange=()=>{const other=F.type.value==="Other",group=document.getElementById("statusOtherTypeGroup");group.style.display=other?"block":"none";
+F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.type)};
+      
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-
 [F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
-F.reference.addEventListener("input",()=>{if(F.reference.value.trim())clear(F.reference)});
-F.other.addEventListener("input",()=>{if(F.other.value.trim())clear(F.other)});
+[F.reference,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
 F.type.addEventListener("change",()=>{if(valid.type())clear(F.type)});
-
+      
 /* ==================== FILE VALIDATION : SCRIPT ==================== */
 const upload=document.getElementById("statusAcknowledgementUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
@@ -1343,8 +1345,7 @@ const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-su
 F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
 upload.onclick=validateFile;
       
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-
+ /* ==================== FORM VALIDATION : SCRIPT ==================== */
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
 const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
 check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
@@ -1357,7 +1358,7 @@ if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
 else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
 else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
 else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}   
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
                     
 /* ==================== AADHAAR STATUS CHECK : WHATSAPP MESSAGE ==================== */
 
