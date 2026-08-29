@@ -1326,18 +1326,18 @@ popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.
 
 [F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
 F.reference.addEventListener("input",()=>{if(F.reference.value.trim())clear(F.reference)});
+F.other.addEventListener("input",()=>{if(F.other.value.trim())clear(F.other)});
 F.type.addEventListener("change",()=>{if(valid.type())clear(F.type)});
 
 /* ==================== FILE VALIDATION : SCRIPT ==================== */
-
-const allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const upload=document.getElementById("statusAcknowledgementUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
 const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
 const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
 const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError();if(!f){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
 F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
 upload.onclick=validateFile;
-
+      
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
 
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
