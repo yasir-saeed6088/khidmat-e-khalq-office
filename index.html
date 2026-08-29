@@ -1254,7 +1254,6 @@ F.addressProof.onchange=()=>{const other=F.addressProof.value==="Other",group=do
 [F.identityProof,F.addressProof].forEach(f=>f.addEventListener("change",()=>{if(valid.proof(f))clear(f)}));
 
 /* ==================== FILE VALIDATION : SCRIPT ==================== */
-
 const identityUpload=document.getElementById("documentIdentityUpload"),addressUpload=document.getElementById("documentAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 const clearFileError=f=>{const e=popup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove();f.style.borderColor=normal};
 const clearUploadError=u=>{const e=popup.querySelector(".form-error[data-field='"+u.id+"']");if(e)e.remove();u.style.borderColor=""};
@@ -1263,10 +1262,9 @@ const validateFile=(fileInput,upload)=>{const f=fileInput.files[0];upload.classL
 F.identityFile.onchange=()=>{identityUpload.classList.remove("file-success","file-error");identityUpload.textContent="Upload";clearFileError(F.identityFile);clearUploadError(identityUpload);F.identityFile.style.borderColor=normal;identityUpload.style.borderColor=""};
 F.addressFile.onchange=()=>{addressUpload.classList.remove("file-success","file-error");addressUpload.textContent="Upload";clearFileError(F.addressFile);clearUploadError(addressUpload);F.addressFile.style.borderColor=normal;addressUpload.style.borderColor=""};
 identityUpload.onclick=()=>validateFile(F.identityFile,identityUpload);
-addressUpload.onclick=()=>validateFile(F.addressFile,addressUpload);
-
+addressUpload.onclick=()=>validateFile(F.addressFile,addressUpload);  
+      
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
-
 submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);identityUpload.style.borderColor="";addressUpload.style.borderColor="";let first=null;
 const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
 check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
@@ -1276,10 +1274,10 @@ if(F.identityProof.value==="Other")check(F.otherIdentity,valid.text(F.otherIdent
 check(F.addressProof,valid.proof(F.addressProof),"Please select an Address Proof.");
 if(F.addressProof.value==="Other")check(F.otherAddress,valid.text(F.otherAddress),"Please enter the Other Address Document Name.");
 const identityFile=F.identityFile.files[0],addressFile=F.addressFile.files[0];
-if(!identityFile){showFileError(F.identityFile,"Please select a file.");if(!first)first=F.identityFile}else if(!allowedFiles.includes(identityFile.type)){showFileError(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.identityFile}else if(identityFile.size>1048576)showFileError(F.identityFile,"Please upload a file of 1 MB or less.");else if(!identityUpload.classList.contains("file-success")){showFileError(identityUpload,"Please click the Upload button to upload your file.");if(!first)first=identityUpload}
-if(!addressFile){showFileError(F.addressFile,"Please select a file.");if(!first)first=F.addressFile}else if(!allowedFiles.includes(addressFile.type)){showFileError(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.addressFile}else if(addressFile.size>1048576)showFileError(F.addressFile,"Please upload a file of 1 MB or less.");else if(!addressUpload.classList.contains("file-success")){showFileError(addressUpload,"Please click the Upload button to upload your file.");if(!first)first=addressUpload}
+if(!identityFile){showFileError(F.identityFile,"Please select a file.");if(!first)first=F.identityFile}else if(!allowedFiles.includes(identityFile.type)){showFileError(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.identityFile}else if(identityFile.size>1048576){showFileError(F.identityFile,"Please upload a file of 1 MB or less.");if(!first)first=F.identityFile}else if(!identityUpload.classList.contains("file-success")){showFileError(identityUpload,"Please click the Upload button to upload your file.");if(!first)first=identityUpload}
+if(!addressFile){showFileError(F.addressFile,"Please select a file.");if(!first)first=F.addressFile}else if(!allowedFiles.includes(addressFile.type)){showFileError(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.addressFile}else if(addressFile.size>1048576){showFileError(F.addressFile,"Please upload a file of 1 MB or less.");if(!first)first=F.addressFile}else if(!addressUpload.classList.contains("file-success")){showFileError(addressUpload,"Please click the Upload button to upload your file.");if(!first)first=addressUpload}
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
+                    
 /* ==================== AADHAAR DOCUMENT UPDATE : WHATSAPP MESSAGE ==================== */
 
 let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR DOCUMENT_\n          _UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
