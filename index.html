@@ -1632,7 +1632,6 @@ const eAadhaarSignatureBtn=document.getElementById("eAadhaarSignatureBtn"),eAadh
 eAadhaarSignatureBtn.onclick=()=>{const open=eAadhaarSignatureDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)eAadhaarSignatureDetails.style.display="block"};
 
 const eAadhaarApply=document.querySelector("#eAadhaarSignatureDetails .apply-now-btn"),eAadhaarPopup=document.getElementById("eAadhaarSignaturePopup"),eAadhaarClose=document.getElementById("eAadhaarSignatureClose"),eAadhaarSubmit=document.getElementById("eAadhaarSignatureSubmit"),eAadhaarFields={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber"),file:document.getElementById("eAadhaarFile"),upload:document.getElementById("eAadhaarUpload")};
-
 const eAadhaarNormalBorder="rgba(7,88,201,.25)",eAadhaarErrorColor="#e00000",eAadhaarAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 
 const eAadhaarRemoveError=f=>{f.style.borderColor=eAadhaarNormalBorder;const e=eAadhaarPopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
@@ -1642,16 +1641,16 @@ eAadhaarApply.onclick=()=>{eAadhaarPopup.style.display="flex";document.body.styl
 eAadhaarClose.onclick=closeEAadhaarPopup;
 eAadhaarPopup.onclick=e=>{if(e.target===eAadhaarPopup)closeEAadhaarPopup()};
 
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+// ==================== LIVE ERROR CLEARING : SCRIPT ====================
 eAadhaarFields.mobile.oninput=()=>{eAadhaarFields.mobile.value=eAadhaarFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(eAadhaarFields.mobile.value))eAadhaarRemoveError(eAadhaarFields.mobile)};
 eAadhaarFields.aadhaar.oninput=()=>{eAadhaarFields.aadhaar.value=eAadhaarFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(eAadhaarFields.aadhaar.value))eAadhaarRemoveError(eAadhaarFields.aadhaar)};
 
-/* ==================== FILE VALIDATION : SCRIPT ==================== */
+// ==================== FILE VALIDATION : SCRIPT ====================
 const validateEAadhaarFile=()=>{const f=eAadhaarFields.file.files[0];eAadhaarFields.upload.classList.remove("file-success","file-error");eAadhaarFields.upload.textContent="Upload";eAadhaarRemoveError(eAadhaarFields.file);eAadhaarRemoveError(eAadhaarFields.upload);if(!f)return false;if(!eAadhaarAllowedFiles.includes(f.type)){eAadhaarShowError(eAadhaarFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");eAadhaarShowError(eAadhaarFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",eAadhaarFields.upload);eAadhaarFields.upload.classList.add("file-error");eAadhaarFields.upload.textContent="Try Again";return false}if(f.size>1048576){eAadhaarShowError(eAadhaarFields.file,"Please upload a file of 1 MB or less.");eAadhaarShowError(eAadhaarFields.upload,"Please upload a file of 1 MB or less.",eAadhaarFields.upload);eAadhaarFields.upload.classList.add("file-error");eAadhaarFields.upload.textContent="Try Again";return false}eAadhaarFields.upload.classList.add("file-success");eAadhaarFields.upload.textContent="✓ Uploaded";return true};
 eAadhaarFields.file.onchange=()=>{eAadhaarFields.upload.classList.remove("file-success","file-error");eAadhaarFields.upload.textContent="Upload";eAadhaarRemoveError(eAadhaarFields.file);eAadhaarRemoveError(eAadhaarFields.upload);eAadhaarFields.file.style.borderColor=eAadhaarNormalBorder;eAadhaarFields.upload.style.borderColor=""};
 eAadhaarFields.upload.onclick=()=>validateEAadhaarFile();
 
-/* ===================== FORM VALIDATION ===================== */
+// ===================== FORM VALIDATION =====================
 eAadhaarSubmit.onclick=()=>{eAadhaarPopup.querySelectorAll(".form-error").forEach(x=>x.remove());eAadhaarPopup.querySelectorAll("input").forEach(x=>x.style.borderColor=eAadhaarNormalBorder);eAadhaarFields.upload.style.borderColor="";let first=null;
 const check=(f,ok,msg)=>{if(!ok){eAadhaarShowError(f,msg);if(!first)first=f}};
 const mobile=eAadhaarFields.mobile.value.trim(),aadhaar=eAadhaarFields.aadhaar.value.trim(),file=eAadhaarFields.file.files[0];
@@ -1660,8 +1659,8 @@ check(eAadhaarFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aa
 if(file){if(!eAadhaarAllowedFiles.includes(file.type)){eAadhaarShowError(eAadhaarFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=eAadhaarFields.file}else if(file.size>1048576){eAadhaarShowError(eAadhaarFields.file,"Please upload a file of 1 MB or less.");if(!first)first=eAadhaarFields.file}else if(!eAadhaarFields.upload.classList.contains("file-success")){eAadhaarShowError(eAadhaarFields.upload,"Please click the Upload button to upload your file.",eAadhaarFields.upload);if(!first)first=eAadhaarFields.upload}}
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
 
-/* ===================== WHATSAPP MESSAGE ===================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: E-AADHAAR DIGITAL_\n       _SIGNATURE VALIDATION_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+// ===================== WHATSAPP MESSAGE =====================
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: E-AADHAAR DIGITAL_\n            _SIGNATURE VALIDATION_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
 add("Full Name",eAadhaarFields.name.value.trim());
 add("Aadhaar Linked Mobile",mobile);
