@@ -1466,89 +1466,123 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT : END ==================== -->
 
      
-<!-- =========================================================
-     ===== BIOMETRIC SERVICES : SCRIPT ======================
-     ========================================================= -->
+<!-- =========================================================  
+     ===== BIOMETRIC SERVICES : SCRIPT ======================  
+     ========================================================= -->  
+  
+<script>  
+const biometricBtn=document.getElementById("biometricBtn");  
+const biometricOptions=document.getElementById("biometricOptions");  
+  
+biometricBtn.onclick=()=>{  
+const open=biometricOptions.style.display==="block";  
+  
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");  
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");  
+  
+if(!open)biometricOptions.style.display="block";  
+};  
+</script>  
+  
+<!-- ==================== BIOMETRIC LOCK : SCRIPT ==================== -->  
+  
+<script>  
+const biometricLockBtn=document.getElementById("biometricLockBtn"),biometricLockDetails=document.getElementById("biometricLockDetails");  
+biometricLockBtn.onclick=()=>{const open=biometricLockDetails.style.display==="block";document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");if(!open)biometricLockDetails.style.display="block"};  
+  
+const lockApply=document.querySelector("#biometricLockDetails .apply-now-btn"),lockPopup=document.getElementById("biometricLockPopup"),lockClose=document.getElementById("biometricLockClose"),lockSubmit=document.getElementById("biometricLockSubmit"),lockFields={name:document.getElementById("lockFullName"),mobile:document.getElementById("lockLinkedNumber"),aadhaar:document.getElementById("lockAadhaarNumber"),file:document.getElementById("lockAadhaarFile"),upload:document.getElementById("lockAadhaarUpload")};  
+const lockNormalBorder="rgba(7,88,201,.25)",lockErrorColor="#e00000",lockAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];  
+  
+const lockRemoveError=f=>{f.style.borderColor=lockNormalBorder;const e=lockPopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};  
+const lockShowError=(f,msg,target=f)=>{lockRemoveError(f);if(target!==f)lockRemoveError(target);target.style.borderColor=lockErrorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};  
+const closeBiometricLockPopup=()=>{lockPopup.style.display="none";document.body.style.overflow=""};  
+lockApply.onclick=()=>{lockPopup.style.display="flex";document.body.style.overflow="hidden"};  
+lockClose.onclick=closeBiometricLockPopup;  
+lockPopup.onclick=e=>{if(e.target===lockPopup)closeBiometricLockPopup()};  
+  
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */  
+lockFields.mobile.oninput=()=>{lockFields.mobile.value=lockFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(lockFields.mobile.value))lockRemoveError(lockFields.mobile)};  
+lockFields.aadhaar.oninput=()=>{lockFields.aadhaar.value=lockFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(lockFields.aadhaar.value))lockRemoveError(lockFields.aadhaar)};  
+  
+/* ==================== FILE VALIDATION : SCRIPT ==================== */  
+const validateLockFile=()=>{const f=lockFields.file.files[0];lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);if(!f)return false;if(!lockAllowedFiles.includes(f.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");lockShowError(lockFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}if(f.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");lockShowError(lockFields.upload,"Please upload a file of 1 MB or less.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}lockFields.upload.classList.add("file-success");lockFields.upload.textContent="✓ Uploaded";return true};  
+lockFields.file.onchange=()=>{lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);lockFields.file.style.borderColor=lockNormalBorder;lockFields.upload.style.borderColor=""};  
+lockFields.upload.onclick=()=>validateLockFile();  
+  
+/* ===================== FORM VALIDATION ===================== */  
+lockSubmit.onclick=()=>{lockPopup.querySelectorAll(".form-error").forEach(x=>x.remove());lockPopup.querySelectorAll("input").forEach(x=>x.style.borderColor=lockNormalBorder);lockFields.upload.style.borderColor="";let first=null;  
+const check=(f,ok,msg)=>{if(!ok){lockShowError(f,msg);if(!first)first=f}};  
+const mobile=lockFields.mobile.value.trim(),aadhaar=lockFields.aadhaar.value.trim(),file=lockFields.file.files[0];  
+check(lockFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");  
+check(lockFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");  
+if(file){if(!lockAllowedFiles.includes(file.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=lockFields.file}else if(file.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");if(!first)first=lockFields.file}else if(!lockFields.upload.classList.contains("file-success")){lockShowError(lockFields.upload,"Please click the Upload button to upload your file.",lockFields.upload);if(!first)first=lockFields.upload}}  
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}  
+  
+/* ===================== WHATSAPP MESSAGE ===================== */  
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR BIOMETRIC_\n                            _LOCK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";  
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";  
+add("Full Name",lockFields.name.value.trim());  
+add("Aadhaar Linked Mobile",mobile);  
+add("Aadhaar Number",aadhaar);  
+add("Aadhaar File",file&&lockFields.upload.classList.contains("file-success")?file.name:"");  
+msg+="__________________________________\n_Please assist me with this service._";  
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");  
+};  
+</script>  
+  
+<!-- ==================== BIOMETRIC LOCK : SCRIPT : END ==================== -->  
+       
+<!-- ==================== BIOMETRIC UNLOCK : SCRIPT ==================== -->  
+  
+<script>  
+const biometricUnlockBtn=document.getElementById("biometricUnlockBtn"),biometricUnlockDetails=document.getElementById("biometricUnlockDetails");  
+biometricUnlockBtn.onclick=()=>{const open=biometricUnlockDetails.style.display==="block";document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");if(!open)biometricUnlockDetails.style.display="block"};  
+  
+const unlockApply=document.querySelector("#biometricUnlockDetails .apply-now-btn"),unlockPopup=document.getElementById("biometricUnlockPopup"),unlockClose=document.getElementById("biometricUnlockClose"),unlockSubmit=document.getElementById("biometricUnlockSubmit"),unlockFields={name:document.getElementById("unlockFullName"),mobile:document.getElementById("unlockLinkedNumber"),aadhaar:document.getElementById("unlockAadhaarNumber"),file:document.getElementById("unlockAadhaarFile"),upload:document.getElementById("unlockAadhaarUpload")};  
+const unlockNormalBorder="rgba(7,88,201,.25)",unlockErrorColor="#e00000",unlockAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];  
+  
+const unlockRemoveError=f=>{f.style.borderColor=unlockNormalBorder;const e=unlockPopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};  
+const unlockShowError=(f,msg,target=f)=>{unlockRemoveError(f);if(target!==f)unlockRemoveError(target);target.style.borderColor=unlockErrorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};  
+const closeBiometricUnlockPopup=()=>{unlockPopup.style.display="none";document.body.style.overflow=""};  
+unlockApply.onclick=()=>{unlockPopup.style.display="flex";document.body.style.overflow="hidden"};  
+unlockClose.onclick=closeBiometricUnlockPopup;  
+unlockPopup.onclick=e=>{if(e.target===unlockPopup)closeBiometricUnlockPopup()};  
+  
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */  
+unlockFields.mobile.oninput=()=>{unlockFields.mobile.value=unlockFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(unlockFields.mobile.value))unlockRemoveError(unlockFields.mobile)};  
+unlockFields.aadhaar.oninput=()=>{unlockFields.aadhaar.value=unlockFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(unlockFields.aadhaar.value))unlockRemoveError(unlockFields.aadhaar)};  
+  
+/* ==================== FILE VALIDATION : SCRIPT ==================== */  
+const validateUnlockFile=()=>{const f=unlockFields.file.files[0];unlockFields.upload.classList.remove("file-success","file-error");unlockFields.upload.textContent="Upload";unlockRemoveError(unlockFields.file);unlockRemoveError(unlockFields.upload);if(!f)return false;if(!unlockAllowedFiles.includes(f.type)){unlockShowError(unlockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");unlockShowError(unlockFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",unlockFields.upload);unlockFields.upload.classList.add("file-error");unlockFields.upload.textContent="Try Again";return false}if(f.size>1048576){unlockShowError(unlockFields.file,"Please upload a file of 1 MB or less.");unlockShowError(unlockFields.upload,"Please upload a file of 1 MB or less.",unlockFields.upload);unlockFields.upload.classList.add("file-error");unlockFields.upload.textContent="Try Again";return false}unlockFields.upload.classList.add("file-success");unlockFields.upload.textContent="✓ Uploaded";return true};  
+unlockFields.file.onchange=()=>{unlockFields.upload.classList.remove("file-success","file-error");unlockFields.upload.textContent="Upload";unlockRemoveError(unlockFields.file);unlockRemoveError(unlockFields.upload);unlockFields.file.style.borderColor=unlockNormalBorder;unlockFields.upload.style.borderColor=""};  
+unlockFields.upload.onclick=()=>validateUnlockFile();  
+  
+/* ===================== FORM VALIDATION ===================== */  
+unlockSubmit.onclick=()=>{unlockPopup.querySelectorAll(".form-error").forEach(x=>x.remove());unlockPopup.querySelectorAll("input").forEach(x=>x.style.borderColor=unlockNormalBorder);unlockFields.upload.style.borderColor="";let first=null;  
+const check=(f,ok,msg)=>{if(!ok){unlockShowError(f,msg);if(!first)first=f}};  
+const mobile=unlockFields.mobile.value.trim(),aadhaar=unlockFields.aadhaar.value.trim(),file=unlockFields.file.files[0];  
+check(unlockFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");  
+check(unlockFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");  
+if(file){if(!unlockAllowedFiles.includes(file.type)){unlockShowError(unlockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=unlockFields.file}else if(file.size>1048576){unlockShowError(unlockFields.file,"Please upload a file of 1 MB or less.");if(!first)first=unlockFields.file}else if(!unlockFields.upload.classList.contains("file-success")){unlockShowError(unlockFields.upload,"Please click the Upload button to upload your file.",unlockFields.upload);if(!first)first=unlockFields.upload}}  
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}  
+  
+/* ===================== WHATSAPP MESSAGE ===================== */  
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR BIOMETRIC_\n                           _UNLOCK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";  
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";  
+add("Full Name",unlockFields.name.value.trim());  
+add("Aadhaar Linked Mobile",mobile);  
+add("Aadhaar Number",aadhaar);  
+add("Aadhaar File",file&&unlockFields.upload.classList.contains("file-success")?file.name:"");  
+msg+="__________________________________\n_Please assist me with this service._";  
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");  
+};  
+</script>  
+  
+<!-- ==================== BIOMETRIC UNLOCK : SCRIPT : END ==================== -->  
 
-<script>
-const biometricBtn=document.getElementById("biometricBtn");
-const biometricOptions=document.getElementById("biometricOptions");
 
-biometricBtn.onclick=()=>{
-const open=biometricOptions.style.display==="block";
-
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-
-if(!open)biometricOptions.style.display="block";
-};
-</script>
-
-<!-- ==================== BIOMETRIC LOCK : SCRIPT ==================== -->
-
-<script>
-const biometricLockBtn=document.getElementById("biometricLockBtn"),biometricLockDetails=document.getElementById("biometricLockDetails");
-biometricLockBtn.onclick=()=>{const open=biometricLockDetails.style.display==="block";document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");if(!open)biometricLockDetails.style.display="block"};
-
-const lockApply=document.querySelector("#biometricLockDetails .apply-now-btn"),lockPopup=document.getElementById("biometricLockPopup"),lockClose=document.getElementById("biometricLockClose"),lockSubmit=document.getElementById("biometricLockSubmit"),lockFields={name:document.getElementById("lockFullName"),mobile:document.getElementById("lockLinkedNumber"),aadhaar:document.getElementById("lockAadhaarNumber"),file:document.getElementById("lockAadhaarFile"),upload:document.getElementById("lockAadhaarUpload")};
-const lockNormalBorder="rgba(7,88,201,.25)",lockErrorColor="#e00000",lockAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-
-const lockRemoveError=f=>{f.style.borderColor=lockNormalBorder;const e=lockPopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
-const lockShowError=(f,msg,target=f)=>{lockRemoveError(f);if(target!==f)lockRemoveError(target);target.style.borderColor=lockErrorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
-const closeBiometricLockPopup=()=>{lockPopup.style.display="none";document.body.style.overflow=""};
-lockApply.onclick=()=>{lockPopup.style.display="flex";document.body.style.overflow="hidden"};
-lockClose.onclick=closeBiometricLockPopup;
-lockPopup.onclick=e=>{if(e.target===lockPopup)closeBiometricLockPopup()};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-lockFields.mobile.oninput=()=>{lockFields.mobile.value=lockFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(lockFields.mobile.value))lockRemoveError(lockFields.mobile)};
-lockFields.aadhaar.oninput=()=>{lockFields.aadhaar.value=lockFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(lockFields.aadhaar.value))lockRemoveError(lockFields.aadhaar)};
-
-/* ==================== FILE VALIDATION : SCRIPT ==================== */
-const validateLockFile=()=>{const f=lockFields.file.files[0];lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);if(!f)return false;if(!lockAllowedFiles.includes(f.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");lockShowError(lockFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}if(f.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");lockShowError(lockFields.upload,"Please upload a file of 1 MB or less.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}lockFields.upload.classList.add("file-success");lockFields.upload.textContent="✓ Uploaded";return true};
-lockFields.file.onchange=()=>{lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);lockFields.file.style.borderColor=lockNormalBorder;lockFields.upload.style.borderColor=""};
-lockFields.upload.onclick=()=>validateLockFile();
-
-/* ===================== FORM VALIDATION ===================== */
-lockSubmit.onclick=()=>{lockPopup.querySelectorAll(".form-error").forEach(x=>x.remove());lockPopup.querySelectorAll("input").forEach(x=>x.style.borderColor=lockNormalBorder);lockFields.upload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){lockShowError(f,msg);if(!first)first=f}};
-const mobile=lockFields.mobile.value.trim(),aadhaar=lockFields.aadhaar.value.trim(),file=lockFields.file.files[0];
-check(lockFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
-check(lockFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-if(file){if(!lockAllowedFiles.includes(file.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=lockFields.file}else if(file.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");if(!first)first=lockFields.file}else if(!lockFields.upload.classList.contains("file-success")){lockShowError(lockFields.upload,"Please click the Upload button to upload your file.",lockFields.upload);if(!first)first=lockFields.upload}}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
-/* ===================== WHATSAPP MESSAGE ===================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR BIOMETRIC_\n             _LOCK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",lockFields.name.value.trim());
-add("Aadhaar Linked Mobile",mobile);
-add("Aadhaar Number",aadhaar);
-add("Aadhaar File",file&&lockFields.upload.classList.contains("file-success")?file.name:"");
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-</script>
-
-<!-- ==================== BIOMETRIC LOCK : SCRIPT : END ==================== -->
      
-<!-- ==================== BIOMETRIC UNLOCK : SCRIPT ==================== -->
-
-<script>
-const biometricUnlockBtn=document.getElementById("biometricUnlockBtn");
-const biometricUnlockDetails=document.getElementById("biometricUnlockDetails");
-
-biometricUnlockBtn.onclick=()=>{
-const open=biometricUnlockDetails.style.display==="block";
-
-document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");
-
-if(!open)biometricUnlockDetails.style.display="block";
-};
-</script>
-
-
-
+  
 <!-- =========================================================
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
      ========================================================= -->
