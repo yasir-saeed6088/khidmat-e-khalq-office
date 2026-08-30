@@ -809,35 +809,122 @@ Total Services : <span>8</span>
      ===== BIOMETRIC SERVICES : HTML =========================
      ========================================================= -->
 <button type="button" class="service-btn" id="biometricBtn">🔒 Biometric Services</button>
+
 <section class="sub-service-list" id="biometricOptions">
 <div class="sub-service-title">Biometric Services</div>
 
 <!-- ===================== BIOMETRIC LOCK : HTML ===================== -->
 <button type="button" class="sub-service-btn" id="biometricLockBtn">🔒 Biometric Lock</button>
+
+<!-- ===================== BIOMETRIC LOCK : INFORMATION AND DETAILS FORM : HTML ===================== -->
 <section class="service-details" id="biometricLockDetails">
 <div class="service-details-title">Biometric Lock</div>
+
 <table class="details-table">
 <tr><th>Information</th><th>Details</th></tr>
 <tr><td>Service</td><td>Aadhaar Biometric Lock</td></tr>
 <tr><td>Service Charge</td><td>Free of Cost</td></tr>
 <tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
 </table>
+
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- ===================== BIOMETRIC LOCK FORM : HTML ===================== -->
+<div class="popup-overlay" id="biometricLockPopup">
+<div class="service-form-popup">
+<div class="service-details-title">Biometric Lock Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="lockFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="lockFullName" placeholder="Enter Full Name">
+
+<label for="lockLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="lockLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+
+<label for="lockAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="lockAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== BIOMETRIC LOCK FILE ===================== -->
+<div class="form-section-title">Biometric Lock File</div>
+
+<label for="lockAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
+<input type="file" id="lockAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="lockAadhaarUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="biometricLockSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="biometricLockClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
 <!-- ===================== BIOMETRIC UNLOCK : HTML ===================== -->
 <button type="button" class="sub-service-btn" id="biometricUnlockBtn">🔓 Biometric Unlock</button>
+
+<!-- ===================== BIOMETRIC UNLOCK : INFORMATION AND DETAILS FORM : HTML ===================== -->
 <section class="service-details" id="biometricUnlockDetails">
 <div class="service-details-title">Biometric Unlock</div>
+
 <table class="details-table">
 <tr><th>Information</th><th>Details</th></tr>
 <tr><td>Service</td><td>Aadhaar Biometric Unlock</td></tr>
 <tr><td>Service Charge</td><td>Free of Cost</td></tr>
 <tr><td>Processing Time</td><td>2–5 Minutes</td></tr>
 </table>
+
 <button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
 </section>
+
+<!-- ===================== BIOMETRIC UNLOCK FORM : HTML ===================== -->
+<div class="popup-overlay" id="biometricUnlockPopup">
+<div class="service-form-popup">
+<div class="service-details-title">Biometric Unlock Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="unlockFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="unlockFullName" placeholder="Enter Full Name">
+
+<label for="unlockLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="unlockLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+
+<label for="unlockAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="unlockAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== BIOMETRIC UNLOCK FILE ===================== -->
+<div class="form-section-title">Biometric Unlock File</div>
+
+<label for="unlockAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
+<input type="file" id="unlockAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="unlockAadhaarUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="biometricUnlockSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="biometricUnlockClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
 </section>
+
+<!-- =========================================================
+     ===== BIOMETRIC SERVICES : HTML : END ==================
+     ========================================================= -->
+
      
  <!-- =========================================================
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML ====================
@@ -1400,17 +1487,50 @@ if(!open)biometricOptions.style.display="block";
 <!-- ==================== BIOMETRIC LOCK : SCRIPT ==================== -->
 
 <script>
-const biometricLockBtn=document.getElementById("biometricLockBtn");
-const biometricLockDetails=document.getElementById("biometricLockDetails");
+const biometricLockBtn=document.getElementById("biometricLockBtn"),biometricLockDetails=document.getElementById("biometricLockDetails");
+biometricLockBtn.onclick=()=>{const open=biometricLockDetails.style.display==="block";document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");if(!open)biometricLockDetails.style.display="block"};
 
-biometricLockBtn.onclick=()=>{
-const open=biometricLockDetails.style.display==="block";
+const lockApply=document.querySelector("#biometricLockDetails .apply-now-btn"),lockPopup=document.getElementById("biometricLockPopup"),lockClose=document.getElementById("biometricLockClose"),lockSubmit=document.getElementById("biometricLockSubmit"),lockFields={name:document.getElementById("lockFullName"),mobile:document.getElementById("lockLinkedNumber"),aadhaar:document.getElementById("lockAadhaarNumber"),file:document.getElementById("lockAadhaarFile"),upload:document.getElementById("lockAadhaarUpload")};
+const lockNormalBorder="rgba(7,88,201,.25)",lockErrorColor="#e00000",lockAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 
-document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.style.display="none");
+const lockRemoveError=f=>{f.style.borderColor=lockNormalBorder;const e=lockPopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
+const lockShowError=(f,msg,target=f)=>{lockRemoveError(f);if(target!==f)lockRemoveError(target);target.style.borderColor=lockErrorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const closeBiometricLockPopup=()=>{lockPopup.style.display="none";document.body.style.overflow=""};
+lockApply.onclick=()=>{lockPopup.style.display="flex";document.body.style.overflow="hidden"};
+lockClose.onclick=closeBiometricLockPopup;
+lockPopup.onclick=e=>{if(e.target===lockPopup)closeBiometricLockPopup()};
 
-if(!open)biometricLockDetails.style.display="block";
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+lockFields.mobile.oninput=()=>{lockFields.mobile.value=lockFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(lockFields.mobile.value))lockRemoveError(lockFields.mobile)};
+lockFields.aadhaar.oninput=()=>{lockFields.aadhaar.value=lockFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(lockFields.aadhaar.value))lockRemoveError(lockFields.aadhaar)};
+
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+const validateLockFile=()=>{const f=lockFields.file.files[0];lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);if(!f)return false;if(!lockAllowedFiles.includes(f.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");lockShowError(lockFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}if(f.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");lockShowError(lockFields.upload,"Please upload a file of 1 MB or less.",lockFields.upload);lockFields.upload.classList.add("file-error");lockFields.upload.textContent="Try Again";return false}lockFields.upload.classList.add("file-success");lockFields.upload.textContent="✓ Uploaded";return true};
+lockFields.file.onchange=()=>{lockFields.upload.classList.remove("file-success","file-error");lockFields.upload.textContent="Upload";lockRemoveError(lockFields.file);lockRemoveError(lockFields.upload);lockFields.file.style.borderColor=lockNormalBorder;lockFields.upload.style.borderColor=""};
+lockFields.upload.onclick=()=>validateLockFile();
+
+/* ===================== FORM VALIDATION ===================== */
+lockSubmit.onclick=()=>{lockPopup.querySelectorAll(".form-error").forEach(x=>x.remove());lockPopup.querySelectorAll("input").forEach(x=>x.style.borderColor=lockNormalBorder);lockFields.upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){lockShowError(f,msg);if(!first)first=f}};
+const mobile=lockFields.mobile.value.trim(),aadhaar=lockFields.aadhaar.value.trim(),file=lockFields.file.files[0];
+check(lockFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
+check(lockFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
+if(file){if(!lockAllowedFiles.includes(file.type)){lockShowError(lockFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=lockFields.file}else if(file.size>1048576){lockShowError(lockFields.file,"Please upload a file of 1 MB or less.");if(!first)first=lockFields.file}else if(!lockFields.upload.classList.contains("file-success")){lockShowError(lockFields.upload,"Please click the Upload button to upload your file.",lockFields.upload);if(!first)first=lockFields.upload}}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ===================== WHATSAPP MESSAGE ===================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR BIOMETRIC_\n             _LOCK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",lockFields.name.value.trim());
+add("Aadhaar Linked Mobile",mobile);
+add("Aadhaar Number",aadhaar);
+add("Aadhaar File",file&&lockFields.upload.classList.contains("file-success")?file.name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
 </script>
+
+<!-- ==================== BIOMETRIC LOCK : SCRIPT : END ==================== -->
      
 <!-- ==================== BIOMETRIC UNLOCK : SCRIPT ==================== -->
 
@@ -1426,6 +1546,8 @@ document.querySelectorAll("#biometricOptions .service-details").forEach(x=>x.sty
 if(!open)biometricUnlockDetails.style.display="block";
 };
 </script>
+
+
 
 <!-- =========================================================
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
