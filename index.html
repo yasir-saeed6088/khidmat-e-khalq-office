@@ -924,7 +924,7 @@ Total Services : <span>8</span>
 
      
 <!-- =========================================================
-     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML =====
+     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML ====
      ========================================================= -->
 <button type="button" class="service-btn" id="eAadhaarSignatureBtn">🪪 e-Aadhaar Digital Signature Validation</button>
 
@@ -950,19 +950,20 @@ Total Services : <span>8</span>
 <!-- ===================== APPLICANT DETAILS ===================== -->
 <div class="form-section-title">Applicant Details</div>
 
-<label for="eAadhaarFullName">Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="eAadhaarFullName" placeholder="Enter Full Name">
+<label for="signatureFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="signatureFullName" placeholder="Enter Full Name">
 
-<label for="eAadhaarLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="eAadhaarLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+<label for="signatureLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="signatureLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
 
-<label for="eAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="eAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+<label for="signatureAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="signatureAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
 
-<!-- ===================== E-AADHAAR FILE : HTML ===================== -->
-<label for="eAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
-<input type="file" id="eAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
-<button type="button" class="file-upload-btn" id="eAadhaarUpload">Upload</button>
+<!-- ===================== E-AADHAAR FILE ===================== -->
+
+<label for="signatureAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
+<input type="file" id="signatureAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="signatureAadhaarUpload">Upload</button>
 <div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
 
 <!-- ===================== FORM BUTTONS ===================== -->
@@ -976,9 +977,8 @@ Total Services : <span>8</span>
 </div>
 
 <!-- =========================================================
-     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML : END
+     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML END
      ========================================================= -->
-
 
 
 <!-- =========================================================
@@ -1626,53 +1626,52 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- =========================================================
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
      ========================================================= -->
+
 <script>
-const initEAadhaarSignature=()=>{const btn=document.getElementById("eAadhaarSignatureBtn"),details=document.getElementById("eAadhaarSignatureDetails"),popup=document.getElementById("eAadhaarSignaturePopup"),apply=details?.querySelector(".apply-now-btn"),close=document.getElementById("eAadhaarSignatureClose"),submit=document.getElementById("eAadhaarSignatureSubmit"),fields={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber"),file:document.getElementById("eAadhaarFile"),upload:document.getElementById("eAadhaarUpload")},normal="rgba(7,88,201,.25)",error="#e00000",allowed=["image/jpeg","image/jpg","image/png","application/pdf"];if(!btn||!details||!popup||!apply||!close||!submit||!fields.name||!fields.mobile||!fields.aadhaar||!fields.file||!fields.upload)return;
+const eAadhaarSignatureBtn=document.getElementById("eAadhaarSignatureBtn"),eAadhaarSignatureDetails=document.getElementById("eAadhaarSignatureDetails");
+eAadhaarSignatureBtn.onclick=()=>{const open=eAadhaarSignatureDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)eAadhaarSignatureDetails.style.display="block"};
 
-btn.onclick=()=>{const open=details.style.display==="block",parent=btn.closest(".sub-service-list");document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>{if(x!==parent)x.style.display="none"});if(!open)details.style.display="block"};
+const signatureApply=document.querySelector("#eAadhaarSignatureDetails .apply-now-btn"),signaturePopup=document.getElementById("eAadhaarSignaturePopup"),signatureClose=document.getElementById("eAadhaarSignatureClose"),signatureSubmit=document.getElementById("eAadhaarSignatureSubmit"),signatureFields={name:document.getElementById("signatureFullName"),mobile:document.getElementById("signatureLinkedNumber"),aadhaar:document.getElementById("signatureAadhaarNumber"),file:document.getElementById("signatureAadhaarFile"),upload:document.getElementById("signatureAadhaarUpload")};
+const signatureNormalBorder="rgba(7,88,201,.25)",signatureErrorColor="#e00000",signatureAllowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
 
-const removeError=f=>{f.style.borderColor=normal;const e=popup.querySelector('.form-error[data-field="'+f.id+'"]');if(e)e.remove()};
-const showError=(f,msg)=>{removeError(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";f.after(e)};
-const closePopup=()=>{popup.style.display="none";document.body.style.overflow=""};
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=closePopup;
-popup.onclick=e=>{if(e.target===popup)closePopup()};
+const signatureRemoveError=f=>{f.style.borderColor=signatureNormalBorder;const e=signaturePopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
+const signatureShowError=(f,msg,target=f)=>{signatureRemoveError(f);if(target!==f)signatureRemoveError(target);target.style.borderColor=signatureErrorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const closeEAadhaarSignaturePopup=()=>{signaturePopup.style.display="none";document.body.style.overflow=""};
+signatureApply.onclick=()=>{signaturePopup.style.display="flex";document.body.style.overflow="hidden"};
+signatureClose.onclick=closeEAadhaarSignaturePopup;
+signaturePopup.onclick=e=>{if(e.target===signaturePopup)closeEAadhaarSignaturePopup()};
 
 /* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-fields.mobile.oninput=()=>{fields.mobile.value=fields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(fields.mobile.value))removeError(fields.mobile)};
-fields.aadhaar.oninput=()=>{fields.aadhaar.value=fields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(fields.aadhaar.value))removeError(fields.aadhaar)};
+signatureFields.mobile.oninput=()=>{signatureFields.mobile.value=signatureFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(signatureFields.mobile.value))signatureRemoveError(signatureFields.mobile)};
+signatureFields.aadhaar.oninput=()=>{signatureFields.aadhaar.value=signatureFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(signatureFields.aadhaar.value))signatureRemoveError(signatureFields.aadhaar)};
 
 /* ==================== FILE VALIDATION : SCRIPT ==================== */
-const validateFile=()=>{const f=fields.file.files[0];fields.upload.classList.remove("file-success","file-error");fields.upload.textContent="Upload";removeError(fields.file);removeError(fields.upload);if(!f)return false;if(!allowed.includes(f.type)){showError(fields.upload,"Please upload a JPG, JPEG, PNG or PDF file.");fields.upload.classList.add("file-error");fields.upload.textContent="Try Again";return false}if(f.size>1048576){showError(fields.upload,"Please upload a file of 1 MB or less.");fields.upload.classList.add("file-error");fields.upload.textContent="Try Again";return false}fields.upload.classList.add("file-success");fields.upload.textContent="✓ Uploaded";return true};
-fields.file.onchange=()=>{fields.upload.classList.remove("file-success","file-error");fields.upload.textContent="Upload";removeError(fields.file);removeError(fields.upload);fields.file.style.borderColor=normal;fields.upload.style.borderColor=""};
-fields.upload.onclick=validateFile;
+const validateSignatureFile=()=>{const f=signatureFields.file.files[0];signatureFields.upload.classList.remove("file-success","file-error");signatureFields.upload.textContent="Upload";signatureRemoveError(signatureFields.file);signatureRemoveError(signatureFields.upload);if(!f)return false;if(!signatureAllowedFiles.includes(f.type)){signatureShowError(signatureFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");signatureShowError(signatureFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",signatureFields.upload);signatureFields.upload.classList.add("file-error");signatureFields.upload.textContent="Try Again";return false}if(f.size>1048576){signatureShowError(signatureFields.file,"Please upload a file of 1 MB or less.");signatureShowError(signatureFields.upload,"Please upload a file of 1 MB or less.",signatureFields.upload);signatureFields.upload.classList.add("file-error");signatureFields.upload.textContent="Try Again";return false}signatureFields.upload.classList.add("file-success");signatureFields.upload.textContent="✓ Uploaded";return true};
+signatureFields.file.onchange=()=>{signatureFields.upload.classList.remove("file-success","file-error");signatureFields.upload.textContent="Upload";signatureRemoveError(signatureFields.file);signatureRemoveError(signatureFields.upload);signatureFields.file.style.borderColor=signatureNormalBorder;signatureFields.upload.style.borderColor=""};
+signatureFields.upload.onclick=()=>validateSignatureFile();
 
 /* ===================== FORM VALIDATION ===================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);fields.upload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
-const mobile=fields.mobile.value.trim(),aadhaar=fields.aadhaar.value.trim(),file=fields.file.files[0];
-check(fields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
-check(fields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-if(file){if(!allowed.includes(file.type)){showError(fields.upload,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=fields.upload}else if(file.size>1048576){showError(fields.upload,"Please upload a file of 1 MB or less.");if(!first)first=fields.upload}else if(!fields.upload.classList.contains("file-success")){showError(fields.upload,"Please click the Upload button to upload your file.");if(!first)first=fields.upload}}
+signatureSubmit.onclick=()=>{signaturePopup.querySelectorAll(".form-error").forEach(x=>x.remove());signaturePopup.querySelectorAll("input").forEach(x=>x.style.borderColor=signatureNormalBorder);signatureFields.upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){signatureShowError(f,msg);if(!first)first=f}};
+const mobile=signatureFields.mobile.value.trim(),aadhaar=signatureFields.aadhaar.value.trim(),file=signatureFields.file.files[0];
+check(signatureFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
+check(signatureFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
+if(file){if(!signatureAllowedFiles.includes(file.type)){signatureShowError(signatureFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=signatureFields.file}else if(file.size>1048576){signatureShowError(signatureFields.file,"Please upload a file of 1 MB or less.");if(!first)first=signatureFields.file}else if(!signatureFields.upload.classList.contains("file-success")){signatureShowError(signatureFields.upload,"Please click the Upload button to upload your file.",signatureFields.upload);if(!first)first=signatureFields.upload}}
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
 
 /* ===================== WHATSAPP MESSAGE ===================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: E-AADHAAR DIGITAL_\n       _SIGNATURE VALIDATION_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const addEA=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-addEA("Full Name",fields.name.value.trim());
-addEA("Aadhaar Linked Mobile",mobile);
-addEA("Aadhaar Number",aadhaar);
-addEA("Aadhaar File",file&&fields.upload.classList.contains("file-success")?file.name:"");
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: E-AADHAAR DIGITAL_\n            _SIGNATURE VALIDATION_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",signatureFields.name.value.trim());
+add("Aadhaar Linked Mobile",mobile);
+add("Aadhaar Number",aadhaar);
+add("Aadhaar File",file&&signatureFields.upload.classList.contains("file-success")?file.name:"");
 msg+="__________________________________\n_Please assist me with this service._";
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
-};
-
-if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initEAadhaarSignature)}else{initEAadhaarSignature()}
 </script>
 
 <!-- ==================== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT : END ==================== -->
-
 
      
 
