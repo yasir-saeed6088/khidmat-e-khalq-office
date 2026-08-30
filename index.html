@@ -1627,9 +1627,11 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
      ========================================================= -->
 <script>
-document.addEventListener("DOMContentLoaded",()=>{
+const initEAadhaarSignature=()=>{
 
-const btn=document.getElementById("eAadhaarSignatureBtn"),details=document.getElementById("eAadhaarSignatureDetails"),popup=document.getElementById("eAadhaarSignaturePopup"),apply=details.querySelector(".apply-now-btn"),close=document.getElementById("eAadhaarSignatureClose"),submit=document.getElementById("eAadhaarSignatureSubmit"),fields={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber"),file:document.getElementById("eAadhaarFile"),upload:document.getElementById("eAadhaarUpload")},normal="rgba(7,88,201,.25)",error="#e00000",allowed=["image/jpeg","image/jpg","image/png","application/pdf"];
+const btn=document.getElementById("eAadhaarSignatureBtn"),details=document.getElementById("eAadhaarSignatureDetails"),popup=document.getElementById("eAadhaarSignaturePopup"),apply=details?.querySelector(".apply-now-btn"),close=document.getElementById("eAadhaarSignatureClose"),submit=document.getElementById("eAadhaarSignatureSubmit"),fields={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber"),file:document.getElementById("eAadhaarFile"),upload:document.getElementById("eAadhaarUpload")},normal="rgba(7,88,201,.25)",error="#e00000",allowed=["image/jpeg","image/jpg","image/png","application/pdf"];
+
+if(!btn||!details||!popup||!apply||!close||!submit||!fields.mobile||!fields.aadhaar||!fields.file||!fields.upload)return;
 
 btn.onclick=()=>{const open=details.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)details.style.display="block"};
 
@@ -1672,10 +1674,11 @@ msg+="__________________________________\n_Please assist me with this service._"
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
 
-});
+};
+
+if(document.readyState==="loading"){document.addEventListener("DOMContentLoaded",initEAadhaarSignature)}else{initEAadhaarSignature()}
 </script>
 <!-- ==================== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT : END ==================== -->
-
 
 
      
