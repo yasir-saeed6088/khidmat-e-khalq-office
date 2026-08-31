@@ -981,6 +981,87 @@ Total Services : <span>8</span>
      ========================================================= -->
 
 
+
+<!-- =========================================================
+     ===== C/O NAME UPDATE / CORRECTION : HTML ==============
+     ========================================================= -->
+<button type="button" class="service-btn" id="coNameBtn">📋 C/O Name Update / Correction<br>Father / Husband / Mother Name</button>
+<section class="sub-service-list" id="coNameOptions">
+<div class="sub-service-title">C/O Name Update / Correction</div>
+
+<!-- ===================== C/O NAME UPDATE / CORRECTION : HTML ===================== -->
+<button type="button" class="sub-service-btn" id="coNameServiceBtn">📋 C/O Name Update / Correction<br>Father / Husband / Mother Name</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
+<section class="service-details" id="coNameDetails">
+<div class="service-details-title">C/O Name Update / Correction<br>Father / Husband / Mother Name</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>C/O Name Update / Correction</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>Usually 5–10 Minutes; Up to 30 Days</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
+
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML ==================== -->
+<div class="popup-overlay" id="coNamePopup" role="dialog" aria-modal="true" aria-labelledby="coNameFormTitle">
+<div class="service-form-popup">
+<div class="service-details-title" id="coNameFormTitle">C/O Name Update / Correction Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="coApplicantFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="coApplicantFullName" placeholder="Enter Full Name" autocomplete="name">
+
+<label for="coApplicantMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="coApplicantMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="coApplicantAadhaar">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="coApplicantAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== C/O PERSON DETAILS ===================== -->
+<div class="form-section-title">C/O Person Details</div>
+
+<label for="coPersonFullName">C/O Person Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="coPersonFullName" placeholder="Enter C/O Person Full Name" autocomplete="name">
+
+<label for="coPersonMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="coPersonMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="coPersonAadhaar">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="coPersonAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== RELATIONSHIP WITH C/O ===================== -->
+<label for="coRelationship">Relationship With C/O <span class="required-star">*</span></label>
+<select id="coRelationship" required>
+<option value="">-- Select Relationship --</option>
+<option value="Father">Father</option>
+<option value="Mother">Mother</option>
+<option value="Husband">Husband</option>
+<option value="Other">Other</option>
+</select>
+
+<div id="coOtherRelationshipBox" style="display:none;">
+<label for="coOtherRelationship">Relationship Specify <span class="required-star">*</span></label>
+<input type="text" id="coOtherRelationship" placeholder="Enter Relationship">
+</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="coNameSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="coNameClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML : END ==================== -->
+
+
+     
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : END ======================
      ========================================================= -->
@@ -1675,4 +1756,61 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      
 
      
+<!-- =========================================================
+     ===== C/O NAME UPDATE / CORRECTION : SCRIPT ============
+     ========================================================= -->
+
+<script>
+const coNameBtn=document.getElementById("coNameBtn"),coNameOptions=document.getElementById("coNameOptions");
+coNameBtn.onclick=()=>{const open=coNameOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)coNameOptions.style.display="block"};
+</script>
+
+<!-- ==================== C/O NAME UPDATE / CORRECTION SERVICE : SCRIPT ==================== -->
+
+<script>
+const coNameServiceBtn=document.getElementById("coNameServiceBtn"),coNameDetails=document.getElementById("coNameDetails");
+coNameServiceBtn.onclick=()=>{const open=coNameDetails.style.display==="block";document.querySelectorAll("#coNameOptions .service-details").forEach(x=>x.style.display="none");if(!open)coNameDetails.style.display="block"};
+</script>
+
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT ==================== -->
+<script>
+(()=>{const F={appName:document.getElementById("coApplicantFullName"),appMobile:document.getElementById("coApplicantMobile"),appAadhaar:document.getElementById("coApplicantAadhaar"),personName:document.getElementById("coPersonFullName"),personMobile:document.getElementById("coPersonMobile"),personAadhaar:document.getElementById("coPersonAadhaar"),relationship:document.getElementById("coRelationship"),otherRelationship:document.getElementById("coOtherRelationship")},popup=document.getElementById("coNamePopup"),otherBox=document.getElementById("coOtherRelationshipBox"),apply=document.querySelector("#coNameDetails .apply-now-btn"),close=document.getElementById("coNameClose"),submit=document.getElementById("coNameSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
+const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+F.relationship.onchange=()=>{const other=F.relationship.value==="Other";otherBox.style.display=other?"block":"none";if(!other){F.otherRelationship.value="";clear(F.otherRelationship)}else clear(F.relationship)};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+[F.appMobile,F.personMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(f.value.trim()))clear(f)}));
+[F.appAadhaar,F.personAadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(f.value.trim()))clear(f)}));
+F.relationship.addEventListener("change",()=>{if(F.relationship.value)clear(F.relationship)});
+F.otherRelationship.addEventListener("input",()=>{if(F.otherRelationship.value.trim())clear(F.otherRelationship)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.appMobile,/^[6-9]\d{9}$/.test(F.appMobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.appAadhaar,/^\d{12}$/.test(F.appAadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+check(F.personMobile,/^[6-9]\d{9}$/.test(F.personMobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.personAadhaar,/^\d{12}$/.test(F.personAadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+check(F.relationship,F.relationship.value!=="","Please select a relationship with C/O.");
+if(F.relationship.value==="Other")check(F.otherRelationship,F.otherRelationship.value.trim()!=="","Please specify the relationship.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== C/O NAME UPDATE / CORRECTION : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n       _SERVICE: C/O NAME UPDATE / CORRECTION_\n              _FATHER / HUSBAND / MOTHER NAME_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.appName.value.trim());add("Aadhaar Linked Mobile",F.appMobile.value.trim());add("Aadhaar Number",F.appAadhaar.value.trim());
+msg+="\n```C/O PERSON DETAILS```\n\n";add("C/O Person Full Name",F.personName.value.trim());add("Aadhaar Linked Mobile",F.personMobile.value.trim());add("Aadhaar Number",F.personAadhaar.value.trim());add("Relationship With C/O",F.relationship.value);if(F.relationship.value==="Other")add("Relationship Specify",F.otherRelationship.value.trim());
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")};
+})();
+</script>
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT : END ==================== -->
+
+
+
+
      
