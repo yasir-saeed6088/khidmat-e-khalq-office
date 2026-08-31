@@ -1788,12 +1788,12 @@ if(F.relationship.value==="Other")check(F.otherRelationship,F.otherRelationship.
 if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
 
 /* ==================== C/O NAME UPDATE / CORRECTION : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n       _SERVICE: C/O NAME UPDATE / CORRECTION_\n              _FATHER / HUSBAND / MOTHER NAME_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n      _SERVICE: C/O NAME UPDATE_\n                   _CORRECTION_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
 const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
 add("Full Name",F.appName.value.trim());add("Aadhaar Linked Mobile",F.appMobile.value.trim());add("Aadhaar Number",F.appAadhaar.value.trim());
 msg+="\n```C/O PERSON DETAILS```\n\n";add("C/O Person Full Name",F.personName.value.trim());add("Aadhaar Linked Mobile",F.personMobile.value.trim());add("Aadhaar Number",F.personAadhaar.value.trim());add("Relationship With C/O",F.relationship.value);if(F.relationship.value==="Other")add("Relationship Specify",F.otherRelationship.value.trim());
 msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")};
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");};
 })();
 </script>
 <!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT : END ==================== -->
