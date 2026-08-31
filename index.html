@@ -985,12 +985,7 @@ Total Services : <span>8</span>
 <!-- =========================================================
      ===== C/O NAME UPDATE / CORRECTION : HTML ==============
      ========================================================= -->
-<button type="button" class="service-btn" id="coNameBtn">📋 C/O Name Update / Correction<br>Father / Husband / Mother Name</button>
-<section class="sub-service-list" id="coNameOptions">
-<div class="sub-service-title">C/O Name Update / Correction</div>
-
-<!-- ===================== C/O NAME UPDATE / CORRECTION : HTML ===================== -->
-<button type="button" class="sub-service-btn" id="coNameServiceBtn">📋 C/O Name Update / Correction<br>Father / Husband / Mother Name</button>
+<button type="button" class="service-btn" id="coNameBtn">📋 C/O Name Update / Correction — Father / Husband / Mother Name</button>
 
 <!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
 <section class="service-details" id="coNameDetails">
@@ -1059,7 +1054,6 @@ Total Services : <span>8</span>
 </div>
 </div>
 <!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML : END ==================== -->
-
 
      
 <!-- =========================================================
@@ -1761,18 +1755,12 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ========================================================= -->
 
 <script>
-const coNameBtn=document.getElementById("coNameBtn"),coNameOptions=document.getElementById("coNameOptions");
-coNameBtn.onclick=()=>{const open=coNameOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)coNameOptions.style.display="block"};
-</script>
-
-<!-- ==================== C/O NAME UPDATE / CORRECTION SERVICE : SCRIPT ==================== -->
-
-<script>
-const coNameServiceBtn=document.getElementById("coNameServiceBtn"),coNameDetails=document.getElementById("coNameDetails");
-coNameServiceBtn.onclick=()=>{const open=coNameDetails.style.display==="block";document.querySelectorAll("#coNameOptions .service-details").forEach(x=>x.style.display="none");if(!open)coNameDetails.style.display="block"};
+const coNameBtn=document.getElementById("coNameBtn"),coNameDetails=document.getElementById("coNameDetails");
+coNameBtn.onclick=()=>{const open=coNameDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");if(!open)coNameDetails.style.display="block"};
 </script>
 
 <!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT ==================== -->
+
 <script>
 (()=>{const F={appName:document.getElementById("coApplicantFullName"),appMobile:document.getElementById("coApplicantMobile"),appAadhaar:document.getElementById("coApplicantAadhaar"),personName:document.getElementById("coPersonFullName"),personMobile:document.getElementById("coPersonMobile"),personAadhaar:document.getElementById("coPersonAadhaar"),relationship:document.getElementById("coRelationship"),otherRelationship:document.getElementById("coOtherRelationship")},popup=document.getElementById("coNamePopup"),otherBox=document.getElementById("coOtherRelationshipBox"),apply=document.querySelector("#coNameDetails .apply-now-btn"),close=document.getElementById("coNameClose"),submit=document.getElementById("coNameSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
 const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
@@ -1809,7 +1797,6 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 })();
 </script>
 <!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT : END ==================== -->
-
 
 
 
