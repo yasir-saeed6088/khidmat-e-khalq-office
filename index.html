@@ -223,6 +223,26 @@ Total Services : <span>8</span>
 <!-- =========================================================
      ===== AADHAAR SERVICES BUTTON : END ====================
      ========================================================= -->
+
+
+<!-- =========================================================
+     ===== AADHAAR SERVICES TOGGLE : SCRIPT ================
+     ========================================================= -->
+
+<script>
+const aadhaarBtn=document.getElementById("aadhaarServicesButton");
+const serviceList=document.getElementById("serviceList");
+
+aadhaarBtn.onclick=()=>{
+const open=serviceList.style.display==="block";
+
+serviceList.style.display=open?"none":"block";
+aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
+};
+</script>
+<!-- ===================== AADHAAR SERVICES TOGGLE : SCRIPT : END ===================== -->
+     
+
      
 <!-- =========================================================
      ===== AADHAAR SERVICES LIST : START ====================
@@ -1795,21 +1815,6 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ===== AADHAAR SERVICES LIST : END ======================
      ========================================================= -->
     
-<!-- =========================================================
-     ===== AADHAAR SERVICES TOGGLE : SCRIPT ================
-     ========================================================= -->
-
-<script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton");
-const serviceList=document.getElementById("serviceList");
-
-aadhaarBtn.onclick=()=>{
-const open=serviceList.style.display==="block";
-
-serviceList.style.display=open?"none":"block";
-aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
-};
-</script>
 
 
 
