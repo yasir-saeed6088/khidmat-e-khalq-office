@@ -290,6 +290,60 @@ Total Services : <span>8</span>
      ===== MOBILE NUMBER UPDATE : HTML : END ===============
      ========================================================= --> 
 
+
+
+<!-- =========================================================
+     ===== MOBILE NUMBER UPDATE FORM : SCRIPT ==============
+     ========================================================= -->
+<script>
+const mobileBtn=document.getElementById("mobileUpdateBtn"),mobileDetails=document.getElementById("mobileUpdateDetails");
+mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)mobileDetails.style.display="block"};
+
+const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document.getElementById("mobileUpdatePopup"),mobileClose=document.getElementById("mobileUpdateClose"),mobileSubmit=document.getElementById("mobileUpdateSubmit"),mobileFields={name:document.getElementById("mobileFullName"),mobile:document.getElementById("mobileLinkedNumber"),aadhaar:document.getElementById("mobileAadhaarNumber"),village:document.getElementById("mobileVillage"),state:document.getElementById("mobileState"),file:document.getElementById("mobileAadhaarFile"),upload:document.getElementById("mobileAadhaarUpload")};
+const normalBorder="rgba(7,88,201,.25)",errorColor="#e00000",allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+
+const removeError=f=>{f.style.borderColor=normalBorder;const e=mobilePopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
+const showError=(f,msg,target=f)=>{removeError(f);if(target!==f)removeError(target);target.style.borderColor=errorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const closeMobilePopup=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};
+mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
+mobileClose.onclick=closeMobilePopup;
+mobilePopup.onclick=e=>{if(e.target===mobilePopup)closeMobilePopup()};
+
+// ==================== LIVE ERROR CLEARING : SCRIPT ====================
+mobileFields.mobile.oninput=()=>{mobileFields.mobile.value=mobileFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(mobileFields.mobile.value))removeError(mobileFields.mobile)};
+mobileFields.aadhaar.oninput=()=>{mobileFields.aadhaar.value=mobileFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(mobileFields.aadhaar.value))removeError(mobileFields.aadhaar)};
+
+// ==================== FILE VALIDATION : SCRIPT ====================
+const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);if(!f)return false;if(!allowedFiles.includes(f.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");showError(mobileFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}if(f.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");showError(mobileFields.upload,"Please upload a file of 1 MB or less.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
+mobileFields.file.onchange=()=>{mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);mobileFields.file.style.borderColor=normalBorder;mobileFields.upload.style.borderColor=""};
+mobileFields.upload.onclick=()=>validateMobileFile();
+
+// ===================== FORM VALIDATION =====================
+mobileSubmit.onclick=()=>{mobilePopup.querySelectorAll(".form-error").forEach(x=>x.remove());mobilePopup.querySelectorAll("input").forEach(x=>x.style.borderColor=normalBorder);mobileFields.upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
+const mobile=mobileFields.mobile.value.trim(),aadhaar=mobileFields.aadhaar.value.trim(),file=mobileFields.file.files[0];
+check(mobileFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
+check(mobileFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
+if(file){if(!allowedFiles.includes(file.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=mobileFields.file}else if(file.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");if(!first)first=mobileFields.file}else if(!mobileFields.upload.classList.contains("file-success")){showError(mobileFields.upload,"Please click the Upload button to upload your file.",mobileFields.upload);if(!first)first=mobileFields.upload}}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}                          
+
+// ===================== WHATSAPP MESSAGE =====================
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR MOBILE_\n               _NUMBER UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",mobileFields.name.value.trim());
+add("Aadhaar Linked Mobile",mobile);
+add("Aadhaar Number",aadhaar);
+add("Village / Town",mobileFields.village.value.trim());
+add("State",mobileFields.state.value.trim());
+add("Aadhaar File",file&&mobileFields.upload.classList.contains("file-success")?file.name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+</script>
+<!-- ==================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ==================== -->
+
+
+     
      
 <!-- =========================================================  
      ===== ADDRESS UPDATE : HTML ============================  
@@ -479,7 +533,154 @@ Total Services : <span>8</span>
 <!-- =========================================================  
      ===== ADDRESS UPDATE : HTML :  END ============================  
      ========================================================= -->   
-     
+
+
+<!-- =========================================================
+     ===== ADDRESS UPDATE : SCRIPT ==========================
+     ========================================================= -->
+
+<script>
+(()=>{const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)addressOptions.style.display="block"};})();
+</script>
+
+<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS : SCRIPT ==================== -->
+
+<script>
+(()=>{const selfBtn=document.getElementById("selfDocumentsBtn"),selfDetails=document.getElementById("selfDocumentsDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)selfDetails.style.display="block"};})();
+</script>
+
+<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT ==================== -->
+
+<script>
+(()=>{const F={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},popup=document.getElementById("selfDocumentsPopup"),apply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),close=document.getElementById("selfDocumentsClose"),submit=document.getElementById("selfDocumentsSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
+
+F.other.style.display="none";F.other.previousElementSibling.style.display="none";
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
+
+F.proof.onchange=()=>{const other=F.proof.value==="Other";const group=document.getElementById("selfOtherDocumentGroup");group.style.display=other?"block":"none";
+F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.proof)};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[F.mobile,F.aadhaar,F.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():f===F.aadhaar?valid.aadhaar():valid.pin();if(ok)clear(f)}));
+[F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
+      
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+const upload=document.getElementById("selfAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
+const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
+const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=()=>{const f=F.file.files[0],required=F.file.hasAttribute("required");upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();if(!f){if(required){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}return true}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
+upload.onclick=validateFile;
+      
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.house,valid.text(F.house),"Please enter your House / Building.");
+check(F.road,valid.text(F.road),"Please enter your Road / Street.");
+check(F.area,valid.text(F.area),"Please enter your Area / Locality.");
+check(F.landmark,valid.text(F.landmark),"Please enter your Landmark.");
+check(F.village,valid.text(F.village),"Please enter your Village / Town / City.");
+check(F.postOffice,valid.text(F.postOffice),"Please enter your Post Office.");
+check(F.district,valid.text(F.district),"Please enter your District.");
+check(F.state,valid.text(F.state),"Please enter your State.");
+check(F.pin,valid.pin(),"Please enter a valid 6-digit PIN Code.");
+check(F.proof,valid.proof(),"Please select an Address Proof.");
+if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
+const file=F.file.files[0],
+required=F.file.hasAttribute("required");if(!file){if(required){showFileError(F.file,"Please select a file.");if(!first)first=F.file}}
+else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
+else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
+else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+                    
+/* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR ADDRESS_\n      _UPDATE – SELF DOCUMENTS_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());
+add("Aadhaar Linked Mobile",F.mobile.value.trim());
+add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="```NEW ADDRESS DETAILS```\n\n";
+add("House / Building",F.house.value.trim());
+add("Road / Street",F.road.value.trim());
+add("Area / Locality",F.area.value.trim());
+add("Landmark",F.landmark.value.trim());
+add("Village / Town / City",F.village.value.trim());
+add("Post Office",F.postOffice.value.trim());
+add("District",F.district.value.trim());
+add("State",F.state.value.trim());
+add("PIN Code",F.pin.value.trim());
+msg+="```ADDRESS PROOF```\n\n";
+add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);
+add("Address Proof File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+
+<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT : END ==================== -->
+
+<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT ==================== -->  
+
+<script>
+ (()=>{const B={name:document.getElementById("hofFullName"),mobile:document.getElementById("hofLinkedNumber"),aadhaar:document.getElementById("hofAadhaarNumber"),hofName:document.getElementById("hofName"),hofAadhaar:document.getElementById("hofAadhaar"),hofMobile:document.getElementById("hofMobile"),relationship:document.getElementById("hofRelationship"),other:document.getElementById("hofOtherRelationship")},btn=document.getElementById("hofBasedBtn"),details=document.getElementById("hofBasedDetails"),apply=document.querySelector("#hofBasedDetails .apply-now-btn"),popup=document.getElementById("hofBasedPopup"),close=document.getElementById("hofBasedClose"),submit=document.getElementById("hofBasedSubmit"),otherGroup=document.getElementById("hofOtherRelationshipGroup"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";  
+  
+btn.onclick=()=>{const open=details.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)details.style.display="block"};  
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};  
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};  
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};  
+otherGroup.style.display="none";
+
+const clear=f=>{f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;const e=f.nextElementSibling;if(e?.classList.contains("form-error"))e.remove()};
+const show=(f,msg)=>{clear(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;f.after(e)};  
+const valid={mobile:f=>/^[6-9]\d{9}$/.test(f.value.trim()),aadhaar:f=>/^\d{12}$/.test(f.value.trim()),text:f=>!!f.value.trim(),relationship:()=>!!B.relationship.value};
+       
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[B.mobile,B.aadhaar,B.hofAadhaar,B.hofMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=(f===B.mobile||f===B.hofMobile)?valid.mobile(f):valid.aadhaar(f);if(ok)clear(f)}}));
+B.hofName.addEventListener("input",()=>{if(B.hofName.value.trim())clear(B.hofName)});
+B.relationship.onchange=()=>{const other=B.relationship.value==="Other";otherGroup.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}clear(B.relationship)};
+B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
+      
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(B.mobile,valid.mobile(B.mobile),"Please enter a valid Aadhaar-linked mobile number.");check(B.aadhaar,valid.aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");check(B.hofName,valid.text(B.hofName),"Please enter the HoF Name.");check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Please enter a valid 12-digit HoF Aadhaar number.");check(B.hofMobile,valid.mobile(B.hofMobile),"Please enter a valid Aadhaar-linked HoF mobile number.");check(B.relationship,valid.relationship(),"Please select your relationship with HoF.");if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Please enter the Other Relationship.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+                    
+/* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR ADDRESS_\n            _UPDATE – HOF BASED_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",B.name.value.trim());
+add("Aadhaar Linked Mobile",B.mobile.value.trim());
+add("Aadhaar Number",B.aadhaar.value.trim());
+msg+="```HEAD OF FAMILY DETAILS```\n\n";
+add("HoF Name",B.hofName.value.trim());
+add("HoF Aadhaar Linked Mobile",B.hofMobile.value.trim());
+add("HoF Aadhaar Number",B.hofAadhaar.value.trim());
+add("Relationship with HoF",B.relationship.value==="Other"?B.other.value.trim():B.relationship.value);
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT : END ==================== -->
+
+
      
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : HTML ====================
@@ -529,6 +730,60 @@ Total Services : <span>8</span>
 <!-- =========================================================
      ===== PVC AADHAAR CARD ORDER : HTML :END ====================
      ========================================================= -->
+
+
+<!-- =========================================================
+     ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
+     ========================================================= -->
+
+<script>
+const pvcBtn=document.getElementById("pvcAadhaarBtn");
+const pvcDetails=document.getElementById("pvcAadhaarDetails");
+
+pvcBtn.onclick=()=>{
+const open=pvcDetails.style.display==="block";
+
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+
+if(!open)pvcDetails.style.display="block";
+};
+</script>
+
+<!-- ==================== PVC AADHAAR CARD ORDER FORM : SCRIPT ==================== -->
+<script>
+(()=>{const F={name:document.getElementById("pvcFullName"),mobile:document.getElementById("pvcLinkedNumber"),aadhaar:document.getElementById("pvcAadhaarNumber")},popup=document.getElementById("pvcAadhaarPopup"),apply=document.querySelector("#pvcAadhaarDetails .apply-now-btn"),close=document.getElementById("pvcAadhaarClose"),submit=document.getElementById("pvcAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
+F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
+F.name.addEventListener("input",()=>{if(F.name.value.trim())clear(F.name)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== PVC AADHAAR CARD ORDER : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n    _SERVICE: PVC AADHAAR CARD_\n                          _ORDER_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+ 
+<!-- ==================== PVC AADHAAR CARD ORDER : SCRIPT : END ==================== -->
 
        
 <!-- =========================================================  
@@ -628,7 +883,106 @@ Total Services : <span>8</span>
 </section>  
   
 <!-- ==================== MASKED AADHAAR DOWNLOAD FORM : HTML : END ==================== -->  
-  
+
+
+
+<!-- =========================================================
+     ===== AADHAAR DOWNLOAD : SCRIPT =========================
+     ========================================================= -->
+
+<script>
+const downloadBtn=document.getElementById("downloadBtn");
+const downloadOptions=document.getElementById("downloadOptions");
+downloadBtn.onclick=()=>{
+const open=downloadOptions.style.display==="block";
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+if(!open)downloadOptions.style.display="block";};
+</script>
+
+<!-- ==================== E-AADHAAR DOWNLOAD : SCRIPT ==================== -->
+
+<script>
+const eAadhaarBtn=document.getElementById("eAadhaarBtn");
+const eAadhaarDetails=document.getElementById("eAadhaarDetails");
+eAadhaarBtn.onclick=()=>{
+const open=eAadhaarDetails.style.display==="block";
+document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
+if(!open)eAadhaarDetails.style.display="block";};
+</script>
+
+<!-- ==================== E-AADHAAR DOWNLOAD FORM : SCRIPT ==================== -->
+<script>
+(()=>{const F={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber")},popup=document.getElementById("eAadhaarPopup"),apply=document.querySelector("#eAadhaarDetails .apply-now-btn"),close=document.getElementById("eAadhaarClose"),submit=document.getElementById("eAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
+const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
+F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== E-AADHAAR DOWNLOAD : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n            _SERVICE: E-AADHAAR_\n                     _DOWNLOAD_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");};
+})();
+</script>
+<!-- ==================== E-AADHAAR DOWNLOAD FORM : SCRIPT : END ==================== -->
+
+<!-- ==================== MASKED AADHAAR DOWNLOAD : SCRIPT ==================== -->
+
+<script>
+const maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn");
+const maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");
+maskedAadhaarBtn.onclick=()=>{
+const open=maskedAadhaarDetails.style.display==="block";
+document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
+if(!open)maskedAadhaarDetails.style.display="block";};
+</script>
+
+<!-- ==================== MASKED AADHAAR DOWNLOAD FORM : SCRIPT ==================== -->
+<script>
+(()=>{const F={name:document.getElementById("maskedAadhaarFullName"),mobile:document.getElementById("maskedAadhaarLinkedNumber"),aadhaar:document.getElementById("maskedAadhaarNumber")},popup=document.getElementById("maskedAadhaarPopup"),apply=document.querySelector("#maskedAadhaarDetails .apply-now-btn"),close=document.getElementById("maskedAadhaarClose"),submit=document.getElementById("maskedAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
+const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
+F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
+
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== MASKED AADHAAR DOWNLOAD : WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: MASKED AADHAAR_\n                     _DOWNLOAD_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");};
+})();
+</script>
+<!-- ==================== MASKED AADHAAR DOWNLOAD FORM : SCRIPT : END ==================== -->  
+<!-- ==================== AADHAAR DOWNLOAD : SCRIPT : END ==================== -->
+     
 
  <!-- =========================================================
      ===== AADHAAR DOCUMENT UPDATE : HTML ==================
@@ -730,7 +1084,90 @@ Total Services : <span>8</span>
 
 <!-- ==================== AADHAAR DOCUMENT UPDATE FORM : HTML : END ==================== -->
 <!-- ==================== AADHAAR DOCUMENT UPDATE : HTML : END ==================== -->
-  
+
+
+     
+ <!-- =========================================================
+     ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
+     ========================================================= -->
+
+<script>
+(()=>{const documentBtn=document.getElementById("documentUpdateBtn"),documentDetails=document.getElementById("documentUpdateDetails");documentBtn.onclick=()=>{const open=documentDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentDetails.style.display="block"};})();
+</script>
+
+<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT ==================== -->
+
+<script>
+(()=>{const F={name:document.getElementById("documentFullName"),mobile:document.getElementById("documentLinkedNumber"),aadhaar:document.getElementById("documentAadhaarNumber"),identityProof:document.getElementById("documentIdentityProof"),otherIdentity:document.getElementById("documentOtherIdentity"),identityFile:document.getElementById("documentIdentityFile"),addressProof:document.getElementById("documentAddressProof"),otherAddress:document.getElementById("documentOtherAddress"),addressFile:document.getElementById("documentAddressFile")},popup=document.getElementById("documentUpdatePopup"),apply=document.querySelector("#documentUpdateDetails .apply-now-btn"),close=document.getElementById("documentUpdateClose"),submit=document.getElementById("documentUpdateSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),proof:f=>!!f.value,file:f=>{const f1=f.files[0];return!!f1&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f1.type)&&f1.size<=1048576}};
+
+F.otherIdentity.style.display="none";F.otherAddress.style.display="none";F.otherIdentity.previousElementSibling.style.display="none";F.otherAddress.previousElementSibling.style.display="none";
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
+
+F.identityProof.onchange=()=>{const other=F.identityProof.value==="Other",group=document.getElementById("documentOtherIdentityGroup");group.style.display=other?"block":"none";F.otherIdentity.style.display=other?"block":"none";F.otherIdentity.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherIdentity.value="";clear(F.otherIdentity)}clear(F.identityProof)};
+F.addressProof.onchange=()=>{const other=F.addressProof.value==="Other",group=document.getElementById("documentOtherAddressGroup");group.style.display=other?"block":"none";F.otherAddress.style.display=other?"block":"none";F.otherAddress.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherAddress.value="";clear(F.otherAddress)}clear(F.addressProof)};
+
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+
+[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
+[F.otherIdentity,F.otherAddress].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+[F.identityProof,F.addressProof].forEach(f=>f.addEventListener("change",()=>{if(valid.proof(f))clear(f)}));
+
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+const identityUpload=document.getElementById("documentIdentityUpload"),addressUpload=document.getElementById("documentAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const clearFileError=f=>{const e=popup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove();f.style.borderColor=normal};
+const clearUploadError=u=>{const e=popup.querySelector(".form-error[data-field='"+u.id+"']");if(e)e.remove();u.style.borderColor=""};
+const showFileError=(target,msg)=>{const clear=target.type==="file"?()=>clearFileError(target):()=>clearUploadError(target);clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=(fileInput,upload)=>{const f=fileInput.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError(upload);if(!f){showFileError(fileInput,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(fileInput,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(fileInput,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError(fileInput);clearUploadError(upload);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.identityFile.onchange=()=>{identityUpload.classList.remove("file-success","file-error");identityUpload.textContent="Upload";clearFileError(F.identityFile);clearUploadError(identityUpload);F.identityFile.style.borderColor=normal;identityUpload.style.borderColor=""};
+F.addressFile.onchange=()=>{addressUpload.classList.remove("file-success","file-error");addressUpload.textContent="Upload";clearFileError(F.addressFile);clearUploadError(addressUpload);F.addressFile.style.borderColor=normal;addressUpload.style.borderColor=""};
+identityUpload.onclick=()=>validateFile(F.identityFile,identityUpload);
+addressUpload.onclick=()=>validateFile(F.addressFile,addressUpload);  
+      
+/* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);identityUpload.style.borderColor="";addressUpload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.identityProof,valid.proof(F.identityProof),"Please select an Identity Proof.");
+if(F.identityProof.value==="Other")check(F.otherIdentity,valid.text(F.otherIdentity),"Please enter the Other Identity Document Name.");
+check(F.addressProof,valid.proof(F.addressProof),"Please select an Address Proof.");
+if(F.addressProof.value==="Other")check(F.otherAddress,valid.text(F.otherAddress),"Please enter the Other Address Document Name.");
+const identityFile=F.identityFile.files[0],addressFile=F.addressFile.files[0];
+if(!identityFile){showFileError(F.identityFile,"Please select a file.");if(!first)first=F.identityFile}else if(!allowedFiles.includes(identityFile.type)){showFileError(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.identityFile}else if(identityFile.size>1048576){showFileError(F.identityFile,"Please upload a file of 1 MB or less.");if(!first)first=F.identityFile}else if(!identityUpload.classList.contains("file-success")){showFileError(identityUpload,"Please click the Upload button to upload your file.");if(!first)first=identityUpload}
+if(!addressFile){showFileError(F.addressFile,"Please select a file.");if(!first)first=F.addressFile}else if(!allowedFiles.includes(addressFile.type)){showFileError(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.addressFile}else if(addressFile.size>1048576){showFileError(F.addressFile,"Please upload a file of 1 MB or less.");if(!first)first=F.addressFile}else if(!addressUpload.classList.contains("file-success")){showFileError(addressUpload,"Please click the Upload button to upload your file.");if(!first)first=addressUpload}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+                    
+/* ==================== AADHAAR DOCUMENT UPDATE : WHATSAPP MESSAGE ==================== */
+
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR DOCUMENT_\n                         _UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());
+add("Aadhaar Linked Mobile",F.mobile.value.trim());
+add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="```PROOF OF IDENTITY (POI)```\n\n";
+add("Identity Proof",F.identityProof.value==="Other"?F.otherIdentity.value.trim():F.identityProof.value);
+add("Identity Proof File",F.identityFile.files[0]&&identityUpload.classList.contains("file-success")?F.identityFile.files[0].name:"");
+msg+="```PROOF OF ADDRESS (POA)```\n\n";
+add("Address Proof",F.addressProof.value==="Other"?F.otherAddress.value.trim():F.addressProof.value);
+add("Address Proof File",F.addressFile.files[0]&&addressUpload.classList.contains("file-success")?F.addressFile.files[0].name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+
+<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT : END ==================== -->
+<!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
+     
 
 <!-- =========================================================
      ===== AADHAAR STATUS CHECK : HTML ======================
@@ -804,6 +1241,80 @@ Total Services : <span>8</span>
 </div>
 <!-- ==================== AADHAAR STATUS CHECK : HTML : END ==================== -->
 
+
+<!-- =========================================================
+     ===== AADHAAR STATUS CHECK : SCRIPT ====================
+     ========================================================= -->
+
+<script>
+(()=>{const statusCheckBtn=document.getElementById("statusCheckBtn"),statusCheckDetails=document.getElementById("statusCheckDetails");statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)statusCheckDetails.style.display="block"};})();
+</script>
+
+<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT ==================== -->
+
+<script>
+(()=>{const F={name:document.getElementById("statusFullName"),mobile:document.getElementById("statusLinkedNumber"),aadhaar:document.getElementById("statusAadhaarNumber"),reference:document.getElementById("statusReference"),type:document.getElementById("statusType"),other:document.getElementById("statusOtherType"),file:document.getElementById("statusAcknowledgementFile")},popup=document.getElementById("statusCheckPopup"),apply=document.querySelector("#statusCheckDetails .apply-now-btn"),close=document.getElementById("statusCheckClose"),submit=document.getElementById("statusCheckSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+
+const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
+const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),reference:()=>!!F.reference.value.trim(),type:()=>!!F.type.value,other:()=>!!F.other.value.trim(),file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
+      
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+ /* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
+F.type.onchange=()=>{const other=F.type.value==="Other",group=document.getElementById("statusOtherTypeGroup");group.style.display=other?"block":"none";
+F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.type)};
+      
+/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
+[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
+[F.reference,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+F.type.addEventListener("change",()=>{if(valid.type())clear(F.type)});
+      
+/* ==================== FILE VALIDATION : SCRIPT ==================== */
+const upload=document.getElementById("statusAcknowledgementUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
+const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
+const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
+const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
+const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError();if(!f){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
+F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
+upload.onclick=validateFile;
+      
+ /* ==================== FORM VALIDATION : SCRIPT ==================== */
+submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
+check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
+check(F.reference,valid.reference(),"Please enter your SRN / URN / EID.");
+check(F.type,valid.type(),"Please select a Status Type.");
+if(F.type.value==="Other")check(F.other,valid.other(),"Please enter the Other Status Type.");
+const file=F.file.files[0];
+if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
+else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
+else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
+else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+                    
+/* ==================== AADHAAR STATUS CHECK : WHATSAPP MESSAGE ==================== */
+
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR STATUS_\n                         _CHECK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
+add("Full Name",F.name.value.trim());
+add("Aadhaar Linked Mobile",F.mobile.value.trim());
+add("Aadhaar Number",F.aadhaar.value.trim());
+msg+="```STATUS DETAILS```\n\n";
+add("SRN / URN / EID",F.reference.value.trim());
+add("Status Type",F.type.value==="Other"?F.other.value.trim():F.type.value);
+add("Acknowledgement Receipt File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
+msg+="__________________________________\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+})();
+</script>
+
+<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT : END ==================== -->
+     
+     
      
 <!-- =========================================================
      ===== BIOMETRIC SERVICES : HTML =========================
@@ -922,664 +1433,7 @@ Total Services : <span>8</span>
      ===== BIOMETRIC SERVICES : HTML : END ==================
      ========================================================= -->
 
-     
-<!-- =========================================================
-     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML ====
-     ========================================================= -->
-<button type="button" class="service-btn" id="eAadhaarSignatureBtn">🪪 e-Aadhaar Digital Signature Validation</button>
 
-<section class="service-details" id="eAadhaarSignatureDetails">
-<div class="service-details-title">e-Aadhaar Digital Signature Validation</div>
-
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>e-Aadhaar Digital Signature Validation</td></tr>
-<tr><td>Service Charge</td><td>₹50</td></tr>
-<tr><td>Processing Time</td><td>Up to 15 Minutes</td></tr>
-</table>
-
-<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
-</section>
-
-<!-- ===================== E-AADHAAR DIGITAL SIGNATURE VALIDATION FORM : HTML ===================== -->
-<div class="popup-overlay" id="eAadhaarSignaturePopup">
-<div class="service-form-popup">
-<div class="service-details-title">e-Aadhaar Digital Signature Validation Form</div>
-<div class="form-content">
-
-<!-- ===================== APPLICANT DETAILS ===================== -->
-<div class="form-section-title">Applicant Details</div>
-
-<label for="signatureFullName">Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="signatureFullName" placeholder="Enter Full Name" autocomplete="name">
-     
-<label for="signatureLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="signatureLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel">
-     
-<label for="signatureAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="signatureAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
-
-<!-- ===================== E-AADHAAR FILE ===================== -->
-
-<label for="signatureAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
-<input type="file" id="signatureAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
-<button type="button" class="file-upload-btn" id="signatureAadhaarUpload">Upload</button>
-<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
-
-<!-- ===================== FORM BUTTONS ===================== -->
-<div class="form-buttons">
-<button type="button" class="form-submit-btn" id="eAadhaarSignatureSubmit">Submit</button>
-<button type="button" class="form-close-btn" id="eAadhaarSignatureClose">Close</button>
-</div>
-
-</div>
-</div>
-</div>
-
-<!-- =========================================================
-     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML END
-     ========================================================= -->
-
-
-
-<!-- =========================================================
-     ===== C/O NAME UPDATE / CORRECTION : HTML ==============
-     ========================================================= -->
-<button type="button" class="service-btn" id="coNameBtn">📋 C/O Name Update / Correction — Father / Husband / Mother Name</button>
-
-<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
-<section class="service-details" id="coNameDetails">
-<div class="service-details-title">C/O Name Update / Correction<br>Father / Husband / Mother Name</div>
-<table class="details-table">
-<tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>C/O Name Update / Correction</td></tr>
-<tr><td>Service Charge</td><td>₹100</td></tr>
-<tr><td>Processing Time</td><td>Usually 5–10 Minutes; Up to 30 Days</td></tr>
-</table>
-<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
-</section>
-
-<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML ==================== -->
-<div class="popup-overlay" id="coNamePopup" role="dialog" aria-modal="true" aria-labelledby="coNameFormTitle">
-<div class="service-form-popup">
-<div class="service-details-title" id="coNameFormTitle">C/O Name Update / Correction Form</div>
-<div class="form-content">
-
-<!-- ===================== APPLICANT DETAILS ===================== -->
-<div class="form-section-title">Applicant Details</div>
-
-<label for="coApplicantFullName">Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="coApplicantFullName" placeholder="Enter Full Name" autocomplete="name">
-
-<label for="coApplicantMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="coApplicantMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
-
-<label for="coApplicantAadhaar">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="coApplicantAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
-
-<!-- ===================== C/O PERSON DETAILS ===================== -->
-<div class="form-section-title">C/O Person Details</div>
-
-<label for="coPersonFullName">C/O Person Full Name <span class="optional-text">(Optional)</span></label>
-<input type="text" id="coPersonFullName" placeholder="Enter C/O Person Full Name" autocomplete="name">
-
-<label for="coPersonMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
-<input type="tel" id="coPersonMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
-
-<label for="coPersonAadhaar">Aadhaar Number <span class="required-star">*</span></label>
-<input type="tel" id="coPersonAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
-
-<!-- ===================== RELATIONSHIP WITH C/O ===================== -->
-<label for="coRelationship">Relationship With C/O <span class="required-star">*</span></label>
-<select id="coRelationship" required>
-<option value="">-- Select Relationship --</option>
-<option value="Father">Father</option>
-<option value="Mother">Mother</option>
-<option value="Husband">Husband</option>
-<option value="Other">Other</option>
-</select>
-
-<div id="coOtherRelationshipBox" style="display:none;">
-<label for="coOtherRelationship">Relationship Specify <span class="required-star">*</span></label>
-<input type="text" id="coOtherRelationship" placeholder="Enter Relationship">
-</div>
-
-<!-- ===================== FORM BUTTONS ===================== -->
-<div class="form-buttons">
-<button type="button" class="form-submit-btn" id="coNameSubmit">Submit</button>
-<button type="button" class="form-close-btn" id="coNameClose">Close</button>
-</div>
-
-</div>
-</div>
-</div>
-<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML : END ==================== -->
-
-     
-<!-- =========================================================
-     ===== AADHAAR SERVICES LIST : END ======================
-     ========================================================= -->
-    
-<!-- =========================================================
-     ===== AADHAAR SERVICES TOGGLE : SCRIPT ================
-     ========================================================= -->
-
-<script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton");
-const serviceList=document.getElementById("serviceList");
-
-aadhaarBtn.onclick=()=>{
-const open=serviceList.style.display==="block";
-
-serviceList.style.display=open?"none":"block";
-aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
-};
-</script>
-
-<!-- =========================================================
-     ===== MOBILE NUMBER UPDATE FORM : SCRIPT ==============
-     ========================================================= -->
-<script>
-const mobileBtn=document.getElementById("mobileUpdateBtn"),mobileDetails=document.getElementById("mobileUpdateDetails");
-mobileBtn.onclick=()=>{const open=mobileDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)mobileDetails.style.display="block"};
-
-const mobileApply=document.querySelector("#mobileUpdateDetails .apply-now-btn"),mobilePopup=document.getElementById("mobileUpdatePopup"),mobileClose=document.getElementById("mobileUpdateClose"),mobileSubmit=document.getElementById("mobileUpdateSubmit"),mobileFields={name:document.getElementById("mobileFullName"),mobile:document.getElementById("mobileLinkedNumber"),aadhaar:document.getElementById("mobileAadhaarNumber"),village:document.getElementById("mobileVillage"),state:document.getElementById("mobileState"),file:document.getElementById("mobileAadhaarFile"),upload:document.getElementById("mobileAadhaarUpload")};
-const normalBorder="rgba(7,88,201,.25)",errorColor="#e00000",allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-
-const removeError=f=>{f.style.borderColor=normalBorder;const e=mobilePopup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove()};
-const showError=(f,msg,target=f)=>{removeError(f);if(target!==f)removeError(target);target.style.borderColor=errorColor;const e=document.createElement("div");e.className="form-error";e.dataset.field=f.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
-const closeMobilePopup=()=>{mobilePopup.style.display="none";document.body.style.overflow=""};
-mobileApply.onclick=()=>{mobilePopup.style.display="flex";document.body.style.overflow="hidden"};
-mobileClose.onclick=closeMobilePopup;
-mobilePopup.onclick=e=>{if(e.target===mobilePopup)closeMobilePopup()};
-
-// ==================== LIVE ERROR CLEARING : SCRIPT ====================
-mobileFields.mobile.oninput=()=>{mobileFields.mobile.value=mobileFields.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(mobileFields.mobile.value))removeError(mobileFields.mobile)};
-mobileFields.aadhaar.oninput=()=>{mobileFields.aadhaar.value=mobileFields.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(mobileFields.aadhaar.value))removeError(mobileFields.aadhaar)};
-
-// ==================== FILE VALIDATION : SCRIPT ====================
-const validateMobileFile=()=>{const f=mobileFields.file.files[0];mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);if(!f)return false;if(!allowedFiles.includes(f.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");showError(mobileFields.upload,"Please upload a JPG, JPEG, PNG or PDF file.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}if(f.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");showError(mobileFields.upload,"Please upload a file of 1 MB or less.",mobileFields.upload);mobileFields.upload.classList.add("file-error");mobileFields.upload.textContent="Try Again";return false}mobileFields.upload.classList.add("file-success");mobileFields.upload.textContent="✓ Uploaded";return true};
-mobileFields.file.onchange=()=>{mobileFields.upload.classList.remove("file-success","file-error");mobileFields.upload.textContent="Upload";removeError(mobileFields.file);removeError(mobileFields.upload);mobileFields.file.style.borderColor=normalBorder;mobileFields.upload.style.borderColor=""};
-mobileFields.upload.onclick=()=>validateMobileFile();
-
-// ===================== FORM VALIDATION =====================
-mobileSubmit.onclick=()=>{mobilePopup.querySelectorAll(".form-error").forEach(x=>x.remove());mobilePopup.querySelectorAll("input").forEach(x=>x.style.borderColor=normalBorder);mobileFields.upload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){showError(f,msg);if(!first)first=f}};
-const mobile=mobileFields.mobile.value.trim(),aadhaar=mobileFields.aadhaar.value.trim(),file=mobileFields.file.files[0];
-check(mobileFields.mobile,/^[6-9]\d{9}$/.test(mobile),"Enter a valid 10-digit mobile number.");
-check(mobileFields.aadhaar,/^\d{12}$/.test(aadhaar),"Enter a valid 12-digit Aadhaar Number.");
-if(file){if(!allowedFiles.includes(file.type)){showError(mobileFields.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=mobileFields.file}else if(file.size>1048576){showError(mobileFields.file,"Please upload a file of 1 MB or less.");if(!first)first=mobileFields.file}else if(!mobileFields.upload.classList.contains("file-success")){showError(mobileFields.upload,"Please click the Upload button to upload your file.",mobileFields.upload);if(!first)first=mobileFields.upload}}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}                          
-
-// ===================== WHATSAPP MESSAGE =====================
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR MOBILE_\n               _NUMBER UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",mobileFields.name.value.trim());
-add("Aadhaar Linked Mobile",mobile);
-add("Aadhaar Number",aadhaar);
-add("Village / Town",mobileFields.village.value.trim());
-add("State",mobileFields.state.value.trim());
-add("Aadhaar File",file&&mobileFields.upload.classList.contains("file-success")?file.name:"");
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-</script>
-<!-- ==================== MOBILE NUMBER UPDATE FORM : SCRIPT : END ==================== -->
-
-
-<!-- =========================================================
-     ===== ADDRESS UPDATE : SCRIPT ==========================
-     ========================================================= -->
-
-<script>
-(()=>{const addressBtn=document.getElementById("addressUpdateBtn"),addressOptions=document.getElementById("addressOptions");addressBtn.onclick=()=>{const open=addressOptions.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)addressOptions.style.display="block"};})();
-</script>
-
-<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS : SCRIPT ==================== -->
-
-<script>
-(()=>{const selfBtn=document.getElementById("selfDocumentsBtn"),selfDetails=document.getElementById("selfDocumentsDetails");selfBtn.onclick=()=>{const open=selfDetails.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)selfDetails.style.display="block"};})();
-</script>
-
-<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT ==================== -->
-
-<script>
-(()=>{const F={name:document.getElementById("selfFullName"),mobile:document.getElementById("selfLinkedNumber"),aadhaar:document.getElementById("selfAadhaarNumber"),house:document.getElementById("selfHouse"),road:document.getElementById("selfRoad"),area:document.getElementById("selfArea"),landmark:document.getElementById("selfLandmark"),village:document.getElementById("selfVillage"),postOffice:document.getElementById("selfPostOffice"),district:document.getElementById("selfDistrict"),state:document.getElementById("selfState"),pin:document.getElementById("selfPinCode"),proof:document.getElementById("selfAddressProof"),other:document.getElementById("selfOtherDocument"),file:document.getElementById("selfAddressFile")},popup=document.getElementById("selfDocumentsPopup"),apply=document.querySelector("#selfDocumentsDetails .apply-now-btn"),close=document.getElementById("selfDocumentsClose"),submit=document.getElementById("selfDocumentsSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
-
-const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),pin:()=>/^\d{6}$/.test(F.pin.value.trim()),text:f=>!!f.value.trim(),proof:()=>!!F.proof.value,file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
-
-F.other.style.display="none";F.other.previousElementSibling.style.display="none";
-
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
-/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
-
-F.proof.onchange=()=>{const other=F.proof.value==="Other";const group=document.getElementById("selfOtherDocumentGroup");group.style.display=other?"block":"none";
-F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.proof)};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-
-[F.mobile,F.aadhaar,F.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():f===F.aadhaar?valid.aadhaar():valid.pin();if(ok)clear(f)}));
-[F.house,F.road,F.area,F.landmark,F.village,F.postOffice,F.district,F.state,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
-F.proof.addEventListener("change",()=>{if(valid.proof())clear(F.proof)});
-      
-/* ==================== FILE VALIDATION : SCRIPT ==================== */
-const upload=document.getElementById("selfAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
-const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
-const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
-const validateFile=()=>{const f=F.file.files[0],required=F.file.hasAttribute("required");upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();if(!f){if(required){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}return true}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
-upload.onclick=validateFile;
-      
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
-check(F.house,valid.text(F.house),"Please enter your House / Building.");
-check(F.road,valid.text(F.road),"Please enter your Road / Street.");
-check(F.area,valid.text(F.area),"Please enter your Area / Locality.");
-check(F.landmark,valid.text(F.landmark),"Please enter your Landmark.");
-check(F.village,valid.text(F.village),"Please enter your Village / Town / City.");
-check(F.postOffice,valid.text(F.postOffice),"Please enter your Post Office.");
-check(F.district,valid.text(F.district),"Please enter your District.");
-check(F.state,valid.text(F.state),"Please enter your State.");
-check(F.pin,valid.pin(),"Please enter a valid 6-digit PIN Code.");
-check(F.proof,valid.proof(),"Please select an Address Proof.");
-if(F.proof.value==="Other")check(F.other,valid.text(F.other),"Please enter the Other Document Name.");
-const file=F.file.files[0],
-required=F.file.hasAttribute("required");if(!file){if(required){showFileError(F.file,"Please select a file.");if(!first)first=F.file}}
-else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
-else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
-else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-                    
-/* ==================== ADDRESS UPDATE SELF DOCUMENTS : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR ADDRESS_\n      _UPDATE – SELF DOCUMENTS_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());
-add("Aadhaar Linked Mobile",F.mobile.value.trim());
-add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="```NEW ADDRESS DETAILS```\n\n";
-add("House / Building",F.house.value.trim());
-add("Road / Street",F.road.value.trim());
-add("Area / Locality",F.area.value.trim());
-add("Landmark",F.landmark.value.trim());
-add("Village / Town / City",F.village.value.trim());
-add("Post Office",F.postOffice.value.trim());
-add("District",F.district.value.trim());
-add("State",F.state.value.trim());
-add("PIN Code",F.pin.value.trim());
-msg+="```ADDRESS PROOF```\n\n";
-add("Address Proof",F.proof.value==="Other"?F.other.value.trim():F.proof.value);
-add("Address Proof File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
-</script>
-
-<!-- ==================== ADDRESS UPDATE SELF DOCUMENTS FORM : SCRIPT : END ==================== -->
-
-<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT ==================== -->  
-  
-<script>
- (()=>{const B={name:document.getElementById("hofFullName"),mobile:document.getElementById("hofLinkedNumber"),aadhaar:document.getElementById("hofAadhaarNumber"),hofName:document.getElementById("hofName"),hofAadhaar:document.getElementById("hofAadhaar"),hofMobile:document.getElementById("hofMobile"),relationship:document.getElementById("hofRelationship"),other:document.getElementById("hofOtherRelationship")},btn=document.getElementById("hofBasedBtn"),details=document.getElementById("hofBasedDetails"),apply=document.querySelector("#hofBasedDetails .apply-now-btn"),popup=document.getElementById("hofBasedPopup"),close=document.getElementById("hofBasedClose"),submit=document.getElementById("hofBasedSubmit"),otherGroup=document.getElementById("hofOtherRelationshipGroup"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";  
-  
-btn.onclick=()=>{const open=details.style.display==="block";document.querySelectorAll("#addressOptions .service-details").forEach(x=>x.style.display="none");if(!open)details.style.display="block"};  
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};  
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};  
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};  
-otherGroup.style.display="none";
-
-const clear=f=>{f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;const e=f.nextElementSibling;if(e?.classList.contains("form-error"))e.remove()};
-const show=(f,msg)=>{clear(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;f.after(e)};  
-const valid={mobile:f=>/^[6-9]\d{9}$/.test(f.value.trim()),aadhaar:f=>/^\d{12}$/.test(f.value.trim()),text:f=>!!f.value.trim(),relationship:()=>!!B.relationship.value};
-       
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-
-[B.mobile,B.aadhaar,B.hofAadhaar,B.hofMobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if(f.style.borderColor==="rgb(224, 0, 0)"){const ok=(f===B.mobile||f===B.hofMobile)?valid.mobile(f):valid.aadhaar(f);if(ok)clear(f)}}));
-B.hofName.addEventListener("input",()=>{if(B.hofName.value.trim())clear(B.hofName)});
-B.relationship.onchange=()=>{const other=B.relationship.value==="Other";otherGroup.style.display=other?"block":"none";if(!other){B.other.value="";clear(B.other)}clear(B.relationship)};
-B.other.addEventListener("input",()=>{if(B.other.value.trim())clear(B.other)});
-      
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(B.mobile,valid.mobile(B.mobile),"Please enter a valid Aadhaar-linked mobile number.");check(B.aadhaar,valid.aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");check(B.hofName,valid.text(B.hofName),"Please enter the HoF Name.");check(B.hofAadhaar,valid.aadhaar(B.hofAadhaar),"Please enter a valid 12-digit HoF Aadhaar number.");check(B.hofMobile,valid.mobile(B.hofMobile),"Please enter a valid Aadhaar-linked HoF mobile number.");check(B.relationship,valid.relationship(),"Please select your relationship with HoF.");if(B.relationship.value==="Other")check(B.other,valid.text(B.other),"Please enter the Other Relationship.");
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-                    
-/* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR ADDRESS_\n            _UPDATE – HOF BASED_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",B.name.value.trim());
-add("Aadhaar Linked Mobile",B.mobile.value.trim());
-add("Aadhaar Number",B.aadhaar.value.trim());
-msg+="```HEAD OF FAMILY DETAILS```\n\n";
-add("HoF Name",B.hofName.value.trim());
-add("HoF Aadhaar Linked Mobile",B.hofMobile.value.trim());
-add("HoF Aadhaar Number",B.hofAadhaar.value.trim());
-add("Relationship with HoF",B.relationship.value==="Other"?B.other.value.trim():B.relationship.value);
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
-</script>
-<!-- ==================== ADDRESS UPDATE HEAD OF FAMILY : SCRIPT : END ==================== -->
-
- 
-<!-- =========================================================
-     ===== PVC AADHAAR CARD ORDER : SCRIPT ==================
-     ========================================================= -->
-
-<script>
-const pvcBtn=document.getElementById("pvcAadhaarBtn");
-const pvcDetails=document.getElementById("pvcAadhaarDetails");
-
-pvcBtn.onclick=()=>{
-const open=pvcDetails.style.display==="block";
-
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-
-if(!open)pvcDetails.style.display="block";
-};
-</script>
-
-<!-- ==================== PVC AADHAAR CARD ORDER FORM : SCRIPT ==================== -->
-<script>
-(()=>{const F={name:document.getElementById("pvcFullName"),mobile:document.getElementById("pvcLinkedNumber"),aadhaar:document.getElementById("pvcAadhaarNumber")},popup=document.getElementById("pvcAadhaarPopup"),apply=document.querySelector("#pvcAadhaarDetails .apply-now-btn"),close=document.getElementById("pvcAadhaarClose"),submit=document.getElementById("pvcAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
-
-const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
-F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
-F.name.addEventListener("input",()=>{if(F.name.value.trim())clear(F.name)});
-
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
-/* ==================== PVC AADHAAR CARD ORDER : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n    _SERVICE: PVC AADHAAR CARD_\n                          _ORDER_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
-</script>
- 
-<!-- ==================== PVC AADHAAR CARD ORDER : SCRIPT : END ==================== -->
-     
-
-<!-- =========================================================
-     ===== AADHAAR DOWNLOAD : SCRIPT =========================
-     ========================================================= -->
-
-<script>
-const downloadBtn=document.getElementById("downloadBtn");
-const downloadOptions=document.getElementById("downloadOptions");
-downloadBtn.onclick=()=>{
-const open=downloadOptions.style.display==="block";
-document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
-if(!open)downloadOptions.style.display="block";};
-</script>
-
-<!-- ==================== E-AADHAAR DOWNLOAD : SCRIPT ==================== -->
-
-<script>
-const eAadhaarBtn=document.getElementById("eAadhaarBtn");
-const eAadhaarDetails=document.getElementById("eAadhaarDetails");
-eAadhaarBtn.onclick=()=>{
-const open=eAadhaarDetails.style.display==="block";
-document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
-if(!open)eAadhaarDetails.style.display="block";};
-</script>
-
-<!-- ==================== E-AADHAAR DOWNLOAD FORM : SCRIPT ==================== -->
-<script>
-(()=>{const F={name:document.getElementById("eAadhaarFullName"),mobile:document.getElementById("eAadhaarLinkedNumber"),aadhaar:document.getElementById("eAadhaarNumber")},popup=document.getElementById("eAadhaarPopup"),apply=document.querySelector("#eAadhaarDetails .apply-now-btn"),close=document.getElementById("eAadhaarClose"),submit=document.getElementById("eAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
-const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
-F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
-
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
-/* ==================== E-AADHAAR DOWNLOAD : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n            _SERVICE: E-AADHAAR_\n                     _DOWNLOAD_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");};
-})();
-</script>
-<!-- ==================== E-AADHAAR DOWNLOAD FORM : SCRIPT : END ==================== -->
-
-<!-- ==================== MASKED AADHAAR DOWNLOAD : SCRIPT ==================== -->
-
-<script>
-const maskedAadhaarBtn=document.getElementById("maskedAadhaarBtn");
-const maskedAadhaarDetails=document.getElementById("maskedAadhaarDetails");
-maskedAadhaarBtn.onclick=()=>{
-const open=maskedAadhaarDetails.style.display==="block";
-document.querySelectorAll("#downloadOptions .service-details").forEach(x=>x.style.display="none");
-if(!open)maskedAadhaarDetails.style.display="block";};
-</script>
-
-<!-- ==================== MASKED AADHAAR DOWNLOAD FORM : SCRIPT ==================== -->
-<script>
-(()=>{const F={name:document.getElementById("maskedAadhaarFullName"),mobile:document.getElementById("maskedAadhaarLinkedNumber"),aadhaar:document.getElementById("maskedAadhaarNumber")},popup=document.getElementById("maskedAadhaarPopup"),apply=document.querySelector("#maskedAadhaarDetails .apply-now-btn"),close=document.getElementById("maskedAadhaarClose"),submit=document.getElementById("maskedAadhaarSubmit"),normal="rgba(7,88,201,.25)",error="#e00000";
-const clear=field=>{field.style.borderColor=normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-F.mobile.addEventListener("input",()=>{F.mobile.value=F.mobile.value.replace(/\D/g,"").slice(0,10);if(/^[6-9]\d{9}$/.test(F.mobile.value.trim()))clear(F.mobile)});
-F.aadhaar.addEventListener("input",()=>{F.aadhaar.value=F.aadhaar.value.replace(/\D/g,"").slice(0,12);if(/^\d{12}$/.test(F.aadhaar.value.trim()))clear(F.aadhaar)});
-
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input").forEach(x=>x.style.borderColor=normal);let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,/^[6-9]\d{9}$/.test(F.mobile.value.trim()),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,/^\d{12}$/.test(F.aadhaar.value.trim()),"Please enter a valid 12-digit Aadhaar number.");
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-
-/* ==================== MASKED AADHAAR DOWNLOAD : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: MASKED AADHAAR_\n                     _DOWNLOAD_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());add("Aadhaar Linked Mobile",F.mobile.value.trim());add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");};
-})();
-</script>
-<!-- ==================== MASKED AADHAAR DOWNLOAD FORM : SCRIPT : END ==================== -->  
-<!-- ==================== AADHAAR DOWNLOAD : SCRIPT : END ==================== -->
-     
-
- <!-- =========================================================
-     ===== AADHAAR DOCUMENT UPDATE : SCRIPT =================
-     ========================================================= -->
-
-<script>
-(()=>{const documentBtn=document.getElementById("documentUpdateBtn"),documentDetails=document.getElementById("documentUpdateDetails");documentBtn.onclick=()=>{const open=documentDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)documentDetails.style.display="block"};})();
-</script>
-
-<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT ==================== -->
-
-<script>
-(()=>{const F={name:document.getElementById("documentFullName"),mobile:document.getElementById("documentLinkedNumber"),aadhaar:document.getElementById("documentAadhaarNumber"),identityProof:document.getElementById("documentIdentityProof"),otherIdentity:document.getElementById("documentOtherIdentity"),identityFile:document.getElementById("documentIdentityFile"),addressProof:document.getElementById("documentAddressProof"),otherAddress:document.getElementById("documentOtherAddress"),addressFile:document.getElementById("documentAddressFile")},popup=document.getElementById("documentUpdatePopup"),apply=document.querySelector("#documentUpdateDetails .apply-now-btn"),close=document.getElementById("documentUpdateClose"),submit=document.getElementById("documentUpdateSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
-
-const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";field.after(e)};
-const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),proof:f=>!!f.value,file:f=>{const f1=f.files[0];return!!f1&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f1.type)&&f1.size<=1048576}};
-
-F.otherIdentity.style.display="none";F.otherAddress.style.display="none";F.otherIdentity.previousElementSibling.style.display="none";F.otherAddress.previousElementSibling.style.display="none";
-
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
-/* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
-
-F.identityProof.onchange=()=>{const other=F.identityProof.value==="Other",group=document.getElementById("documentOtherIdentityGroup");group.style.display=other?"block":"none";F.otherIdentity.style.display=other?"block":"none";F.otherIdentity.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherIdentity.value="";clear(F.otherIdentity)}clear(F.identityProof)};
-F.addressProof.onchange=()=>{const other=F.addressProof.value==="Other",group=document.getElementById("documentOtherAddressGroup");group.style.display=other?"block":"none";F.otherAddress.style.display=other?"block":"none";F.otherAddress.previousElementSibling.style.display=other?"block":"none";if(!other){F.otherAddress.value="";clear(F.otherAddress)}clear(F.addressProof)};
-
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-
-[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
-[F.otherIdentity,F.otherAddress].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
-[F.identityProof,F.addressProof].forEach(f=>f.addEventListener("change",()=>{if(valid.proof(f))clear(f)}));
-
-/* ==================== FILE VALIDATION : SCRIPT ==================== */
-const identityUpload=document.getElementById("documentIdentityUpload"),addressUpload=document.getElementById("documentAddressUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-const clearFileError=f=>{const e=popup.querySelector(".form-error[data-field='"+f.id+"']");if(e)e.remove();f.style.borderColor=normal};
-const clearUploadError=u=>{const e=popup.querySelector(".form-error[data-field='"+u.id+"']");if(e)e.remove();u.style.borderColor=""};
-const showFileError=(target,msg)=>{const clear=target.type==="file"?()=>clearFileError(target):()=>clearUploadError(target);clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
-const validateFile=(fileInput,upload)=>{const f=fileInput.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError(upload);if(!f){showFileError(fileInput,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(fileInput,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(fileInput,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError(fileInput);clearUploadError(upload);upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.identityFile.onchange=()=>{identityUpload.classList.remove("file-success","file-error");identityUpload.textContent="Upload";clearFileError(F.identityFile);clearUploadError(identityUpload);F.identityFile.style.borderColor=normal;identityUpload.style.borderColor=""};
-F.addressFile.onchange=()=>{addressUpload.classList.remove("file-success","file-error");addressUpload.textContent="Upload";clearFileError(F.addressFile);clearUploadError(addressUpload);F.addressFile.style.borderColor=normal;addressUpload.style.borderColor=""};
-identityUpload.onclick=()=>validateFile(F.identityFile,identityUpload);
-addressUpload.onclick=()=>validateFile(F.addressFile,addressUpload);  
-      
-/* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);identityUpload.style.borderColor="";addressUpload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
-check(F.identityProof,valid.proof(F.identityProof),"Please select an Identity Proof.");
-if(F.identityProof.value==="Other")check(F.otherIdentity,valid.text(F.otherIdentity),"Please enter the Other Identity Document Name.");
-check(F.addressProof,valid.proof(F.addressProof),"Please select an Address Proof.");
-if(F.addressProof.value==="Other")check(F.otherAddress,valid.text(F.otherAddress),"Please enter the Other Address Document Name.");
-const identityFile=F.identityFile.files[0],addressFile=F.addressFile.files[0];
-if(!identityFile){showFileError(F.identityFile,"Please select a file.");if(!first)first=F.identityFile}else if(!allowedFiles.includes(identityFile.type)){showFileError(F.identityFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.identityFile}else if(identityFile.size>1048576){showFileError(F.identityFile,"Please upload a file of 1 MB or less.");if(!first)first=F.identityFile}else if(!identityUpload.classList.contains("file-success")){showFileError(identityUpload,"Please click the Upload button to upload your file.");if(!first)first=identityUpload}
-if(!addressFile){showFileError(F.addressFile,"Please select a file.");if(!first)first=F.addressFile}else if(!allowedFiles.includes(addressFile.type)){showFileError(F.addressFile,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.addressFile}else if(addressFile.size>1048576){showFileError(F.addressFile,"Please upload a file of 1 MB or less.");if(!first)first=F.addressFile}else if(!addressUpload.classList.contains("file-success")){showFileError(addressUpload,"Please click the Upload button to upload your file.");if(!first)first=addressUpload}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-                    
-/* ==================== AADHAAR DOCUMENT UPDATE : WHATSAPP MESSAGE ==================== */
-
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR DOCUMENT_\n                         _UPDATE_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());
-add("Aadhaar Linked Mobile",F.mobile.value.trim());
-add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="```PROOF OF IDENTITY (POI)```\n\n";
-add("Identity Proof",F.identityProof.value==="Other"?F.otherIdentity.value.trim():F.identityProof.value);
-add("Identity Proof File",F.identityFile.files[0]&&identityUpload.classList.contains("file-success")?F.identityFile.files[0].name:"");
-msg+="```PROOF OF ADDRESS (POA)```\n\n";
-add("Address Proof",F.addressProof.value==="Other"?F.otherAddress.value.trim():F.addressProof.value);
-add("Address Proof File",F.addressFile.files[0]&&addressUpload.classList.contains("file-success")?F.addressFile.files[0].name:"");
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
-</script>
-
-<!-- ==================== AADHAAR DOCUMENT UPDATE FORM : SCRIPT : END ==================== -->
-<!-- ==================== AADHAAR DOCUMENT UPDATE : SCRIPT : END ==================== -->
- 
-
-<!-- =========================================================
-     ===== AADHAAR STATUS CHECK : SCRIPT ====================
-     ========================================================= -->
-
-<script>
-(()=>{const statusCheckBtn=document.getElementById("statusCheckBtn"),statusCheckDetails=document.getElementById("statusCheckDetails");statusCheckBtn.onclick=()=>{const open=statusCheckDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)statusCheckDetails.style.display="block"};})();
-</script>
-
-<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT ==================== -->
-
-<script>
-(()=>{const F={name:document.getElementById("statusFullName"),mobile:document.getElementById("statusLinkedNumber"),aadhaar:document.getElementById("statusAadhaarNumber"),reference:document.getElementById("statusReference"),type:document.getElementById("statusType"),other:document.getElementById("statusOtherType"),file:document.getElementById("statusAcknowledgementFile")},popup=document.getElementById("statusCheckPopup"),apply=document.querySelector("#statusCheckDetails .apply-now-btn"),close=document.getElementById("statusCheckClose"),submit=document.getElementById("statusCheckSubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
-
-const clear=field=>{field.style.borderColor=field.tagName==="SELECT"?selectNormal:normal;const e=field.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(field,msg)=>{clear(field);field.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;field.after(e)};
-const valid={mobile:()=>/^[6-9]\d{9}$/.test(F.mobile.value.trim()),aadhaar:()=>/^\d{12}$/.test(F.aadhaar.value.trim()),text:f=>!!f.value.trim(),reference:()=>!!F.reference.value.trim(),type:()=>!!F.type.value,other:()=>!!F.other.value.trim(),file:()=>{const f=F.file.files[0];return!!f&&["image/jpeg","image/jpg","image/png","application/pdf"].includes(f.type)&&f.size<=1048576}};
-      
-apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
-close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
-popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
-
- /* ==================== CONDITIONAL FIELD : SCRIPT ==================== */
-F.type.onchange=()=>{const other=F.type.value==="Other",group=document.getElementById("statusOtherTypeGroup");group.style.display=other?"block":"none";
-F.other.style.display=other?"block":"none";F.other.previousElementSibling.style.display=other?"block":"none";if(!other){F.other.value="";clear(F.other)}clear(F.type)};
-      
-/* ==================== LIVE ERROR CLEARING : SCRIPT ==================== */
-[F.mobile,F.aadhaar].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===F.mobile?valid.mobile():valid.aadhaar();if(ok)clear(f)}));
-[F.reference,F.other].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
-F.type.addEventListener("change",()=>{if(valid.type())clear(F.type)});
-      
-/* ==================== FILE VALIDATION : SCRIPT ==================== */
-const upload=document.getElementById("statusAcknowledgementUpload"),allowedFiles=["image/jpeg","image/jpg","image/png","application/pdf"];
-const clearFileError=()=>{const e=popup.querySelector(".form-error[data-field='"+F.file.id+"']");if(e)e.remove();F.file.style.borderColor=normal};
-const clearUploadError=()=>{const e=popup.querySelector(".form-error[data-field='"+upload.id+"']");if(e)e.remove();upload.style.borderColor=""};
-const showFileError=(target,msg)=>{const clear=target===F.file?clearFileError:clearUploadError;clear();target.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.dataset.field=target.id;e.textContent=msg;e.style.cssText="color:#e00000;font-size:12px;font-weight:700;margin:6px 0 14px";target.after(e)};
-const validateFile=()=>{const f=F.file.files[0];upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearUploadError();if(!f){showFileError(F.file,"Please select a file.");showFileError(upload,"Please select a file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(!allowedFiles.includes(f.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");showFileError(upload,"Please upload a JPG, JPEG, PNG or PDF file.");upload.classList.add("file-error");upload.textContent="Try Again";return false}if(f.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");showFileError(upload,"Please upload a file of 1 MB or less.");upload.classList.add("file-error");upload.textContent="Try Again";return false}clearFileError();clearUploadError();upload.classList.add("file-success");upload.textContent="✓ Uploaded";return true};
-F.file.onchange=()=>{upload.classList.remove("file-success","file-error");upload.textContent="Upload";clearFileError();clearUploadError();F.file.style.borderColor=normal;upload.style.borderColor=""};
-upload.onclick=validateFile;
-      
- /* ==================== FORM VALIDATION : SCRIPT ==================== */
-submit.onclick=()=>{popup.querySelectorAll(".form-error").forEach(x=>x.remove());popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);upload.style.borderColor="";let first=null;
-const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
-check(F.mobile,valid.mobile(),"Please enter a valid Aadhaar-linked mobile number.");
-check(F.aadhaar,valid.aadhaar(),"Please enter a valid 12-digit Aadhaar number.");
-check(F.reference,valid.reference(),"Please enter your SRN / URN / EID.");
-check(F.type,valid.type(),"Please select a Status Type.");
-if(F.type.value==="Other")check(F.other,valid.other(),"Please enter the Other Status Type.");
-const file=F.file.files[0];
-if(!file){showFileError(F.file,"Please select a file.");if(!first)first=F.file}
-else if(!allowedFiles.includes(file.type)){showFileError(F.file,"Please upload a JPG, JPEG, PNG or PDF file.");if(!first)first=F.file}
-else if(file.size>1048576){showFileError(F.file,"Please upload a file of 1 MB or less.");if(!first)first=F.file}
-else if(!upload.classList.contains("file-success")){showFileError(upload,"Please click the Upload button to upload your file.");if(!first)first=upload}
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
-                    
-/* ==================== AADHAAR STATUS CHECK : WHATSAPP MESSAGE ==================== */
-
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: AADHAAR STATUS_\n                         _CHECK_\n_—————————————————————_\n\n```APPLICANT DETAILS```\n\n";const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
-add("Full Name",F.name.value.trim());
-add("Aadhaar Linked Mobile",F.mobile.value.trim());
-add("Aadhaar Number",F.aadhaar.value.trim());
-msg+="```STATUS DETAILS```\n\n";
-add("SRN / URN / EID",F.reference.value.trim());
-add("Status Type",F.type.value==="Other"?F.other.value.trim():F.type.value);
-add("Acknowledgement Receipt File",F.file.files[0]&&upload.classList.contains("file-success")?F.file.files[0].name:"");
-msg+="__________________________________\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
-</script>
-
-<!-- ==================== AADHAAR STATUS CHECK FORM : SCRIPT : END ==================== -->
-
-     
 <!-- =========================================================  
      ===== BIOMETRIC SERVICES : SCRIPT ======================  
      ========================================================= -->  
@@ -1694,9 +1548,66 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
   
 <!-- ==================== BIOMETRIC UNLOCK : SCRIPT : END ==================== -->  
 
-
+   
      
-  
+<!-- =========================================================
+     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML ====
+     ========================================================= -->
+<button type="button" class="service-btn" id="eAadhaarSignatureBtn">🪪 e-Aadhaar Digital Signature Validation</button>
+
+<section class="service-details" id="eAadhaarSignatureDetails">
+<div class="service-details-title">e-Aadhaar Digital Signature Validation</div>
+
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>e-Aadhaar Digital Signature Validation</td></tr>
+<tr><td>Service Charge</td><td>₹50</td></tr>
+<tr><td>Processing Time</td><td>Up to 15 Minutes</td></tr>
+</table>
+
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
+
+<!-- ===================== E-AADHAAR DIGITAL SIGNATURE VALIDATION FORM : HTML ===================== -->
+<div class="popup-overlay" id="eAadhaarSignaturePopup">
+<div class="service-form-popup">
+<div class="service-details-title">e-Aadhaar Digital Signature Validation Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="signatureFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="signatureFullName" placeholder="Enter Full Name" autocomplete="name">
+     
+<label for="signatureLinkedNumber">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="signatureLinkedNumber" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel">
+     
+<label for="signatureAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="signatureAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== E-AADHAAR FILE ===================== -->
+
+<label for="signatureAadhaarFile">Upload Aadhaar File <span class="optional-text">(Optional)</span></label>
+<input type="file" id="signatureAadhaarFile" accept=".jpg,.jpeg,.png,.pdf">
+<button type="button" class="file-upload-btn" id="signatureAadhaarUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG, PDF — Maximum Size: 1 MB</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="eAadhaarSignatureSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="eAadhaarSignatureClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<!-- =========================================================
+     ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : HTML END
+     ========================================================= -->
+
+
 <!-- =========================================================
      ===== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT ==
      ========================================================= -->
@@ -1746,10 +1657,83 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 </script>
 
 <!-- ==================== E-AADHAAR DIGITAL SIGNATURE VALIDATION : SCRIPT : END ==================== -->
-
      
 
-     
+
+<!-- =========================================================
+     ===== C/O NAME UPDATE / CORRECTION : HTML ==============
+     ========================================================= -->
+<button type="button" class="service-btn" id="coNameBtn">📋 C/O Name Update / Correction — Father / Husband / Mother Name</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
+<section class="service-details" id="coNameDetails">
+<div class="service-details-title">C/O Name Update / Correction<br>Father / Husband / Mother Name</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>C/O Name Update / Correction</td></tr>
+<tr><td>Service Charge</td><td>₹100</td></tr>
+<tr><td>Processing Time</td><td>Usually 5–10 Minutes; Up to 30 Days</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fab fa-whatsapp"></i>Apply Now</button>
+</section>
+
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML ==================== -->
+<div class="popup-overlay" id="coNamePopup" role="dialog" aria-modal="true" aria-labelledby="coNameFormTitle">
+<div class="service-form-popup">
+<div class="service-details-title" id="coNameFormTitle">C/O Name Update / Correction Form</div>
+<div class="form-content">
+
+<!-- ===================== APPLICANT DETAILS ===================== -->
+<div class="form-section-title">Applicant Details</div>
+
+<label for="coApplicantFullName">Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="coApplicantFullName" placeholder="Enter Full Name" autocomplete="name">
+
+<label for="coApplicantMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="coApplicantMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="coApplicantAadhaar">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="coApplicantAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== C/O PERSON DETAILS ===================== -->
+<div class="form-section-title">C/O Person Details</div>
+
+<label for="coPersonFullName">C/O Person Full Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="coPersonFullName" placeholder="Enter C/O Person Full Name" autocomplete="name">
+
+<label for="coPersonMobile">Aadhaar Linked Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="coPersonMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10" autocomplete="tel" required>
+
+<label for="coPersonAadhaar">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="coPersonAadhaar" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12" autocomplete="off" required>
+
+<!-- ===================== RELATIONSHIP WITH C/O ===================== -->
+<label for="coRelationship">Relationship With C/O <span class="required-star">*</span></label>
+<select id="coRelationship" required>
+<option value="">-- Select Relationship --</option>
+<option value="Father">Father</option>
+<option value="Mother">Mother</option>
+<option value="Husband">Husband</option>
+<option value="Other">Other</option>
+</select>
+
+<div id="coOtherRelationshipBox" style="display:none;">
+<label for="coOtherRelationship">Relationship Specify <span class="required-star">*</span></label>
+<input type="text" id="coOtherRelationship" placeholder="Enter Relationship">
+</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="coNameSubmit">Submit</button>
+<button type="button" class="form-close-btn" id="coNameClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+<!-- ==================== C/O NAME UPDATE / CORRECTION FORM : HTML : END ==================== -->
+
+
 <!-- =========================================================
      ===== C/O NAME UPDATE / CORRECTION : SCRIPT ============
      ========================================================= -->
@@ -1797,6 +1781,59 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 })();
 </script>
 <!-- ==================== C/O NAME UPDATE / CORRECTION FORM : SCRIPT : END ==================== -->
+
+
+
+
+
+
+
+
+
+     
+<!-- =========================================================
+     ===== AADHAAR SERVICES LIST : END ======================
+     ========================================================= -->
+    
+<!-- =========================================================
+     ===== AADHAAR SERVICES TOGGLE : SCRIPT ================
+     ========================================================= -->
+
+<script>
+const aadhaarBtn=document.getElementById("aadhaarServicesButton");
+const serviceList=document.getElementById("serviceList");
+
+aadhaarBtn.onclick=()=>{
+const open=serviceList.style.display==="block";
+
+serviceList.style.display=open?"none":"block";
+aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";
+};
+</script>
+
+
+
+  
+
+
+ 
+
+     
+
+     
+
+ 
+
+
+     
+
+     
+  
+
+     
+
+     
+
 
 
 
