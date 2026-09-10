@@ -1842,12 +1842,37 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ========================================================= -->
 <section class="service-list" id="panServiceList" style="display:none;">
 
-<!-- =========================================================
-     ===== 01. NEW PAN CARD APPLY : HTML ====================
-     ========================================================= -->
-<button type="button" class="service-btn" id="newPanBtn">🆕 New PAN Card Apply</button>
-<script>document.getElementById("newPanBtn").onclick=()=>{};</script>
 
+
+     
+<!-- =========================================================
+     ===== NEW PAN CARD APPLY : HTML ========================
+     ========================================================= -->
+<button type="button" class="service-btn" id="newPanBtn" aria-controls="newPanDetails" aria-expanded="false">🆕 New PAN Card Apply</button>
+
+<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
+<section class="service-details" id="newPanDetails">
+<div class="service-details-title">New PAN Card Apply</div>
+<table class="details-table">
+<tr><th>Information</th><th>Details</th></tr>
+<tr><td>Service</td><td>New PAN Card Apply</td></tr>
+<tr><td>Service Charge</td><td>₹160</td></tr>
+<tr><td>Processing Time</td><td>5–12 Days</td></tr>
+</table>
+<button type="button" class="apply-now-btn"><i class="fa-brands fa-whatsapp"></i>Apply Now</button>
+</section>
+
+<!-- =========================================================
+     ===== NEW PAN CARD APPLY : SCRIPT ======================
+     ========================================================= -->
+<script>
+const newPanBtn=document.getElementById("newPanBtn"),newPanDetails=document.getElementById("newPanDetails");
+newPanBtn.onclick=()=>{const open=newPanDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open){newPanDetails.style.display="block";newPanBtn.setAttribute("aria-expanded","true")}else newPanBtn.setAttribute("aria-expanded","false")};
+</script>
+
+
+     
 <!-- =========================================================
      ===== 02. MINOR / CHILD PAN CARD APPLY : HTML ==========
      ========================================================= -->
