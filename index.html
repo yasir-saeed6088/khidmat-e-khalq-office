@@ -1835,7 +1835,19 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 
 
-
+ <!-- =========================================================
+     ===== AADHAAR SERVICES BUTTON : HTML ==================
+     ========================================================= -->
+<section class="aadhaar-section">
+<button type="button" class="aadhaar-toggle" id="aadhaarServicesButton">
+<div class="aadhaar-icon">🪪</div>
+<div class="aadhaar-text">
+<h3>Aadhaar Services</h3>
+<p>9 Services Available</p>
+</div>
+<div class="aadhaar-arrow">⌄</div>
+</button>
+</section>
 
 <!-- =========================================================
      ===== PAN CARD SERVICES BUTTON : HTML =================
@@ -1850,6 +1862,17 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <div class="aadhaar-arrow">⌄</div>
 </button>
 </section>
+
+
+<!-- =========================================================
+     ===== AADHAAR SERVICES LIST : HTML ====================
+     ========================================================= -->
+<section class="service-list" id="serviceList">
+
+<!-- یہاں آپ کی موجودہ 9 Aadhaar services کا مکمل code رہے گا -->
+
+</section>
+
 
 <!-- =========================================================
      ===== PAN CARD SERVICES LIST : HTML ===================
@@ -1995,12 +2018,9 @@ document.getElementById("panApplicationStatusBtn").onclick=()=>{};
      ===== SERVICES BUTTONS : JS ============================
      ========================================================= -->
 <script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+const aadhaarBtn=document.getElementById("aadhaarServicesButton"),panBtn=document.getElementById("panServicesButton"),serviceList=document.getElementById("serviceList"),panList=document.getElementById("panServiceList");
 
-const panBtn=document.getElementById("panServicesButton"),panList=document.getElementById("panServiceList");panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.display=open?"none":"block";panBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";panList.style.display="none";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";panBtn.querySelector(".aadhaar-arrow").textContent="⌄"};
+
+panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.display=open?"none":"block";serviceList.style.display="none";panBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";aadhaarBtn.querySelector(".aadhaar-arrow").textContent="⌄"};
 </script>
-
-     
-
- 
- 
