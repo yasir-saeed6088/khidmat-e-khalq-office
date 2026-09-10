@@ -1915,9 +1915,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ===== AADHAAR / PAN TOGGLE : JS ========================
      ========================================================= -->
 <script>
-const aadhaarBtn=document.getElementById("aadhaarServicesButton"),panBtn=document.getElementById("panServicesButton"),serviceList=document.getElementById("serviceList"),panList=document.getElementById("panServiceList");
-
+const panBtn=document.getElementById("panServicesButton"),panList=document.getElementById("panServiceList");
 aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";panList.style.display="none";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";panBtn.querySelector(".aadhaar-arrow").textContent="⌄"};
-
 panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.display=open?"none":"block";serviceList.style.display="none";panBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃";aadhaarBtn.querySelector(".aadhaar-arrow").textContent="⌄"};
 </script>
