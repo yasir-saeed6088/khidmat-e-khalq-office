@@ -1835,8 +1835,10 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 
 
+
+
 <!-- =========================================================
-     ===== PAN CARD SERVICES BUTTON : HTML ==================
+     ===== PAN CARD SERVICES BUTTON : HTML =================
      ========================================================= -->
 <section class="aadhaar-section">
 <button type="button" class="aadhaar-toggle" id="panServicesButton">
@@ -1850,16 +1852,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 </section>
 
 <!-- =========================================================
-     ===== PAN CARD SERVICES BUTTON : JS ====================
-     ========================================================= -->
-<script>
-const panBtn=document.getElementById("panServicesButton"),panList=document.getElementById("panServiceList");
-panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.display=open?"none":"block";panBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
-</script>
-
-
-<!-- =========================================================
-     ===== PAN CARD SERVICES LIST : HTML ====================
+     ===== PAN CARD SERVICES LIST : HTML ===================
      ========================================================= -->
 <section class="service-list" id="panServiceList">
 
@@ -1875,7 +1868,6 @@ panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.dis
 document.getElementById("newPanBtn").onclick=()=>{};
 </script>
 
-
 <!-- =========================================================
      ===== 02. MINOR / CHILD PAN CARD APPLY : HTML ==========
      ========================================================= -->
@@ -1887,7 +1879,6 @@ document.getElementById("newPanBtn").onclick=()=>{};
 <script>
 document.getElementById("minorPanBtn").onclick=()=>{};
 </script>
-
 
 <!-- =========================================================
      ===== 03. PAN NAME DOB GENDER CORRECTION : HTML ========
@@ -1901,7 +1892,6 @@ document.getElementById("minorPanBtn").onclick=()=>{};
 document.getElementById("panCorrectionBtn").onclick=()=>{};
 </script>
 
-
 <!-- =========================================================
      ===== 04. PARENT NAME CHANGE CORRECTION : HTML =========
      ========================================================= -->
@@ -1913,7 +1903,6 @@ document.getElementById("panCorrectionBtn").onclick=()=>{};
 <script>
 document.getElementById("parentPanBtn").onclick=()=>{};
 </script>
-
 
 <!-- =========================================================
      ===== 05. PAN CARD PVC CARD ORDER : HTML ===============
@@ -1927,7 +1916,6 @@ document.getElementById("parentPanBtn").onclick=()=>{};
 document.getElementById("panOrderBtn").onclick=()=>{};
 </script>
 
-
 <!-- =========================================================
      ===== 06. E-PAN DOWNLOAD : HTML ========================
      ========================================================= -->
@@ -1939,7 +1927,6 @@ document.getElementById("panOrderBtn").onclick=()=>{};
 <script>
 document.getElementById("epanDownloadBtn").onclick=()=>{};
 </script>
-
 
 <!-- =========================================================
      ===== 07. AADHAAR PAN LINKING : HTML ===================
@@ -1953,7 +1940,6 @@ document.getElementById("epanDownloadBtn").onclick=()=>{};
 document.getElementById("aadhaarPanLinkBtn").onclick=()=>{};
 </script>
 
-
 <!-- =========================================================
      ===== 08. AADHAAR PAN LINKING STATUS : HTML ============
      ========================================================= -->
@@ -1965,7 +1951,6 @@ document.getElementById("aadhaarPanLinkBtn").onclick=()=>{};
 <script>
 document.getElementById("aadhaarPanStatusBtn").onclick=()=>{};
 </script>
-
 
 <!-- =========================================================
      ===== 09. PAN VERIFICATION : HTML ======================
@@ -1979,7 +1964,6 @@ document.getElementById("aadhaarPanStatusBtn").onclick=()=>{};
 document.getElementById("panVerificationBtn").onclick=()=>{};
 </script>
 
-
 <!-- =========================================================
      ===== 10. E-PAN DIGITAL SIGNATURE VALIDATION : HTML ====
      ========================================================= -->
@@ -1991,7 +1975,6 @@ document.getElementById("panVerificationBtn").onclick=()=>{};
 <script>
 document.getElementById("epanSignatureBtn").onclick=()=>{};
 </script>
-
 
 <!-- =========================================================
      ===== 11. PAN APPLICATION STATUS CHECK : HTML ==========
@@ -2006,11 +1989,16 @@ document.getElementById("panApplicationStatusBtn").onclick=()=>{};
 </script>
 
 </section>
-<!-- ===================== PAN CARD SERVICES LIST : END ===================== -->
 
- 
 
-     
+<!-- =========================================================
+     ===== SERVICES BUTTONS : JS ============================
+     ========================================================= -->
+<script>
+const aadhaarBtn=document.getElementById("aadhaarServicesButton"),serviceList=document.getElementById("serviceList");aadhaarBtn.onclick=()=>{const open=serviceList.style.display==="block";serviceList.style.display=open?"none":"block";aadhaarBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+
+const panBtn=document.getElementById("panServicesButton"),panList=document.getElementById("panServiceList");panBtn.onclick=()=>{const open=panList.style.display==="block";panList.style.display=open?"none":"block";panBtn.querySelector(".aadhaar-arrow").textContent=open?"⌄":"⌃"};
+</script>
 
      
 
