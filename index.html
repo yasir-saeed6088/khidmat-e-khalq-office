@@ -1844,32 +1844,519 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 
 
+
+
+
+
+     
+
      
 <!-- =========================================================
      ===== NEW PAN CARD APPLY : HTML ========================
      ========================================================= -->
-<button type="button" class="service-btn" id="newPanBtn" aria-controls="newPanDetails" aria-expanded="false">🆕 New PAN Card Apply</button>
 
-<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
-<section class="service-details" id="newPanDetails">
+<button type="button" class="service-btn" id="newPanApplyBtn" aria-controls="newPanApplyDetails" aria-expanded="false">🆕 New PAN Card Apply</button>
+
+<!-- ===================== INFORMATION AND DETAILS : HTML ===================== -->
+<section class="service-details" id="newPanApplyDetails">
 <div class="service-details-title">New PAN Card Apply</div>
 <table class="details-table">
 <tr><th>Information</th><th>Details</th></tr>
-<tr><td>Service</td><td>New PAN Card Apply</td></tr>
+<tr><td>Service</td><td>New PAN Card Application</td></tr>
 <tr><td>Service Charge</td><td>₹160</td></tr>
 <tr><td>Processing Time</td><td>5–12 Days</td></tr>
 </table>
 <button type="button" class="apply-now-btn"><i class="fa-brands fa-whatsapp"></i>Apply Now</button>
 </section>
 
+<!-- ===================== NEW PAN CARD APPLY FORM : HTML ===================== -->
+<div class="popup-overlay" id="newPanApplyPopup" role="dialog" aria-modal="true" aria-labelledby="newPanApplyFormTitle">
+<div class="service-form-popup">
+<div class="service-details-title" id="newPanApplyFormTitle">New PAN Card Apply Form</div>
+<div class="form-content">
+
+<!-- ===================== 1. PERSONAL DETAILS ===================== -->
+<div class="form-section-title">1. PERSONAL DETAILS</div>
+
+<label for="panAadhaarName">Name as per Aadhaar <span class="required-star">*</span></label>
+<input type="text" id="panAadhaarName" placeholder="Enter Name as per Aadhaar">
+
+<label>Full Name of Applicant <span class="required-star">*</span></label>
+<details>
+<summary>Click to Expand ▼</summary>
+<div style="padding-top:15px">
+<label for="panFirstName">First Name <span class="required-star">*</span></label>
+<input type="text" id="panFirstName" placeholder="Enter First Name">
+
+<label for="panMiddleName">Middle Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panMiddleName" placeholder="Enter Middle Name">
+
+<label for="panLastName">Last Name / Surname <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panLastName" placeholder="Enter Last Name / Surname">
+</div>
+</details>
+
+<label for="panDob">Date of Birth <span class="required-star">*</span></label>
+<input type="date" id="panDob">
+
+<label for="panGender">Gender <span class="required-star">*</span></label>
+<select id="panGender">
+<option value="">-- Select Gender --</option>
+<option value="Male">Male</option>
+<option value="Female">Female</option>
+<option value="Transgender">Transgender</option>
+</select>
+
+<label for="panAadhaarNumber">Aadhaar Number <span class="required-star">*</span></label>
+<input type="tel" id="panAadhaarNumber" placeholder="Enter 12-digit Aadhaar Number" inputmode="numeric" maxlength="12">
+
+<!-- ===================== 2. PARENT DETAILS ===================== -->
+<div class="form-section-title">2. PARENT DETAILS</div>
+
+<label>Father's Name <span class="required-star">*</span></label>
+<details>
+<summary>Click to Expand ▼</summary>
+<div style="padding-top:15px">
+<label for="panFatherFirst">First Name <span class="required-star">*</span></label>
+<input type="text" id="panFatherFirst" placeholder="Enter Father's First Name">
+
+<label for="panFatherMiddle">Middle Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panFatherMiddle" placeholder="Enter Father's Middle Name">
+
+<label for="panFatherLast">Last Name / Surname <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panFatherLast" placeholder="Enter Father's Last Name / Surname">
+</div>
+</details>
+
+<label>Mother's Name <span class="required-star">*</span></label>
+<details>
+<summary>Click to Expand ▼</summary>
+<div style="padding-top:15px">
+<label for="panMotherFirst">First Name <span class="required-star">*</span></label>
+<input type="text" id="panMotherFirst" placeholder="Enter Mother's First Name">
+
+<label for="panMotherMiddle">Middle Name <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panMotherMiddle" placeholder="Enter Mother's Middle Name">
+
+<label for="panMotherLast">Last Name / Surname <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panMotherLast" placeholder="Enter Mother's Last Name / Surname">
+</div>
+</details>
+
+<label for="panParentPrinted">Parent's Name to be Printed on PAN Card <span class="required-star">*</span></label>
+<select id="panParentPrinted">
+<option value="">-- Select Parent's Name --</option>
+<option value="Father's Name">Father's Name</option>
+<option value="Mother's Name">Mother's Name</option>
+</select>
+
+<!-- ===================== 3. SOURCE OF INCOME ===================== -->
+<div class="form-section-title">3. SOURCE OF INCOME <span class="required-star">*</span></div>
+
+<div id="panIncomeGroup">
+<label><input type="checkbox" name="panIncome" value="Salary"> Salary</label>
+<label><input type="checkbox" name="panIncome" value="Income from Business / Profession"> Income from Business / Profession</label>
+<label><input type="checkbox" name="panIncome" value="Income from House Property"> Income from House Property</label>
+<label><input type="checkbox" name="panIncome" value="Income from Other Sources"> Income from Other Sources</label>
+<label><input type="checkbox" name="panIncome" value="Capital Gains"> Capital Gains</label>
+<label><input type="checkbox" name="panIncome" value="No Income"> No Income</label>
+</div>
+
+<!-- ===================== 4. PAN CARD DELIVERY ADDRESS ===================== -->
+<div class="form-section-title">4. PAN CARD DELIVERY ADDRESS <span class="required-star">*</span></div>
+
+<details>
+<summary>Click to Expand ▼</summary>
+<div style="padding-top:15px">
+
+<label for="panFlat">Flat / Door / Building <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panFlat" placeholder="Enter Flat / Door / Building">
+
+<label for="panRoad">Road / Street / Block / Sector <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panRoad" placeholder="Enter Road / Street / Block / Sector">
+
+<label for="panPostOffice">Post Office <span class="required-star">*</span></label>
+<input type="text" id="panPostOffice" placeholder="Enter Post Office">
+
+<label for="panArea">Area / Locality / Town / City <span class="required-star">*</span></label>
+<input type="text" id="panArea" placeholder="Enter Area / Locality / Town / City">
+
+<label for="panDistrict">District <span class="required-star">*</span></label>
+<input type="text" id="panDistrict" placeholder="Enter District">
+
+<label for="panState">State <span class="required-star">*</span></label>
+<select id="panState">
+<option value="">-- Select State --</option>
+<option>Andhra Pradesh</option>
+<option>Arunachal Pradesh</option>
+<option>Assam</option>
+<option>Bihar</option>
+<option>Chhattisgarh</option>
+<option>Goa</option>
+<option>Gujarat</option>
+<option>Haryana</option>
+<option>Himachal Pradesh</option>
+<option>Jharkhand</option>
+<option>Karnataka</option>
+<option>Kerala</option>
+<option>Madhya Pradesh</option>
+<option>Maharashtra</option>
+<option>Manipur</option>
+<option>Meghalaya</option>
+<option>Mizoram</option>
+<option>Nagaland</option>
+<option>Odisha</option>
+<option>Punjab</option>
+<option>Rajasthan</option>
+<option>Sikkim</option>
+<option>Tamil Nadu</option>
+<option>Telangana</option>
+<option>Tripura</option>
+<option>Uttar Pradesh</option>
+<option>Uttarakhand</option>
+<option>West Bengal</option>
+<option>Andaman and Nicobar Islands</option>
+<option>Chandigarh</option>
+<option>Dadra and Nagar Haveli and Daman and Diu</option>
+<option>Delhi</option>
+<option>Jammu and Kashmir</option>
+<option>Ladakh</option>
+<option>Lakshadweep</option>
+<option>Puducherry</option>
+</select>
+
+<label for="panCountry">Country <span class="optional-text">(Optional)</span></label>
+<input type="text" id="panCountry" value="India">
+
+<label for="panPin">PIN Code <span class="required-star">*</span></label>
+<input type="tel" id="panPin" placeholder="Enter 6-digit PIN Code" inputmode="numeric" maxlength="6">
+
+</div>
+</details>
+
+<!-- ===================== 5. CONTACT DETAILS ===================== -->
+<div class="form-section-title">5. CONTACT DETAILS <span class="required-star">*</span></div>
+
+<label for="panMobile">Mobile Number <span class="required-star">*</span></label>
+<input type="tel" id="panMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
+
+<label for="panEmail">Email ID <span class="required-star">*</span></label>
+<input type="text" id="panEmail" placeholder="Enter Email Address" autocomplete="email">
+
+<!-- ===================== 6. RESIDENTIAL STATUS ===================== -->
+<div class="form-section-title">6. RESIDENTIAL STATUS <span class="required-star">*</span></div>
+
+<select id="panResidentialStatus">
+<option value="">-- Select Residential Status --</option>
+<option value="Resident">Resident</option>
+<option value="Non-Resident">Non-Resident</option>
+<option value="Resident but not ordinarily resident">Resident but not ordinarily resident</option>
+</select>
+
+<!-- ===================== 7. DOCUMENT DETAILS ===================== -->
+<div class="form-section-title">7. DOCUMENT DETAILS</div>
+
+<!-- ===================== POI ===================== -->
+<label for="panPoi">A. PROOF OF IDENTITY (POI) <span class="required-star">*</span></label>
+<select id="panPoi">
+<option value="">-- Select Document --</option>
+<option>Aadhaar Card</option>
+<option>Passport</option>
+<option>Driving Licence</option>
+<option>Voter ID</option>
+<option>Ration Card</option>
+<option>Government-issued Photo ID</option>
+<option>Pensioner Card</option>
+<option>Other</option>
+</select>
+
+<div id="panPoiOtherGroup" style="display:none">
+<label for="panPoiOther">Other Document Name <span class="required-star">*</span></label>
+<input type="text" id="panPoiOther" placeholder="Enter Other Document Name">
+</div>
+
+<label for="panPoiFile">Upload Proof of Identity <span class="required-star">*</span></label>
+<input type="file" id="panPoiFile" accept=".pdf,.jpg,.jpeg,.png">
+<button type="button" class="file-upload-btn" id="panPoiUpload">Upload</button>
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
+
+<!-- ===================== POA ===================== -->
+<label for="panPoa">B. PROOF OF ADDRESS (POA) <span class="required-star">*</span></label>
+<select id="panPoa">
+<option value="">-- Select Document --</option>
+<option>Aadhaar Card</option>
+<option>Passport</option>
+<option>Driving Licence</option>
+<option>Voter ID</option>
+<option>Ration Card</option>
+<option>Electricity Bill</option>
+<option>Telephone / Broadband Bill</option>
+<option>Water Bill</option>
+<option>Gas Connection Book</option>
+<option>Bank Account Statement</option>
+<option>Post Office Account Statement</option>
+<option>Property Tax Assessment Order</option>
+<option>Domicile Certificate</option>
+<option>Government-issued Address Certificate</option>
+<option>Other</option>
+</select>
+
+<div id="panPoaOtherGroup" style="display:none">
+<label for="panPoaOther">Other Document Name <span class="required-star">*</span></label>
+<input type="text" id="panPoaOther" placeholder="Enter Other Document Name">
+</div>
+
+<label for="panPoaFile">Upload Proof of Address <span class="required-star">*</span></label>
+<input type="file" id="panPoaFile" accept=".pdf,.jpg,.jpeg,.png">
+<button type="button" class="file-upload-btn" id="panPoaUpload">Upload</button>
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
+
+<!-- ===================== DOB ===================== -->
+<label for="panDobProof">C. PROOF OF DATE OF BIRTH (DOB) <span class="required-star">*</span></label>
+<select id="panDobProof">
+<option value="">-- Select Document --</option>
+<option>Birth Certificate</option>
+<option>Matriculation / 10th Marksheet or Certificate</option>
+<option>Passport</option>
+<option>Driving Licence</option>
+<option>Voter ID</option>
+<option>Marriage Certificate</option>
+<option>Other</option>
+</select>
+
+<div id="panDobOtherGroup" style="display:none">
+<label for="panDobOther">Other Document Name <span class="required-star">*</span></label>
+<input type="text" id="panDobOther" placeholder="Enter Other Document Name">
+</div>
+
+<div style="font-size:12px;color:#e00000;font-weight:700;margin:0 0 15px">⚠️ Aadhaar Card is NOT accepted as Proof of Date of Birth (DOB).</div>
+
+<label for="panDobFile">Upload Proof of Date of Birth <span class="required-star">*</span></label>
+<input type="file" id="panDobFile" accept=".pdf,.jpg,.jpeg,.png">
+<button type="button" class="file-upload-btn" id="panDobUpload">Upload</button>
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
+
+<!-- ===================== 8. APPLICANT PHOTO ===================== -->
+<div class="form-section-title">8. APPLICANT PHOTO <span class="required-star">*</span></div>
+
+<label for="panPhotoFile">Upload Applicant's Photo <span class="required-star">*</span></label>
+<input type="file" id="panPhotoFile" accept=".jpg,.jpeg,.png">
+<button type="button" class="file-upload-btn" id="panPhotoUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG</div>
+
+<!-- ===================== 9. APPLICANT SIGNATURE ===================== -->
+<div class="form-section-title">9. APPLICANT SIGNATURE <span class="required-star">*</span></div>
+
+<label for="panSignatureFile">Upload Applicant's Signature <span class="required-star">*</span></label>
+<input type="file" id="panSignatureFile" accept=".jpg,.jpeg,.png">
+<button type="button" class="file-upload-btn" id="panSignatureUpload">Upload</button>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG</div>
+
+<!-- ===================== FORM BUTTONS ===================== -->
+<div class="form-buttons">
+<button type="button" class="form-submit-btn" id="newPanApplySubmit">Submit</button>
+<button type="button" class="form-close-btn" id="newPanApplyClose">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
+
 <!-- =========================================================
-     ===== NEW PAN CARD APPLY : SCRIPT ======================
+     ===== NEW PAN CARD APPLY : JAVASCRIPT ==================
      ========================================================= -->
+
 <script>
-const newPanBtn=document.getElementById("newPanBtn"),newPanDetails=document.getElementById("newPanDetails");
-newPanBtn.onclick=()=>{const open=newPanDetails.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
-document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open){newPanDetails.style.display="block";newPanBtn.setAttribute("aria-expanded","true")}else newPanBtn.setAttribute("aria-expanded","false")};
+(()=>{
+
+const btn=document.getElementById("newPanApplyBtn"),details=document.getElementById("newPanApplyDetails"),popup=document.getElementById("newPanApplyPopup"),apply=document.querySelector("#newPanApplyDetails .apply-now-btn"),close=document.getElementById("newPanApplyClose"),submit=document.getElementById("newPanApplySubmit"),normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000",allowed=["application/pdf","image/jpeg","image/jpg","image/png"];
+
+btn.onclick=()=>{const open=details.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)details.style.display="block";btn.setAttribute("aria-expanded",!open)};
+
+apply.onclick=()=>{popup.style.display="flex";document.body.style.overflow="hidden"};
+close.onclick=()=>{popup.style.display="none";document.body.style.overflow=""};
+popup.onclick=e=>{if(e.target===popup){popup.style.display="none";document.body.style.overflow=""}};
+
+const F={
+aadhaarName:document.getElementById("panAadhaarName"),first:document.getElementById("panFirstName"),middle:document.getElementById("panMiddleName"),last:document.getElementById("panLastName"),dob:document.getElementById("panDob"),gender:document.getElementById("panGender"),aadhaar:document.getElementById("panAadhaarNumber"),
+fatherFirst:document.getElementById("panFatherFirst"),fatherMiddle:document.getElementById("panFatherMiddle"),fatherLast:document.getElementById("panFatherLast"),motherFirst:document.getElementById("panMotherFirst"),motherMiddle:document.getElementById("panMotherMiddle"),motherLast:document.getElementById("panMotherLast"),parentPrinted:document.getElementById("panParentPrinted"),
+flat:document.getElementById("panFlat"),road:document.getElementById("panRoad"),postOffice:document.getElementById("panPostOffice"),area:document.getElementById("panArea"),district:document.getElementById("panDistrict"),state:document.getElementById("panState"),country:document.getElementById("panCountry"),pin:document.getElementById("panPin"),
+mobile:document.getElementById("panMobile"),email:document.getElementById("panEmail"),residential:document.getElementById("panResidentialStatus"),poi:document.getElementById("panPoi"),poiOther:document.getElementById("panPoiOther"),poa:document.getElementById("panPoa"),poaOther:document.getElementById("panPoaOther"),dobProof:document.getElementById("panDobProof"),dobOther:document.getElementById("panDobOther")
+};
+
+const files=[
+{file:document.getElementById("panPoiFile"),upload:document.getElementById("panPoiUpload"),name:"Proof of Identity"},
+{file:document.getElementById("panPoaFile"),upload:document.getElementById("panPoaUpload"),name:"Proof of Address"},
+{file:document.getElementById("panDobFile"),upload:document.getElementById("panDobUpload"),name:"Proof of Date of Birth"},
+{file:document.getElementById("panPhotoFile"),upload:document.getElementById("panPhotoUpload"),name:"applicant photo"},
+{file:document.getElementById("panSignatureFile"),upload:document.getElementById("panSignatureUpload"),name:"applicant signature"}
+];
+
+const clear=f=>{f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;const e=f.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
+const show=(f,msg)=>{clear(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;f.after(e)};
+const text=f=>!!f.value.trim();
+const validName=f=>/^[A-Za-zÀ-ÿ\u0600-\u06FF\s.'-]+$/.test(f.value.trim());
+const validMobile=f=>/^[6-9]\d{9}$/.test(f.value.trim());
+const validAadhaar=f=>/^\d{12}$/.test(f.value.trim());
+const validPin=f=>/^\d{6}$/.test(f.value.trim());
+const validEmail=f=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim());
+
+/* ==================== NUMERIC INPUT CONTROL ==================== */
+[F.aadhaar,F.pin,F.mobile].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);if((f===F.aadhaar&&validAadhaar(f))||(f===F.pin&&validPin(f))||(f===F.mobile&&validMobile(f)))clear(f)}));
+
+/* ==================== NAME LIVE CLEARING ==================== */
+[F.aadhaarName,F.first,F.fatherFirst,F.motherFirst].forEach(f=>f.addEventListener("input",()=>{if(validName(f))clear(f)}));
+
+/* ==================== OTHER DOCUMENTS ==================== */
+const setupOther=(select,group,input)=>{
+select.onchange=()=>{const on=select.value==="Other";group.style.display=on?"block":"none";if(!on){input.value="";clear(input)}clear(select)}
+};
+setupOther(F.poi,document.getElementById("panPoiOtherGroup"),F.poiOther);
+setupOther(F.poa,document.getElementById("panPoaOtherGroup"),F.poaOther);
+setupOther(F.dobProof,document.getElementById("panDobOtherGroup"),F.dobOther);
+
+/* ==================== FILE UPLOAD ==================== */
+files.forEach(o=>{
+o.file.onchange=()=>{o.upload.classList.remove("file-success","file-error");o.upload.textContent="Upload";clear(o.file);o.upload.style.borderColor=""};
+o.upload.onclick=()=>{
+const f=o.file.files[0];
+o.upload.classList.remove("file-success","file-error");
+o.upload.textContent="Upload";
+clear(o.file);
+if(!f){show(o.file,"Please choose your "+o.name+".");o.upload.classList.add("file-error");o.upload.textContent="Try Again";return}
+if(!allowed.includes(f.type)){show(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");o.upload.classList.add("file-error");o.upload.textContent="Try Again";return}
+o.upload.classList.add("file-success");
+o.upload.textContent="✓ Uploaded";
+};
+});
+
+/* ==================== INCOME : NO INCOME RULE ==================== */
+const incomeBoxes=[...document.querySelectorAll('input[name="panIncome"]')],noIncome=incomeBoxes.find(x=>x.value==="No Income");
+incomeBoxes.forEach(x=>x.onchange=()=>{if(x===noIncome&&x.checked)incomeBoxes.forEach(y=>{if(y!==noIncome)y.checked=false});if(x!==noIncome&&x.checked)noIncome.checked=false});
+
+/* ==================== FORM VALIDATION ==================== */
+submit.onclick=()=>{
+popup.querySelectorAll(".form-error").forEach(x=>x.remove());
+popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);
+files.forEach(o=>{o.upload.classList.remove("file-error");o.upload.style.borderColor=""});
+let first=null;
+const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
+
+check(F.aadhaarName,text(F.aadhaarName),"Please enter your name as per Aadhaar.");
+if(text(F.aadhaarName)&&!validName(F.aadhaarName))check(F.aadhaarName,false,"Please enter a valid name as per Aadhaar.");
+
+check(F.first,text(F.first),"Please enter your first name.");
+if(text(F.first)&&!validName(F.first))check(F.first,false,"Please enter a valid first name.");
+
+if(!F.dob.value)check(F.dob,false,"Please enter your date of birth.");
+else{const d=new Date(F.dob.value),today=new Date();today.setHours(0,0,0,0);if(d>today)check(F.dob,false,"Date of birth cannot be a future date.");else if(d.getFullYear()<1900)check(F.dob,false,"Please enter a valid date of birth.")}
+
+check(F.gender,!!F.gender.value,"Please select your gender.");
+check(F.aadhaar,validAadhaar(F.aadhaar),!F.aadhaar.value?"Please enter your Aadhaar number.":"Please enter a valid 12-digit Aadhaar number.");
+
+check(F.fatherFirst,text(F.fatherFirst),"Please enter father's first name.");
+if(text(F.fatherFirst)&&!validName(F.fatherFirst))check(F.fatherFirst,false,"Please enter a valid father's first name.");
+
+check(F.motherFirst,text(F.motherFirst),"Please enter mother's first name.");
+if(text(F.motherFirst)&&!validName(F.motherFirst))check(F.motherFirst,false,"Please enter a valid mother's first name.");
+
+check(F.parentPrinted,!!F.parentPrinted.value,"Please select the parent's name to be printed on the PAN Card.");
+
+const selectedIncome=incomeBoxes.filter(x=>x.checked);
+if(!selectedIncome.length){if(!first)first=incomeBoxes[0];const e=document.createElement("div");e.className="form-error";e.textContent="Please select at least one source of income.";incomeBoxes[incomeBoxes.length-1].after(e)}
+
+check(F.postOffice,text(F.postOffice),"Please enter your post office.");
+check(F.area,text(F.area),"Please enter your area, locality, town or city.");
+check(F.district,text(F.district),"Please enter your district.");
+check(F.state,!!F.state.value,"Please select your state.");
+check(F.pin,validPin(F.pin),!F.pin.value?"Please enter your PIN code.":"Please enter a valid 6-digit PIN code.");
+
+check(F.mobile,validMobile(F.mobile),!F.mobile.value?"Please enter your mobile number.":/^[0-5]/.test(F.mobile.value)?"Please enter a valid Indian mobile number starting with 6, 7, 8 or 9.":"Please enter a valid 10-digit mobile number.");
+check(F.email,text(F.email),"Please enter your email address.");
+if(text(F.email)&&!validEmail(F.email))check(F.email,false,"Please enter a valid email address.");
+check(F.residential,!!F.residential.value,"Please select your residential status.");
+
+check(F.poi,!!F.poi.value,"Please select a Proof of Identity document.");
+if(F.poi.value==="Other")check(F.poiOther,text(F.poiOther),"Please enter the name of your other identity document.");
+
+check(F.poa,!!F.poa.value,"Please select a Proof of Address document.");
+if(F.poa.value==="Other")check(F.poaOther,text(F.poaOther),"Please enter the name of your other address document.");
+
+check(F.dobProof,!!F.dobProof.value,"Please select a Proof of Date of Birth document.");
+if(F.dobProof.value==="Other"){check(F.dobOther,text(F.dobOther),"Please enter the name of your other date of birth document.");if(/aadhaar/i.test(F.dobOther.value))check(F.dobOther,false,"Aadhaar Card is not accepted as Proof of Date of Birth.")}
+
+files.forEach(o=>{
+const f=o.file.files[0];
+if(!f){if(!first)first=o.file;show(o.file,"Please choose your "+o.name+".");return}
+if(!allowed.includes(f.type)){if(!first)first=o.file;show(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");return}
+if(!o.upload.classList.contains("file-success")){if(!first)first=o.upload;show(o.upload,"Please upload your "+o.name+".")}
+});
+
+if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});first.focus()},50);return}
+
+/* ==================== WHATSAPP MESSAGE ==================== */
+let msg="_🌹==========🇮🇳==========🥀_\\n      _KHIDMAT-E-KHALQ OFFICE_\\n_🌹=======================🥀_\\n\\n     _SERVICE: NEW PAN CARD APPLY_\\n_—————————————————————_\\n\\n```PERSONAL DETAILS```\\n\\n";
+const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\\n\\n";
+
+add("Name as per Aadhaar",F.aadhaarName.value.trim());
+add("First Name",F.first.value.trim());
+add("Middle Name",F.middle.value.trim());
+add("Last Name / Surname",F.last.value.trim());
+add("Date of Birth",F.dob.value);
+add("Gender",F.gender.value);
+add("Aadhaar Number",F.aadhaar.value.trim());
+
+msg+="```PARENT DETAILS```\\n\\n";
+add("Father's Name",`${F.fatherFirst.value.trim()} ${F.fatherMiddle.value.trim()} ${F.fatherLast.value.trim()}`.trim());
+add("Mother's Name",`${F.motherFirst.value.trim()} ${F.motherMiddle.value.trim()} ${F.motherLast.value.trim()}`.trim());
+add("Parent's Name Printed",F.parentPrinted.value);
+
+msg+="```SOURCE OF INCOME```\\n\\n";
+add("Income Source",selectedIncome.map(x=>x.value).join(", "));
+
+msg+="```PAN CARD DELIVERY ADDRESS```\\n\\n";
+add("Flat / Door / Building",F.flat.value.trim());
+add("Road / Street / Block / Sector",F.road.value.trim());
+add("Post Office",F.postOffice.value.trim());
+add("Area / Locality / Town / City",F.area.value.trim());
+add("District",F.district.value.trim());
+add("State",F.state.value);
+add("Country",F.country.value.trim());
+add("PIN Code",F.pin.value.trim());
+
+msg+="```CONTACT DETAILS```\\n\\n";
+add("Mobile Number",F.mobile.value.trim());
+add("Email ID",F.email.value.trim());
+
+msg+="```RESIDENTIAL STATUS```\\n\\n";
+add("Residential Status",F.residential.value);
+
+msg+="```DOCUMENT DETAILS```\\n\\n";
+add("Proof of Identity",F.poi.value==="Other"?F.poiOther.value.trim():F.poi.value);
+add("POI File",files[0].file.files[0].name);
+add("Proof of Address",F.poa.value==="Other"?F.poaOther.value.trim():F.poa.value);
+add("POA File",files[1].file.files[0].name);
+add("Proof of Date of Birth",F.dobProof.value==="Other"?F.dobOther.value.trim():F.dobProof.value);
+add("DOB Proof File",files[2].file.files[0].name);
+add("Applicant Photo",files[3].file.files[0].name);
+add("Applicant Signature",files[4].file.files[0].name);
+
+msg+="__________________________________\\n_Please assist me with this service._";
+window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+};
+
+})();
 </script>
+
+<!-- ==================== NEW PAN CARD APPLY : JAVASCRIPT : END ==================== -->
+
+
+
+
+
+
+
 
 
      
