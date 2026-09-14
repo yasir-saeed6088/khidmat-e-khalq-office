@@ -2436,69 +2436,23 @@ setTimeout(()=>{if(typeof first.focus==="function")first.focus({preventScroll:tr
 return;
 }
 
-/* ==================== WHATSAPP FINAL ==================== */
-const income = selectedIncome.map(x=>x.value).join(", ");
-const fullApplicant = [B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" ");
-const father = [B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" ");
-const mother = [B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" ");
-const docName = (s,o) => s.value==="Other"?o.value.trim():s.value;
-const fileName = (f) => f?.file?.files?.[0]?.name || "Not Uploaded";
 
-let msg = "```\n"; // Start Monospace for perfect alignment
-msg+="🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n KHIDMAT-E-KHALQ OFFICE\n🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n\n 🔹 NEW PAN CARD APPLY 🔹\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+/* ==================== WHATSAPP ==================== */
+const income=selectedIncome.map(x=>x.value).join(", "),fullApplicant=[B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" "),father=[B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" "),mother=[B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" "),docName=(s,o)=>s.value==="Other"?o.value.trim():s.value,fileName=f=>f?.file?.files?.[0]?.name||"Not Uploaded";
+let msg="🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n      _KHIDMAT-E-KHALQ OFFICE_\n🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n\n          🔹 _NEW PAN CARD APPLY_ 🔹\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
+const section=(title,icon)=>{msg+=icon+" "+title+"\n┌────────────────────────────────────┐\n";},endSection=()=>{msg+="└────────────────────────────────────┘\n\n";},add=(label,value)=>{msg+="│ "+label+" : "+(value||"")+"\n";};
+section("```PERSONAL DETAILS```","📋");add("Name as per Aadhaar",B.name.value.trim());add("Full Name of Applicant",fullApplicant);add("Date of Birth",B.dob.value.trim());add("Gender",B.gender.value);add("Aadhaar Number",B.aadhaar.value.trim());endSection();
+section("```PARENT DETAILS```","👨‍👩‍👦");add("Father's Name",father);add("Mother's Name",mother);add("Parent Name Printed on PAN",B.parentPrinted.value);endSection();
+section("```SOURCE OF INCOME```","💼");add("Source of Income",income);endSection();
+section("```PAN CARD DELIVERY ADDRESS```","🏠");add("Flat / Door / Building",B.house.value.trim());add("Road / Street / Block / Sector",B.road.value.trim());add("Post Office",B.postOffice.value.trim());add("Area / Locality / Town / City",B.area.value.trim());add("District",B.district.value.trim());add("State",B.state.value);add("Country",B.country.value.trim());add("PIN Code",B.pin.value.trim());endSection();
+section("```CONTACT DETAILS```","📞");add("Mobile Number",B.mobile.value.trim());add("Email ID",B.email.value.trim());endSection();
+section("```RESIDENTIAL STATUS```","🏠");add("Residential Status",B.residential.value);endSection();
+section("```DOCUMENT DETAILS```","📄");add("Proof of Identity",docName(B.poi,B.poiOther));add("POI File",fileName(files.poi));add("Proof of Address",docName(B.poa,B.poaOther));add("POA File",fileName(files.poa));add("Proof of Date of Birth",docName(B.dobProof,B.dobOther));add("DOB Proof File",fileName(files.dob));add("Applicant Photo",fileName(files.photo));add("Applicant Signature",fileName(files.signature));endSection();
+msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";msg+="✅ ```SERVICE:``` New PAN Card Application\n";msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";msg+="__________________________________\n_Please assist me with this service._\n\n";msg+="_🌹 Thank you for choosing KHIDMAT-E-KHALQ OFFICE 🌹_";
 
-const section = (title,icon)=>{msg+=icon+" "+title+"\n┌──────────────────────────────────┐\n";};
-const endSection = ()=>{msg+="└──────────────────────────────────┘\n\n";};
-const add = (label,value)=>{msg+="│ "+label.padEnd(18)+" : "+(value||"")+"\n";};
-
-// Aadhaar ko mask karo - professional tarika
-const aadhaarMasked = "XXXX-XXXX-" + B.aadhaar.value.trim().slice(-4);
-
-section("PERSONAL DETAILS","📋");
-add("Name as per Aadhaar",B.name.value.trim());
-add("Full Applicant",fullApplicant);
-add("DOB",B.dob.value.trim());
-add("Gender",B.gender.value);
-add("Aadhaar No.",aadhaarMasked);
-endSection();
-
-section("PARENT DETAILS","👨‍👩‍👦");
-add("Father's Name",father);
-add("Mother's Name",mother);
-add("Print on PAN",B.parentPrinted.value);
-endSection();
-
-section("SOURCE OF INCOME","💼");
-add("Source",income);
-endSection();
-
-section("DELIVERY ADDRESS","🏠");
-add("Area",B.road.value.trim());
-add("P.O.",B.postOffice.value.trim());
-add("City/District",B.area.value.trim()+", "+B.district.value.trim());
-add("State/PIN",B.state.value+" - "+B.pin.value.trim());
-endSection();
-
-section("CONTACT DETAILS","📞");
-add("Mobile",B.mobile.value.trim());
-add("Email",B.email.value.trim());
-endSection();
-
-section("DOCUMENT DETAILS","📄");
-add("POI",docName(B.poi,B.poiOther)+" | "+fileName(files.poi));
-add("POA",docName(B.poa,B.poaOther)+" | "+fileName(files.poa));
-add("DOB Proof",docName(B.dobProof,B.dobOther)+" | "+fileName(files.dob));
-add("Photo",fileName(files.photo));
-add("Signature",fileName(files.signature));
-endSection();
-
-msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
-msg+="✅ SERVICE: New PAN Card Application\n";
-msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n```"; // End Monospace
-
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
-};
-})();
+/* PREVIEW */
+const preview=window.open("","_blank","width=430,height=760");
+if(preview){preview.document.write(`<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1"><title>WhatsApp Message Preview</title><style>*{box-sizing:border-box}body{margin:0;background:#f0f2f5;font-family:Arial,sans-serif;padding:18px}.card{background:#fff;border-radius:18px;box-shadow:0 8px 30px rgba(0,0,0,.14);overflow:hidden}.top{padding:18px;display:flex;align-items:center;gap:12px;border-bottom:1px solid #eee}.code-icon{width:42px;height:42px;border-radius:10px;background:#f1f3f5;display:flex;align-items:center;justify-content:center;font-size:21px}.title{font-size:16px;font-weight:700;color:#202124}.sub{font-size:13px;color:#70757a;margin-top:3px}.view{width:100%;padding:14px 18px;border:0;background:#fff;text-align:left;font-size:15px;font-weight:700;cursor:pointer}.message{display:none;margin:0;padding:16px;border-top:1px solid #eee;background:#202124;color:#f8f9fa;font-family:monospace;font-size:12px;line-height:1.55;white-space:pre-wrap;overflow:auto;max-height:560px}.close{display:none;padding:10px 16px;border:0;background:#fff;color:#0758c9;font-weight:700;cursor:pointer;width:100%;border-top:1px solid #eee}.send{display:block;width:calc(100% - 28px);margin:14px;padding:13px;background:#25d366;color:#fff;border:0;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer}</style></head><body><div class="card"><div class="top"><div class="code-icon">&lt;/&gt;</div><div><div class="title">WhatsApp Service Request</div><div class="sub">New PAN Card Application</div></div></div><button class="view" id="view">View message ›</button><pre class="message" id="message"></pre><button class="close" id="close">× Close</button><button class="send" id="send">Send to WhatsApp</button></div><script>const text=${JSON.stringify(msg)},view=document.getElementById("view"),message=document.getElementById("message"),close=document.getElementById("close");view.onclick=()=>{message.textContent=text;message.style.display="block";view.style.display="none";close.style.display="block"};close.onclick=()=>{message.style.display="none";close.style.display="none";view.style.display="block"};document.getElementById("send").onclick=()=>window.location.href="https://wa.me/916361634389?text="+encodeURIComponent(text);<\/script></body></html>`);preview.document.close();}
 </script>
 <!-- =========================================================
      ===== NEW PAN CARD APPLY : SCRIPT : END ================
