@@ -2052,7 +2052,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 <input type="file" id="panPoiFile" accept=".pdf,.jpg,.jpeg,.png">
 <button type="button" class="file-upload-btn" id="panPoiUpload">Upload</button>
-<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG — Maximum Size: 1 MB</div>
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
 
 <label for="panPoa">B. Proof of Address (POA) <span class="required-star">*</span></label>
 <select id="panPoa">
@@ -2081,8 +2081,8 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 <input type="file" id="panPoaFile" accept=".pdf,.jpg,.jpeg,.png">
 <button type="button" class="file-upload-btn" id="panPoaUpload">Upload</button>
-<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG — Maximum Size: 1 MB</div>
-
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
+     
 <label for="panDobProof">C. Proof of Date of Birth (DOB) <span class="required-star">*</span></label>
 <select id="panDobProof">
 <option value="">-- Select Document --</option>
@@ -2104,15 +2104,15 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 <input type="file" id="panDobFile" accept=".pdf,.jpg,.jpeg,.png">
 <button type="button" class="file-upload-btn" id="panDobUpload">Upload</button>
-<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG — Maximum Size: 1 MB</div>
-
+<div class="file-upload-note">Allowed: PDF, JPG, JPEG, PNG</div>
+     
 <!-- ===================== 8. APPLICANT PHOTO ===================== -->
 <div class="form-section-title">8. Applicant Photo</div>
 
 <label for="panPhotoFile">Upload Applicant's Photo <span class="required-star">*</span></label>
 <input type="file" id="panPhotoFile" accept=".jpg,.jpeg,.png">
 <button type="button" class="file-upload-btn" id="panPhotoUpload">Upload</button>
-<div class="file-upload-note">Allowed: JPG, JPEG, PNG — Maximum Size: 1 MB</div>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG</div>
 
 <!-- ===================== 9. APPLICANT SIGNATURE ===================== -->
 <div class="form-section-title">9. Applicant Signature</div>
@@ -2120,7 +2120,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <label for="panSignatureFile">Upload Applicant's Signature <span class="required-star">*</span></label>
 <input type="file" id="panSignatureFile" accept=".jpg,.jpeg,.png">
 <button type="button" class="file-upload-btn" id="panSignatureUpload">Upload</button>
-<div class="file-upload-note">Allowed: JPG, JPEG, PNG — Maximum Size: 1 MB</div>
+<div class="file-upload-note">Allowed: JPG, JPEG, PNG</div>
 
 <!-- ===================== FORM BUTTONS ===================== -->
 <div class="form-buttons">
@@ -2223,28 +2223,40 @@ if(e.target===B.popup)closePopup();
 
 /* ==================== ERROR FUNCTIONS : SCRIPT ==================== */
 
-const removeError=f=>{
+const errorMap=new Map();
+
+const resetBorder=f=>{
 if(!f)return;
 f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;
-const e=f.nextElementSibling;
-if(e&&e.classList.contains("form-error"))e.remove();
 };
 
-const removeErrorByParent=f=>{
+const removeError=f=>{
 if(!f)return;
-const e=f.parentElement?.querySelector(".form-error");
+const e=errorMap.get(f);
 if(e)e.remove();
+errorMap.delete(f);
+resetBorder(f);
 };
 
 const showError=(f,msg)=>{
+if(!f)return;
 removeError(f);
 f.style.borderColor=error;
 const e=document.createElement("div");
 e.className="form-error";
 e.textContent=msg;
 f.after(e);
+errorMap.set(f,e);
 };
 
+const clearAllErrors=()=>{
+errorMap.forEach((e,f)=>{
+e.remove();
+resetBorder(f);
+});
+errorMap.clear();
+};
+     
 /* ==================== VALIDATION FUNCTIONS : SCRIPT ==================== */
 
 const hasText=f=>f.value.trim().length>0;
@@ -2360,12 +2372,6 @@ if(f.value.trim())removeError(f);
 const incomeBoxes=[...B.popup.querySelectorAll('input[name="panIncome"]')];
 const incomeBox=document.getElementById("panIncomeDetails");
 
-const clearIncomeError=()=>{
-const e=incomeBox.querySelector(".form-error");
-if(e)e.remove();
-incomeBox.style.borderColor="";
-};
-
 incomeBoxes.forEach(x=>{
 x.addEventListener("change",()=>{
 const no=incomeBoxes.find(y=>y.value==="No Income");
@@ -2380,8 +2386,8 @@ no.checked=false;
 
 const selected=incomeBoxes.filter(y=>y.checked);
 
-if(selected.length&&(selected.length===1&&selected[0].value==="No Income"||selected.length>0&&!selected.some(y=>y.value==="No Income"))){
-clearIncomeError();
+if(selected.length>0){
+removeError(incomeBox);
 }
 });
 });
@@ -2405,17 +2411,14 @@ signature:"Please choose your applicant signature."
 };
 
 const setupFile=(key,o)=>{
+
 o.file.addEventListener("change",()=>{
 o.upload.classList.remove("file-success","file-error");
 o.upload.textContent="Upload";
-o.file.style.borderColor=normal;
-o.upload.style.borderColor="";
+o.upload.style.borderColor=normal;
 
-const e=o.file.nextElementSibling?.nextElementSibling;
-if(e?.classList.contains("form-error"))e.remove();
-
-const ue=o.upload.nextElementSibling;
-if(ue?.classList.contains("form-error"))ue.remove();
+removeError(o.file);
+removeError(o.upload);
 });
 
 o.upload.addEventListener("click",()=>{
@@ -2423,14 +2426,10 @@ const f=o.file.files[0];
 
 o.upload.classList.remove("file-success","file-error");
 o.upload.textContent="Upload";
-o.upload.style.borderColor="";
-o.file.style.borderColor=normal;
+o.upload.style.borderColor=normal;
 
-const e=o.file.nextElementSibling?.nextElementSibling;
-if(e?.classList.contains("form-error"))e.remove();
-
-const ue=o.upload.nextElementSibling;
-if(ue?.classList.contains("form-error"))ue.remove();
+removeError(o.file);
+removeError(o.upload);
 
 if(!f){
 showError(o.file,chooseMessage[key]);
@@ -2446,13 +2445,6 @@ o.upload.textContent="Try Again";
 return;
 }
 
-if(f.size>1048576){
-showError(o.file,"Please upload a file of 1 MB or less.");
-o.upload.classList.add("file-error");
-o.upload.textContent="Try Again";
-return;
-}
-
 o.file.style.borderColor=normal;
 o.upload.classList.add("file-success");
 o.upload.textContent="✓ Uploaded";
@@ -2460,19 +2452,15 @@ o.upload.textContent="✓ Uploaded";
 };
 
 Object.entries(files).forEach(([key,o])=>setupFile(key,o));
-
+     
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
 
 B.submit.onclick=()=>{
 
-B.popup.querySelectorAll(".form-error").forEach(x=>x.remove());
-
-B.popup.querySelectorAll("input,select").forEach(x=>{
-x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal;
-});
+clearAllErrors();
 
 Object.values(files).forEach(o=>{
-o.upload.style.borderColor="";
+o.upload.style.borderColor=normal;
 });
 
 let first=null;
@@ -2552,12 +2540,12 @@ const selectedIncome=incomeBoxes.filter(x=>x.checked);
 
 if(!selectedIncome.length){
 showError(incomeBox,"Please select at least one source of income.");
-if(!first)first=incomeBox;
+if(!first)first=incomeBoxes[0];
 }else if(selectedIncome.some(x=>x.value==="No Income")&&selectedIncome.length>1){
 showError(incomeBox,"No Income cannot be selected with any other source of income.");
-if(!first)first=incomeBox;
+if(!first)first=incomeBoxes[0];
 }
-
+     
 /* ADDRESS */
 
 if(!B.postOffice.value.trim()){
@@ -2658,15 +2646,6 @@ showError(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");
 return;
 }
 
-if(f.size>1048576){
-
-if(!first)first=o.file;
-
-showError(o.file,"Please upload a file of 1 MB or less.");
-
-return;
-}
-
 if(!o.upload.classList.contains("file-success")){
 
 if(!first)first=o.upload;
@@ -2675,24 +2654,26 @@ showError(o.upload,fileErrorMessage[key]);
 
 return;
 }
-
+     
 });
 
 /* ==================== FIRST ERROR SCROLL + FOCUS ==================== */
 
 if(first){
 
-setTimeout(()=>{
+requestAnimationFrame(()=>{
 first.scrollIntoView({
 behavior:"smooth",
-block:"center"
+block:"center",
+inline:"nearest"
 });
 
 setTimeout(()=>{
-if(typeof first.focus==="function")first.focus();
-},400);
-
-},50);
+if(typeof first.focus==="function"){
+first.focus({preventScroll:true});
+}
+},350);
+});
 
 return;
 }
@@ -2721,10 +2702,10 @@ B.motherLast.value.trim()
 
 const docName=(s,o)=>s.value==="Other"?o.value.trim():s.value;
 
-let msg="_🌹==========🇮🇳==========🥀_\\n      _KHIDMAT-E-KHALQ OFFICE_\\n_🌹=======================🥀_\\n\\n     _SERVICE: NEW PAN CARD APPLY_\\n_—————————————————————_\\n\\n```PERSONAL DETAILS```\\n\\n";
-
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: NEW PAN CARD_\n            _APPLY_\n_—————————————————————_\n\n```PERSONAL DETAILS```\n\n";
+     
 const add=(label,value)=>{
-msg+="```"+label+":``` "+(value||"")+"\\n\\n";
+msg+="```"+label+":``` "+(value||"")+"\n\n";
 };
 
 add("Name as per Aadhaar",B.name.value.trim());
@@ -2733,17 +2714,17 @@ add("Date of Birth",B.dob.value.trim());
 add("Gender",B.gender.value);
 add("Aadhaar Number",B.aadhaar.value.trim());
 
-msg+="```PARENT DETAILS```\\n\\n";
+msg+="```PARENT DETAILS```\n\n";
 
 add("Father's Name",father);
 add("Mother's Name",mother);
 add("Parent Name Printed on PAN",B.parentPrinted.value);
 
-msg+="```SOURCE OF INCOME```\\n\\n";
+msg+="```SOURCE OF INCOME```\n\n";
 
 add("Source of Income",income);
 
-msg+="```PAN CARD DELIVERY ADDRESS```\\n\\n";
+msg+="```PAN CARD DELIVERY ADDRESS```\n\n";
 
 add("Flat / Door / Building",B.house.value.trim());
 add("Road / Street / Block / Sector",B.road.value.trim());
@@ -2754,16 +2735,16 @@ add("State",B.state.value);
 add("Country",B.country.value.trim());
 add("PIN Code",B.pin.value.trim());
 
-msg+="```CONTACT DETAILS```\\n\\n";
+msg+="```CONTACT DETAILS```\n\n";
 
 add("Mobile Number",B.mobile.value.trim());
 add("Email ID",B.email.value.trim());
 
-msg+="```RESIDENTIAL STATUS```\\n\\n";
+msg+="```RESIDENTIAL STATUS```\n\n";
 
 add("Residential Status",B.residential.value);
 
-msg+="```DOCUMENT DETAILS```\\n\\n";
+msg+="```DOCUMENT DETAILS```\n\n";
 
 add("Proof of Identity",docName(B.poi,B.poiOther));
 add("POI File",files.poi.file.files[0].name);
@@ -2777,8 +2758,8 @@ add("DOB Proof File",files.dob.file.files[0].name);
 add("Applicant Photo",files.photo.file.files[0].name);
 add("Applicant Signature",files.signature.file.files[0].name);
 
-msg+="__________________________________\\n_Please assist me with this service._";
-
+msg+="__________________________________\n_Please assist me with this service._";
+     
 window.open(
 "https://wa.me/916361634389?text="+encodeURIComponent(msg),
 "_blank"
