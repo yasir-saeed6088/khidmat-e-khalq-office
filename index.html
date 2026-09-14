@@ -2436,58 +2436,65 @@ setTimeout(()=>{if(typeof first.focus==="function")first.focus({preventScroll:tr
 return;
 }
 
-/* ==================== WHATSAPP ==================== */
-const income=selectedIncome.map(x=>x.value).join(", ");
-const fullApplicant=[B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" ");
-const father=[B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" ");
-const mother=[B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" ");
-const docName=(s,o)=>s.value==="Other"?o.value.trim():s.value;
+/* ==================== WHATSAPP FINAL ==================== */
+const income = selectedIncome.map(x=>x.value).join(", ");
+const fullApplicant = [B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" ");
+const father = [B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" ");
+const mother = [B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" ");
+const docName = (s,o) => s.value==="Other"?o.value.trim():s.value;
+const fileName = (f) => f?.file?.files?.[0]?.name || "Not Uploaded";
 
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n     _SERVICE: NEW PAN CARD_\n            _APPLY_\n_—————————————————————_\n\n```PERSONAL DETAILS```\n\n";
-const add=(label,value)=>{msg+="```"+label+":``` "+(value||"")+"\n\n";};
+let msg = "```\n"; // Start Monospace for perfect alignment
+msg+="🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n KHIDMAT-E-KHALQ OFFICE\n🌹━━━━━━━━━━━━━━━━━━━🇮🇳━━━━━━━━━━━━━━━━━━━🌹\n\n 🔹 NEW PAN CARD APPLY 🔹\n━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n\n";
 
+const section = (title,icon)=>{msg+=icon+" "+title+"\n┌──────────────────────────────────┐\n";};
+const endSection = ()=>{msg+="└──────────────────────────────────┘\n\n";};
+const add = (label,value)=>{msg+="│ "+label.padEnd(18)+" : "+(value||"")+"\n";};
+
+// Aadhaar ko mask karo - professional tarika
+const aadhaarMasked = "XXXX-XXXX-" + B.aadhaar.value.trim().slice(-4);
+
+section("PERSONAL DETAILS","📋");
 add("Name as per Aadhaar",B.name.value.trim());
-add("Full Name of Applicant",fullApplicant);
-add("Date of Birth",B.dob.value.trim());
+add("Full Applicant",fullApplicant);
+add("DOB",B.dob.value.trim());
 add("Gender",B.gender.value);
-add("Aadhaar Number",B.aadhaar.value.trim());
+add("Aadhaar No.",aadhaarMasked);
+endSection();
 
-msg+="```PARENT DETAILS```\n\n";
+section("PARENT DETAILS","👨‍👩‍👦");
 add("Father's Name",father);
 add("Mother's Name",mother);
-add("Parent Name Printed on PAN",B.parentPrinted.value);
+add("Print on PAN",B.parentPrinted.value);
+endSection();
 
-msg+="```SOURCE OF INCOME```\n\n";
-add("Source of Income",income);
+section("SOURCE OF INCOME","💼");
+add("Source",income);
+endSection();
 
-msg+="```PAN CARD DELIVERY ADDRESS```\n\n";
-add("Flat / Door / Building",B.house.value.trim());
-add("Road / Street / Block / Sector",B.road.value.trim());
-add("Post Office",B.postOffice.value.trim());
-add("Area / Locality / Town / City",B.area.value.trim());
-add("District",B.district.value.trim());
-add("State",B.state.value);
-add("Country",B.country.value.trim());
-add("PIN Code",B.pin.value.trim());
+section("DELIVERY ADDRESS","🏠");
+add("Area",B.road.value.trim());
+add("P.O.",B.postOffice.value.trim());
+add("City/District",B.area.value.trim()+", "+B.district.value.trim());
+add("State/PIN",B.state.value+" - "+B.pin.value.trim());
+endSection();
 
-msg+="```CONTACT DETAILS```\n\n";
-add("Mobile Number",B.mobile.value.trim());
-add("Email ID",B.email.value.trim());
+section("CONTACT DETAILS","📞");
+add("Mobile",B.mobile.value.trim());
+add("Email",B.email.value.trim());
+endSection();
 
-msg+="```RESIDENTIAL STATUS```\n\n";
-add("Residential Status",B.residential.value);
+section("DOCUMENT DETAILS","📄");
+add("POI",docName(B.poi,B.poiOther)+" | "+fileName(files.poi));
+add("POA",docName(B.poa,B.poaOther)+" | "+fileName(files.poa));
+add("DOB Proof",docName(B.dobProof,B.dobOther)+" | "+fileName(files.dob));
+add("Photo",fileName(files.photo));
+add("Signature",fileName(files.signature));
+endSection();
 
-msg+="```DOCUMENT DETAILS```\n\n";
-add("Proof of Identity",docName(B.poi,B.poiOther));
-add("POI File",files.poi.file.files[0].name);
-add("Proof of Address",docName(B.poa,B.poaOther));
-add("POA File",files.poa.file.files[0].name);
-add("Proof of Date of Birth",docName(B.dobProof,B.dobOther));
-add("DOB Proof File",files.dob.file.files[0].name);
-add("Applicant Photo",files.photo.file.files[0].name);
-add("Applicant Signature",files.signature.file.files[0].name);
-
-msg+="__________________________________\n_Please assist me with this service._";
+msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+msg+="✅ SERVICE: New PAN Card Application\n";
+msg+="━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n```"; // End Monospace
 
 window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
 };
