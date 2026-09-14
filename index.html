@@ -1847,12 +1847,12 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 
 
-<!-- =========================================================
+ <!-- =========================================================
      ===== NEW PAN CARD APPLY : HTML ========================
      ========================================================= -->
 <button type="button" class="service-btn" id="newPanApplyBtn" aria-controls="newPanApplyDetails" aria-expanded="false">🆕 New PAN Card Apply</button>
 
-<!-- ===================== INFORMATION AND DETAILS FORM : HTML ===================== -->
+<!-- ===================== INFORMATION AND DETAILS : HTML ===================== -->
 <section class="service-details" id="newPanApplyDetails">
 <div class="service-details-title">New PAN Card Apply</div>
 <table class="details-table">
@@ -1877,15 +1877,15 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <input type="text" id="panNameAsAadhaar" placeholder="Enter Name as per Aadhaar">
 
 <label>Full Name of Applicant <span class="required-star">*</span></label>
-<details>
-<summary>Click to Expand ▼</summary>
+
 <label for="panFirstName">First Name <span class="required-star">*</span></label>
 <input type="text" id="panFirstName" placeholder="Enter First Name">
+
 <label for="panMiddleName">Middle Name <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panMiddleName" placeholder="Enter Middle Name">
+
 <label for="panLastName">Last Name / Surname <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panLastName" placeholder="Enter Last Name / Surname">
-</details>
 
 <label for="panDob">Date of Birth <span class="required-star">*</span></label>
 <input type="text" id="panDob" placeholder="DD / MM / YYYY" inputmode="numeric" maxlength="10">
@@ -1905,26 +1905,26 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <div class="form-section-title">2. Parent Details</div>
 
 <label>Father's Name <span class="required-star">*</span></label>
-<details>
-<summary>Click to Expand ▼</summary>
+
 <label for="panFatherFirst">First Name <span class="required-star">*</span></label>
 <input type="text" id="panFatherFirst" placeholder="Enter Father's First Name">
+
 <label for="panFatherMiddle">Middle Name <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panFatherMiddle" placeholder="Enter Father's Middle Name">
+
 <label for="panFatherLast">Last Name / Surname <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panFatherLast" placeholder="Enter Father's Last Name / Surname">
-</details>
 
 <label>Mother's Name <span class="required-star">*</span></label>
-<details>
-<summary>Click to Expand ▼</summary>
+
 <label for="panMotherFirst">First Name <span class="required-star">*</span></label>
 <input type="text" id="panMotherFirst" placeholder="Enter Mother's First Name">
+
 <label for="panMotherMiddle">Middle Name <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panMotherMiddle" placeholder="Enter Mother's Middle Name">
+
 <label for="panMotherLast">Last Name / Surname <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panMotherLast" placeholder="Enter Mother's Last Name / Surname">
-</details>
 
 <label for="panParentPrinted">Parent's Name to be Printed on PAN Card <span class="required-star">*</span></label>
 <select id="panParentPrinted">
@@ -1936,22 +1936,17 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <!-- ===================== 3. SOURCE OF INCOME ===================== -->
 <div class="form-section-title">3. Source of Income <span class="required-star">*</span></div>
 
-<details id="panIncomeDetails">
-<summary>Click to Select ▼</summary>
+<div id="panIncomeDetails">
 <label><input type="checkbox" name="panIncome" value="Salary"> Salary</label>
 <label><input type="checkbox" name="panIncome" value="Income from Business / Profession"> Income from Business / Profession</label>
 <label><input type="checkbox" name="panIncome" value="Income from House Property"> Income from House Property</label>
 <label><input type="checkbox" name="panIncome" value="Income from Other Sources"> Income from Other Sources</label>
 <label><input type="checkbox" name="panIncome" value="Capital Gains"> Capital Gains</label>
 <label><input type="checkbox" name="panIncome" value="No Income"> No Income</label>
-</details>
+</div>
 
 <!-- ===================== 4. PAN CARD DELIVERY ADDRESS ===================== -->
-<div class="form-section-title">4. PAN Card Delivery Address</div>
-
-<label>Address <span class="required-star">*</span></label>
-<details>
-<summary>Click to Expand ▼</summary>
+<div class="form-section-title">4. PAN Card Delivery Address <span class="required-star">*</span></div>
 
 <label for="panHouse">Flat / Door / Building <span class="optional-text">(Optional)</span></label>
 <input type="text" id="panHouse" placeholder="Enter Flat / Door / Building">
@@ -2015,10 +2010,8 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <label for="panPin">PIN Code <span class="required-star">*</span></label>
 <input type="tel" id="panPin" placeholder="Enter 6-digit PIN Code" inputmode="numeric" maxlength="6">
 
-</details>
-
 <!-- ===================== 5. CONTACT DETAILS ===================== -->
-<div class="form-section-title">5. Contact Details</div>
+<div class="form-section-title">5. Contact Details <span class="required-star">*</span></div>
 
 <label for="panMobile">Mobile Number <span class="required-star">*</span></label>
 <input type="tel" id="panMobile" placeholder="Enter 10-digit Mobile Number" inputmode="numeric" maxlength="10">
@@ -2027,7 +2020,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 <input type="text" id="panEmail" placeholder="Enter Email Address" autocomplete="email">
 
 <!-- ===================== 6. RESIDENTIAL STATUS ===================== -->
-<div class="form-section-title">6. Residential Status</div>
+<div class="form-section-title">6. Residential Status <span class="required-star">*</span></div>
 
 <select id="panResidentialStatus">
 <option value="">-- Click to Select --</option>
@@ -2143,118 +2136,615 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
      ===== NEW PAN CARD APPLY : HTML : END ==================
      ========================================================= -->
 
-     <!-- =========================================================
+<!-- =========================================================
      ===== NEW PAN CARD APPLY : SCRIPT =====================
      ========================================================= -->
 <script>
-(()=>{const B={btn:document.getElementById("newPanApplyBtn"),details:document.getElementById("newPanApplyDetails"),popup:document.getElementById("newPanApplyPopup"),apply:document.querySelector("#newPanApplyDetails .apply-now-btn"),close:document.getElementById("newPanApplyClose"),submit:document.getElementById("newPanApplySubmit"),name:document.getElementById("panNameAsAadhaar"),first:document.getElementById("panFirstName"),middle:document.getElementById("panMiddleName"),last:document.getElementById("panLastName"),dob:document.getElementById("panDob"),gender:document.getElementById("panGender"),aadhaar:document.getElementById("panAadhaar"),fatherFirst:document.getElementById("panFatherFirst"),fatherMiddle:document.getElementById("panFatherMiddle"),fatherLast:document.getElementById("panFatherLast"),motherFirst:document.getElementById("panMotherFirst"),motherMiddle:document.getElementById("panMotherMiddle"),motherLast:document.getElementById("panMotherLast"),parentPrinted:document.getElementById("panParentPrinted"),house:document.getElementById("panHouse"),road:document.getElementById("panRoad"),postOffice:document.getElementById("panPostOffice"),area:document.getElementById("panArea"),district:document.getElementById("panDistrict"),state:document.getElementById("panState"),country:document.getElementById("panCountry"),pin:document.getElementById("panPin"),mobile:document.getElementById("panMobile"),email:document.getElementById("panEmail"),residential:document.getElementById("panResidentialStatus"),poi:document.getElementById("panPoi"),poiOther:document.getElementById("panPoiOther"),poa:document.getElementById("panPoa"),poaOther:document.getElementById("panPoaOther"),dobProof:document.getElementById("panDobProof"),dobOther:document.getElementById("panDobOther")},normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000",allowed=["application/pdf","image/jpeg","image/jpg","image/png"];
+(()=>{
 
-const files={poi:{file:document.getElementById("panPoiFile"),upload:document.getElementById("panPoiUpload")},poa:{file:document.getElementById("panPoaFile"),upload:document.getElementById("panPoaUpload")},dob:{file:document.getElementById("panDobFile"),upload:document.getElementById("panDobUpload")},photo:{file:document.getElementById("panPhotoFile"),upload:document.getElementById("panPhotoUpload")},signature:{file:document.getElementById("panSignatureFile"),upload:document.getElementById("panSignatureUpload")}};
+const B={
+btn:document.getElementById("newPanApplyBtn"),
+details:document.getElementById("newPanApplyDetails"),
+popup:document.getElementById("newPanApplyPopup"),
+apply:document.querySelector("#newPanApplyDetails .apply-now-btn"),
+close:document.getElementById("newPanApplyClose"),
+submit:document.getElementById("newPanApplySubmit"),
+name:document.getElementById("panNameAsAadhaar"),
+first:document.getElementById("panFirstName"),
+middle:document.getElementById("panMiddleName"),
+last:document.getElementById("panLastName"),
+dob:document.getElementById("panDob"),
+gender:document.getElementById("panGender"),
+aadhaar:document.getElementById("panAadhaar"),
+fatherFirst:document.getElementById("panFatherFirst"),
+fatherMiddle:document.getElementById("panFatherMiddle"),
+fatherLast:document.getElementById("panFatherLast"),
+motherFirst:document.getElementById("panMotherFirst"),
+motherMiddle:document.getElementById("panMotherMiddle"),
+motherLast:document.getElementById("panMotherLast"),
+parentPrinted:document.getElementById("panParentPrinted"),
+house:document.getElementById("panHouse"),
+road:document.getElementById("panRoad"),
+postOffice:document.getElementById("panPostOffice"),
+area:document.getElementById("panArea"),
+district:document.getElementById("panDistrict"),
+state:document.getElementById("panState"),
+country:document.getElementById("panCountry"),
+pin:document.getElementById("panPin"),
+mobile:document.getElementById("panMobile"),
+email:document.getElementById("panEmail"),
+residential:document.getElementById("panResidentialStatus"),
+poi:document.getElementById("panPoi"),
+poiOther:document.getElementById("panPoiOther"),
+poa:document.getElementById("panPoa"),
+poaOther:document.getElementById("panPoaOther"),
+dobProof:document.getElementById("panDobProof"),
+dobOther:document.getElementById("panDobOther")
+};
 
-B.btn.onclick=()=>{const open=B.details.style.display==="block";document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");if(!open)B.details.style.display="block";B.btn.setAttribute("aria-expanded",!open)};
+const normal="rgba(7,88,201,.25)",selectNormal="rgba(7,88,201,.35)",error="#e00000";
+const allowed=["application/pdf","image/jpeg","image/jpg","image/png"];
 
-B.apply.onclick=()=>{B.popup.style.display="flex";document.body.style.overflow="hidden"};
-B.close.onclick=()=>{B.popup.style.display="none";document.body.style.overflow=""};
-B.popup.onclick=e=>{if(e.target===B.popup){B.popup.style.display="none";document.body.style.overflow=""}};
+const files={
+poi:{file:document.getElementById("panPoiFile"),upload:document.getElementById("panPoiUpload")},
+poa:{file:document.getElementById("panPoaFile"),upload:document.getElementById("panPoaUpload")},
+dob:{file:document.getElementById("panDobFile"),upload:document.getElementById("panDobUpload")},
+photo:{file:document.getElementById("panPhotoFile"),upload:document.getElementById("panPhotoUpload")},
+signature:{file:document.getElementById("panSignatureFile"),upload:document.getElementById("panSignatureUpload")}
+};
 
-const clear=f=>{f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;const e=f.nextElementSibling;if(e&&e.classList.contains("form-error"))e.remove()};
-const show=(f,msg)=>{clear(f);f.style.borderColor=error;const e=document.createElement("div");e.className="form-error";e.textContent=msg;f.after(e)};
-const text=f=>!!f.value.trim();
-const mobile=f=>/^[6-9]\d{9}$/.test(f.value.trim());
-const aadhaar=f=>/^\d{12}$/.test(f.value.trim());
-const pin=f=>/^\d{6}$/.test(f.value.trim());
+/* ==================== SERVICE BUTTON : SCRIPT ==================== */
+
+B.btn.onclick=()=>{
+const open=B.details.style.display==="block";
+document.querySelectorAll(".service-details").forEach(x=>x.style.display="none");
+document.querySelectorAll(".sub-service-list").forEach(x=>x.style.display="none");
+if(!open)B.details.style.display="block";
+B.btn.setAttribute("aria-expanded",String(!open));
+};
+
+/* ==================== POPUP : SCRIPT ==================== */
+
+B.apply.onclick=()=>{
+B.popup.style.display="flex";
+document.body.style.overflow="hidden";
+};
+
+const closePopup=()=>{
+B.popup.style.display="none";
+document.body.style.overflow="";
+};
+
+B.close.onclick=closePopup;
+
+B.popup.onclick=e=>{
+if(e.target===B.popup)closePopup();
+};
+
+/* ==================== ERROR FUNCTIONS : SCRIPT ==================== */
+
+const removeError=f=>{
+if(!f)return;
+f.style.borderColor=f.tagName==="SELECT"?selectNormal:normal;
+const e=f.nextElementSibling;
+if(e&&e.classList.contains("form-error"))e.remove();
+};
+
+const removeErrorByParent=f=>{
+if(!f)return;
+const e=f.parentElement?.querySelector(".form-error");
+if(e)e.remove();
+};
+
+const showError=(f,msg)=>{
+removeError(f);
+f.style.borderColor=error;
+const e=document.createElement("div");
+e.className="form-error";
+e.textContent=msg;
+f.after(e);
+};
+
+/* ==================== VALIDATION FUNCTIONS : SCRIPT ==================== */
+
+const hasText=f=>f.value.trim().length>0;
+const validMobile=f=>/^[6-9]\d{9}$/.test(f.value.trim());
+const validAadhaar=f=>/^\d{12}$/.test(f.value.trim());
+const validPin=f=>/^\d{6}$/.test(f.value.trim());
+const validEmail=f=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim());
 const validName=f=>/^[A-Za-z\u0600-\u06FF][A-Za-z\u0600-\u06FF .'-]*$/.test(f.value.trim());
-const email=f=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(f.value.trim());
 
 /* ==================== NUMERIC INPUT : SCRIPT ==================== */
-[B.aadhaar,B.mobile,B.pin].forEach(f=>f.addEventListener("input",()=>{f.value=f.value.replace(/\D/g,"").slice(0,f.maxLength);const ok=f===B.aadhaar?aadhaar(f):f===B.mobile?mobile(f):pin(f);if(ok)clear(f)}));
+
+[B.aadhaar,B.mobile,B.pin].forEach(f=>{
+f.addEventListener("input",()=>{
+f.value=f.value.replace(/\D/g,"").slice(0,Number(f.maxLength));
+
+if(f===B.aadhaar){
+if(validAadhaar(f))removeError(f);
+}else if(f===B.mobile){
+if(validMobile(f))removeError(f);
+}else{
+if(validPin(f))removeError(f);
+}
+});
+});
+
+/* ==================== NAME INPUT : SCRIPT ==================== */
+
+[B.name,B.first,B.fatherFirst,B.motherFirst].forEach(f=>{
+f.addEventListener("input",()=>{
+if(!f.value.trim()){
+removeError(f);
+return;
+}
+if(validName(f))removeError(f);
+});
+});
+
+/* ==================== OPTIONAL NAME INPUT : SCRIPT ==================== */
+
+[B.middle,B.last,B.fatherMiddle,B.fatherLast,B.motherMiddle,B.motherLast].forEach(f=>{
+f.addEventListener("input",()=>{
+if(!f.value.trim()||validName(f))removeError(f);
+});
+});
+
+/* ==================== NORMAL TEXT INPUT : SCRIPT ==================== */
+
+[B.postOffice,B.area,B.district,B.house,B.road,B.country].forEach(f=>{
+f.addEventListener("input",()=>{
+if(f.value.trim())removeError(f);
+});
+});
+
+/* ==================== EMAIL INPUT : SCRIPT ==================== */
+
+B.email.addEventListener("input",()=>{
+if(!B.email.value.trim()||validEmail(B.email))removeError(B.email);
+});
 
 /* ==================== DATE INPUT : SCRIPT ==================== */
-B.dob.addEventListener("input",()=>{B.dob.value=B.dob.value.replace(/\D/g,"").slice(0,8);let v=B.dob.value;if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);if(v.length>5)v=v.slice(0,5)+"/"+v.slice(5);B.dob.value=v;if(/^\d{2}\/\d{2}\/\d{4}$/.test(v)){const [d,m,y]=v.split("/").map(Number),dt=new Date(y,m-1,d),now=new Date();if(y>=1900&&y<=now.getFullYear()&&dt.getFullYear()===y&&dt.getMonth()===m-1&&dt.getDate()===d&&dt<=now)clear(B.dob)}});
 
-/* ==================== NAME LIVE ERROR CLEARING ==================== */
-[B.name,B.first,B.fatherFirst,B.motherFirst].forEach(f=>f.addEventListener("input",()=>{if(validName(f))clear(f)}));
+B.dob.addEventListener("input",()=>{
+let v=B.dob.value.replace(/\D/g,"").slice(0,8);
+if(v.length>2)v=v.slice(0,2)+"/"+v.slice(2);
+if(v.length>5)v=v.slice(0,5)+"/"+v.slice(5);
+B.dob.value=v;
 
-/* ==================== SELECT LIVE ERROR CLEARING ==================== */
-[B.gender,B.parentPrinted,B.state,B.residential].forEach(f=>f.addEventListener("change",()=>{if(f.value)clear(f)}));
+if(/^\d{2}\/\d{2}\/\d{4}$/.test(v)){
+const [d,m,y]=v.split("/").map(Number);
+const dt=new Date(y,m-1,d);
+const now=new Date();
+
+if(y>=1900&&dt.getFullYear()===y&&dt.getMonth()===m-1&&dt.getDate()===d&&dt<=now)removeError(B.dob);
+}
+});
+
+/* ==================== SELECT ERROR CLEARING : SCRIPT ==================== */
+
+[B.gender,B.parentPrinted,B.state,B.residential,B.poi,B.poa,B.dobProof].forEach(f=>{
+f.addEventListener("change",()=>{
+removeError(f);
+});
+});
 
 /* ==================== OTHER DOCUMENTS : SCRIPT ==================== */
-const setupOther=(select,group,field)=>{select.onchange=()=>{const other=select.value==="Other";group.style.display=other?"block":"none";if(!other){field.value="";clear(field)}clear(select)}};
+
+const setupOther=(select,group,field)=>{
+select.addEventListener("change",()=>{
+const other=select.value==="Other";
+group.style.display=other?"block":"none";
+
+if(!other){
+field.value="";
+removeError(field);
+}
+
+removeError(select);
+});
+};
+
 setupOther(B.poi,document.getElementById("panPoiOtherGroup"),B.poiOther);
 setupOther(B.poa,document.getElementById("panPoaOtherGroup"),B.poaOther);
 setupOther(B.dobProof,document.getElementById("panDobOtherGroup"),B.dobOther);
 
-[B.poiOther,B.poaOther,B.dobOther].forEach(f=>f.addEventListener("input",()=>{if(f.value.trim())clear(f)}));
+[B.poiOther,B.poaOther,B.dobOther].forEach(f=>{
+f.addEventListener("input",()=>{
+if(f.value.trim())removeError(f);
+});
+});
 
 /* ==================== INCOME : SCRIPT ==================== */
+
 const incomeBoxes=[...B.popup.querySelectorAll('input[name="panIncome"]')];
-incomeBoxes.forEach(x=>x.onchange=()=>{const no=incomeBoxes.find(y=>y.value==="No Income");if(x===no&&x.checked)incomeBoxes.forEach(y=>{if(y!==no)y.checked=false});else if(x!==no&&x.checked)no.checked=false;B.popup.querySelector("#panIncomeDetails")?.querySelector(".form-error")?.remove()});
+const incomeBox=document.getElementById("panIncomeDetails");
+
+const clearIncomeError=()=>{
+const e=incomeBox.querySelector(".form-error");
+if(e)e.remove();
+incomeBox.style.borderColor="";
+};
+
+incomeBoxes.forEach(x=>{
+x.addEventListener("change",()=>{
+const no=incomeBoxes.find(y=>y.value==="No Income");
+
+if(x===no&&x.checked){
+incomeBoxes.forEach(y=>{
+if(y!==no)y.checked=false;
+});
+}else if(x!==no&&x.checked){
+no.checked=false;
+}
+
+const selected=incomeBoxes.filter(y=>y.checked);
+
+if(selected.length&&(selected.length===1&&selected[0].value==="No Income"||selected.length>0&&!selected.some(y=>y.value==="No Income"))){
+clearIncomeError();
+}
+});
+});
 
 /* ==================== FILE UPLOAD : SCRIPT ==================== */
-const setupFile=o=>{o.file.onchange=()=>{o.upload.classList.remove("file-success","file-error");o.upload.textContent="Upload";o.file.style.borderColor=normal;o.upload.style.borderColor="";const e1=o.file.nextElementSibling?.nextElementSibling;if(e1?.classList.contains("form-error"))e1.remove();const e2=o.upload.nextElementSibling;if(e2?.classList.contains("form-error"))e2.remove()};o.upload.onclick=()=>{const f=o.file.files[0];o.upload.classList.remove("file-success","file-error");o.upload.textContent="Upload";o.file.style.borderColor=normal;o.upload.style.borderColor="";if(!f){show(o.file,"Please choose the required file.");o.upload.classList.add("file-error");o.upload.textContent="Try Again";return false}if(!allowed.includes(f.type)){show(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");o.upload.classList.add("file-error");o.upload.textContent="Try Again";return false}if(f.size>1048576){show(o.file,"Please upload a file of 1 MB or less.");o.upload.classList.add("file-error");o.upload.textContent="Try Again";return false}o.file.style.borderColor=normal;o.upload.classList.add("file-success");o.upload.textContent="✓ Uploaded";return true}};
-Object.values(files).forEach(setupFile);
+
+const fileErrorMessage={
+poi:"Please upload your Proof of Identity document.",
+poa:"Please upload your Proof of Address document.",
+dob:"Please upload your Proof of Date of Birth document.",
+photo:"Please upload your applicant photo.",
+signature:"Please upload your applicant signature."
+};
+
+const chooseMessage={
+poi:"Please choose your Proof of Identity document.",
+poa:"Please choose your Proof of Address document.",
+dob:"Please choose your Proof of Date of Birth document.",
+photo:"Please choose your applicant photo.",
+signature:"Please choose your applicant signature."
+};
+
+const setupFile=(key,o)=>{
+o.file.addEventListener("change",()=>{
+o.upload.classList.remove("file-success","file-error");
+o.upload.textContent="Upload";
+o.file.style.borderColor=normal;
+o.upload.style.borderColor="";
+
+const e=o.file.nextElementSibling?.nextElementSibling;
+if(e?.classList.contains("form-error"))e.remove();
+
+const ue=o.upload.nextElementSibling;
+if(ue?.classList.contains("form-error"))ue.remove();
+});
+
+o.upload.addEventListener("click",()=>{
+const f=o.file.files[0];
+
+o.upload.classList.remove("file-success","file-error");
+o.upload.textContent="Upload";
+o.upload.style.borderColor="";
+o.file.style.borderColor=normal;
+
+const e=o.file.nextElementSibling?.nextElementSibling;
+if(e?.classList.contains("form-error"))e.remove();
+
+const ue=o.upload.nextElementSibling;
+if(ue?.classList.contains("form-error"))ue.remove();
+
+if(!f){
+showError(o.file,chooseMessage[key]);
+o.upload.classList.add("file-error");
+o.upload.textContent="Try Again";
+return;
+}
+
+if(!allowed.includes(f.type)){
+showError(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");
+o.upload.classList.add("file-error");
+o.upload.textContent="Try Again";
+return;
+}
+
+if(f.size>1048576){
+showError(o.file,"Please upload a file of 1 MB or less.");
+o.upload.classList.add("file-error");
+o.upload.textContent="Try Again";
+return;
+}
+
+o.file.style.borderColor=normal;
+o.upload.classList.add("file-success");
+o.upload.textContent="✓ Uploaded";
+});
+};
+
+Object.entries(files).forEach(([key,o])=>setupFile(key,o));
 
 /* ==================== FORM VALIDATION : SCRIPT ==================== */
-B.submit.onclick=()=>{B.popup.querySelectorAll(".form-error").forEach(x=>x.remove());B.popup.querySelectorAll("input,select").forEach(x=>x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal);Object.values(files).forEach(o=>o.upload.style.borderColor="");let first=null;const check=(f,ok,msg)=>{if(!ok){show(f,msg);if(!first)first=f}};
 
-check(B.name,!!B.name.value.trim(),"Please enter your name as per Aadhaar.");
-check(B.name,validName(B.name),"Please enter a valid name as per Aadhaar.");
-check(B.first,!!B.first.value.trim(),"Please enter your first name.");
-check(B.first,validName(B.first),"Please enter a valid first name.");
+B.submit.onclick=()=>{
 
-const ds=B.dob.value.trim(),dm=/^\d{2}\/\d{2}\/\d{4}$/.test(ds);if(!ds)check(B.dob,false,"Please enter your date of birth.");else if(!dm)check(B.dob,false,"Please enter a valid date of birth.");else{const [d,m,y]=ds.split("/").map(Number),dt=new Date(y,m-1,d),now=new Date();if(y<1900||dt.getFullYear()!==y||dt.getMonth()!==m-1||dt.getDate()!==d)check(B.dob,false,"Please enter a valid date of birth.");else if(dt>now)check(B.dob,false,"Date of birth cannot be a future date.")}
+B.popup.querySelectorAll(".form-error").forEach(x=>x.remove());
 
-check(B.gender,!!B.gender.value,"Please select your gender.");
-check(B.aadhaar,aadhaar(B.aadhaar),"Please enter a valid 12-digit Aadhaar number.");
-check(B.fatherFirst,!!B.fatherFirst.value.trim(),"Please enter father's first name.");
-check(B.fatherFirst,validName(B.fatherFirst),"Please enter a valid father's first name.");
-check(B.motherFirst,!!B.motherFirst.value.trim(),"Please enter mother's first name.");
-check(B.motherFirst,validName(B.motherFirst),"Please enter a valid mother's first name.");
-check(B.parentPrinted,!!B.parentPrinted.value,"Please select the parent's name to be printed on the PAN Card.");
+B.popup.querySelectorAll("input,select").forEach(x=>{
+x.style.borderColor=x.tagName==="SELECT"?selectNormal:normal;
+});
 
-const selectedIncome=incomeBoxes.filter(x=>x.checked);if(!selectedIncome.length){const d=document.getElementById("panIncomeDetails");show(d,"Please select at least one source of income.");if(!first)first=d}else if(selectedIncome.some(x=>x.value==="No Income")&&selectedIncome.length>1){const d=document.getElementById("panIncomeDetails");show(d,"No Income cannot be selected with any other source of income.");if(!first)first=d}
+Object.values(files).forEach(o=>{
+o.upload.style.borderColor="";
+});
 
-check(B.postOffice,text(B.postOffice),"Please enter your post office.");
-check(B.area,text(B.area),"Please enter your area, locality, town or city.");
-check(B.district,text(B.district),"Please enter your district.");
-check(B.state,!!B.state.value,"Please select your state.");
-check(B.pin,pin(B.pin),"Please enter a valid 6-digit PIN code.");
-check(B.mobile,mobile(B.mobile),"Please enter a valid Indian mobile number starting with 6, 7, 8 or 9.");
-check(B.email,!!B.email.value.trim(),"Please enter your email address.");
-check(B.email,email(B.email),"Please enter a valid email address.");
-check(B.residential,!!B.residential.value,"Please select your residential status.");
+let first=null;
 
-check(B.poi,!!B.poi.value,"Please select a Proof of Identity document.");
-if(B.poi.value==="Other")check(B.poiOther,text(B.poiOther),"Please enter the name of your other identity document.");
-check(B.poa,!!B.poa.value,"Please select a Proof of Address document.");
-if(B.poa.value==="Other")check(B.poaOther,text(B.poaOther),"Please enter the name of your other address document.");
-check(B.dobProof,!!B.dobProof.value,"Please select a Proof of Date of Birth document.");
-if(B.dobProof.value==="Other"){check(B.dobOther,text(B.dobOther),"Please enter the name of your other date of birth document.");if(/aadhaar/i.test(B.dobOther.value))check(B.dobOther,false,"Aadhaar Card is not accepted as Proof of Date of Birth.")}
+const check=(f,ok,msg)=>{
+if(!ok){
+showError(f,msg);
+if(!first)first=f;
+}
+};
 
-Object.entries(files).forEach(([key,o])=>{const f=o.file.files[0];if(!f){if(!first)first=o.file;show(o.file,key==="poi"?"Please choose your Proof of Identity document.":key==="poa"?"Please choose your Proof of Address document.":key==="dob"?"Please choose your Proof of Date of Birth document.":key==="photo"?"Please choose your applicant photo.":"Please choose your applicant signature.")}else if(!allowed.includes(f.type)){if(!first)first=o.file;show(o.file,"Please upload a PDF, JPG, JPEG or PNG file.")}else if(f.size>1048576){if(!first)first=o.file;show(o.file,"Please upload a file of 1 MB or less.")}else if(!o.upload.classList.contains("file-success")){if(!first)first=o.upload;show(o.upload,"Please click the Upload button to upload your file.")}});
+/* PERSONAL DETAILS */
 
-if(first){setTimeout(()=>{first.scrollIntoView({behavior:"smooth",block:"center"});if(typeof first.focus==="function")first.focus()},50);return}
+if(!B.name.value.trim()){
+check(B.name,false,"Please enter your name as per Aadhaar.");
+}else if(!validName(B.name)){
+check(B.name,false,"Please enter a valid name as per Aadhaar.");
+}
 
-/* ==================== WHATSAPP MESSAGE : SCRIPT ==================== */
+if(!B.first.value.trim()){
+check(B.first,false,"Please enter your first name.");
+}else if(!validName(B.first)){
+check(B.first,false,"Please enter a valid first name.");
+}
+
+/* DATE OF BIRTH */
+
+const ds=B.dob.value.trim();
+
+if(!ds){
+check(B.dob,false,"Please enter your date of birth.");
+}else if(!/^\d{2}\/\d{2}\/\d{4}$/.test(ds)){
+check(B.dob,false,"Please enter a valid date of birth.");
+}else{
+const [d,m,y]=ds.split("/").map(Number);
+const dt=new Date(y,m-1,d);
+const now=new Date();
+
+if(y<1900||dt.getFullYear()!==y||dt.getMonth()!==m-1||dt.getDate()!==d){
+check(B.dob,false,"Please enter a valid date of birth.");
+}else if(dt>now){
+check(B.dob,false,"Date of birth cannot be a future date.");
+}
+}
+
+if(!B.gender.value){
+check(B.gender,false,"Please select your gender.");
+}
+
+if(!B.aadhaar.value.trim()){
+check(B.aadhaar,false,"Please enter your Aadhaar number.");
+}else if(!validAadhaar(B.aadhaar)){
+check(B.aadhaar,false,"Please enter a valid 12-digit Aadhaar number.");
+}
+
+/* PARENT DETAILS */
+
+if(!B.fatherFirst.value.trim()){
+check(B.fatherFirst,false,"Please enter father's first name.");
+}else if(!validName(B.fatherFirst)){
+check(B.fatherFirst,false,"Please enter a valid father's first name.");
+}
+
+if(!B.motherFirst.value.trim()){
+check(B.motherFirst,false,"Please enter mother's first name.");
+}else if(!validName(B.motherFirst)){
+check(B.motherFirst,false,"Please enter a valid mother's first name.");
+}
+
+if(!B.parentPrinted.value){
+check(B.parentPrinted,false,"Please select the parent's name to be printed on the PAN Card.");
+}
+
+/* SOURCE OF INCOME */
+
+const selectedIncome=incomeBoxes.filter(x=>x.checked);
+
+if(!selectedIncome.length){
+showError(incomeBox,"Please select at least one source of income.");
+if(!first)first=incomeBox;
+}else if(selectedIncome.some(x=>x.value==="No Income")&&selectedIncome.length>1){
+showError(incomeBox,"No Income cannot be selected with any other source of income.");
+if(!first)first=incomeBox;
+}
+
+/* ADDRESS */
+
+if(!B.postOffice.value.trim()){
+check(B.postOffice,false,"Please enter your post office.");
+}
+
+if(!B.area.value.trim()){
+check(B.area,false,"Please enter your area, locality, town or city.");
+}
+
+if(!B.district.value.trim()){
+check(B.district,false,"Please enter your district.");
+}
+
+if(!B.state.value){
+check(B.state,false,"Please select your state.");
+}
+
+if(!B.pin.value.trim()){
+check(B.pin,false,"Please enter your PIN code.");
+}else if(!validPin(B.pin)){
+check(B.pin,false,"Please enter a valid 6-digit PIN code.");
+}
+
+/* CONTACT */
+
+if(!B.mobile.value.trim()){
+check(B.mobile,false,"Please enter your mobile number.");
+}else if(!validMobile(B.mobile)){
+check(B.mobile,false,"Please enter a valid Indian mobile number starting with 6, 7, 8 or 9.");
+}
+
+if(!B.email.value.trim()){
+check(B.email,false,"Please enter your email address.");
+}else if(!validEmail(B.email)){
+check(B.email,false,"Please enter a valid email address.");
+}
+
+/* RESIDENTIAL STATUS */
+
+if(!B.residential.value){
+check(B.residential,false,"Please select your residential status.");
+}
+
+/* DOCUMENT DETAILS */
+
+if(!B.poi.value){
+check(B.poi,false,"Please select a Proof of Identity document.");
+}
+
+if(B.poi.value==="Other"&&!B.poiOther.value.trim()){
+check(B.poiOther,false,"Please enter the name of your other identity document.");
+}
+
+if(!B.poa.value){
+check(B.poa,false,"Please select a Proof of Address document.");
+}
+
+if(B.poa.value==="Other"&&!B.poaOther.value.trim()){
+check(B.poaOther,false,"Please enter the name of your other address document.");
+}
+
+if(!B.dobProof.value){
+check(B.dobProof,false,"Please select a Proof of Date of Birth document.");
+}
+
+if(B.dobProof.value==="Other"){
+
+if(!B.dobOther.value.trim()){
+check(B.dobOther,false,"Please enter the name of your other date of birth document.");
+}else if(/aadhaar/i.test(B.dobOther.value.trim())){
+check(B.dobOther,false,"Aadhaar Card is not accepted as Proof of Date of Birth.");
+}
+
+}
+
+/* FILE VALIDATION */
+
+Object.entries(files).forEach(([key,o])=>{
+
+const f=o.file.files[0];
+
+if(!f){
+
+if(!first)first=o.file;
+
+showError(o.file,chooseMessage[key]);
+
+return;
+}
+
+if(!allowed.includes(f.type)){
+
+if(!first)first=o.file;
+
+showError(o.file,"Please upload a PDF, JPG, JPEG or PNG file.");
+
+return;
+}
+
+if(f.size>1048576){
+
+if(!first)first=o.file;
+
+showError(o.file,"Please upload a file of 1 MB or less.");
+
+return;
+}
+
+if(!o.upload.classList.contains("file-success")){
+
+if(!first)first=o.upload;
+
+showError(o.upload,fileErrorMessage[key]);
+
+return;
+}
+
+});
+
+/* ==================== FIRST ERROR SCROLL + FOCUS ==================== */
+
+if(first){
+
+setTimeout(()=>{
+first.scrollIntoView({
+behavior:"smooth",
+block:"center"
+});
+
+setTimeout(()=>{
+if(typeof first.focus==="function")first.focus();
+},400);
+
+},50);
+
+return;
+}
+
+/* ==================== WHATSAPP MESSAGE ==================== */
+
 const income=selectedIncome.map(x=>x.value).join(", ");
-const fullApplicant=[B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" ");
-const father=[B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" ");
-const mother=[B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" ");
+
+const fullApplicant=[
+B.first.value.trim(),
+B.middle.value.trim(),
+B.last.value.trim()
+].filter(Boolean).join(" ");
+
+const father=[
+B.fatherFirst.value.trim(),
+B.fatherMiddle.value.trim(),
+B.fatherLast.value.trim()
+].filter(Boolean).join(" ");
+
+const mother=[
+B.motherFirst.value.trim(),
+B.motherMiddle.value.trim(),
+B.motherLast.value.trim()
+].filter(Boolean).join(" ");
+
 const docName=(s,o)=>s.value==="Other"?o.value.trim():s.value;
+
 let msg="_🌹==========🇮🇳==========🥀_\\n      _KHIDMAT-E-KHALQ OFFICE_\\n_🌹=======================🥀_\\n\\n     _SERVICE: NEW PAN CARD APPLY_\\n_—————————————————————_\\n\\n```PERSONAL DETAILS```\\n\\n";
-const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\\n\\n";
+
+const add=(label,value)=>{
+msg+="```"+label+":``` "+(value||"")+"\\n\\n";
+};
+
 add("Name as per Aadhaar",B.name.value.trim());
 add("Full Name of Applicant",fullApplicant);
 add("Date of Birth",B.dob.value.trim());
 add("Gender",B.gender.value);
 add("Aadhaar Number",B.aadhaar.value.trim());
+
 msg+="```PARENT DETAILS```\\n\\n";
+
 add("Father's Name",father);
 add("Mother's Name",mother);
 add("Parent Name Printed on PAN",B.parentPrinted.value);
+
 msg+="```SOURCE OF INCOME```\\n\\n";
+
 add("Source of Income",income);
+
 msg+="```PAN CARD DELIVERY ADDRESS```\\n\\n";
+
 add("Flat / Door / Building",B.house.value.trim());
 add("Road / Street / Block / Sector",B.road.value.trim());
 add("Post Office",B.postOffice.value.trim());
@@ -2263,23 +2753,39 @@ add("District",B.district.value.trim());
 add("State",B.state.value);
 add("Country",B.country.value.trim());
 add("PIN Code",B.pin.value.trim());
+
 msg+="```CONTACT DETAILS```\\n\\n";
+
 add("Mobile Number",B.mobile.value.trim());
 add("Email ID",B.email.value.trim());
+
 msg+="```RESIDENTIAL STATUS```\\n\\n";
+
 add("Residential Status",B.residential.value);
+
 msg+="```DOCUMENT DETAILS```\\n\\n";
+
 add("Proof of Identity",docName(B.poi,B.poiOther));
 add("POI File",files.poi.file.files[0].name);
+
 add("Proof of Address",docName(B.poa,B.poaOther));
 add("POA File",files.poa.file.files[0].name);
+
 add("Proof of Date of Birth",docName(B.dobProof,B.dobOther));
 add("DOB Proof File",files.dob.file.files[0].name);
+
 add("Applicant Photo",files.photo.file.files[0].name);
 add("Applicant Signature",files.signature.file.files[0].name);
+
 msg+="__________________________________\\n_Please assist me with this service._";
-window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank");
+
+window.open(
+"https://wa.me/916361634389?text="+encodeURIComponent(msg),
+"_blank"
+);
+
 };
+
 })();
 </script>
 
@@ -2291,8 +2797,7 @@ window.open("https://wa.me/916361634389?text="+encodeURIComponent(msg),"_blank")
 
 
 
-
-     <!-- =========================================================
+<!-- =========================================================
      ===== 02. MINOR / CHILD PAN CARD APPLY : HTML ==========
      ========================================================= -->
 <button type="button" class="service-btn" id="minorPanBtn">👶 Minor / Child PAN Card Apply</button>
