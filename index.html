@@ -2437,7 +2437,7 @@ return;
 }
 
 /* ==================== NEW PAN CARD APPLY : WHATSAPP MESSAGE ==================== */
-let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n        _SERVICE: NEW PAN CARD APPLY_\n_—————————————————————_\n\n```PERSONAL DETAILS```\n\n";
+let msg="_🌹==========🇮🇳==========🥀_\n      _KHIDMAT-E-KHALQ OFFICE_\n_🌹=======================🥀_\n\n        _SERVICE: NEW PAN CARD_                          _APPLY_\n_—————————————————————_\n\n```PERSONAL DETAILS```\n\n";
 const add=(label,value)=>msg+="```"+label+":``` "+(value||"")+"\n\n";
 const income=selectedIncome.map(x=>x.value).join(", "),fullApplicant=[B.first.value.trim(),B.middle.value.trim(),B.last.value.trim()].filter(Boolean).join(" "),father=[B.fatherFirst.value.trim(),B.fatherMiddle.value.trim(),B.fatherLast.value.trim()].filter(Boolean).join(" "),mother=[B.motherFirst.value.trim(),B.motherMiddle.value.trim(),B.motherLast.value.trim()].filter(Boolean).join(" "),docName=(s,o)=>s.value==="Other"?o.value.trim():s.value,fileName=f=>f?.file?.files?.[0]?.name||"Not Uploaded";
 add("Name as per Aadhaar",B.name.value.trim());add("Applicant Full Name",fullApplicant);add("DOB",B.dob.value.trim());add("Gender",B.gender.value);add("Aadhaar Number",B.aadhaar.value.trim());
